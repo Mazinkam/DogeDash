@@ -40,8 +40,7 @@ public class GameMasterSettings {
 		isGameSettingsSet = true;
 
 	}
-
-
+	
 	public static void initGameApp() {
 		SCREEN_W = Gdx.graphics.getWidth();
 		SCREEN_H = Gdx.graphics.getHeight();
