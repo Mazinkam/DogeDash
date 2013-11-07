@@ -1,25 +1,41 @@
 package com.alicode.game.dogedash;
 
-import com.alicode.game.dogedash.game.AbstractGame;
+import com.alicode.game.dogedash.Screens.SplashScreen;
 import com.badlogic.gdx.Game;
 
-public class DogeDashCore extends AbstractGame {
+public class DogeDashCore extends Game {
+	
+	public static final String VERSION ="0.0.0.01 Pre-Alpha";
+	public static final String LOG ="Doge Dash";
+	public static final boolean DEV_MODE = true;
 	
 	@Override
-	public void loadGameSettings() {
-		// TODO Auto-generated method stub
-		
+	public void create() {
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override
-	public void loadGameAssets() {
-		// TODO Auto-generated method stub
-		
+	public void dispose() {
+		super.dispose();
 	}
 
 	@Override
-	public void loadGameLoadingScreen() {
-		// TODO Auto-generated method stub
-		
+	public void render() {		
+		super.render();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+	}
+
+	@Override
+	public void pause() {
+		super.pause();
+	}
+
+	@Override
+	public void resume() {
+		super.resume();
 	}
 }

@@ -1,0 +1,61 @@
+
+player.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+characterJump
+  rotate: false
+  xy: 1, 96
+  size: 171, 113
+  orig: 171, 113
+  offset: 0, 0
+  index: -1
+characterDie
+  rotate: false
+  xy: 1, 1
+  size: 155, 93
+  orig: 155, 93
+  offset: 0, 0
+  index: -1
+dogsuper1
+  rotate: false
+  xy: 174, 116
+  size: 155, 93
+  orig: 155, 93
+  offset: 0, 0
+  index: -1
+dogsuper2
+  rotate: false
+  xy: 331, 116
+  size: 155, 93
+  orig: 155, 93
+  offset: 0, 0
+  index: -1
+character
+  rotate: false
+  xy: 488, 116
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
+character2
+  rotate: false
+  xy: 641, 116
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
+character3
+  rotate: false
+  xy: 794, 116
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
+character4
+  rotate: false
+  xy: 174, 21
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
