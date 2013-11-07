@@ -24,8 +24,6 @@ public class OptionsScreen extends AbstractScreen {
 
 	public OptionsScreen(DogeDashCore game) {
 		super(game);
-		
-
 	}
 
 	@Override
