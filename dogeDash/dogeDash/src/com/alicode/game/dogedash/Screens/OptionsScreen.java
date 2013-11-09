@@ -20,108 +20,116 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class OptionsScreen extends AbstractScreen {
 
-	Image bgImage, pDashTitle, playButton, optionsButton, highscoresButton, customButton;
-
+	private Image bgImage, menuTitle, menuTitleTxt, soundButton, musicButton, vibrationButton, backButton;
+	private AtlasRegion imageRegion;
+	private Drawable drawRegion;
+	
 	public OptionsScreen(DogeDashCore game) {
 		super(game);
 	}
 
 	@Override
 	public void show() {
+		super.show();
 
-		Gdx.input.setInputProcessor(stage);
+		imageRegion = getAtlas().findRegion("menu/main/menu_background");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		AtlasRegion splashRegion = getAtlas().findRegion("menu/main/menu_background");
-		Drawable splashDrawable = new TextureRegionDrawable(splashRegion);
-
-		bgImage = new Image(splashDrawable, Scaling.stretch);
+		bgImage = new Image(drawRegion, Scaling.stretch);
 		bgImage.setFillParent(true);
 
-		splashRegion = getAtlas().findRegion("menu/text/titles/puppydash");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		imageRegion = getAtlas().findRegion("menu/text/titles/options_title");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		pDashTitle = new Image(splashDrawable);
-		pDashTitle.setX(70);
-		pDashTitle.setY(380);
+		menuTitle = new Image(drawRegion);
+		menuTitle.setX(70);
+		menuTitle.setY(400);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/play");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		imageRegion = getAtlas().findRegion("menu/text/txt/options_text");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		playButton = new Image(splashDrawable);
-		playButton.setX(30);
-		playButton.setY(280);
+		menuTitleTxt = new Image(drawRegion);
+		menuTitleTxt.setX(30);
+		menuTitleTxt.setY(340);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/options");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		imageRegion = getAtlas().findRegion("menu/text/buttons/soundoff");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		optionsButton = new Image(splashDrawable);
-		optionsButton.setX(30);
-		optionsButton.setY(230);
+		soundButton = new Image(drawRegion);
+		soundButton.setX(30);
+		soundButton.setY(230);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/highscores");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		imageRegion = getAtlas().findRegion("menu/text/buttons/musicoff");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		highscoresButton = new Image(splashDrawable);
-		highscoresButton.setX(30);
-		highscoresButton.setY(180);
+		musicButton = new Image(drawRegion);
+		musicButton.setX(30);
+		musicButton.setY(180);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/customization");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		imageRegion = getAtlas().findRegion("menu/text/buttons/vibrationoff");
+		drawRegion = new TextureRegionDrawable(imageRegion);
 
-		customButton = new Image(splashDrawable);
-		customButton.setX(30);
-		customButton.setY(120);
+		vibrationButton = new Image(drawRegion);
+		vibrationButton.setX(30);
+		vibrationButton.setY(120);
 
-		playButton.addListener(new InputListener() {
+		imageRegion = getAtlas().findRegion("menu/text/buttons/back");
+		drawRegion = new TextureRegionDrawable(imageRegion);
+
+		backButton = new Image(drawRegion);
+		backButton.setX(660);
+		backButton.setY(20);
+
+		soundButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
 			}
 		});
 
-		optionsButton.addListener(new InputListener() {
+		musicButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+
 			}
 		});
 
-		highscoresButton.addListener(new InputListener() {
+		vibrationButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+
 			}
 		});
 
-		customButton.addListener(new InputListener() {
+		backButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+				game.setScreen(new MenuScreen(game));
 			}
 		});
 
 		stage.addActor(bgImage);
-		stage.addActor(pDashTitle);
-		stage.addActor(playButton);
-		stage.addActor(optionsButton);
-		stage.addActor(highscoresButton);
-		stage.addActor(customButton);
+		stage.addActor(menuTitle);
+		stage.addActor(menuTitleTxt);
+		stage.addActor(soundButton);
+		stage.addActor(musicButton);
+		stage.addActor(vibrationButton);
+		stage.addActor(backButton);
 
 	}
 }

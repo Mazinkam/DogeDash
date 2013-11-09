@@ -7,7 +7,7 @@ public class DogeDashCore extends Game {
 	
 	public static final String VERSION ="0.0.0.01 Pre-Alpha";
 	public static final String LOG ="Doge Dash";
-	public static final boolean DEV_MODE = true;
+	public static final boolean DEV_MODE = false;
 	
 	@Override
 	public void create() {

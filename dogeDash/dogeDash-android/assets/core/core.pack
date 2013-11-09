@@ -1122,9 +1122,16 @@ menu/text/buttons/play
   orig: 114, 40
   offset: 0, 0
   index: -1
+menu/text/buttons/back
+  rotate: false
+  xy: 574, 140
+  size: 119, 39
+  orig: 119, 39
+  offset: 0, 0
+  index: -1
 menu/text/buttons/shop_no
   rotate: false
-  xy: 574, 131
+  xy: 695, 131
   size: 92, 48
   orig: 92, 48
   offset: 0, 0

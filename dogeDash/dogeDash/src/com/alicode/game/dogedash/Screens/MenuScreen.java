@@ -24,7 +24,7 @@ public class MenuScreen extends AbstractScreen {
 
 	public MenuScreen(DogeDashCore game) {
 		super(game);
-		GameAudio.playMenuBG(true);
+	//	GameAudio.playMenuBG(true);
 
 	}
 
@@ -81,7 +81,7 @@ public class MenuScreen extends AbstractScreen {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+				game.setScreen(new GameScreen(game));
 			}
 		});
 

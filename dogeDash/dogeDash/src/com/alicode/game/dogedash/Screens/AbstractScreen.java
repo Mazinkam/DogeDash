@@ -16,8 +16,7 @@ public class AbstractScreen implements Screen {
 
 	protected final DogeDashCore game;
 	protected final Stage stage;
-	
-	
+
 	private BitmapFont font;
 	private BitmapFont font_title;
 	private SpriteBatch batch;
@@ -54,6 +53,7 @@ public class AbstractScreen implements Screen {
 		}
 		return font;
 	}
+
 	public BitmapFont getFontTitle() {
 		if (font_title == null) {
 			font_title = new BitmapFont(Gdx.files.internal("skin/title_font.fnt"), false);
@@ -63,9 +63,9 @@ public class AbstractScreen implements Screen {
 
 	@Override
 	public void show() {
+		Gdx.input.setInputProcessor(stage);
 		Gdx.app.log(DogeDashCore.LOG, "Showing screen: " + getName());
 
-		
 	}
 
 	@Override
