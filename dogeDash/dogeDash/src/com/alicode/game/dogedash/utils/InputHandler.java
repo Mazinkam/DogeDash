@@ -22,10 +22,10 @@ public class InputHandler implements InputProcessor{
 		player = world.getPlayer();
 		switch(keycode){
 			case Keys.W:
-				player.getVelocity().y = 1;
+				player.getVelocity().y = 10;
 				break;
 			case Keys.S:
-				player.getVelocity().y = -1;
+				player.getVelocity().y = -10;
 				break;
 			default:
 				break;
@@ -38,11 +38,11 @@ public class InputHandler implements InputProcessor{
 		player = world.getPlayer();
 		switch(keycode){
 			case Keys.W:
-				if(player.getVelocity().y == 1)
+				if(player.getVelocity().y > 9)
 					player.getVelocity().y = 0;
 				break;
 			case Keys.S:
-				if(player.getVelocity().y == -1)
+				if(player.getVelocity().y < -9)
 					player.getVelocity().y = 0;
 				break;
 			default:

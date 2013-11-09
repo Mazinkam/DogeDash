@@ -26,10 +26,10 @@ public class World {
 	
 	public World (DogeDashCore game){
 		this.game = game;
-		player = new Player(10f, 1, 1.6f, 1, new Vector2(5, 5));
-		enemies.add(new EnemyBee(5f, 0, 1, 1, new Vector2(5, 5)));
-		background = new Background(0.2f, 0, 42, 8, new Vector2(0, 0));
-		background2 = new Background(0.2f, 0, 42, 8, new Vector2(42,0));
+		player = new Player(10f, 1, 151, 93, new Vector2(120, 240));
+		enemies.add(new EnemyBee(5f, 0, 50, 55, new Vector2(1000, 300)));
+		background = new Background(0.2f, 0, 2397, 480, new Vector2(0, 0));
+		background2 = new Background(0.2f, 0,2397, 480, new Vector2(2397,0));
 		Gdx.input.setInputProcessor(new InputHandler(this));
 	}
 	

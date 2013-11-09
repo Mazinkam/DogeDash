@@ -15,7 +15,7 @@ public class Background extends MiscObject {
 
 	@Override
 	public void update(float delta, Player player) {
-		position.x-=SPEED;
+	//	position.x-=SPEED;
 		if (position.x < -47) {
 			position.x =  37;
 			Gdx.app.log(DogeDashCore.LOG, "position.x: " + position.x);

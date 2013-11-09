@@ -22,11 +22,11 @@ public class EnemyBee extends EnemyObject {
 //			rotation -= 360;
 //
 
-		position.x-=SPEED/50;
+		position.x-=SPEED;
 		
-		if(position.x < player.getPosition().x - 20)
+		if(position.x < -20)
 		{
-			position.x =  player.getPosition().x +40;	
+			position.x =  900;	
 		}
 		super.update(player);
 			

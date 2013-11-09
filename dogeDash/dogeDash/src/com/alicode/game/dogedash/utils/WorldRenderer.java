@@ -40,8 +40,8 @@ public class WorldRenderer {
 
 		world.setRenderer(this);
 
-		width = Gdx.graphics.getWidth()/54;
-		height = Gdx.graphics.getHeight()/54;
+		width = Gdx.graphics.getWidth();
+		height = Gdx.graphics.getHeight();
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, width, height);
@@ -93,7 +93,7 @@ public class WorldRenderer {
 
 
 		// Update camera
-		cam.position.set(player.getPosition().x + 6, 4, 0);
+		cam.position.set(player.getPosition().x + 320, 240, 0);
 		cam.update();
 
 		// Set the batch matrix to the camera matrix
@@ -112,17 +112,20 @@ public class WorldRenderer {
 		exhaust.draw(batch, Gdx.graphics.getDeltaTime());
 
 		// Drawing the player
-		batch.draw(playerTexture, player.getPosition().x, player.getPosition().y, player.getWidth(), player.getHeight(), player.getWidth(),
+//		batch.draw(texture, x, y, originX, originY, width, height, scaleX, scaleY, rotation, srcX, srcY, srcWidth, srcHeight, flipX, flipY)
+		batch.draw(playerTexture, player.getPosition().x, player.getPosition().y, player.getWidth()/2, player.getHeight()/2, player.getWidth(),
 				player.getHeight(), 1, 1, player.getRotation(), 0, 0, playerTexture.getWidth(), playerTexture.getHeight(), false, false);
 		
-
 
 		// Get an iterator and use it to draw the enemies
 		eIter = enemies.iterator();
 		while (eIter.hasNext()) {
 			e = eIter.next();
-			batch.draw(enemyTexture, e.getPosition().x, e.getPosition().y, e.getWidth(), e.getHeight(), e.getWidth(), e.getHeight(), e.getWidth(), e.getHeight(),
+			batch.draw(enemyTexture, e.getPosition().x, e.getPosition().y, e.getWidth()/2, e.getHeight()/2, e.getWidth(), e.getHeight(), 1, 1,
 					e.getRotation(), 0, 0, enemyTexture.getWidth(), enemyTexture.getHeight(), false, false);
+		
+			
+			
 			exhaust.setPosition(e.getPosition().x + e.getWidth() / 2, e.getPosition().y + e.getHeight() / 2);
 			setExhaustRotation();
 		}
