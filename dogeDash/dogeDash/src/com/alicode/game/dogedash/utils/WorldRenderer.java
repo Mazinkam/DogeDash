@@ -72,21 +72,19 @@ public class WorldRenderer {
 		Texture ballTexture = new Texture(Gdx.files.internal("data/particle.png"));
 		Sprite ball = new Sprite(ballTexture);
 		exhaust.setSprite(ball);
-		exhaust.getScale().setHigh(0.3f);
+		exhaust.getScale().setHigh(5.3f);
 		exhaust.start();
-	}
-
-	public void render() {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
+		
 		// Get objects from world
 		player = world.getPlayer();
 		enemies = world.getEnemies();
 		background = world.getBackground();
 		background2 = world.getBackground2();
+	}
 
-		// Deal with exhaust particle
+	public void render() {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 
 		// Update camera
@@ -120,9 +118,7 @@ public class WorldRenderer {
 			e = eIter.next();
 			batch.draw(enemyTexture, e.getPosition().x, e.getPosition().y, e.getWidth()/2, e.getHeight()/2, e.getWidth(), e.getHeight(), 1, 1,
 					e.getRotation(), 0, 0, enemyTexture.getWidth(), enemyTexture.getHeight(), false, false);
-		
-			
-			
+
 			exhaust.setPosition(e.getPosition().x + e.getWidth() / 2, e.getPosition().y + e.getHeight() / 2);
 			setExhaustRotation();
 		}
