@@ -52,9 +52,6 @@ public class WorldRenderer {
 		
 		gameBackground = new Texture("core/background_big.png");
 		gameBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-//		gameBackground.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-//		gameBackground2 = new Texture("core/background2_big.png");
-//		gameBackground2.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		playerTexture = new Texture("core/game/player/character.png");
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);

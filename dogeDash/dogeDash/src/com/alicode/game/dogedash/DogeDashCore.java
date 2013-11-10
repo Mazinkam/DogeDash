@@ -1,7 +1,7 @@
 package com.alicode.game.dogedash;
 
-import com.alicode.game.dogedash.Screens.GameScreen;
-import com.alicode.game.dogedash.Screens.SplashScreen;
+import com.alicode.game.dogedash.screens.GameScreen;
+import com.alicode.game.dogedash.screens.SplashScreen;
 import com.badlogic.gdx.Game;
 
 public class DogeDashCore extends Game {

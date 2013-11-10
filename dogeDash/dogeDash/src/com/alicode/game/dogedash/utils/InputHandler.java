@@ -22,10 +22,10 @@ public class InputHandler implements InputProcessor{
 		player = world.getPlayer();
 		switch(keycode){
 			case Keys.W:
-				player.getVelocity().y = 10;
+				player.getVelocity().y = 50;
 				break;
 			case Keys.S:
-				player.getVelocity().y = -10;
+				player.getVelocity().y = -50;
 				break;
 			default:
 				break;
@@ -59,10 +59,8 @@ public class InputHandler implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		touch.set(screenX, screenY, 0);
-		world.getRenderer().getCamera().unproject(touch);
-		vec2Touch.set(touch.x, touch.y);
-		player = world.getPlayer();
+
+		
 		return true;
 	}
 
@@ -74,7 +72,15 @@ public class InputHandler implements InputProcessor{
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
+		touch.set(screenX, screenY, 0);
+		
+		world.getRenderer().getCamera().unproject(touch);
+		
+		vec2Touch.set(touch.x, touch.y);
+		
+		player = world.getPlayer();
+		
+		player.getPosition().y = vec2Touch.y;
 		return false;
 	}
 

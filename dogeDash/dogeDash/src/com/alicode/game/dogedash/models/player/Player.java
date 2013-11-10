@@ -4,8 +4,9 @@ import com.alicode.game.dogedash.models.MovableGameObject;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
-public class Player extends MovableGameObject{
+public class Player extends MovableGameObject {
 	float rotate = 90f;
+
 	public Player(float SPEED, float rotation, float width, float height, Vector2 position) {
 		super(SPEED, rotation, width, height, position);
 		// TODO Auto-generated constructor stub
@@ -13,29 +14,27 @@ public class Player extends MovableGameObject{
 
 	public void update() {
 		position.add(velocity.tmp().mul(Gdx.graphics.getDeltaTime() * SPEED));
-		
-//		if (velocity.y != 0){
-//			if(velocity.y < 1)
-//			{
-//				rotate+=1.2;
-//				rotation = velocity.angle() + rotate;
-//			}
-//			else
-//			{
-//				rotate+=1.2;
-//				rotation = velocity.angle() - rotate;
-//			}
-//		}
-//			rotation = velocity.angle() - position.y/4;
-		
+
+		if (velocity.y != 0) {
+			if (velocity.y < 1) {
+				rotation = velocity.angle() + rotate;
+			} else {
+				rotation = velocity.angle() - rotate;
+			}
+		}
+		rotation = velocity.angle() - position.y / 4;
+
 		bounds.x = position.x;
 		bounds.y = position.y;
+
+		if (position.y <= 0)
+			position.y = 0;
+		if (position.y >= 400)
+			position.y = 400;
 	}
-	
-	public void moveRight()
-	{
-		
+
+	public void moveRight() {
+
 	}
-	
 
 }
