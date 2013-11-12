@@ -18,7 +18,7 @@ public class World {
 	Background background;
 	Background background2;
 	Array<EnemyObject> enemies = new Array<EnemyObject>();
-	
+
 	WorldRenderer wr;
 	Iterator<EnemyObject> enemyIter;
 	

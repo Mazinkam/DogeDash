@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player extends MovableGameObject {
-	float rotate = 90f;
+	public static float rotate = 0;
 
 	public Player(float SPEED, float rotation, float width, float height, Vector2 position) {
 		super(SPEED, rotation, width, height, position);
@@ -15,14 +15,7 @@ public class Player extends MovableGameObject {
 	public void update() {
 		position.add(velocity.tmp().mul(Gdx.graphics.getDeltaTime() * SPEED));
 
-		if (velocity.y != 0) {
-			if (velocity.y < 1) {
-				rotation = velocity.angle() + rotate;
-			} else {
-				rotation = velocity.angle() - rotate;
-			}
-		}
-		rotation = velocity.angle() - position.y / 4;
+		rotation = velocity.angle() * rotate;
 
 		bounds.x = position.x;
 		bounds.y = position.y;
