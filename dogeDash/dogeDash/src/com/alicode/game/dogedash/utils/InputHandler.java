@@ -25,11 +25,11 @@ public class InputHandler implements InputProcessor {
 		switch (keycode) {
 		case Keys.W:
 			player.getVelocity().y = 50;
-			player.rotate = 0.2f;
+			player.rotate += 0.2f;
 			break;
 		case Keys.S:
 			player.getVelocity().y = -50;
-			player.rotate = -0.1f;
+			player.rotate += -0.1f;
 			break;
 		default:
 			break;
@@ -65,22 +65,6 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		touch.set(screenX, screenY, 0);
-
-		world.getRenderer().getCamera().unproject(touch);
-
-		vec2Touch.set(touch.x, touch.y);
-
-		player = world.getPlayer();
-		if (player.getPosition().y >= touch.y) {
-			player.rotate = -0.1f;
-			player.getVelocity().y  -= 2;
-		}
-		else{
-			player.rotate = 0.2f;
-			player.getVelocity().y  +=2;
-		}
-		
 		return true;
 	}
 
@@ -100,22 +84,22 @@ public class InputHandler implements InputProcessor {
 		vec2Touch.set(touch.x, touch.y);
 
 		player = world.getPlayer();
-		if (player.getPosition().y >= touch.y) {
+		if (player.getPosition().y+40 > touch.y +50) {
 			player.rotate = -0.1f;
-			player.getVelocity().y  -= 2;
+			player.getVelocity().y  = -50;
+//			player.getPosition().y -= 2;
+		}
+		else if(player.getPosition().y+40 < touch.y -50){
+			player.rotate = 0.2f;
+			player.getVelocity().y  =50;
+//			player.getPosition().y += 2;
 		}
 		else{
-			player.rotate = 0.2f;
-			player.getVelocity().y  +=2;
+			player.rotate = 0f;
+			player.getVelocity().y  =0;
 		}
-		
-		Gdx.app.log(DogeDashCore.LOG, "player : " + player.getPosition().y  + " touch.y: " + touch.y );
-	
-		
-
-		return false;
+		return true;
 	}
-
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		// TODO Auto-generated method stub

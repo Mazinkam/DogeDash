@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
@@ -34,8 +35,8 @@ public class WorldRenderer {
 	Iterator<EnemyObject> eIter;
 	EnemyObject e;
 	ParticleEmitter exhaust;
-
-	public WorldRenderer(World world) {
+	
+	public WorldRenderer(World world, TextureAtlas textureAtlas) {
 		this.world = world;
 
 		world.setRenderer(this);
@@ -53,7 +54,7 @@ public class WorldRenderer {
 		gameBackground = new Texture("core/background_big.png");
 		gameBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
-		playerTexture = new Texture("core/game/player/character.png");
+		playerTexture = textureAtlas.findRegion("game/player/character").getTexture();
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		enemyTexture = new Texture("core/game/enemies/enemyBee.png");

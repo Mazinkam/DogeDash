@@ -14,7 +14,7 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen(DogeDashCore game) {
 		super(game);
 		world = new World(game);
-		render = new WorldRenderer(world);
+		render = new WorldRenderer(world, getAtlas());
 	}
 
 	@Override
