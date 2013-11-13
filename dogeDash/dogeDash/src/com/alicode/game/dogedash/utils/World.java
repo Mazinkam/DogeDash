@@ -7,11 +7,12 @@ import com.alicode.game.dogedash.models.enemies.EnemyBee;
 import com.alicode.game.dogedash.models.enemies.EnemyObject;
 import com.alicode.game.dogedash.models.misc.Background;
 import com.alicode.game.dogedash.models.player.Player;
+import com.alicode.game.dogedash.screens.AbstractScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-public class World {
+public class World extends AbstractScreen {
 
 	DogeDashCore game;
 	Player player;
@@ -25,7 +26,7 @@ public class World {
 	EnemyObject enemyObject;
 	
 	public World (DogeDashCore game){
-		this.game = game;
+		super(game);
 		player = new Player(10f, 1, 151, 93, new Vector2(120, 240));
 		enemies.add(new EnemyBee(5f, 0, 50, 55, new Vector2(1000, 300)));
 		background = new Background(0.2f, 0, 2397, 480, new Vector2(0, 0));

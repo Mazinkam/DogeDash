@@ -1,6 +1,5 @@
 package com.alicode.game.dogedash;
 
-import com.alicode.game.dogedash.screens.GameScreen;
 import com.alicode.game.dogedash.screens.SplashScreen;
 import com.badlogic.gdx.Game;
 
@@ -12,11 +11,13 @@ public class DogeDashCore extends Game {
 	
 	@Override
 	public void create() {
-		setScreen(new GameScreen(this));
+		Assets.load();
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override
 	public void dispose() {
+		Assets.dispose();
 		super.dispose();
 	}
 

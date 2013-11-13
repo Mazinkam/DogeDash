@@ -1,136 +1,240 @@
 package com.alicode.game.dogedash.screens;
 
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.delay;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.forever;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveBy;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
+
+import javax.sound.midi.Sequence;
+
+import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 
-public class MenuScreen extends AbstractScreen {
+public class MenuScreen implements Screen {
 
-	Image bgImage, pDashTitle, playButton, optionsButton, highscoresButton, customButton;
+	private Image image_menu, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2, image_menu_creampup_body,
+			image_menu_creampup_paw, image_menu_creampup_paw2, image_menu_bluepup, image_puppydash, image_play, image_options, image_highscores,
+			image_customization;
+	private Sequence sequence;
+	private DogeDashCore game;
+	private Stage stage;
 
-	
 	public MenuScreen(DogeDashCore game) {
-		super(game);
-	//	GameAudio.playMenuBG(true);
-
+		this.game = game;
+		stage = new Stage();
 	}
 
 	@Override
 	public void show() {
 
 		Gdx.input.setInputProcessor(stage);
+//background shit
+		Drawable splashDrawable = new TextureRegionDrawable(Assets.menu);
+		image_menu = new Image(splashDrawable, Scaling.stretch);
+		image_menu.setFillParent(true);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		image_menu_mombody.setFillParent(true);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
+		image_menu_mom_nose_paw = new Image(splashDrawable, Scaling.stretch);
+		image_menu_mom_nose_paw.setFillParent(true);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		image_menu_mombody.setFillParent(true);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
+		image_menu_bluepup = new Image(splashDrawable);
+		image_menu_bluepup.setX(460);
+		image_menu_bluepup.setY(45);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
+		image_menu_creampup_body = new Image(splashDrawable);
+		image_menu_creampup_body.setX(200);
+		image_menu_creampup_body.setY(-10);
 
-		AtlasRegion splashRegion = getAtlas().findRegion("menu/main/menu_background");
-		Drawable splashDrawable = new TextureRegionDrawable(splashRegion);
+		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
+		image_menu_creampup_paw = new Image(splashDrawable);
+		image_menu_creampup_paw.setX(200);
+		image_menu_creampup_paw.setY(10);
 
-		bgImage = new Image(splashDrawable, Scaling.stretch);
-		bgImage.setFillParent(true);
+		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
+		image_menu_creampup_paw2 = new Image(splashDrawable);
+		image_menu_creampup_paw2.setX(290);
+		image_menu_creampup_paw2.setY(10);
 
-		splashRegion = getAtlas().findRegion("menu/text/titles/puppydash");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
 
-		pDashTitle = new Image(splashDrawable);
-		pDashTitle.setX(70);
-		pDashTitle.setY(380);
+		splashDrawable = new TextureRegionDrawable(Assets.puppydash);
+		image_puppydash = new Image(splashDrawable);
+		image_puppydash.setX(70);
+		image_puppydash.setY(380);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
+		image_menu_blackpup = new Image(splashDrawable);
+		image_menu_blackpup.setX(10);
+		image_menu_blackpup.setY(40);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/play");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
+		image_menu_blackpup2 = new Image(splashDrawable);
+		image_menu_blackpup2.setX(260);
+		image_menu_blackpup2.setY(250);
 
-		playButton = new Image(splashDrawable);
-		playButton.setX(30);
-		playButton.setY(280);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/options");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		splashDrawable = new TextureRegionDrawable(Assets.play);
+		image_play = new Image(splashDrawable);
+		image_play.setX(30);
+		image_play.setY(280);
 
-		optionsButton = new Image(splashDrawable);
-		optionsButton.setX(30);
-		optionsButton.setY(230);
+		splashDrawable = new TextureRegionDrawable(Assets.options);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/highscores");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		image_options = new Image(splashDrawable);
+		image_options.setX(30);
+		image_options.setY(230);
 
-		highscoresButton = new Image(splashDrawable);
-		highscoresButton.setX(30);
-		highscoresButton.setY(180);
+		splashDrawable = new TextureRegionDrawable(Assets.highscores);
 
-		splashRegion = getAtlas().findRegion("menu/text/buttons/customization");
-		splashDrawable = new TextureRegionDrawable(splashRegion);
+		image_highscores = new Image(splashDrawable);
+		image_highscores.setX(30);
+		image_highscores.setY(180);
 
-		customButton = new Image(splashDrawable);
-		customButton.setX(30);
-		customButton.setY(120);
+		splashDrawable = new TextureRegionDrawable(Assets.customization);
 
-		playButton.addListener(new InputListener() {
+		image_customization = new Image(splashDrawable);
+		image_customization.setX(30);
+		image_customization.setY(120);
+
+		image_play.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new GameScreen(game));
+				image_play.setOrigin(image_play.getWidth()/4, image_play.getHeight()/2);
+				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.5f), Actions.scaleTo(1, 1, 0.5f), delay(0.5f)));
+				image_play.addAction((sequence(rotateBy(60, 0.3f), delay(0.5f),sequence(rotateBy(-60, 0.3f) ))));
+//				game.setScreen(new SplashScreen(game));
 			}
 		});
 
-		optionsButton.addListener(new InputListener() {
+		image_options.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new OptionsScreen(game));
+//				game.setScreen(new SplashScreen(game));
 			}
 		});
 
-		highscoresButton.addListener(new InputListener() {
+		image_highscores.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+//				game.setScreen(new SplashScreen(game));
 			}
 		});
 
-		customButton.addListener(new InputListener() {
+		image_customization.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				GameAudio.click();
-				game.setScreen(new SplashScreen(game));
+//				game.setScreen(new SplashScreen(game));
 			}
 		});
 
-		stage.addActor(bgImage);
-		stage.addActor(pDashTitle);
-		stage.addActor(playButton);
-		stage.addActor(optionsButton);
-		stage.addActor(highscoresButton);
-		stage.addActor(customButton);
+		stage.addActor(image_menu);
+
+		stage.addActor(image_menu_blackpup);
+		stage.addActor(image_menu_blackpup2);
+		
+		stage.addActor(image_menu_mombody);
+		image_menu_bluepup.setOrigin(image_menu_bluepup.getWidth()/2, image_menu_bluepup.getHeight());
+
+		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f),sequence(rotateBy(-5, 2) ))));
+		stage.addActor(image_menu_bluepup);
+		stage.addActor(image_menu_mom_nose_paw);
+		
+		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth()/2, image_menu_creampup_body.getHeight()/2);
+		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
+		stage.addActor(image_menu_creampup_body);
+		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth()/2, image_menu_creampup_paw.getHeight()/2);
+		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
+		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f),sequence(rotateBy(-20, 1) ))));
+		stage.addActor(image_menu_creampup_paw);
+		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth()/2, image_menu_creampup_paw.getHeight()/2);
+		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
+		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f),sequence(rotateBy(20, 1) ))));
+		stage.addActor(image_menu_creampup_paw2);
+		
+		stage.addActor(image_puppydash);
+		stage.addActor(image_play);
+		stage.addActor(image_options);
+		stage.addActor(image_highscores);
+		stage.addActor(image_customization);
 
 	}
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		stage.act(delta);
+		stage.draw();
+
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		stage.setViewport(800, 480, true);
+		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
+
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+
+	}
+
 	@Override
 	public void dispose() {
-		Gdx.app.log(DogeDashCore.LOG, "Disposing screen: " + getName());
+		// TODO Auto-generated method stub
 
-		GameAudio.stopBG();
 	}
+
 }

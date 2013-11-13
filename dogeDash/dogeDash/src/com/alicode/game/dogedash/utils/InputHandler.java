@@ -1,9 +1,7 @@
 package com.alicode.game.dogedash.utils;
 
-import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.models.player.Player;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;

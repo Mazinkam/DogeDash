@@ -7,6 +7,7 @@ import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.models.enemies.EnemyObject;
 import com.alicode.game.dogedash.models.misc.Background;
 import com.alicode.game.dogedash.models.player.Player;
+import com.alicode.game.dogedash.screens.AbstractScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
@@ -21,7 +22,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
 
-public class WorldRenderer {
+public class WorldRenderer extends AbstractScreen {
 
 	World world;
 	SpriteBatch batch;
@@ -36,8 +37,8 @@ public class WorldRenderer {
 	EnemyObject e;
 	ParticleEmitter exhaust;
 	
-	public WorldRenderer(World world, TextureAtlas textureAtlas) {
-		this.world = world;
+	public WorldRenderer(DogeDashCore game, World world, TextureAtlas textureAtlas) {
+		super(game);
 
 		world.setRenderer(this);
 

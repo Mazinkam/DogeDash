@@ -638,16 +638,44 @@ menu/main/menu_background
   orig: 800, 480
   offset: 0, 0
   index: -1
-menu/main/splash2
+menu/main/menu_bg
   rotate: false
   xy: 1, 60
   size: 800, 480
   orig: 800, 480
   offset: 0, 0
   index: -1
+menu/main/menu_bluepup
+  rotate: false
+  xy: 803, 764
+  size: 200, 258
+  orig: 200, 258
+  offset: 0, 0
+  index: -1
+menu/main/menu_creampup_body
+  rotate: false
+  xy: 803, 635
+  size: 149, 127
+  orig: 149, 127
+  offset: 0, 0
+  index: -1
+menu/main/menu_blackpup
+  rotate: false
+  xy: 803, 564
+  size: 89, 69
+  orig: 89, 69
+  offset: 0, 0
+  index: -1
+menu/main/menu_blackpup2
+  rotate: false
+  xy: 803, 493
+  size: 89, 69
+  orig: 89, 69
+  offset: 0, 0
+  index: -1
 menu/main/shopItemBox
   rotate: false
-  xy: 803, 960
+  xy: 894, 571
   size: 58, 62
   split: 21, 36, 18, 43
   orig: 58, 62
@@ -655,105 +683,56 @@ menu/main/shopItemBox
   index: -1
 menu/main/shopItemBox
   rotate: false
-  xy: 803, 960
+  xy: 894, 571
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_angel
   rotate: false
-  xy: 803, 896
+  xy: 803, 429
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_clownnose
   rotate: false
-  xy: 863, 960
+  xy: 894, 507
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_devilwings
   rotate: false
-  xy: 803, 832
+  xy: 803, 365
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_halo
   rotate: false
-  xy: 863, 896
+  xy: 803, 301
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_hipster
   rotate: false
-  xy: 923, 960
+  xy: 803, 237
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_horns
   rotate: false
-  xy: 803, 768
+  xy: 803, 173
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
 menu/main/shop_monocle
   rotate: false
-  xy: 863, 832
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_moustache
-  rotate: false
-  xy: 923, 896
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_pumpkin
-  rotate: false
-  xy: 803, 704
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_santa
-  rotate: false
-  xy: 863, 768
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_santahat
-  rotate: false
-  xy: 863, 768
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_shades
-  rotate: false
-  xy: 923, 832
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_tophat
-  rotate: false
-  xy: 803, 640
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
-menu/main/shop_unibrow
-  rotate: false
-  xy: 863, 704
+  xy: 803, 109
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
@@ -772,16 +751,79 @@ menu/main/arrow_left
   orig: 60, 57
   offset: 0, 0
   index: -1
+menu/main/shop_moustache
+  rotate: false
+  xy: 954, 700
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/shop_pumpkin
+  rotate: false
+  xy: 954, 636
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/shop_santa
+  rotate: false
+  xy: 954, 572
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/shop_santahat
+  rotate: false
+  xy: 954, 572
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/shop_shades
+  rotate: false
+  xy: 954, 508
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/shop_tophat
+  rotate: false
+  xy: 803, 45
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/menu_creampup_paw1
+  rotate: false
+  xy: 126, 4
+  size: 49, 54
+  orig: 49, 54
+  offset: 0, 0
+  index: -1
+menu/main/shop_unibrow
+  rotate: false
+  xy: 863, 429
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/main/menu_creampup_paw2
+  rotate: false
+  xy: 863, 368
+  size: 47, 59
+  orig: 47, 59
+  offset: 0, 0
+  index: -1
 menu/main/chowcoin
   rotate: false
-  xy: 983, 994
+  xy: 177, 30
   size: 28, 28
   orig: 28, 28
   offset: 0, 0
   index: -1
 menu/main/itemLock
   rotate: false
-  xy: 923, 811
+  xy: 1005, 1003
   size: 13, 19
   orig: 13, 19
   offset: 0, 0
@@ -791,27 +833,65 @@ core10.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+menu/main/menu_mombody
+  rotate: false
+  xy: 1, 483
+  size: 800, 480
+  orig: 800, 480
+  offset: 0, 0
+  index: -1
+menu/main/menu_mom_nose_paw
+  rotate: false
+  xy: 1, 1
+  size: 800, 480
+  orig: 800, 480
+  offset: 0, 0
+  index: -1
+
+core11.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu/main/splash2
+  rotate: false
+  xy: 1, 515
+  size: 800, 480
+  orig: 800, 480
+  offset: 0, 0
+  index: -1
+menu/main/splash
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
 menu/main/lvl1-screenshot
   rotate: false
-  xy: 1, 549
+  xy: 515, 388
   size: 239, 125
   orig: 239, 125
   offset: 0, 0
   index: -1
 menu/main/lvl2-screenshot
   rotate: false
-  xy: 242, 549
+  xy: 515, 261
   size: 239, 125
   orig: 239, 125
   offset: 0, 0
   index: -1
 menu/main/tutorial-screenshot
   rotate: false
-  xy: 483, 549
+  xy: 515, 134
   size: 239, 125
   orig: 239, 125
   offset: 0, 0
   index: -1
+
+core12.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
 menu/main/tab_back_open
   rotate: false
   xy: 1, 275
@@ -841,19 +921,7 @@ menu/main/tab_nose_open
   offset: 0, 0
   index: -1
 
-core11.png
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-menu/main/splash
-  rotate: false
-  xy: 1, 1
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-
-core12.png
+core13.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -1006,7 +1074,7 @@ menu/shop/itemLock
   offset: 0, 0
   index: -1
 
-core13.png
+core14.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -1137,7 +1205,7 @@ menu/text/buttons/shop_no
   offset: 0, 0
   index: -1
 
-core14.png
+core15.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -1184,7 +1252,7 @@ menu/text/titles/pause_menu
   offset: 0, 0
   index: -1
 
-core15.png
+core16.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
