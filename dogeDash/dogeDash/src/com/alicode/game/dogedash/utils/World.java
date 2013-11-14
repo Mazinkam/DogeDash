@@ -7,12 +7,12 @@ import com.alicode.game.dogedash.models.enemies.EnemyBee;
 import com.alicode.game.dogedash.models.enemies.EnemyObject;
 import com.alicode.game.dogedash.models.misc.Background;
 import com.alicode.game.dogedash.models.player.Player;
-import com.alicode.game.dogedash.screens.AbstractScreen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-public class World extends AbstractScreen {
+public class World implements Screen {
 
 	DogeDashCore game;
 	Player player;
@@ -26,7 +26,7 @@ public class World extends AbstractScreen {
 	EnemyObject enemyObject;
 	
 	public World (DogeDashCore game){
-		super(game);
+		this.game = game;
 		player = new Player(10f, 1, 151, 93, new Vector2(120, 240));
 		enemies.add(new EnemyBee(5f, 0, 50, 55, new Vector2(1000, 300)));
 		background = new Background(0.2f, 0, 2397, 480, new Vector2(0, 0));
@@ -82,5 +82,41 @@ public class World extends AbstractScreen {
 	}
 	public Background getBackground2() {
 		return background2;
+	}
+
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
 	}
 }

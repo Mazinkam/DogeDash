@@ -68,6 +68,7 @@ public class Assets {
 		
 		//splash
 		splash =atlas.findRegion("menu/main/splash2");
+		back = atlas.findRegion("menu/text/buttons/back");
 		
 		// main menu bg
 		menu = atlas.findRegion("menu/main/menu_bg");
@@ -86,6 +87,18 @@ public class Assets {
 		options = atlas.findRegion("menu/text/buttons/options");
 		highscores = atlas.findRegion("menu/text/buttons/highscores");
 		customization = atlas.findRegion("menu/text/buttons/customization");
+		
+		//options menu
+		options_title = atlas.findRegion("menu/text/titles/options_title");
+		options_txt = atlas.findRegion("menu/text/txt/options_text");
+		soundon =  atlas.findRegion("menu/text/buttons/soundon");
+		soundoff =  atlas.findRegion("menu/text/buttons/soundoff");
+		musicon =  atlas.findRegion("menu/text/buttons/musicon");
+		musicoff =  atlas.findRegion("menu/text/buttons/musicoff");
+		vibrationon =  atlas.findRegion("menu/text/buttons/vibrationon");
+		vibrationoff =  atlas.findRegion("menu/text/buttons/vibrationoff");
+		
+		
 	}
 
 	public static void dispose() {

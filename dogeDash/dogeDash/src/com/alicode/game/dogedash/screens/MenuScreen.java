@@ -14,6 +14,8 @@ import com.alicode.game.dogedash.utils.GameAudio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -41,28 +43,28 @@ public class MenuScreen implements Screen {
 	public void show() {
 
 		Gdx.input.setInputProcessor(stage);
-//background shit
+		// background shit
 		Drawable splashDrawable = new TextureRegionDrawable(Assets.menu);
 		image_menu = new Image(splashDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
 		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
 		image_menu_mom_nose_paw = new Image(splashDrawable, Scaling.stretch);
 		image_menu_mom_nose_paw.setFillParent(true);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
 		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
 		image_menu_bluepup = new Image(splashDrawable);
 		image_menu_bluepup.setX(460);
 		image_menu_bluepup.setY(45);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
 		image_menu_creampup_body = new Image(splashDrawable);
 		image_menu_creampup_body.setX(200);
@@ -78,12 +80,11 @@ public class MenuScreen implements Screen {
 		image_menu_creampup_paw2.setX(290);
 		image_menu_creampup_paw2.setY(10);
 
-
 		splashDrawable = new TextureRegionDrawable(Assets.puppydash);
 		image_puppydash = new Image(splashDrawable);
 		image_puppydash.setX(70);
 		image_puppydash.setY(380);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
 		image_menu_blackpup = new Image(splashDrawable);
 		image_menu_blackpup.setX(10);
@@ -93,7 +94,6 @@ public class MenuScreen implements Screen {
 		image_menu_blackpup2 = new Image(splashDrawable);
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
-
 
 		splashDrawable = new TextureRegionDrawable(Assets.play);
 		image_play = new Image(splashDrawable);
@@ -124,11 +124,16 @@ public class MenuScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						game.setScreen(new SplashScreen(game));
+						return true;
+					}
+				};
 				GameAudio.click();
-				image_play.setOrigin(image_play.getWidth()/4, image_play.getHeight()/2);
-				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.5f), Actions.scaleTo(1, 1, 0.5f), delay(0.5f)));
-				image_play.addAction((sequence(rotateBy(60, 0.3f), delay(0.5f),sequence(rotateBy(-60, 0.3f) ))));
-//				game.setScreen(new SplashScreen(game));
+				image_play.setOrigin(image_play.getWidth() / 4, image_play.getHeight() / 2);
+				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
 			}
 		});
 
@@ -138,8 +143,16 @@ public class MenuScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						//game.setScreen(new SplashScreen(game));
+						return true;
+					}
+				};
 				GameAudio.click();
-//				game.setScreen(new SplashScreen(game));
+				image_options.setOrigin(image_options.getWidth() / 4, image_options.getHeight() / 2);
+				image_options.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
 			}
 		});
 
@@ -149,9 +162,19 @@ public class MenuScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						//game.setScreen(new SplashScreen(game));
+						return true;
+					}
+				};
 				GameAudio.click();
-//				game.setScreen(new SplashScreen(game));
+				image_highscores.setOrigin(image_highscores.getWidth() / 4, image_highscores.getHeight() / 2);
+				image_highscores.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
+			
 			}
+			
 		});
 
 		image_customization.addListener(new InputListener() {
@@ -160,8 +183,16 @@ public class MenuScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						//game.setScreen(new SplashScreen(game));
+						return true;
+					}
+				};
 				GameAudio.click();
-//				game.setScreen(new SplashScreen(game));
+				image_customization.setOrigin(image_customization.getWidth() / 4, image_customization.getHeight() / 2);
+				image_customization.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
 			}
 		});
 
@@ -169,26 +200,26 @@ public class MenuScreen implements Screen {
 
 		stage.addActor(image_menu_blackpup);
 		stage.addActor(image_menu_blackpup2);
-		
-		stage.addActor(image_menu_mombody);
-		image_menu_bluepup.setOrigin(image_menu_bluepup.getWidth()/2, image_menu_bluepup.getHeight());
 
-		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f),sequence(rotateBy(-5, 2) ))));
+		stage.addActor(image_menu_mombody);
+		image_menu_bluepup.setOrigin(image_menu_bluepup.getWidth() / 2, image_menu_bluepup.getHeight());
+
+		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
 		stage.addActor(image_menu_bluepup);
 		stage.addActor(image_menu_mom_nose_paw);
-		
-		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth()/2, image_menu_creampup_body.getHeight()/2);
-		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
+
+		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth() / 2, image_menu_creampup_body.getHeight() / 2);
+		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		stage.addActor(image_menu_creampup_body);
-		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth()/2, image_menu_creampup_paw.getHeight()/2);
-		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
-		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f),sequence(rotateBy(-20, 1) ))));
+		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
+		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
 		stage.addActor(image_menu_creampup_paw);
-		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth()/2, image_menu_creampup_paw.getHeight()/2);
-		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f),sequence(moveBy(0, -10, 1) ))));
-		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f),sequence(rotateBy(20, 1) ))));
+		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
+		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
-		
+
 		stage.addActor(image_puppydash);
 		stage.addActor(image_play);
 		stage.addActor(image_options);
