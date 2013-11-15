@@ -11,6 +11,7 @@ import javax.sound.midi.Sequence;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.utils.GameAudio;
+import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -131,7 +132,7 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new MenuScreen(game));
+						game.setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
 						return true;
 					}
 				};
