@@ -4,7 +4,7 @@ import com.alicode.game.dogedash.screens.MenuScreen;
 import com.alicode.game.dogedash.screens.OptionsScreen;
 import com.alicode.game.dogedash.screens.SplashScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
-import com.alicode.game.dogedash.worlds.WorldDay;
+import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
@@ -20,7 +20,7 @@ public class DogeDashCore extends Game {
 	@Override
 	public void create() {
 		Assets.load();
-		setScreen(new WorldDay(Gdx.graphics.getDeltaTime()));
+		setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
 	}
 
 	@Override

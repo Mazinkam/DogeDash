@@ -133,6 +133,19 @@ public class Assets {
 		enemyBee2 = atlas.findRegion("game/enemies/enemyBee2");
 		enemyBee3 = atlas.findRegion("game/enemies/enemyBee3");
 		
+		//Puppies
+		redPup = atlas.findRegion("game/puppies/redPup");
+		redPup2 = atlas.findRegion("game/puppies/redPup2");
+		
+		blackPup = atlas.findRegion("game/puppies/blackPup");
+		blackPup2 = atlas.findRegion("game/puppies/blackPup2");
+		
+		creamPup = atlas.findRegion("game/puppies/creamPup");
+		creamPup2 = atlas.findRegion("game/puppies/creamPup2");
+		
+		bluePup = atlas.findRegion("game/puppies/bluePup");
+		bluePup2 = atlas.findRegion("game/puppies/bluePup2");
+		
 		//dayLvl
 		bg_big = new Texture(Gdx.files.internal("core/background_big.png"));
 	

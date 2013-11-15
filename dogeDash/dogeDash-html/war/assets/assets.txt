@@ -234,6 +234,7 @@ i:core/menu/text/txt/tutorial_5.png
 i:core/menu/text/txt/tutorial_levelselect.png
 i:core/menu/text/txt/tutorial_mainmenu.png
 i:core/menu/text/txt/tutorial_resume.png
+b:core/Thumbs.db
 d:data
 a:data/boom.wav
 i:data/bullet.png

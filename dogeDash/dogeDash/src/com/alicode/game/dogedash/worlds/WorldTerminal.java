@@ -1,88 +1,107 @@
 package com.alicode.game.dogedash.worlds;
 
-import java.util.Iterator;
+import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.utils.GameInput;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.input.GestureDetector.GestureListener;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
-import com.alicode.game.dogedash.models.Background;
-import com.alicode.game.dogedash.models.EnemyBee;
-import com.alicode.game.dogedash.models.MotherDoge;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
+public class WorldTerminal implements Screen{
 
-public class WorldTerminal extends Table {
-
-	private Background background;
-	private Array<EnemyBee> enemyBees;
-	private long dogeDelta = 0;
-	public final float lane2 = 390;
-	public final float lane1 = 240;
-	public final float lane0 = 90;
-	public MotherDoge motherDoge;
-
-	public WorldTerminal() {
-		setBounds(0, 0, 800, 480);
-		setClip(true);
-		background = new Background(2397, getHeight());
-		addActor(background);
-		motherDoge = new MotherDoge(this);
-		addActor(motherDoge);
-		enemyBees = new Array<EnemyBee>();
+	private Stage stage;
+	private WorldOne worldOne;
+	private GameInput gameInput;
+	
+	
+	public WorldTerminal(float delta) {
+		stage = new Stage();
+		worldOne = new WorldOne();
+		gameInput = new GameInput(worldOne, this);
+		stage.addActor(worldOne);
 	}
+
+	
+	
+	public void resize(int width, int height) {
+		stage.setViewport(DogeDashCore.WIDTH, DogeDashCore.HEIGHT, true);
+		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
+	}
+
 	
 	@Override
-	public void act(float delta) {
-		super.act(delta);
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		stage.act(delta);
+		stage.draw();
+	}
+
+	@Override
+	public void show() {
+		Gdx.input.setInputProcessor(gameInput);
+	}
+
+	@Override 
+    public void hide() {
+    	Gdx.input.setInputProcessor(null);
+    }
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
 		
-		if (TimeUtils.nanoTime() - dogeDelta > 3000000000f) spawnBee();
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
 		
-		Iterator<EnemyBee> iter = enemyBees.iterator();
-		while (iter.hasNext()) {
-			EnemyBee enemyBee = iter.next();
-			if (enemyBee.getBounds().x + enemyBee.getWidth() <= 0) {
-				iter.remove();
-				removeActor(enemyBee);
-			}
-			if (enemyBee.getBounds().overlaps(motherDoge.getBounds())) {
-                iter.remove();
-                if (enemyBee.getX() > motherDoge.getX()) {
-                    if (enemyBee.getY() > motherDoge.getY()) enemyBee.playerHit(true, true);
-                    else enemyBee.playerHit(true, false);
-                }
-                else {
-                    if (enemyBee.getY() > motherDoge.getY()) enemyBee.playerHit(false, true);
-                    else enemyBee.playerHit(false, false);
-                }
-			}
-		}
-	}
-	
-	private void spawnBee() {
-		int lane = MathUtils.random(0, 2);
-		float yPos = 0;
-		if (lane == 0) yPos = lane0;
-		if (lane == 1) yPos = lane1;
-		if (lane == 2) yPos = lane2;
-		EnemyBee enemyCar = new EnemyBee(getWidth(), yPos);
-		enemyBees.add(enemyCar);
-		addActor(enemyCar);
-		dogeDelta = TimeUtils.nanoTime();
-	}
-	public Array<EnemyBee> getEnemyBees() {
-		return enemyBees;
 	}
 
-	public void setEnemyBees(Array<EnemyBee> enemyBees) {
-		this.enemyBees = enemyBees;
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public MotherDoge getMotherDoge() {
-		return motherDoge;
+
+
+	public Stage getStage() {
+		return stage;
 	}
 
-	public void setMotherDoge(MotherDoge motherDoge) {
-		this.motherDoge = motherDoge;
+
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+
+
+	public WorldOne getWorldOne() {
+		return worldOne;
+	}
+
+
+
+	public void setWorldOne(WorldOne worldOne) {
+		this.worldOne = worldOne;
+	}
+
+
+
+	public GameInput getGameInput() {
+		return gameInput;
+	}
+
+
+
+	public void setGameInput(GameInput gameInput) {
+		this.gameInput = gameInput;
 	}
 
 }

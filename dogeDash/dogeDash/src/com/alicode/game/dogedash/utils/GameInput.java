@@ -1,18 +1,23 @@
 package com.alicode.game.dogedash.utils;
 
 import com.alicode.game.dogedash.models.MotherDoge;
+import com.alicode.game.dogedash.worlds.WorldOne;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class GameInput implements InputProcessor {
+	private WorldOne worldOne;
 	private WorldTerminal worldTerminal;
-	private Vector2 touch = new Vector2();
+	private Vector3 touch = new Vector3();
 	private Vector2 vec2Touch = new Vector2();
 	private MotherDoge motherDoge;
 
-	public GameInput(WorldTerminal worldTerminal) {
+	public GameInput(WorldOne worldOne, WorldTerminal worldTerminal) {
+		this.worldOne = worldOne;
 		this.worldTerminal = worldTerminal;
 	}
 
@@ -42,28 +47,28 @@ public class GameInput implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		
+		motherDoge.addAction(Actions.rotateTo(0f,0.5f));
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		touch.set(screenX, screenY);
-		motherDoge = worldTerminal.getMotherDoge();
+		 touch.set(screenX, screenY, 0);
 		
-		if (motherDoge.getY() + 40 > touch.y + 20) {
-//			player.rotate = -0.1f;
-//			player.getVelocity().y = -50;
-//			// player.getPosition().y -= 2;
-			worldTerminal.motherDoge.normalDogeMovement(110, touch.y);
-		} else if (motherDoge.getY()+ 40 < touch.y - 20) {
-//			player.rotate = 0.2f;
-//			player.getVelocity().y = 50;
-//			// player.getPosition().y += 2;
-			worldTerminal.motherDoge.normalDogeMovement(110,  touch.y);
+		 worldTerminal.getStage().getCamera().unproject(touch);
+		
+		 vec2Touch.set(touch.x, touch.y);
+		 
+		motherDoge = worldOne.getMotherDoge();
+
+		if (motherDoge.getY() > touch.y +40) {
+			motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
+			worldOne.motherDoge.normalDogeMovement(110, touch.y);
+		} else if (motherDoge.getY()  < touch.y -40) {
+			motherDoge.addAction(Actions.sequence(Actions.rotateTo(10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
+			motherDoge.normalDogeMovement(110, touch.y);
 		} else {
-//			player.rotate = 0f;
-//			player.getVelocity().y = 0;
+			motherDoge.addAction(Actions.rotateTo(0f,0.5f));
 		}
 
 		return false;
