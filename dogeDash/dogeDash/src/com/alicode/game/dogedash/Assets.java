@@ -1,6 +1,9 @@
 package com.alicode.game.dogedash;
 
+import java.util.logging.Level;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -9,7 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 public class Assets {
 	public static TextureAtlas atlas;
 
-	public static TextureRegion menu_blackpup, menu_blackpup2, menu_bluepup, menu_creampup_body, menu_creampup_paw, menu_creampup_paw2, menu_mom_nose_paw, menu_mombody;
+	public static TextureRegion menu_blackpup, menu_blackpup2, menu_bluepup, menu_creampup_body, menu_creampup_paw, menu_creampup_paw2,
+			menu_mom_nose_paw, menu_mombody;
 	public static TextureRegion menu, splash, background, background2;
 
 	public static TextureRegion character, character2, characterJump, characterHit, characterHit2, characterDie, characterDieCircle, dogsuper1,
@@ -60,16 +64,18 @@ public class Assets {
 
 	public static TextureRegion arrow_left, arrow_right, tutorial_1, tutorial_2, tutorial_3, tutorial_4, tutorial_5, tutorial_resume,
 			tutorial_mainmenu, tutorial_levelselect;
+	
+	public static Texture bg_big;
 
 	public static TextureRegion night_light_1, night_light_2, night_light_3;
 
 	public static void load() {
 		atlas = new TextureAtlas(Gdx.files.internal("core/core.pack"));
-		
-		//splash
-		splash =atlas.findRegion("menu/main/splash2");
+
+		// splash
+		splash = atlas.findRegion("menu/main/splash2");
 		back = atlas.findRegion("menu/text/buttons/back");
-		
+
 		// main menu bg
 		menu = atlas.findRegion("menu/main/menu_bg");
 		menu_blackpup = atlas.findRegion("menu/main/menu_blackpup");
@@ -80,25 +86,57 @@ public class Assets {
 		menu_bluepup = atlas.findRegion("menu/main/menu_bluepup");
 		menu_mom_nose_paw = atlas.findRegion("menu/main/menu_mom_nose_paw");
 		menu_mombody = atlas.findRegion("menu/main/menu_mombody");
-		
-		//main menu context
+
+		// main menu context
 		puppydash = atlas.findRegion("menu/text/titles/puppydash");
 		play = atlas.findRegion("menu/text/buttons/play");
 		options = atlas.findRegion("menu/text/buttons/options");
 		highscores = atlas.findRegion("menu/text/buttons/highscores");
 		customization = atlas.findRegion("menu/text/buttons/customization");
 		
-		//options menu
+		//world selection
+		lvlselect = atlas.findRegion("menu/text/titles/lvlselect"); 
+		lvlselect_txt = atlas.findRegion("menu/text/txt/lvlselect_text"); 
+		
+		hard = atlas.findRegion("menu/text/txt/hard"); 
+		easy = atlas.findRegion("menu/text/txt/easy"); 
+		normal = atlas.findRegion("menu/text/txt/normal"); 
+		
+		
+		lvl1 = atlas.findRegion("menu/level_selection/lvl1-screenshot"); 
+		lvl2 = atlas.findRegion("menu/level_selection/lvl2-screenshot"); 
+		tutorial_levelselect = atlas.findRegion("menu/level_selection/tutorial-screenshot"); 
+
+		// options menu
 		options_title = atlas.findRegion("menu/text/titles/options_title");
 		options_txt = atlas.findRegion("menu/text/txt/options_text");
-		soundon =  atlas.findRegion("menu/text/buttons/soundon");
-		soundoff =  atlas.findRegion("menu/text/buttons/soundoff");
-		musicon =  atlas.findRegion("menu/text/buttons/musicon");
-		musicoff =  atlas.findRegion("menu/text/buttons/musicoff");
-		vibrationon =  atlas.findRegion("menu/text/buttons/vibrationon");
-		vibrationoff =  atlas.findRegion("menu/text/buttons/vibrationoff");
+		soundon = atlas.findRegion("menu/text/buttons/soundon");
+		soundoff = atlas.findRegion("menu/text/buttons/soundoff");
+		musicon = atlas.findRegion("menu/text/buttons/musicon");
+		musicoff = atlas.findRegion("menu/text/buttons/musicoff");
+		vibrationon = atlas.findRegion("menu/text/buttons/vibrationon");
+		vibrationoff = atlas.findRegion("menu/text/buttons/vibrationoff");
+
+		// Player
+		character = atlas.findRegion("game/player/character");
+		character2 = atlas.findRegion("game/player/character2");
+		characterHit = atlas.findRegion("game/player/characterHit");
+		characterHit2 = atlas.findRegion("game/player/characterHit2");
+		characterDie = atlas.findRegion("game/player/characterDie");
+		characterJump = atlas.findRegion("game/player/characterJump");
+
+		dogsuper1 = atlas.findRegion("game/player/dogsuper1");
+		dogsuper2 = atlas.findRegion("game/player/dogsuper2");
 		
+		//bees
+		enemyBee = atlas.findRegion("game/enemies/enemyBee");
+		enemyBee2 = atlas.findRegion("game/enemies/enemyBee2");
+		enemyBee3 = atlas.findRegion("game/enemies/enemyBee3");
 		
+		//dayLvl
+		bg_big = new Texture(Gdx.files.internal("core/background_big.png"));
+	
+
 	}
 
 	public static void dispose() {
