@@ -2,6 +2,7 @@ package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -33,7 +34,8 @@ public class MotherDoge extends Actor {
 		this.dogeWalkAnimation = new Animation(0.15f, dogeWalkFrames);
 		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
-		setColor(0.0138f, 0.081f, 1f, 0.9f);
+		if (Statics.gameLevel == 2)
+			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override

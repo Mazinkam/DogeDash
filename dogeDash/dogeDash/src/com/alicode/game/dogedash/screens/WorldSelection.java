@@ -6,12 +6,16 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
+import java.util.logging.Level;
+
 import javax.sound.midi.Sequence;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
+import com.alicode.game.dogedash.worlds.WorldTwo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -92,7 +96,7 @@ public class WorldSelection implements Screen {
 		image_menu_blackpup2 = new Image(splashDrawable);
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
-		
+
 		splashDrawable = new TextureRegionDrawable(Assets.lvlselect);
 		image_lvlselect = new Image(splashDrawable);
 		image_lvlselect.setX(50);
@@ -110,10 +114,10 @@ public class WorldSelection implements Screen {
 
 		splashDrawable = new TextureRegionDrawable(Assets.lvl2);
 		image_lvl2 = new Image(splashDrawable);
-		image_lvl2.setX(30+image_lvl1.getWidth()+30);
+		image_lvl2.setX(30 + image_lvl1.getWidth() + 30);
 		image_lvl2.setY(160);
 
-		splashDrawable = new TextureRegionDrawable(Assets.tutorial_levelselect);
+		splashDrawable = new TextureRegionDrawable(Assets.tutorial_select);
 
 		image_tutorial_levelselect = new Image(splashDrawable);
 		image_tutorial_levelselect.setX(30);
@@ -137,6 +141,7 @@ public class WorldSelection implements Screen {
 					}
 				};
 				GameAudio.click();
+				Statics.gameLevel = 1;
 				image_lvl1.setOrigin(image_lvl1.getWidth() / 4, image_lvl1.getHeight() / 2);
 				image_lvl1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_lvl1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -152,11 +157,12 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new OptionsScreen(game));
+						game.setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
 						return true;
 					}
 				};
 				GameAudio.click();
+				Statics.gameLevel = 2;
 				image_lvl2.setOrigin(image_lvl2.getWidth() / 4, image_lvl2.getHeight() / 2);
 				image_lvl2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_lvl2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),

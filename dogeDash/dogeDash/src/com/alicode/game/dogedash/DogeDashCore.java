@@ -20,7 +20,8 @@ public class DogeDashCore extends Game {
 	@Override
 	public void create() {
 		Assets.load();
-		setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
+	//	setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
+		setScreen(new WorldSelection(this));
 	}
 
 	@Override

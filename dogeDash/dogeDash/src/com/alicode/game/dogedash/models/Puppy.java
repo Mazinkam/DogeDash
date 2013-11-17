@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -54,7 +55,9 @@ public class Puppy extends Actor {
 
 		this.pupWalkingAnim = new Animation(0.15f, pupWalkingFrames);
 
-		addAction(Actions.moveTo(-getWidth(), getY(), MathUtils.random(4.0f, 6.0f)));
+		addAction(Actions.moveTo(-getWidth(), getY(), MathUtils.random( 2.5f,  3.5f)));
+		if (Statics.gameLevel == 2)
+			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
