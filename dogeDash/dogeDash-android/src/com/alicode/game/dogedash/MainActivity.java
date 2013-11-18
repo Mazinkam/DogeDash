@@ -2,6 +2,7 @@ package com.alicode.game.dogedash;
 
 import android.os.Bundle;
 
+import com.alicode.game.dogedash.DogeDashCore;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 

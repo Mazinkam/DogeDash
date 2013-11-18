@@ -37,8 +37,6 @@ public class GameDatabase {
 	private static final String KEY_MISSEDPUPPIES = "missedPuppyNum";
 	private static final String KEY_PUPPYPOINTS = "puppyPoints";
 
-	public static List<Level> dayLevelList;
-
 	// Costume
 	private static final String KEY_ITEM_OWNED = "isOwned";
 	private static final String KEY_ITEM_PRICE = "itemPrice";
@@ -91,7 +89,7 @@ public class GameDatabase {
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-		//	dropTheBase();
+			// dropTheBase();
 			dbHandler.execSQL(DATABASE_CREATE);
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
@@ -105,14 +103,19 @@ public class GameDatabase {
 
 		Gdx.app.log(DogeDashCore.LOG, "DAY LEVEL LIST---------------------------------------");
 
-		dayLevelList = getLevelList("levelDay");
-		Gdx.app.log(DogeDashCore.LOG, "size: " + dayLevelList.size());
+		List<Level> dayLevelList = getLevelList("levelDay");
+		List<Level> nightLevelList = getLevelList("levelNight");
+		List<Costume> backCostumeList = getCostumeList("backTable");
+		List<Costume> noseCostumeList = getCostumeList("noseTable");
+		List<Costume> headCostumeList = getCostumeList("headTable");
+		List<Costume> eyesCostumeList = getCostumeList("eyesTable");
+		List<Settings> settingsList = getSettingsList();
+		List<Misc> miscList = getMiscList();
 
-		
 		if (dayLevelList.isEmpty()) {
-			addLevelHighscore(new Level(1, 1, 1, 1, 1, 1, 1), "levelDay");
-			addLevelHighscore(new Level(2, 2, 2, 2, 2, 2, 2), "levelDay");
-			addLevelHighscore(new Level(3, 3, 3, 3, 3, 3, 3), "levelDay");
+			addLevelHighscore(new Level(1, 0, 0, 0, 0, 0, 0), "levelDay");
+			addLevelHighscore(new Level(2, 0, 0, 0, 0, 0, 0), "levelDay");
+			addLevelHighscore(new Level(3, 0, 0, 0, 0, 0, 0), "levelDay");
 		} else {
 			for (Level obj : dayLevelList) {
 
@@ -124,132 +127,112 @@ public class GameDatabase {
 
 			}
 		}
-		Gdx.app.log(DogeDashCore.LOG, "" + getLevelHighscore(1, "levelDay").missedPuppyNum);
-		// updateLevelHighscore(new Level(1, 1, 1, 1, 1, 1, 1), "levelDay");
-		// updateLevelHighscore(new Level(2, 2, 2, 2, 2, 2, 2), "levelDay");
-		// updateLevelHighscore(new Level(3, 3, 3, 3, 3, 3, 3), "levelDay");
-		// deleteLevelHighscore(new Level(1), "levelDay");
-		// deleteLevelHighscore(new Level(2), "levelDay");
-		// Gdx.app.log(DogeDashCore.LOG, "" + getLevelHighscore(2,
-		// "levelDay").caughtPuppyNum);
 
-		// Log.d("Reading: ",
-		// "NIGHT LEVEL LIST---------------------------------------");
-		// if (nightLevelList.isEmpty()) {
-		// db.addLevelHighscore(new Level(1, 0, 0, 0, 0, 0, 0), "levelNight");
-		// db.addLevelHighscore(new Level(2, 0, 0, 0, 0, 0, 0), "levelNight");
-		// db.addLevelHighscore(new Level(3, 0, 0, 0, 0, 0, 0), "levelNight");
-		// }
-		//
-		// for (Level obj : nightLevelList) {
-		//
-		// String log = "Id: " + obj.getId() + " ,highscore: " +
-		// obj.getHighScore() + " ,lvl style: " + obj.getStylePoints() +
-		// ", lvl time: "
-		// + obj.getTimeAlive() + ", lvl caughtpups: " + obj.getCaughtPuppyNum()
-		// + ", lvl missedpups: " + obj.getMissedPuppyNum()
-		// + ", lvl pup points: " + obj.getPuppyPoints() + " table size: " +
-		// nightLevelList.size();
-		//
-		// Log.d("NIGHT_LVL_LIST: ", log);
-		//
-		// }
-		// Log.d("Reading: ",
-		// "BACK COSTUME LIST---------------------------------------");
-		// if (backCostumeList.isEmpty()) {
-		// db.addCostume(new Costume(1, 1, 100), "backTable");
-		// db.addCostume(new Costume(2, 1, 100), "backTable");
-		// }
-		//
-		// for (Costume obj : backCostumeList) {
-		//
-		// String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() +
-		// " , price: " + obj.getItemPrice();
-		//
-		// Log.d("BACK_COSTUME_LVL_LIST: ", log);
-		//
-		// }
-		// Log.d("Reading: ",
-		// "NOSE COSTUME LIST---------------------------------------");
-		// if (noseCostumeList.isEmpty()) {
-		// db.addCostume(new Costume(1, 1, 20), "noseTable");
-		// db.addCostume(new Costume(2, 1, 20), "noseTable");
-		// }
-		//
-		// for (Costume obj : noseCostumeList) {
-		//
-		// String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() +
-		// " , price: " + obj.getItemPrice();
-		//
-		// Log.d("NOSE_COSTUME_LVL_LIST: ", log);
-		//
-		// }
-		// Log.d("Reading: ",
-		// "HEAD COSTUME LIST---------------------------------------");
-		// if (headCostumeList.isEmpty()) {
-		// db.addCostume(new Costume(1, 1, 20), "headTable");
-		// db.addCostume(new Costume(2, 1, 20), "headTable");
-		// db.addCostume(new Costume(3, 1, 20), "headTable");
-		// db.addCostume(new Costume(4, 1, 20), "headTable");
-		// db.addCostume(new Costume(5, 1, 20), "headTable");
-		// }
-		//
-		// for (Costume obj : headCostumeList) {
-		//
-		// String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() +
-		// " , price: " + obj.getItemPrice();
-		//
-		// Log.d("HEAD_COSTUME_LVL_LIST: ", log);
-		//
-		// }
-		// Log.d("Reading: ",
-		// "EYES COSTUME LIST---------------------------------------");
-		// if (eyesCostumeList.isEmpty()) {
-		// db.addCostume(new Costume(1, 1, 20), "eyesTable");
-		// db.addCostume(new Costume(2, 1, 20), "eyesTable");
-		// db.addCostume(new Costume(3, 1, 20), "eyesTable");
-		// db.addCostume(new Costume(4, 1, 20), "eyesTable");
-		// }
-		//
-		// for (Costume obj : eyesCostumeList) {
-		//
-		// String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() +
-		// " , price: " + obj.getItemPrice();
-		//
-		// Log.d("EYES_COSTUME_LVL_LIST: ", log);
-		//
-		// }
-		// Log.d("Reading: ",
-		// "SETTINGS LIST---------------------------------------");
-		// if (settingsList.isEmpty()) {
-		// db.addSettings(new Settings(1, 1, 0, 1));
-		// }
-		//
-		// for (Settings obj : settingsList) {
-		//
-		// String log = "Id: " + obj.getId() + " , sound: " +
-		// obj.getSoundSettings() + " , music: " + obj.getMusicSettings() +
-		// " , vibrate: "
-		// + obj.getVibrationSettings();
-		//
-		// Log.d("SETTINGS_LIST: ", log);
-		//
-		// }
-		//
-		// Log.d("Reading: ",
-		// "MISC LIST---------------------------------------");
-		// if (miscList.isEmpty()) {
-		// db.addMisc(new Misc(1, 1000));
-		// }
-		//
-		// for (Misc obj : miscList) {
-		//
-		// String log = "Id: " + obj.getId() + " , owned: " +
-		// obj.getDogeCoins();
-		//
-		// Log.d("MISC_LIST: ", log);
-		//
-		// }
+		Gdx.app.log(DogeDashCore.LOG, "NIGHT LEVEL LIST---------------------------------------");
+
+		if (nightLevelList.isEmpty()) {
+			addLevelHighscore(new Level(1, 0, 0, 0, 0, 0, 0), "levelNight");
+			addLevelHighscore(new Level(2, 0, 0, 0, 0, 0, 0), "levelNight");
+			addLevelHighscore(new Level(3, 0, 0, 0, 0, 0, 0), "levelNight");
+		} else {
+			for (Level obj : nightLevelList) {
+
+				String log = "Id: " + obj.getId() + " ,highscore: " + obj.getHighScore() + " ,lvl style: " + obj.getStylePoints() + ", lvl time: "
+						+ obj.getTimeAlive() + ", lvl caughtpups: " + obj.getCaughtPuppyNum() + ", lvl missedpups: " + obj.getMissedPuppyNum()
+						+ ", lvl pup points: " + obj.getPuppyPoints() + " table size: " + dayLevelList.size();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "HEAD COSTUME LIST---------------------------------------");
+		if (headCostumeList.isEmpty()) {
+			addCostume(new Costume(1, 0, 10), "headTable");
+			addCostume(new Costume(2, 0, 30), "headTable");
+			addCostume(new Costume(3, 0, 50), "headTable");
+			addCostume(new Costume(4, 0, 20), "headTable");
+			addCostume(new Costume(5, 0, 50), "headTable");
+
+		} else {
+			for (Costume obj : headCostumeList) {
+
+				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "NOSE COSTUME LIST---------------------------------------");
+		if (noseCostumeList.isEmpty()) {
+			addCostume(new Costume(1, 0, 10), "noseTable");
+			addCostume(new Costume(2, 0, 30), "noseTable");
+
+		} else {
+			for (Costume obj : noseCostumeList) {
+
+				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "EYES COSTUME LIST---------------------------------------");
+		if (eyesCostumeList.isEmpty()) {
+			addCostume(new Costume(1, 0, 10), "eyesTable");
+			addCostume(new Costume(2, 0, 30), "eyesTable");
+			addCostume(new Costume(3, 0, 50), "eyesTable");
+			addCostume(new Costume(4, 0, 20), "eyesTable");
+
+		} else {
+			for (Costume obj : eyesCostumeList) {
+
+				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "BACK COMSTUME LIST---------------------------------------");
+		if (backCostumeList.isEmpty()) {
+			addCostume(new Costume(1, 0, 10), "backTable");
+			addCostume(new Costume(2, 0, 30), "backTable");
+
+		} else {
+			for (Costume obj : backCostumeList) {
+
+				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "SETTINGS LIST---------------------------------------");
+		if (settingsList.isEmpty()) {
+			addSettings(new Settings(1, 1, 1, 1));
+		} else {
+			for (Settings obj : settingsList) {
+
+				String log = "Id: " + obj.getId() + " , sound: " + obj.getSoundSettings() + " , music: " + obj.getMusicSettings() + " , vibrate: "
+						+ obj.getVibrationSettings();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+		Gdx.app.log(DogeDashCore.LOG, "MISC ITEMS LIST---------------------------------------");
+		
+		if (miscList.isEmpty()) {
+			addMisc(new Misc(1, 1000));
+		} else {
+			for (Misc obj : miscList) {
+
+				String log = "Id: " + obj.getId() + " , doge coins: " + obj.getDogeCoins();
+
+				Gdx.app.log(DogeDashCore.LOG, log);
+
+			}
+		}
+
 	}
 
 	public void dropTheBase() throws SQLiteGdxException {
@@ -323,7 +306,6 @@ public class GameDatabase {
 	}
 
 	public void updateLevelHighscore(Level level, String tableName) {
-		DatabaseCursor cursor = null;
 		String id = " " + KEY_ID + "=" + level.getId();
 		String score = " " + KEY_SCORE + "=" + level.getHighScore() + ", ";
 		String style = " " + KEY_STYLE + "=" + level.getStylePoints() + ", ";
@@ -338,7 +320,7 @@ public class GameDatabase {
 			dbHandler.execSQL("UPDATE " + tableName + " SET" + score + style + time + caughtPups + missedPups + pupPoints + " WHERE" + id);
 		} catch (SQLiteGdxException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			 e.printStackTrace();
 		}
 
 	}
@@ -356,8 +338,172 @@ public class GameDatabase {
 	}
 
 	// ----------------------------------------------------------------LVL DB
-	// ----------------------------------------------------------------LVL MISC
-	public void addMiscItem(Misc misc) {
+	// ----------------------------------------------------------------LVL
+	// COSTUME
+	public void addCostume(Costume costume, String tableName) {
+		try {
+			dbHandler.execSQL("INSERT INTO " + tableName + "  VALUES (" + costume.getId() + "," + costume.getIsOwned() + "," + costume.getItemPrice()
+					+ ")");
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+		Gdx.app.log(DogeDashCore.LOG, "wrote into " + tableName);
+	}
+
+	public Costume getCostume(int id, String tableName) {
+		DatabaseCursor cursor = null;
+
+		try {
+			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_ITEM_OWNED + "," + KEY_ITEM_PRICE + " FROM " + tableName + " WHERE " + KEY_ID
+					+ "=" + "'" + id + "'");
+
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+		cursor.next();
+
+		Costume costume = new Costume(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
+				.getString(2)));
+
+		return costume;
+	}
+
+	public List<Costume> getCostumeList(String tableName) {
+		List<Costume> costumeList = new ArrayList<Costume>();
+		DatabaseCursor cursor = null;
+
+		try {
+			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
+
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+
+		while (cursor.next()) {
+			Costume costume = new Costume();
+			costume.setId(Integer.parseInt(cursor.getString(0)));
+			costume.setIsOwned(Integer.parseInt(cursor.getString(1)));
+			costume.setItemPrice(Integer.parseInt(cursor.getString(2)));
+
+			costumeList.add(costume);
+		}
+
+		return costumeList;
+	}
+
+	public void updateCostume(Costume costume, String tableName) {
+		String id = " " + KEY_ID + "=" + costume.getId();
+		String owned = " " + KEY_ITEM_OWNED + "=" + costume.getIsOwned() + ", ";
+		String price = " " + KEY_ITEM_PRICE + "=" + costume.getItemPrice();
+
+		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + tableName + owned + price);
+
+		try {
+			dbHandler.execSQL("UPDATE " + tableName + " SET" + owned + price + " WHERE" + id);
+		} catch (SQLiteGdxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void deleteCostume(Costume costume, String tableName) {
+		String id = " " + KEY_ID + "=" + costume.getId();
+
+		try {
+			dbHandler.execSQL("DELETE FROM " + tableName + " WHERE" + id);
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// -------------------------------------------------------LVL COSTUME
+	// -------------------------------------------------------LVL SETTINGS
+
+	public void addSettings(Settings settings) {
+		try {
+			dbHandler.execSQL("INSERT INTO " + TABLE_SETTINGS + "  VALUES (" + settings.getId() + "," + settings.getSoundSettings() + ","
+					+ settings.getMusicSettings() + "," + settings.getVibrationSettings() + ")");
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+		Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
+	}
+
+	public Settings getSettings(int id) {
+		DatabaseCursor cursor = null;
+
+		try {
+			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_SETTINGS_SOUND + "," + KEY_SETTINGS_MUISC + "," + KEY_SETTINGS_VIBRATION
+					+ " FROM " + TABLE_SETTINGS + " WHERE " + KEY_ID + "=" + "'" + id + "'");
+
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+		cursor.next();
+
+		Settings settings = new Settings(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
+				.getString(2)), Integer.parseInt(cursor.getString(3)));
+
+		return settings;
+	}
+
+	public List<Settings> getSettingsList() {
+		List<Settings> settingsList = new ArrayList<Settings>();
+		DatabaseCursor cursor = null;
+
+		try {
+			cursor = dbHandler.rawQuery("SELECT  * FROM " + TABLE_SETTINGS);
+
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+
+		while (cursor.next()) {
+			Settings settings = new Settings();
+			settings.setId(Integer.parseInt(cursor.getString(0)));
+			settings.setSoundSettings(Integer.parseInt(cursor.getString(1)));
+			settings.setMusicSettings(Integer.parseInt(cursor.getString(2)));
+			settings.setVibrationSettings(Integer.parseInt(cursor.getString(2)));
+
+			settingsList.add(settings);
+		}
+
+		return settingsList;
+	}
+
+	public void updateSettings(Settings settings) {
+		String id = " " + KEY_ID + "=" + settings.getId();
+		String sound = " " + KEY_SETTINGS_SOUND + "=" + settings.getSoundSettings() + ", ";
+		String music = " " + KEY_SETTINGS_MUISC + "=" + settings.getMusicSettings() + ", ";
+		String vibration = " " + KEY_SETTINGS_VIBRATION + "=" + settings.getVibrationSettings();
+
+		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + TABLE_SETTINGS + sound + music + vibration);
+
+		try {
+			dbHandler.execSQL("UPDATE " + TABLE_SETTINGS + " SET" + sound + music + vibration + " WHERE" + id);
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void deleteSettings(Settings settings) {
+		String id = " " + KEY_ID + "=" + settings.getId();
+
+		try {
+			dbHandler.execSQL("DELETE FROM " + TABLE_SETTINGS + " WHERE" + id);
+		} catch (SQLiteGdxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// -------------------------------------------------------LVL SETTINGS
+	// -------------------------------------------------------LVL MISC
+	public void addMisc(Misc misc) {
 		try {
 			dbHandler.execSQL("INSERT INTO " + TABLE_MISC + "  VALUES (" + misc.getId() + "," + misc.getDogeCoins() + ")");
 		} catch (SQLiteGdxException e) {
@@ -366,64 +512,59 @@ public class GameDatabase {
 		Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_MISC);
 	}
 
-	public Misc getMiscItem(int id) {
+	public Misc getMisc(int id) {
 		DatabaseCursor cursor = null;
 
 		try {
-			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_CURRENCY + "FROM" + TABLE_MISC);
+			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_CURRENCY + " FROM " + TABLE_MISC + " WHERE " + KEY_ID + "=" + "'" + id + "'");
 
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
-		while (cursor.next()) {
-			Gdx.app.log(
-					"FromDb",
-					String.valueOf(cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4) + " "
-							+ cursor.getString(5) + " " + cursor.getString(6)));
-		}
+		cursor.next();
 
 		Misc misc = new Misc(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)));
 
 		return misc;
 	}
 
-	public List<Misc> getMiscList(String tableName) {
+	public List<Misc> getMiscList() {
 		List<Misc> miscList = new ArrayList<Misc>();
 		DatabaseCursor cursor = null;
 
 		try {
-			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
+			cursor = dbHandler.rawQuery("SELECT  * FROM " + TABLE_MISC);
+
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
 
-		do {
+		while (cursor.next()) {
 			Misc misc = new Misc();
 			misc.setId(Integer.parseInt(cursor.getString(0)));
 			misc.setDogeCoins(Integer.parseInt(cursor.getString(1)));
+
 			miscList.add(misc);
-		} while (cursor.next());
+		}
 
 		return miscList;
 	}
 
-	public void updateMiscItem(Misc misc) {
-		DatabaseCursor cursor = null;
+	public void updateMisc(Misc misc) {
 		String id = " " + KEY_ID + "=" + misc.getId();
-		String doge = " " + KEY_SCORE + "=" + misc.getDogeCoins();
+		String coins = " " + KEY_CURRENCY + "=" + misc.getDogeCoins();
 
-		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + TABLE_MISC + doge);
+		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + TABLE_MISC + coins);
 
 		try {
-			dbHandler.execSQL("UPDATE " + TABLE_MISC + " SET" + doge + " WHERE" + id);
+			dbHandler.execSQL("UPDATE " + TABLE_MISC + " SET" + coins + " WHERE" + id);
 		} catch (SQLiteGdxException e) {
-			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			e.printStackTrace();
 		}
 
 	}
 
-	public void deleteMiscItem(Misc misc) {
+	public void deleteMisc(Misc misc) {
 		String id = " " + KEY_ID + "=" + misc.getId();
 
 		try {
@@ -435,7 +576,7 @@ public class GameDatabase {
 
 	}
 
-	// ----------------------------------------------------------------LVL MISC
+	// -------------------------------------------------------LVL MISC
 	public void dispose() {
 		try {
 			dbHandler.closeDatabase();

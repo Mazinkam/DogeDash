@@ -17,6 +17,7 @@ public class GamePoints extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
+		
 		batch.draw(Assets.player_score, 520, 440, 600, 460, Assets.player_score.getRegionWidth(), Assets.player_score.getRegionHeight(), 1, 1, 0);
 		font.draw(batch, ""+Statics.gamePoints, 620, 465);
 	}

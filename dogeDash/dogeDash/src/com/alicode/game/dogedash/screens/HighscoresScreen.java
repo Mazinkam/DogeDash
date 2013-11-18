@@ -97,13 +97,34 @@ public class HighscoresScreen implements Screen {
 		image_lvl2.setY((340 - Assets.lvl1.getRegionHeight() * 1) - 10);
 
 		splashDrawable = new TextureRegionDrawable(Assets.tutorial_select);
-
 		image_lvl3 = new Image(splashDrawable);
 		image_lvl3.setX(30);
 		image_lvl3.setY((340 - Assets.lvl1.getRegionHeight() * 2) - 20);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.tutorial_select);
+		image_lvl3 = new Image(splashDrawable);
+		image_lvl3.setX(30);
+		image_lvl3.setY((340 - Assets.lvl1.getRegionHeight() * 2) - 20);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.easySmall);
+		image_easy = new Image(splashDrawable);
+		image_easy.setX(500);
+		image_easy.setY(300);
+		
+
+		splashDrawable = new TextureRegionDrawable(Assets.normalSmall);
+		image_normal = new Image(splashDrawable);
+		image_normal.setX(500);
+		image_normal.setY(200);
+		
+		splashDrawable = new TextureRegionDrawable(Assets.hardSmall);
+		image_hard = new Image(splashDrawable);
+		image_hard.setX(500);
+		image_hard.setY(100);
+		
+	
 
 		splashDrawable = new TextureRegionDrawable(Assets.back);
-
 		image_back = new Image(splashDrawable);
 		image_back.setX(660);
 		image_back.setY(20);
@@ -226,6 +247,9 @@ public class HighscoresScreen implements Screen {
 		stage.addActor(image_back);
 		stage.addActor(image_lvl2);
 		stage.addActor(image_lvl3);
+		stage.addActor(image_easy);
+		stage.addActor(image_normal);
+		stage.addActor(image_hard);
 
 	}
 

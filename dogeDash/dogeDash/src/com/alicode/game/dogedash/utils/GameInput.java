@@ -1,17 +1,13 @@
 package com.alicode.game.dogedash.utils;
 
 import com.alicode.game.dogedash.models.MotherDoge;
-import com.alicode.game.dogedash.worlds.WorldOne;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
-import com.alicode.game.dogedash.worlds.WorldTwo;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class GameInput implements InputProcessor {
-	private WorldOne worldOne;
 	private WorldTerminal worldTerminal;
 	private Vector3 touch = new Vector3();
 	private Vector2 vec2Touch = new Vector2();
