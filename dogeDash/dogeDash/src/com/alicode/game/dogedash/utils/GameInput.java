@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.utils;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.worlds.WorldOne;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
+import com.alicode.game.dogedash.worlds.WorldTwo;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
@@ -16,11 +17,10 @@ public class GameInput implements InputProcessor {
 	private Vector2 vec2Touch = new Vector2();
 	private MotherDoge motherDoge;
 
-	public GameInput(WorldOne worldOne, WorldTerminal worldTerminal) {
-		this.worldOne = worldOne;
+	public GameInput(MotherDoge chosenWorldMother, WorldTerminal worldTerminal) {
+		this.motherDoge = chosenWorldMother;
 		this.worldTerminal = worldTerminal;
 	}
-
 	@Override
 	public boolean keyDown(int keycode) {
 
@@ -58,12 +58,10 @@ public class GameInput implements InputProcessor {
 		 worldTerminal.getStage().getCamera().unproject(touch);
 		
 		 vec2Touch.set(touch.x, touch.y);
-		 
-		motherDoge = worldOne.getMotherDoge();
 
 		if (motherDoge.getY() > touch.y +40) {
 			motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
-			worldOne.motherDoge.normalDogeMovement(110, touch.y);
+			motherDoge.normalDogeMovement(110, touch.y);
 		} else if (motherDoge.getY()  < touch.y -40) {
 			motherDoge.addAction(Actions.sequence(Actions.rotateTo(10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
 			motherDoge.normalDogeMovement(110, touch.y);

@@ -1,12 +1,9 @@
 package com.alicode.game.dogedash;
 
-import com.alicode.game.dogedash.screens.MenuScreen;
-import com.alicode.game.dogedash.screens.OptionsScreen;
-import com.alicode.game.dogedash.screens.SplashScreen;
+import com.alicode.game.dogedash.screens.HighscoresScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
-import com.alicode.game.dogedash.worlds.WorldTerminal;
+import com.alicode.game.dogedash.sql.GameDatabase;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 
 public class DogeDashCore extends Game {
 	
@@ -14,18 +11,20 @@ public class DogeDashCore extends Game {
 	public static final String LOG ="Doge Dash";
 	public final static int WIDTH = 800;
 	public final static int HEIGHT = 480;
-	
+	public static GameDatabase db;
 	public static final boolean DEV_MODE = true;
 	
 	@Override
 	public void create() {
+		db = new GameDatabase();
 		Assets.load();
-		setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
+		setScreen(new HighscoresScreen(this));
 	}
 
 	@Override
 	public void dispose() {
 		Assets.dispose();
+		db.dispose();
 		super.dispose();
 	}
 

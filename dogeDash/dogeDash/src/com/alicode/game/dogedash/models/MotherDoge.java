@@ -2,6 +2,7 @@ package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,27 +14,48 @@ import com.badlogic.gdx.utils.Array;
 
 public class MotherDoge extends Actor {
 
+	enum ActorStage{
+		Normal, Hit, Dead;
+	}
+	
 	private final Animation dogeWalkAnimation;
 	private float dogeWalkAnimationState;
-	private Array<TextureRegion> dogeWalk;
-	private Array<? extends TextureRegion> dogeWalkFrames;
+	private Array<TextureRegion> dogeWalk, dogeWalkHit, dogeSuper;
+	private Array<? extends TextureRegion> dogeWalkFrames, dogeWalkHitFrames, dogeSuperFrames;
 	private Rectangle bounds = new Rectangle();
 
 	public MotherDoge() {
-
+		
 		setWidth(Assets.character.getRegionWidth());
 		setHeight(Assets.character.getRegionHeight());
 		dogeWalk = new Array<TextureRegion>();
 		dogeWalkFrames = new Array<TextureRegion>();
 
+		dogeWalkHit = new Array<TextureRegion>();
+		dogeWalkHitFrames = new Array<TextureRegion>();
+		
+		dogeSuper = new Array<TextureRegion>();
+		dogeSuperFrames = new Array<TextureRegion>();
+		
 		dogeWalk.add(Assets.character);
 		dogeWalk.add(Assets.character2);
 		dogeWalkFrames.addAll(dogeWalk);
+		
+		dogeWalkHit.add(Assets.character);
+		dogeWalkHit.add(Assets.character2);
+		dogeWalkHit.add(Assets.characterHit);
+		dogeWalkHit.add(Assets.characterHit2);
+		dogeWalkFrames.addAll(dogeWalkHit);
+		
+		dogeSuper.add(Assets.dogsuper1);
+		dogeSuper.add(Assets.dogsuper2);
+		dogeSuperFrames.addAll(dogeSuper);
 
-		this.dogeWalkAnimation = new Animation(0.15f, dogeWalkFrames);
+		this.dogeWalkAnimation = new Animation(0.15f, dogeSuperFrames);
 		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
-		setColor(0.0138f, 0.081f, 1f, 0.9f);
+		if (Statics.gameLevel == 2)
+			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override

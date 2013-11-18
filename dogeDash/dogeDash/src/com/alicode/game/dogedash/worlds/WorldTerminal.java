@@ -1,6 +1,8 @@
 package com.alicode.game.dogedash.worlds;
 
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.utils.GameInput;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -14,14 +16,28 @@ public class WorldTerminal implements Screen{
 
 	private Stage stage;
 	private WorldOne worldOne;
+	private WorldTwo worldTwo;
 	private GameInput gameInput;
+	private MotherDoge m;
 	
 	
 	public WorldTerminal(float delta) {
 		stage = new Stage();
-		worldOne = new WorldOne();
-		gameInput = new GameInput(worldOne, this);
-		stage.addActor(worldOne);
+		switch(Statics.gameLevel)
+		{
+		case 1:
+			worldOne = new WorldOne();
+			m = worldOne.getMotherDoge();
+			stage.addActor(worldOne);
+			break;
+		case 2:
+			worldTwo = new WorldTwo();
+			m = worldTwo.getMotherDoge();
+			stage.addActor(worldTwo);
+			break;
+		}
+
+		gameInput = new GameInput(m, this);
 	}
 
 	
