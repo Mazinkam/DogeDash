@@ -51,80 +51,80 @@ public class WorldSelection implements Screen {
 
 		Gdx.input.setInputProcessor(stage);
 		// background shit
-		Drawable splashDrawable = new TextureRegionDrawable(Assets.menu);
-		image_menu = new Image(splashDrawable, Scaling.stretch);
+		Drawable tempDrawable = new TextureRegionDrawable(Assets.menu);
+		image_menu = new Image(tempDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
-		image_menu_mom_nose_paw = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
+		image_menu_mom_nose_paw = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mom_nose_paw.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
-		image_menu_bluepup = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
+		image_menu_bluepup = new Image(tempDrawable);
 		image_menu_bluepup.setX(460);
 		image_menu_bluepup.setY(45);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
-		image_menu_creampup_body = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
+		image_menu_creampup_body = new Image(tempDrawable);
 		image_menu_creampup_body.setX(200);
 		image_menu_creampup_body.setY(-10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
-		image_menu_creampup_paw = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
+		image_menu_creampup_paw = new Image(tempDrawable);
 		image_menu_creampup_paw.setX(200);
 		image_menu_creampup_paw.setY(10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
-		image_menu_creampup_paw2 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
+		image_menu_creampup_paw2 = new Image(tempDrawable);
 		image_menu_creampup_paw2.setX(290);
 		image_menu_creampup_paw2.setY(10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
-		image_menu_blackpup = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
+		image_menu_blackpup = new Image(tempDrawable);
 		image_menu_blackpup.setX(10);
 		image_menu_blackpup.setY(40);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
-		image_menu_blackpup2 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
+		image_menu_blackpup2 = new Image(tempDrawable);
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
 
-		splashDrawable = new TextureRegionDrawable(Assets.lvlselect);
-		image_lvlselect = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.lvlselect);
+		image_lvlselect = new Image(tempDrawable);
 		image_lvlselect.setX(50);
 		image_lvlselect.setY(360);
 
-		splashDrawable = new TextureRegionDrawable(Assets.lvlselect_txt);
-		image_lvlselect_txt = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.lvlselect_txt);
+		image_lvlselect_txt = new Image(tempDrawable);
 		image_lvlselect_txt.setX(30);
 		image_lvlselect_txt.setY(340);
 
-		splashDrawable = new TextureRegionDrawable(Assets.lvl1);
-		image_lvl1 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.lvl1);
+		image_lvl1 = new Image(tempDrawable);
 		image_lvl1.setX(30);
 		image_lvl1.setY(160);
 
-		splashDrawable = new TextureRegionDrawable(Assets.lvl2);
-		image_lvl2 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.lvl2);
+		image_lvl2 = new Image(tempDrawable);
 		image_lvl2.setX(30 + image_lvl1.getWidth() + 30);
 		image_lvl2.setY(160);
 
-		splashDrawable = new TextureRegionDrawable(Assets.tutorial_select);
+		tempDrawable = new TextureRegionDrawable(Assets.tutorial_select);
 
-		image_tutorial_levelselect = new Image(splashDrawable);
+		image_tutorial_levelselect = new Image(tempDrawable);
 		image_tutorial_levelselect.setX(30);
 		image_tutorial_levelselect.setY(10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.back);
-		image_back = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.back);
+		image_back = new Image(tempDrawable);
 		image_back.setX(660);
 		image_back.setY(20);
 
@@ -243,6 +243,7 @@ public class WorldSelection implements Screen {
 		stage.addActor(image_lvl2);
 		stage.addActor(image_tutorial_levelselect);
 		stage.addActor(image_back);
+	
 
 	}
 

@@ -11,8 +11,8 @@ import com.alicode.game.dogedash.models.Flower;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.Puppy;
 import com.alicode.game.dogedash.models.enemies.EnemyBee;
-import com.alicode.game.dogedash.utils.FPSLogger;
-import com.alicode.game.dogedash.utils.GamePoints;
+import com.alicode.game.dogedash.utils.txt.FPSLogger;
+import com.alicode.game.dogedash.utils.txt.GameScore;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -26,7 +26,7 @@ public class WorldOne extends Table {
 	private Background background, background2;
 	private MotherDoge motherDoge;
 	private FPSLogger fpsLog;
-	private GamePoints gamePoints;
+	private GameScore gamePoints;
 
 	private Group backgroundGroup;
 	private Group onGroundGroup;
@@ -61,7 +61,7 @@ public class WorldOne extends Table {
 		floatingGroup = new Group();
 
 		fpsLog = new FPSLogger();
-		gamePoints = new GamePoints();
+		gamePoints = new GameScore();
 
 		addActor(backgroundGroup);
 		addActor(onGroundGroup);

@@ -1,4 +1,4 @@
-package com.alicode.game.dogedash.utils;
+package com.alicode.game.dogedash.utils.txt;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

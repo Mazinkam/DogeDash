@@ -196,7 +196,7 @@ public class Assets {
 		// gameover stuff
 		player_score = atlas.findRegion("menu/txt/player_score");
 		pup_missed = atlas.findRegion("menu/txt/pup_missed");
-		puppiescaught = atlas.findRegion("menu/txt/pupiescaught");
+		puppiescaught = atlas.findRegion("menu/txt/puppiescaught");
 		pup_points = atlas.findRegion("menu/txt/pup_points");
 		stylepoints = atlas.findRegion("menu/txt/stylepoints");
 		time = atlas.findRegion("menu/txt/time");

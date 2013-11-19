@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash;
 
 import com.alicode.game.dogedash.screens.HighscoresScreen;
+import com.alicode.game.dogedash.screens.SplashScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
 import com.alicode.game.dogedash.sql.GameDatabase;
 import com.badlogic.gdx.Game;
@@ -18,7 +19,7 @@ public class DogeDashCore extends Game {
 	public void create() {
 		db = new GameDatabase();
 		Assets.load();
-		setScreen(new HighscoresScreen(this));
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override

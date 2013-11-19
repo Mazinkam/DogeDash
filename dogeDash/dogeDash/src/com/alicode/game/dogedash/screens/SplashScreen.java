@@ -31,11 +31,11 @@ public class SplashScreen implements Screen {
 
 		// retrieve the splash image's region from the atlas
 
-		Drawable splashDrawable = new TextureRegionDrawable(Assets.splash);
+		Drawable tempDrawable = new TextureRegionDrawable(Assets.splash);
 
 		// here we create the splash image actor; its size is set when the
 		// resize() method gets called
-		splashImage = new Image(splashDrawable, Scaling.stretch);
+		splashImage = new Image(tempDrawable, Scaling.stretch);
 		splashImage.setFillParent(true);
 
 		// this is needed for the fade-in effect to work correctly; we're just

@@ -25,7 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 
-public class OptionsScreen implements Screen {
+public class Customization implements Screen {
 
 	private Image image_menu, image_options_title, image_options_txt, image_soundon, image_sound, image_musicon, image_music, image_vibrationon,
 			image_vibration, image_back, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2,
@@ -37,7 +37,7 @@ public class OptionsScreen implements Screen {
 	private Stage stage;
 	private boolean isSoundOn = true, isMuiscOn = false, isVibrationOn = false;
 
-	public OptionsScreen(DogeDashCore game) {
+	public Customization(DogeDashCore game) {
 		this.game = game;
 		stage = new Stage();
 	}

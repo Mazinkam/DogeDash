@@ -1,4 +1,4 @@
-package com.alicode.game.dogedash.utils;
+package com.alicode.game.dogedash.utils.txt;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.Statics;
@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class GamePoints extends Actor {
+public class GameScore extends Actor {
 
 	private BitmapFont font;
 
-	public GamePoints() {
+	public GameScore() {
 		font = new BitmapFont(Gdx.files.internal("skin/everything_else.fnt"), false);
 	}
 

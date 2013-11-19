@@ -44,77 +44,77 @@ public class MenuScreen implements Screen {
 
 		Gdx.input.setInputProcessor(stage);
 		// background shit
-		Drawable splashDrawable = new TextureRegionDrawable(Assets.menu);
-		image_menu = new Image(splashDrawable, Scaling.stretch);
+		Drawable tempDrawable = new TextureRegionDrawable(Assets.menu);
+		image_menu = new Image(tempDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
-		image_menu_mom_nose_paw = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
+		image_menu_mom_nose_paw = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mom_nose_paw.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(splashDrawable, Scaling.stretch);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
+		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
 		image_menu_mombody.setFillParent(true);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
-		image_menu_bluepup = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
+		image_menu_bluepup = new Image(tempDrawable);
 		image_menu_bluepup.setX(460);
 		image_menu_bluepup.setY(45);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
-		image_menu_creampup_body = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
+		image_menu_creampup_body = new Image(tempDrawable);
 		image_menu_creampup_body.setX(200);
 		image_menu_creampup_body.setY(-10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
-		image_menu_creampup_paw = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
+		image_menu_creampup_paw = new Image(tempDrawable);
 		image_menu_creampup_paw.setX(200);
 		image_menu_creampup_paw.setY(10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
-		image_menu_creampup_paw2 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
+		image_menu_creampup_paw2 = new Image(tempDrawable);
 		image_menu_creampup_paw2.setX(290);
 		image_menu_creampup_paw2.setY(10);
 
-		splashDrawable = new TextureRegionDrawable(Assets.puppydash);
-		image_puppydash = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.puppydash);
+		image_puppydash = new Image(tempDrawable);
 		image_puppydash.setX(70);
 		image_puppydash.setY(380);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
-		image_menu_blackpup = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
+		image_menu_blackpup = new Image(tempDrawable);
 		image_menu_blackpup.setX(10);
 		image_menu_blackpup.setY(40);
 
-		splashDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
-		image_menu_blackpup2 = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
+		image_menu_blackpup2 = new Image(tempDrawable);
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
 
-		splashDrawable = new TextureRegionDrawable(Assets.play);
-		image_play = new Image(splashDrawable);
+		tempDrawable = new TextureRegionDrawable(Assets.play);
+		image_play = new Image(tempDrawable);
 		image_play.setX(30);
 		image_play.setY(280);
 
-		splashDrawable = new TextureRegionDrawable(Assets.options);
+		tempDrawable = new TextureRegionDrawable(Assets.options);
 
-		image_options = new Image(splashDrawable);
+		image_options = new Image(tempDrawable);
 		image_options.setX(30);
 		image_options.setY(230);
 
-		splashDrawable = new TextureRegionDrawable(Assets.highscores);
+		tempDrawable = new TextureRegionDrawable(Assets.highscores);
 
-		image_highscores = new Image(splashDrawable);
+		image_highscores = new Image(tempDrawable);
 		image_highscores.setX(30);
 		image_highscores.setY(180);
 
-		splashDrawable = new TextureRegionDrawable(Assets.customization);
+		tempDrawable = new TextureRegionDrawable(Assets.customization);
 
-		image_customization = new Image(splashDrawable);
+		image_customization = new Image(tempDrawable);
 		image_customization.setX(30);
 		image_customization.setY(120);
 
@@ -164,7 +164,7 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						//game.setScreen(new SplashScreen(game));
+						game.setScreen(new HighscoresScreen(game));
 						return true;
 					}
 				};
