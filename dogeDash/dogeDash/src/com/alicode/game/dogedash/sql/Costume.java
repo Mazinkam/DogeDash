@@ -1,10 +1,15 @@
 package com.alicode.game.dogedash.sql;
 
-public class Costume {
+import com.alicode.game.dogedash.Assets;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
+public class Costume extends TextureRegion{
 
 	int id;
 	int isOwned;
 	int itemPrice;
+	String itemName;
 
 	public Costume() {
 		// TODO Auto-generated constructor stub
@@ -14,8 +19,9 @@ public class Costume {
 		this.id = id;
 	}
 
-	public Costume(int id, int isOwned, int itemPrice) {
+	public Costume(int id, String itemName, int isOwned, int itemPrice) {
 		this.isOwned = isOwned;
+		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.id = id;
 	}
@@ -44,4 +50,12 @@ public class Costume {
 		this.itemPrice = itemPrice;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	
 }

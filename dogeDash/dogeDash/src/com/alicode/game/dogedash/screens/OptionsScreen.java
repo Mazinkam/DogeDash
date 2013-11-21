@@ -8,6 +8,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.sql.Settings;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -35,11 +36,14 @@ public class OptionsScreen implements Screen {
 	private Drawable tempDrawable;
 	private ShapeRenderer bg_rect;
 	private Stage stage;
-	private boolean isSoundOn = true, isMuiscOn = false, isVibrationOn = false;
+	public static int isSoundOn, isMuiscOn, isVibrationOn;
 
 	public OptionsScreen(DogeDashCore game) {
 		this.game = game;
 		stage = new Stage();
+		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 	}
 
 	@Override
@@ -93,7 +97,7 @@ public class OptionsScreen implements Screen {
 		image_options_txt.setX(70);
 		image_options_txt.setY(340);
 
-		if (isSoundOn)
+		if (isSoundOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.soundon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.soundoff);
@@ -101,7 +105,7 @@ public class OptionsScreen implements Screen {
 		image_sound.setX(30);
 		image_sound.setY(250);
 
-		if (isMuiscOn)
+		if (isMuiscOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.musicon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.musicoff);
@@ -109,7 +113,7 @@ public class OptionsScreen implements Screen {
 		image_music.setX(30);
 		image_music.setY(200);
 
-		if (isVibrationOn)
+		if (isVibrationOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.vibrationon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.vibrationoff);
@@ -135,17 +139,18 @@ public class OptionsScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+
 				image_sound.setOrigin(image_sound.getWidth() / 4, image_sound.getHeight() / 2);
 				image_sound.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_sound.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				isSoundOn = !isSoundOn;
-				if (isSoundOn)
+				isSoundOn ^= 1;
+				if (isSoundOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.soundon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.soundoff);
 				image_sound.setDrawable(tempDrawable);
+				GameAudio.dogeBark();
 
 			}
 		});
@@ -162,17 +167,18 @@ public class OptionsScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+
 				image_music.setOrigin(image_music.getWidth() / 4, image_music.getHeight() / 2);
 				image_music.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_music.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				isMuiscOn = !isMuiscOn;
-				if (isMuiscOn)
+				isMuiscOn ^= 1;
+				if (isMuiscOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.musicon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.musicoff);
 				image_music.setDrawable(tempDrawable);
+				GameAudio.dogeBark();
 
 			}
 		});
@@ -189,17 +195,18 @@ public class OptionsScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+
 				image_vibration.setOrigin(image_vibration.getWidth() / 4, image_vibration.getHeight() / 2);
 				image_vibration.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_vibration.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				isVibrationOn = !isVibrationOn;
-				if (isVibrationOn)
+				isVibrationOn ^= 1;
+				if (isVibrationOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.vibrationon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.vibrationoff);
 				image_vibration.setDrawable(tempDrawable);
+				GameAudio.dogeBark();
 			}
 
 		});
@@ -212,11 +219,12 @@ public class OptionsScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
+						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn,isMuiscOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
 				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -290,8 +298,6 @@ public class OptionsScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -140,7 +140,7 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				Statics.gameLevel = 1;
 				image_lvl1.setOrigin(image_lvl1.getWidth() / 4, image_lvl1.getHeight() / 2);
 				image_lvl1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -161,7 +161,7 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				Statics.gameLevel = 2;
 				image_lvl2.setOrigin(image_lvl2.getWidth() / 4, image_lvl2.getHeight() / 2);
 				image_lvl2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -182,7 +182,7 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_tutorial_levelselect.setOrigin(image_tutorial_levelselect.getWidth() / 4, image_tutorial_levelselect.getHeight() / 2);
 				image_tutorial_levelselect.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_tutorial_levelselect.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
@@ -204,7 +204,7 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
 				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),

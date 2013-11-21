@@ -130,7 +130,7 @@ public class MenuScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_play.setOrigin(image_play.getWidth() / 4, image_play.getHeight() / 2);
 				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
@@ -149,7 +149,7 @@ public class MenuScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_options.setOrigin(image_options.getWidth() / 4, image_options.getHeight() / 2);
 				image_options.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
@@ -168,7 +168,7 @@ public class MenuScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_highscores.setOrigin(image_highscores.getWidth() / 4, image_highscores.getHeight() / 2);
 				image_highscores.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
@@ -189,7 +189,7 @@ public class MenuScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_customization.setOrigin(image_customization.getWidth() / 4, image_customization.getHeight() / 2);
 				image_customization.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));

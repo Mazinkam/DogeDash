@@ -50,7 +50,7 @@ public class Assets {
 	public static TextureRegion shop_shades, shop_monocle, shop_tophat, shop_halo, shop_horns, shop_hipster, shop_moustache, shop_angel,
 			shop_clownnose, shop_devilwings, shop_pumpkin, shop_unibrow, shop_santahat;
 
-	public static TextureRegion custom_txt, custom_title, currentBox, chowcoin, itemLock, shopItemBox;
+	public static TextureRegion custom_title, currentBox, chowcoin, itemLock, shopItemBox;
 
 	public static TextureRegion num0, num1, num2, num3, num4, num5, num6, num7, num8, num9, num0_2, num1_2, num2_2, num3_2, num4_2, num5_2, num6_2,
 			num7_2, num8_2, num9_2, numMinus, numMinus_2;
@@ -222,7 +222,7 @@ public class Assets {
 		lvlselect_txt = atlas.findRegion("menu/txt/lvlselect_text");
 
 		custom_title = atlas.findRegion("menu/txt/custom_title");
-		custom_txt = atlas.findRegion("menu/txt/custom_txt");
+		itemsEquipText = atlas.findRegion("menu/txt/itemsEquipText");
 
 	}
 

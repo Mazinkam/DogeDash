@@ -72,22 +72,22 @@ public class HighscoresScreen implements Screen {
 		// {
 		// @Override
 		// public void onUp() {
-		// GameAudio.click();
+		// GameAudio.dogeBark();
 		// }
 		//
 		// @Override
 		// public void onRight() {
-		// GameAudio.click();
+		// GameAudio.dogeBark();
 		// }
 		//
 		// @Override
 		// public void onLeft() {
-		// GameAudio.click();
+		// GameAudio.dogeBark();
 		// }
 		//
 		// @Override
 		// public void onDown() {
-		// GameAudio.click();
+		// GameAudio.dogeBark();
 		// }
 		// }));
 		Gdx.input.setInputProcessor(inputMuiltiplex);
@@ -236,7 +236,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				tableName = "levelDay";
 				levelNum = 1;
 				image_lvl1.setOrigin(image_lvl1.getWidth() / 4, image_lvl1.getHeight() / 2);
@@ -266,7 +266,7 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				tableName = "levelNight";
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_lvl2.setOrigin(image_lvl2.getWidth() / 4, image_lvl2.getHeight() / 2);
 				image_lvl2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_lvl2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -293,7 +293,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_lvl3.setOrigin(image_lvl3.getWidth() / 4, image_lvl3.getHeight() / 2);
 				image_lvl3.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_lvl3.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -328,7 +328,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				levelNum = 1;
 				easyHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				easyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -357,7 +357,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_easyHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				image_easyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_easyHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -386,7 +386,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_normalHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				image_normalHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_normalHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -415,7 +415,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_hardHighscore.setOrigin(image_hardHighscore.getWidth() / 4, image_hardHighscore.getHeight() / 2);
 				image_hardHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_hardHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -443,7 +443,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.click();
+				GameAudio.dogeBark();
 				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
 				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),

@@ -30,6 +30,7 @@ public class GameDatabase {
 
 	// Level
 	private static final String KEY_ID = "id";
+	private static final String KEY_ITEM_NAME = "itemName";
 	private static final String KEY_SCORE = "highScore";
 	private static final String KEY_STYLE = "stylePoints";
 	private static final String KEY_TIME = "timeAlive";
@@ -59,16 +60,16 @@ public class GameDatabase {
 
 	// COSTUMES
 	private static String CREATE_COSTUME_BACK_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_COSTUME_BACK + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-			+ KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
+			+ KEY_ITEM_NAME + " VARCHAR(255)," + KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
 
 	private static String CREATE_COSTUME_EYES_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_COSTUME_EYES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-			+ KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
+			+ KEY_ITEM_NAME + " VARCHAR(255)," + KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
 
 	private static String CREATE_COSTUME_NOSE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_COSTUME_NOSE + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-			+ KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
+			+ KEY_ITEM_NAME + " VARCHAR(255)," + KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
 
 	private static String CREATE_COSTUME_HEAD_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_COSTUME_HEAD + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-			+ KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
+			+ KEY_ITEM_NAME + " VARCHAR(255)," + KEY_ITEM_OWNED + " INTEGER," + KEY_ITEM_PRICE + " INTEGER" + ");";
 
 	// SETTINGS
 	private static String CREATE_SETTINGS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_SETTINGS + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
@@ -89,7 +90,7 @@ public class GameDatabase {
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			// dropTheBase();
+			//dropTheBase();
 			dbHandler.execSQL(DATABASE_CREATE);
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
@@ -147,16 +148,16 @@ public class GameDatabase {
 		}
 		Gdx.app.log(DogeDashCore.LOG, "HEAD COSTUME LIST---------------------------------------");
 		if (headCostumeList.isEmpty()) {
-			addCostume(new Costume(1, 0, 10), "headTable");
-			addCostume(new Costume(2, 0, 30), "headTable");
-			addCostume(new Costume(3, 0, 50), "headTable");
-			addCostume(new Costume(4, 0, 20), "headTable");
-			addCostume(new Costume(5, 0, 50), "headTable");
+			addCostume(new Costume(1,"tophat", 0, 10), "headTable");
+			addCostume(new Costume(2,"horns", 0, 30), "headTable");
+			addCostume(new Costume(3,"halo", 0, 50), "headTable");
+			addCostume(new Costume(4,"pumpkin", 0, 20), "headTable");
+			addCostume(new Costume(5,"santahat", 0, 50), "headTable");
 
 		} else {
 			for (Costume obj : headCostumeList) {
 
-				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+				String log = "Id: " + obj.getId() + " Name: " + obj.getItemName() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
 
 				Gdx.app.log(DogeDashCore.LOG, log);
 
@@ -164,13 +165,13 @@ public class GameDatabase {
 		}
 		Gdx.app.log(DogeDashCore.LOG, "NOSE COSTUME LIST---------------------------------------");
 		if (noseCostumeList.isEmpty()) {
-			addCostume(new Costume(1, 0, 10), "noseTable");
-			addCostume(new Costume(2, 0, 30), "noseTable");
+			addCostume(new Costume(1,"moustache", 0, 10), "noseTable");
+			addCostume(new Costume(2,"clownnose", 0, 30), "noseTable");
 
 		} else {
 			for (Costume obj : noseCostumeList) {
 
-				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+				String log = "Id: " + obj.getId() +" Name: " + obj.getItemName() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
 
 				Gdx.app.log(DogeDashCore.LOG, log);
 
@@ -178,15 +179,15 @@ public class GameDatabase {
 		}
 		Gdx.app.log(DogeDashCore.LOG, "EYES COSTUME LIST---------------------------------------");
 		if (eyesCostumeList.isEmpty()) {
-			addCostume(new Costume(1, 0, 10), "eyesTable");
-			addCostume(new Costume(2, 0, 30), "eyesTable");
-			addCostume(new Costume(3, 0, 50), "eyesTable");
-			addCostume(new Costume(4, 0, 20), "eyesTable");
+			addCostume(new Costume(1,"shades", 0, 10), "eyesTable");
+			addCostume(new Costume(2,"monocle", 0, 30), "eyesTable");
+			addCostume(new Costume(3,"hipster", 0, 50), "eyesTable");
+			addCostume(new Costume(4,"unibrow", 0, 20), "eyesTable");
 
 		} else {
 			for (Costume obj : eyesCostumeList) {
 
-				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+				String log = "Id: " + obj.getId() +  " Name: " + obj.getItemName() +" , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
 
 				Gdx.app.log(DogeDashCore.LOG, log);
 
@@ -194,13 +195,13 @@ public class GameDatabase {
 		}
 		Gdx.app.log(DogeDashCore.LOG, "BACK COMSTUME LIST---------------------------------------");
 		if (backCostumeList.isEmpty()) {
-			addCostume(new Costume(1, 0, 10), "backTable");
-			addCostume(new Costume(2, 0, 30), "backTable");
+			addCostume(new Costume(1,"angel", 0, 10), "backTable");
+			addCostume(new Costume(2,"devilwings", 0, 30), "backTable");
 
 		} else {
 			for (Costume obj : backCostumeList) {
 
-				String log = "Id: " + obj.getId() + " , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
+				String log = "Id: " + obj.getId() + " Name: " + obj.getItemName() +" , owned: " + obj.getIsOwned() + " , price: " + obj.getItemPrice();
 
 				Gdx.app.log(DogeDashCore.LOG, log);
 
@@ -220,7 +221,7 @@ public class GameDatabase {
 			}
 		}
 		Gdx.app.log(DogeDashCore.LOG, "MISC ITEMS LIST---------------------------------------");
-		
+
 		if (miscList.isEmpty()) {
 			addMisc(new Misc(1, 1000));
 		} else {
@@ -314,13 +315,13 @@ public class GameDatabase {
 		String missedPups = " " + KEY_MISSEDPUPPIES + "=" + level.getMissedPuppyNum() + ", ";
 		String pupPoints = " " + KEY_PUPPYPOINTS + "=" + level.getPuppyPoints();
 
-		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + tableName + score + style + time + caughtPups + missedPups + pupPoints);
+		Gdx.app.log(DogeDashCore.LOG, "Updating " + id + tableName + score + style + time + caughtPups + missedPups + pupPoints);
 
 		try {
 			dbHandler.execSQL("UPDATE " + tableName + " SET" + score + style + time + caughtPups + missedPups + pupPoints + " WHERE" + id);
 		} catch (SQLiteGdxException e) {
 			// TODO Auto-generated catch block
-			 e.printStackTrace();
+			e.printStackTrace();
 		}
 
 	}
@@ -338,32 +339,31 @@ public class GameDatabase {
 	}
 
 	// ----------------------------------------------------------------LVL DB
-	// ----------------------------------------------------------------LVL
-	// COSTUME
+	// ----------------------------------------------------------------COSTUME
 	public void addCostume(Costume costume, String tableName) {
 		try {
-			dbHandler.execSQL("INSERT INTO " + tableName + "  VALUES (" + costume.getId() + "," + costume.getIsOwned() + "," + costume.getItemPrice()
-					+ ")");
+			dbHandler.execSQL("INSERT INTO " + tableName + "  VALUES (" + costume.getId() + "," +"'" +costume.getItemName() +"'"+ "," + costume.getIsOwned()
+					+ "," + costume.getItemPrice() + ")");
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
-		Gdx.app.log(DogeDashCore.LOG, "wrote into " + tableName);
+		Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
 	}
 
 	public Costume getCostume(int id, String tableName) {
 		DatabaseCursor cursor = null;
 
 		try {
-			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_ITEM_OWNED + "," + KEY_ITEM_PRICE + " FROM " + tableName + " WHERE " + KEY_ID
-					+ "=" + "'" + id + "'");
+			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_ITEM_NAME + "," + KEY_ITEM_OWNED + "," + KEY_ITEM_PRICE + " FROM " + tableName
+					+ " WHERE " + KEY_ID + "=" + "'" + id + "'");
 
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
 		cursor.next();
 
-		Costume costume = new Costume(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
-				.getString(2)));
+		Costume costume = new Costume(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)),
+				Integer.parseInt(cursor.getString(3)));
 
 		return costume;
 	}
@@ -382,8 +382,9 @@ public class GameDatabase {
 		while (cursor.next()) {
 			Costume costume = new Costume();
 			costume.setId(Integer.parseInt(cursor.getString(0)));
-			costume.setIsOwned(Integer.parseInt(cursor.getString(1)));
-			costume.setItemPrice(Integer.parseInt(cursor.getString(2)));
+			costume.setItemName(cursor.getString(1));
+			costume.setIsOwned(Integer.parseInt(cursor.getString(2)));
+			costume.setItemPrice(Integer.parseInt(cursor.getString(3)));
 
 			costumeList.add(costume);
 		}
@@ -393,13 +394,14 @@ public class GameDatabase {
 
 	public void updateCostume(Costume costume, String tableName) {
 		String id = " " + KEY_ID + "=" + costume.getId();
+		String name = " " + KEY_ITEM_NAME + "=" +"'" +costume.getItemName() +"'"+ ", ";
 		String owned = " " + KEY_ITEM_OWNED + "=" + costume.getIsOwned() + ", ";
 		String price = " " + KEY_ITEM_PRICE + "=" + costume.getItemPrice();
 
-		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + tableName + owned + price);
+		Gdx.app.log(DogeDashCore.LOG, "Updating " + id + name + tableName + owned + price);
 
 		try {
-			dbHandler.execSQL("UPDATE " + tableName + " SET" + owned + price + " WHERE" + id);
+			dbHandler.execSQL("UPDATE " + tableName + " SET" + name + owned + price + " WHERE" + id);
 		} catch (SQLiteGdxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -479,7 +481,7 @@ public class GameDatabase {
 		String music = " " + KEY_SETTINGS_MUISC + "=" + settings.getMusicSettings() + ", ";
 		String vibration = " " + KEY_SETTINGS_VIBRATION + "=" + settings.getVibrationSettings();
 
-		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + TABLE_SETTINGS + sound + music + vibration);
+		Gdx.app.log(DogeDashCore.LOG, "Updating " + id + TABLE_SETTINGS + sound + music + vibration);
 
 		try {
 			dbHandler.execSQL("UPDATE " + TABLE_SETTINGS + " SET" + sound + music + vibration + " WHERE" + id);
@@ -554,7 +556,7 @@ public class GameDatabase {
 		String id = " " + KEY_ID + "=" + misc.getId();
 		String coins = " " + KEY_CURRENCY + "=" + misc.getDogeCoins();
 
-		Gdx.app.log(DogeDashCore.LOG, "Trying to update " + id + TABLE_MISC + coins);
+		Gdx.app.log(DogeDashCore.LOG, "Updating " + id + TABLE_MISC + coins);
 
 		try {
 			dbHandler.execSQL("UPDATE " + TABLE_MISC + " SET" + coins + " WHERE" + id);

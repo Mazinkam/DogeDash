@@ -45,13 +45,13 @@ public class MotherDoge extends Actor {
 		dogeWalkHit.add(Assets.character2);
 		dogeWalkHit.add(Assets.characterHit);
 		dogeWalkHit.add(Assets.characterHit2);
-		dogeWalkFrames.addAll(dogeWalkHit);
+		dogeWalkHitFrames.addAll(dogeWalkHit);
 		
 		dogeSuper.add(Assets.dogsuper1);
 		dogeSuper.add(Assets.dogsuper2);
 		dogeSuperFrames.addAll(dogeSuper);
 
-		this.dogeWalkAnimation = new Animation(0.15f, dogeSuperFrames);
+		this.dogeWalkAnimation = new Animation(0.15f, dogeWalkFrames);
 		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
 		if (Statics.gameLevel == 2)
@@ -67,7 +67,7 @@ public class MotherDoge extends Actor {
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
-		TextureRegion frame = dogeWalkAnimation.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime(), true);
+		TextureRegion frame = dogeWalkAnimation.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime()/2, true);
 
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
 	}
