@@ -202,7 +202,7 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						// game.setScreen(new SplashScreen(game));
+						game.setScreen(new CustomizationScreen(game));
 						return true;
 					}
 				};

@@ -8,6 +8,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameGesture;
 import com.alicode.game.dogedash.utils.GameGesture.DirectionListener;
@@ -46,6 +47,7 @@ public class HighscoresScreen implements Screen {
 	private int levelNum, difficultyNum;
 	private String tableName;
 	private Stage stage;
+private WindowOverlay winOverlay;
 	private InputMultiplexer inputMuiltiplex;
 
 	public HighscoresScreen(DogeDashCore game) {
@@ -54,6 +56,7 @@ public class HighscoresScreen implements Screen {
 		easyHighscore = new GameText();
 		normalHighscore = new GameText();
 		hardHighscore = new GameText();
+		winOverlay = new WindowOverlay();
 
 		chosenTime = new GameText();
 		chosenCaughtPups = new GameText();
@@ -459,6 +462,7 @@ public class HighscoresScreen implements Screen {
 		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
+		stage.addActor(winOverlay);
 
 		stage.addActor(image_lvl1);
 		stage.addActor(image_back);

@@ -13,6 +13,7 @@ import javax.sound.midi.Sequence;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.alicode.game.dogedash.worlds.WorldTwo;
@@ -40,9 +41,12 @@ public class WorldSelection implements Screen {
 	private DogeDashCore game;
 	private Stage stage;
 	private Drawable tempDrawable;
+	private WindowOverlay winOverlay;
+
 
 	public WorldSelection(DogeDashCore game) {
 		this.game = game;
+		winOverlay = new WindowOverlay();
 		stage = new Stage();
 	}
 
@@ -252,6 +256,7 @@ public class WorldSelection implements Screen {
 		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
+		stage.addActor(winOverlay);
 
 		stage.addActor(image_lvlselect);
 		stage.addActor(image_lvlselect_txt);

@@ -8,6 +8,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.sql.Settings;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.badlogic.gdx.Gdx;
@@ -37,9 +38,11 @@ public class OptionsScreen implements Screen {
 	private ShapeRenderer bg_rect;
 	private Stage stage;
 	public static int isSoundOn, isMuiscOn, isVibrationOn;
+	private WindowOverlay winOverlay;
 
 	public OptionsScreen(DogeDashCore game) {
 		this.game = game;
+		winOverlay = new WindowOverlay();
 		stage = new Stage();
 		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
 		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
@@ -271,6 +274,7 @@ public class OptionsScreen implements Screen {
 		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
+		stage.addActor(winOverlay);
 		stage.addActor(image_sound);
 		stage.addActor(image_back);
 		stage.addActor(image_music);

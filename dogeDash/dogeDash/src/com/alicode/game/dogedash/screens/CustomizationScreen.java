@@ -14,6 +14,7 @@ import java.util.List;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.models.MotherDoge;
+import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.models.enemies.EnemyBee;
 import com.alicode.game.dogedash.sql.Costume;
 import com.alicode.game.dogedash.utils.GameAudio;
@@ -23,6 +24,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -38,18 +41,30 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class CustomizationScreen implements Screen {
 
+	enum MenuState {
+		Buying, Ready
+	}
+
+	enum CustomState {
+		Nose, Eyes, Head, Back
+	}
+
 	private Image image_menu, image_back, image_menu_mom_nose_paw, image_menu_mombody, image_menu_creampup_body, image_menu_creampup_paw,
 			image_menu_creampup_paw2, image_menu_bluepup, image_dogeCoin;
 
-	private Image image_customTitle, image_currentBox, image_itemLock, image_currentTab, image_next, image_previous, image_currentItemsTxt;
+	private Image image_customTitle, image_currentBox, image_currentTab, image_next, image_previous, image_currentItemsTxt;
 
-	private Image image_shopBackItem, image_shopHeadItem, image_shopNoseItem, image_shopEyesItem;
+	private Image image_shopBackItem, image_shopHeadItem, image_shopNoseItem, image_shopBox, image_itemLock;
 	private Image backImagePreview, noseImagePreview, eyesImagePreview, headImagePreview;
+	
+	private WindowOverlay winOverlay;
 
-	private Image image_shop_angel, image_shop_clownnose, image_shop_devilwings, image_shop_halo, image_shop_hipster, image_shop_horns,
-			image_shop_monocle, image_shop_moustache, image_shop_pumpkin, image_shop_santa, image_shop_shades, image_shop_tophat, image_shop_unibrow;
-
-	private Array<TextureRegion> shopItemBoxs;
+	private Array<Image> image_shopCurrentItem;
+	private Array<Image> image_shopCurrentItemBox;
+	private Array<Image> image_shopCurrentItemLock;
+	Array<TextureRegion> currentList;
+	ArrayList<Integer> currentItemOwnedList;
+	ArrayList<Integer> currentItemPriceList;
 
 	private Array<TextureRegion> noseShopItems;
 	private Array<TextureRegion> headShopItems;
@@ -83,18 +98,21 @@ public class CustomizationScreen implements Screen {
 	private List<Costume> headCostumeList;
 	private List<Costume> eyesCostumeList;
 	private GameInput gameInput;
+	CustomState state = CustomState.Nose;
+	MenuState menuState = MenuState.Ready;
 
 	public CustomizationScreen(DogeDashCore game) {
+
 		this.game = game;
 		stage = new Stage();
 		motherDoge = new MotherDoge();
-		shopItems= new Array<Actor>();
+		shopItems = new Array<Actor>();
 
-		
 		noseButton = new Actor();
 		eyesButton = new Actor();
 		headButton = new Actor();
 		backButton = new Actor();
+		winOverlay = new WindowOverlay();
 
 		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
 		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
@@ -105,6 +123,9 @@ public class CustomizationScreen implements Screen {
 		noseShopItems = new Array<TextureRegion>();
 		headShopItems = new Array<TextureRegion>();
 		eyesShopItems = new Array<TextureRegion>();
+		image_shopCurrentItem = new Array<Image>();
+		image_shopCurrentItemLock = new Array<Image>();
+		image_shopCurrentItemBox = new Array<Image>();
 
 		noseShopItemsPreview = new Array<TextureRegion>();
 		headShopItemsPreview = new Array<TextureRegion>();
@@ -295,29 +316,101 @@ public class CustomizationScreen implements Screen {
 	}
 
 	private void changeContent() {
-		if (tableName.contains("noseTable")) {
-			updateNoseItems();
-		} else if (tableName.contains("eyesTable")) {
+		currentList = new Array<TextureRegion>();
+		currentItemOwnedList = new ArrayList<Integer>();
+		currentItemPriceList = new ArrayList<Integer>();
 
-		} else if (tableName.contains("headTable")) {
+		for (int i = 0; i < image_shopCurrentItem.size; i++) {
 
-		} else {
+			image_shopCurrentItem.get(i).remove();
+			image_shopCurrentItemBox.get(i).remove();
+			image_shopCurrentItemLock.get(i).remove();
+		}
+		if (image_shopCurrentItem.size > 1) {
+
+			image_shopCurrentItem.clear();
+			image_shopCurrentItemBox.clear();
+			image_shopCurrentItemLock.clear();
+			currentList.clear();
+			currentItemOwnedList.clear();
+			currentItemPriceList.clear();
+		}
+
+		if (state == CustomState.Nose) {
+			currentList = noseShopItems;
+			currentItemOwnedList = noseItemOwnedList;
+			currentItemPriceList = noseitemPriceList;
+		}
+		if (state == CustomState.Eyes) {
+			currentList = eyesShopItems;
+			currentItemOwnedList = eyesItemOwnedList;
+			currentItemPriceList = eyesitemPriceList;
+		}
+		if (state == CustomState.Head) {
+			currentList = headShopItems;
+			currentItemOwnedList = headItemOwnedList;
+			currentItemPriceList = headitemPriceList;
+		}
+		if (state == CustomState.Back) {
+			currentList = backShopItems;
+			currentItemOwnedList = backItemOwnedList;
+			currentItemPriceList = backitemPriceList;
 
 		}
+		for (int i = 0; i < currentList.size; i++) {
+			tempDrawable = new TextureRegionDrawable(currentList.get(i));
+			image_shopCurrentItem.add(new Image(tempDrawable));
+			image_shopCurrentItem.get(i).setDrawable(tempDrawable);
+			image_shopCurrentItem.get(i).setX(285 + 65 * i);
+			image_shopCurrentItem.get(i).setY(240);
+
+			tempDrawable = new TextureRegionDrawable(Assets.shopItemBox);
+			image_shopCurrentItemBox.add(new Image(tempDrawable));
+			image_shopCurrentItemBox.get(i).setX(285 + 65 * i);
+			image_shopCurrentItemBox.get(i).setY(240);
+
+			if (currentItemOwnedList.get(i) == 0) {
+				tempDrawable = new TextureRegionDrawable(Assets.itemLock);
+				image_shopCurrentItemLock.add(new Image(tempDrawable));
+				image_shopCurrentItemLock.get(i).setX(285 + 65 * i);
+				image_shopCurrentItemLock.get(i).setY(240);
+			}
+
+			stage.addActor(image_shopCurrentItem.get(i));
+			stage.addActor(image_shopCurrentItemLock.get(i));
+			stage.addActor(image_shopCurrentItemBox.get(i));
+
+			image_shopCurrentItemBox.get(i).addListener(new InputListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					Action completeAction = new Action() {
+						public boolean act(float delta) {
+							// game.setScreen(new MenuScreen(game));
+							return true;
+						}
+					};
+					GameAudio.dogeBark();
+					menuState = MenuState.Buying;
+					buySelectedItem();
+
+				}
+
+			});
+		}
+
+		Gdx.app.log(DogeDashCore.LOG, "Cur state: " + state + " Curr table: " + tableName + " image_shopCurrentItem " + image_shopCurrentItem.size
+				+ " currentList " + currentList.size);
+
 	}
 
-	private void updateNoseItems() {
-		for (int i = 0; i < noseShopItems.size; i++) {
-			tempDrawable = new TextureRegionDrawable(noseShopItems.get(i));
-			image_shop_pumpkin = new Image(tempDrawable);
-			image_shop_pumpkin.setX(285 );
-			image_shop_pumpkin.setX(220);
+	private void buySelectedItem() {
 
-			//itn.numberConvertionSmall(noseitemPriceList.get(i), 3, 329 + 65 * i, 236, g);
-		//	if (noseItemOwnedList.get(i).equals(0))
-			
-		}
-		
+	
+
+
 	}
 
 	private void initInput() {
@@ -334,12 +427,10 @@ public class CustomizationScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
-				image_currentTab.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_currentTab.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
 				tempDrawable = new TextureRegionDrawable(Assets.tab_nose);
 				image_currentTab.setDrawable(tempDrawable);
 				tableName = "noseTable";
+				state = CustomState.Nose;
 				changeContent();
 
 			}
@@ -359,14 +450,11 @@ public class CustomizationScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
-				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
 				tempDrawable = new TextureRegionDrawable(Assets.tab_eyes);
 				image_currentTab.setDrawable(tempDrawable);
-
 				tableName = "eyesTable";
+				state = CustomState.Eyes;
+				changeContent();
 			}
 		});
 
@@ -383,14 +471,11 @@ public class CustomizationScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
-				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
-
 				tempDrawable = new TextureRegionDrawable(Assets.tab_head);
 				image_currentTab.setDrawable(tempDrawable);
 				tableName = "headTable";
+				state = CustomState.Head;
+				changeContent();
 			}
 		});
 
@@ -402,7 +487,7 @@ public class CustomizationScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						// game.setScreen(new MenuScreen(game));
+						// //game.setScreen(new MenuScreen(game));
 						return true;
 					}
 				};
@@ -414,6 +499,8 @@ public class CustomizationScreen implements Screen {
 				tempDrawable = new TextureRegionDrawable(Assets.tab_back);
 				image_currentTab.setDrawable(tempDrawable);
 				tableName = "backTable";
+				state = CustomState.Back;
+				changeContent();
 			}
 		});
 
@@ -461,12 +548,14 @@ public class CustomizationScreen implements Screen {
 		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
+		stage.addActor(winOverlay);
 		stage.addActor(image_back);
 
 		stage.addActor(image_customTitle);
 		stage.addActor(image_dogeCoin);
 		stage.addActor(image_currentBox);
 		stage.addActor(image_currentTab);
+		
 		stage.addActor(image_next);
 		stage.addActor(image_previous);
 		stage.addActor(image_currentItemsTxt);
@@ -475,6 +564,8 @@ public class CustomizationScreen implements Screen {
 		stage.addActor(eyesButton);
 		stage.addActor(headButton);
 		stage.addActor(backButton);
+		
+	
 
 	}
 
@@ -482,9 +573,9 @@ public class CustomizationScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		stage.act(delta);
 		stage.draw();
+
 	}
 
 	@Override
