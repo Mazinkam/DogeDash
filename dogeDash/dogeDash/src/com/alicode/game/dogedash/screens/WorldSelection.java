@@ -37,9 +37,9 @@ public class WorldSelection implements Screen {
 	private Image image_lvlselect, image_lvlselect_txt, image_hard, image_easy, image_normal, image_lvl1, image_lvl2, image_tutorial_levelselect,
 			image_back;
 
-	private Sequence sequence;
 	private DogeDashCore game;
 	private Stage stage;
+	private Drawable tempDrawable;
 
 	public WorldSelection(DogeDashCore game) {
 		this.game = game;
@@ -48,10 +48,17 @@ public class WorldSelection implements Screen {
 
 	@Override
 	public void show() {
-
 		Gdx.input.setInputProcessor(stage);
+		initBackground();
+		initForeground();
+		initInput();
+		initActors();
+		
+	}
+
+	private void initBackground() {
 		// background shit
-		Drawable tempDrawable = new TextureRegionDrawable(Assets.menu);
+		tempDrawable = new TextureRegionDrawable(Assets.menu);
 		image_menu = new Image(tempDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
 
@@ -96,7 +103,15 @@ public class WorldSelection implements Screen {
 		image_menu_blackpup2 = new Image(tempDrawable);
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
+		
+		tempDrawable = new TextureRegionDrawable(Assets.back);
+		image_back = new Image(tempDrawable);
+		image_back.setX(660);
+		image_back.setY(20);
+		
+	}
 
+	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.lvlselect);
 		image_lvlselect = new Image(tempDrawable);
 		image_lvlselect.setX(50);
@@ -123,11 +138,10 @@ public class WorldSelection implements Screen {
 		image_tutorial_levelselect.setX(30);
 		image_tutorial_levelselect.setY(10);
 
-		tempDrawable = new TextureRegionDrawable(Assets.back);
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
+		
+	}
 
+	private void initInput() {
 		image_lvl1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -200,7 +214,7 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						// game.setScreen(new SplashScreen(game));
+						game.setScreen(new MenuScreen(game));
 						return true;
 					}
 				};
@@ -211,7 +225,10 @@ public class WorldSelection implements Screen {
 						completeAction)));
 			}
 		});
+		
+	}
 
+	private void initActors() {
 		stage.addActor(image_menu);
 
 		stage.addActor(image_menu_blackpup);
@@ -244,7 +261,7 @@ public class WorldSelection implements Screen {
 		stage.addActor(image_tutorial_levelselect);
 		stage.addActor(image_back);
 	
-
+		
 	}
 
 	@Override

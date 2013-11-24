@@ -30,9 +30,9 @@ public class MenuScreen implements Screen {
 	private Image image_menu, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2, image_menu_creampup_body,
 			image_menu_creampup_paw, image_menu_creampup_paw2, image_menu_bluepup, image_puppydash, image_play, image_options, image_highscores,
 			image_customization;
-	private Sequence sequence;
 	private DogeDashCore game;
 	private Stage stage;
+	private Drawable tempDrawable;
 
 	public MenuScreen(DogeDashCore game) {
 		this.game = game;
@@ -43,8 +43,16 @@ public class MenuScreen implements Screen {
 	public void show() {
 
 		Gdx.input.setInputProcessor(stage);
+		initBackground();
+		initForeground();
+		initInput();
+		initActors();
+
+	}
+
+	private void initBackground() {
 		// background shit
-		Drawable tempDrawable = new TextureRegionDrawable(Assets.menu);
+		tempDrawable = new TextureRegionDrawable(Assets.menu);
 		image_menu = new Image(tempDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
 
@@ -95,6 +103,9 @@ public class MenuScreen implements Screen {
 		image_menu_blackpup2.setX(260);
 		image_menu_blackpup2.setY(250);
 
+	}
+
+	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.play);
 		image_play = new Image(tempDrawable);
 		image_play.setX(30);
@@ -118,6 +129,9 @@ public class MenuScreen implements Screen {
 		image_customization.setX(30);
 		image_customization.setY(120);
 
+	}
+
+	private void initInput() {
 		image_play.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -133,7 +147,8 @@ public class MenuScreen implements Screen {
 				GameAudio.dogeBark();
 				image_play.setOrigin(image_play.getWidth() / 4, image_play.getHeight() / 2);
 				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
+				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
 			}
 		});
 
@@ -152,7 +167,8 @@ public class MenuScreen implements Screen {
 				GameAudio.dogeBark();
 				image_options.setOrigin(image_options.getWidth() / 4, image_options.getHeight() / 2);
 				image_options.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
+				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
 			}
 		});
 
@@ -171,10 +187,11 @@ public class MenuScreen implements Screen {
 				GameAudio.dogeBark();
 				image_highscores.setOrigin(image_highscores.getWidth() / 4, image_highscores.getHeight() / 2);
 				image_highscores.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
-			
+				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
+
 			}
-			
+
 		});
 
 		image_customization.addListener(new InputListener() {
@@ -185,17 +202,21 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						//game.setScreen(new SplashScreen(game));
+						// game.setScreen(new SplashScreen(game));
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
 				image_customization.setOrigin(image_customization.getWidth() / 4, image_customization.getHeight() / 2);
 				image_customization.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),rotateBy(-5, 0.3f, Interpolation.swing) ,completeAction)));
+				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
 			}
 		});
 
+	}
+
+	private void initActors() {
 		stage.addActor(image_menu);
 
 		stage.addActor(image_menu_blackpup);

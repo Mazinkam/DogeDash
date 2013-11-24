@@ -37,7 +37,7 @@ public class HighscoresScreen implements Screen {
 
 	private Image image_easyHighscore, image_normalHighscore, image_hardHighscore;
 	private Image image_chosenTime, image_chosenCaughtPups, image_chosenMissedPups, image_chosenStyle, image_chosenPupPoints;
-	
+
 	private GameText easyHighscore, normalHighscore, hardHighscore;
 	private GameText chosenTime, chosenCaughtPups, chosenMissedPups, chosenStyle, chosenPupPoints;
 
@@ -60,7 +60,7 @@ public class HighscoresScreen implements Screen {
 		chosenMissedPups = new GameText();
 		chosenPupPoints = new GameText();
 		chosenStyle = new GameText();
-	
+
 		stage = new Stage();
 	}
 
@@ -92,6 +92,14 @@ public class HighscoresScreen implements Screen {
 		// }));
 		Gdx.input.setInputProcessor(inputMuiltiplex);
 
+		initBackground();
+		initForeground();
+		initInput();
+		initActors();
+
+	}
+
+	private void initBackground() {
 		// background shit
 		tempDrawable = new TextureRegionDrawable(Assets.menu);
 		image_menu = new Image(tempDrawable, Scaling.stretch);
@@ -129,13 +137,20 @@ public class HighscoresScreen implements Screen {
 		image_menu_creampup_paw2.setX(290);
 		image_menu_creampup_paw2.setY(10);
 
+		tempDrawable = new TextureRegionDrawable(Assets.back);
+		image_back = new Image(tempDrawable);
+		image_back.setX(660);
+		image_back.setY(20);
+
+	}
+
+	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.lvl1);
 		image_lvl1 = new Image(tempDrawable);
 		image_lvl1.setX(30);
 		image_lvl1.setY(340);
 
 		tempDrawable = new TextureRegionDrawable(Assets.lvl2);
-
 		image_lvl2 = new Image(tempDrawable);
 		image_lvl2.setX(30);
 		image_lvl2.setY((340 - Assets.lvl1.getRegionHeight() * 1) - 10);
@@ -150,31 +165,28 @@ public class HighscoresScreen implements Screen {
 		image_lvl3.setX(30);
 		image_lvl3.setY((340 - Assets.lvl1.getRegionHeight() * 2) - 20);
 
-		
 		tempDrawable = new TextureRegionDrawable(Assets.easySmall);
 		image_easyHighscore = new Image(tempDrawable);
 		image_easyHighscore.setX(360);
 		image_easyHighscore.setY(435);
 		easyHighscore.setX(600);
-		easyHighscore.setY(435+Assets.easySmall.getRegionHeight());
+		easyHighscore.setY(435 + Assets.easySmall.getRegionHeight());
 		easyHighscore.setText("Choose");
-		
+
 		tempDrawable = new TextureRegionDrawable(Assets.normalSmall);
 		image_normalHighscore = new Image(tempDrawable);
 		image_normalHighscore.setX(360);
 		image_normalHighscore.setY(385);
 		normalHighscore.setX(600);
-		normalHighscore.setY(385+Assets.normalSmall.getRegionHeight());
+		normalHighscore.setY(385 + Assets.normalSmall.getRegionHeight());
 		normalHighscore.setText("a");
 
-
-		
 		tempDrawable = new TextureRegionDrawable(Assets.hardSmall);
 		image_hardHighscore = new Image(tempDrawable);
 		image_hardHighscore.setX(360);
 		image_hardHighscore.setY(335);
 		hardHighscore.setX(600);
-		hardHighscore.setY(335+Assets.hardSmall.getRegionHeight());
+		hardHighscore.setY(335 + Assets.hardSmall.getRegionHeight());
 		hardHighscore.setText("stage");
 
 		tempDrawable = new TextureRegionDrawable(Assets.time);
@@ -182,31 +194,31 @@ public class HighscoresScreen implements Screen {
 		image_chosenTime.setX(360);
 		image_chosenTime.setY(220);
 		chosenTime.setX(600);
-		chosenTime.setY(220+Assets.time.getRegionHeight());
+		chosenTime.setY(220 + Assets.time.getRegionHeight());
 		chosenTime.setText("and");
-		
+
 		tempDrawable = new TextureRegionDrawable(Assets.stylepoints);
 		image_chosenStyle = new Image(tempDrawable);
 		image_chosenStyle.setX(360);
 		image_chosenStyle.setY(190);
 		chosenStyle.setX(600);
-		chosenStyle.setY(190+Assets.stylepoints.getRegionHeight());
+		chosenStyle.setY(190 + Assets.stylepoints.getRegionHeight());
 		chosenStyle.setText("a");
-		
+
 		tempDrawable = new TextureRegionDrawable(Assets.puppiescaught);
 		image_chosenCaughtPups = new Image(tempDrawable);
 		image_chosenCaughtPups.setX(360);
 		image_chosenCaughtPups.setY(160);
 		chosenCaughtPups.setX(600);
-		chosenCaughtPups.setY(160+Assets.puppiescaught.getRegionHeight());
+		chosenCaughtPups.setY(160 + Assets.puppiescaught.getRegionHeight());
 		chosenCaughtPups.setText("difficulty");
-		
+
 		tempDrawable = new TextureRegionDrawable(Assets.pup_missed);
 		image_chosenMissedPups = new Image(tempDrawable);
 		image_chosenMissedPups.setX(360);
 		image_chosenMissedPups.setY(130);
 		chosenMissedPups.setX(600);
-		chosenMissedPups.setY(130+Assets.pup_missed.getRegionHeight());
+		chosenMissedPups.setY(130 + Assets.pup_missed.getRegionHeight());
 		chosenMissedPups.setText("to display");
 
 		tempDrawable = new TextureRegionDrawable(Assets.pup_points);
@@ -214,14 +226,12 @@ public class HighscoresScreen implements Screen {
 		image_chosenPupPoints.setX(360);
 		image_chosenPupPoints.setY(100);
 		chosenPupPoints.setX(600);
-		chosenPupPoints.setY(100+Assets.pup_points.getRegionHeight());
+		chosenPupPoints.setY(100 + Assets.pup_points.getRegionHeight());
 		chosenPupPoints.setText("your stats!");
 
-		tempDrawable = new TextureRegionDrawable(Assets.back);
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
+	}
 
+	private void initInput() {
 		image_lvl1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -266,6 +276,7 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				tableName = "levelNight";
+				levelNum = 2;
 				GameAudio.dogeBark();
 				image_lvl2.setOrigin(image_lvl2.getWidth() / 4, image_lvl2.getHeight() / 2);
 				image_lvl2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -294,11 +305,12 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
+				levelNum = 3;
 				image_lvl3.setOrigin(image_lvl3.getWidth() / 4, image_lvl3.getHeight() / 2);
 				image_lvl3.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_lvl3.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				
+
 				easyHighscore.setText("missingNo");
 				normalHighscore.setText("missingNo");
 				hardHighscore.setText("missingNo");
@@ -311,49 +323,20 @@ public class HighscoresScreen implements Screen {
 			}
 
 		});
-		
-		easyHighscore.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						image_lvl2.clearActions();
-						image_lvl3.clearActions();
-						image_lvl1.clearActions();
-				
-						easyHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
-						return true;
-					}
-				};
-				GameAudio.dogeBark();
-				levelNum = 1;
-				easyHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
-				easyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				easyHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
 
 
-				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
-			}
-		});
 		image_easyHighscore.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
-			
+
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 						image_normalHighscore.clearActions();
 						image_hardHighscore.clearActions();
-						image_easyHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
+						image_easyHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f),
+								delay(0.5f))));
 						return true;
 					}
 				};
@@ -362,56 +345,58 @@ public class HighscoresScreen implements Screen {
 				image_easyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_easyHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				if(levelNum >0){
-				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+				if (levelNum > 0) {
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
 				}
 			}
 		});
-		
+
 		image_normalHighscore.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
-			
+
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 						image_easyHighscore.clearActions();
 						image_hardHighscore.clearActions();
-						image_normalHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
+						image_normalHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f),
+								delay(0.5f))));
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
 				image_normalHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				image_normalHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_normalHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
-				if(levelNum >0){
-				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+				image_normalHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
+						rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
+				if (levelNum > 0) {
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
 				}
 			}
 		});
-		
+
 		image_hardHighscore.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
-			
+
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 						image_easyHighscore.clearActions();
 						image_normalHighscore.clearActions();
-						image_hardHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
+						image_hardHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f),
+								delay(0.5f))));
 						return true;
 					}
 				};
@@ -420,16 +405,15 @@ public class HighscoresScreen implements Screen {
 				image_hardHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				image_hardHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				if(levelNum >0){
-				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+				if (levelNum > 0) {
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
 				}
 			}
 		});
-
 
 		image_back.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -451,6 +435,9 @@ public class HighscoresScreen implements Screen {
 			}
 		});
 
+	}
+
+	private void initActors() {
 		stage.addActor(image_menu);
 
 		stage.addActor(image_back);
@@ -472,35 +459,22 @@ public class HighscoresScreen implements Screen {
 		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(image_menu_creampup_paw2);
-		// stage.addActor(new Actor() {
-		// @Override
-		// public void draw(SpriteBatch batch, float arg1) {
-		// batch.end();
-		// bg_rect.begin(ShapeType.FilledRectangle);
-		// bg_rect.filledRect(0, 0, 800, 480);
-		// bg_rect.setColor(0, 0f, 0f, 0.2f);
-		// bg_rect.end();
-		// batch.begin();
-		// }
-		// });
 
 		stage.addActor(image_lvl1);
 		stage.addActor(image_back);
 		stage.addActor(image_lvl2);
 		stage.addActor(image_lvl3);
 
-
-		
 		stage.addActor(image_normalHighscore);
 		stage.addActor(image_hardHighscore);
 		stage.addActor(image_easyHighscore);
-		
+
 		stage.addActor(image_chosenTime);
 		stage.addActor(image_chosenCaughtPups);
 		stage.addActor(image_chosenMissedPups);
 		stage.addActor(image_chosenStyle);
 		stage.addActor(image_chosenPupPoints);
-		
+
 		stage.addActor(normalHighscore);
 		stage.addActor(hardHighscore);
 		stage.addActor(easyHighscore);

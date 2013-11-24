@@ -38,7 +38,6 @@ public class Background extends Actor {
 
 	private void updateBgMovement() {
 		x -= 4;
-
 		if (getX() >= -Assets.bg_big_day.getWidth()) {
 			// position.x += 4794;
 			addAction(Actions.moveTo(x, getY()));

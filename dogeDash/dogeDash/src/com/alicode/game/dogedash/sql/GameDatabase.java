@@ -13,6 +13,7 @@ import com.badlogic.gdx.sql.SQLiteGdxException;
 public class GameDatabase {
 
 	private Database dbHandler;
+	
 
 	private static final String DATABASE_NAME = "dogeGameDB";
 

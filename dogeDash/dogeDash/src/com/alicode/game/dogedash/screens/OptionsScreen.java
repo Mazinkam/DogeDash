@@ -44,13 +44,22 @@ public class OptionsScreen implements Screen {
 		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
 		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
 		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMuiscOn: " + isMuiscOn + " isVibrationOn " + isVibrationOn );
 	}
 
 	@Override
 	public void show() {
 
 		Gdx.input.setInputProcessor(stage);
+		initBackground();
+		initForeground();
+		initInput();
+		initActors();
 		// background shit
+
+	}
+
+	private void initBackground() {
 		tempDrawable = new TextureRegionDrawable(Assets.menu);
 		image_menu = new Image(tempDrawable, Scaling.stretch);
 		image_menu.setFillParent(true);
@@ -87,6 +96,15 @@ public class OptionsScreen implements Screen {
 		image_menu_creampup_paw2.setX(290);
 		image_menu_creampup_paw2.setY(10);
 
+		tempDrawable = new TextureRegionDrawable(Assets.back);
+
+		image_back = new Image(tempDrawable);
+		image_back.setX(660);
+		image_back.setY(20);
+
+	}
+
+	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.options_title);
 		image_options_title = new Image(tempDrawable);
 		image_options_title.setX(50);
@@ -121,12 +139,9 @@ public class OptionsScreen implements Screen {
 		image_vibration.setX(30);
 		image_vibration.setY(150);
 
-		tempDrawable = new TextureRegionDrawable(Assets.back);
+	}
 
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
-
+	private void initInput() {
 		image_sound.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -219,7 +234,7 @@ public class OptionsScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn,isMuiscOn, isVibrationOn));
+						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMuiscOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}
@@ -232,6 +247,9 @@ public class OptionsScreen implements Screen {
 			}
 		});
 
+	}
+
+	private void initActors() {
 		stage.addActor(image_menu);
 
 		stage.addActor(image_back);

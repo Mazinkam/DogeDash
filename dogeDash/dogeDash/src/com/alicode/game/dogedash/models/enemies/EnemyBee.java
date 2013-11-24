@@ -17,7 +17,6 @@ public class EnemyBee extends Actor {
 	private final Animation beeFlyingAnim;
 	private float beeFlyingAnimState;
 	private Array<TextureRegion> beeFlying;
-	private Array<? extends TextureRegion> beeFlyingFrames;
 	private Rectangle bounds = new Rectangle();
 
 	public EnemyBee(float x, float y) {
@@ -26,14 +25,14 @@ public class EnemyBee extends Actor {
 		setPosition(x, y - getHeight() / 2);
 
 		beeFlying = new Array<TextureRegion>();
-		beeFlyingFrames = new Array<TextureRegion>();
+
 
 		beeFlying.add(Assets.enemyBee);
 		beeFlying.add(Assets.enemyBee2);
 		beeFlying.add(Assets.enemyBee3);
-		beeFlyingFrames.addAll(beeFlying);
 
-		this.beeFlyingAnim = new Animation(0.15f, beeFlyingFrames);
+
+		this.beeFlyingAnim = new Animation(0.15f, beeFlying);
 
 		addAction(Actions.moveTo(-getWidth(), getY(), MathUtils.random( 2.5f,  3.5f)));
 	}

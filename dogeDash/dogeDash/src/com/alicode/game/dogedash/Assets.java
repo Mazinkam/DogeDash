@@ -2,6 +2,7 @@ package com.alicode.game.dogedash;
 
 import java.util.logging.Level;
 
+import com.alicode.game.dogedash.screens.OptionsScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -12,7 +13,6 @@ import com.sun.xml.internal.ws.api.pipe.NextAction;
 
 public class Assets {
 	public static TextureAtlas atlas;
-
 	public static TextureRegion menu_blackpup, menu_blackpup2, menu_bluepup, menu_creampup_body, menu_creampup_paw, menu_creampup_paw2,
 			menu_mom_nose_paw, menu_mombody;
 	public static TextureRegion menu, splash, background, background2;
@@ -84,11 +84,18 @@ public class Assets {
 		loadShop();
 		loadText();
 		loadButtons();
+		initSound();
 
 		// bgs
 		bg_big_day = new Texture(Gdx.files.internal("core/background_big.png"));
 		bg_big_night = new Texture(Gdx.files.internal("core/background_big2.png"));
 
+	}
+
+	private static void initSound() {
+		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+		OptionsScreen.isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 	}
 
 	private static void loadButtons() {
