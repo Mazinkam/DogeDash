@@ -15,7 +15,7 @@ public class Assets {
 	public static TextureAtlas atlas;
 	public static TextureRegion menu_blackpup, menu_blackpup2, menu_bluepup, menu_creampup_body, menu_creampup_paw, menu_creampup_paw2,
 			menu_mom_nose_paw, menu_mombody;
-	public static TextureRegion menu, splash, background, background2;
+	public static TextureRegion menu, splash, background, background2, ninePatchBox;
 
 	public static TextureRegion character, character2, characterJump, characterHit, characterHit2, characterDie, characterDieCircle, dogsuper1,
 			dogsuper2, energy1, energy2, energy3, night_dogsuper2;
@@ -183,6 +183,7 @@ public class Assets {
 		tab_nose = atlas.findRegion("menu/shop/tab_nose_open");
 
 		shopItemBox = atlas.findRegion("menu/shop/shopItemBox");
+		ninePatchBox = atlas.findRegion("menu/shop/shopItemBox.9");
 		currentBox = atlas.findRegion("menu/shop/currentBox");
 
 	}

@@ -6,16 +6,14 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.models.MenuNinePatch;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
-import com.alicode.game.dogedash.models.enemies.EnemyBee;
 import com.alicode.game.dogedash.sql.Costume;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameInput;
@@ -23,9 +21,8 @@ import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -54,10 +51,11 @@ public class CustomizationScreen implements Screen {
 
 	private Image image_customTitle, image_currentBox, image_currentTab, image_next, image_previous, image_currentItemsTxt;
 
-	private Image image_shopBackItem, image_shopHeadItem, image_shopNoseItem, image_shopBox, image_itemLock;
+	private Image image_shopBackItem, image_shopHeadItem, image_shopNoseItem, image_shopEyesItem;
 	private Image backImagePreview, noseImagePreview, eyesImagePreview, headImagePreview;
-	
+
 	private WindowOverlay winOverlay;
+	private NinePatch ninePatch = new NinePatch(Assets.ninePatchBox);
 
 	private Array<Image> image_shopCurrentItem;
 	private Array<Image> image_shopCurrentItemBox;
@@ -407,10 +405,15 @@ public class CustomizationScreen implements Screen {
 	}
 
 	private void buySelectedItem() {
-
-	
-
-
+		if (menuState == MenuState.Buying) {
+			WindowOverlay winO = new WindowOverlay();
+			winO.setX(200);
+			winO.setY(100);
+			winO.setWidth(stage.getWidth()/2);
+			winO.setHeight(stage.getHeight()/2);
+			stage.addActor(winO);
+			//add touch handler for items and clicking on bg
+		}
 	}
 
 	private void initInput() {
@@ -555,7 +558,7 @@ public class CustomizationScreen implements Screen {
 		stage.addActor(image_dogeCoin);
 		stage.addActor(image_currentBox);
 		stage.addActor(image_currentTab);
-		
+
 		stage.addActor(image_next);
 		stage.addActor(image_previous);
 		stage.addActor(image_currentItemsTxt);
@@ -564,8 +567,6 @@ public class CustomizationScreen implements Screen {
 		stage.addActor(eyesButton);
 		stage.addActor(headButton);
 		stage.addActor(backButton);
-		
-	
 
 	}
 

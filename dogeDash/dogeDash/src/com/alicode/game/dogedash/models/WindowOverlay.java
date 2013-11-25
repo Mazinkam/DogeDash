@@ -16,10 +16,46 @@ public class WindowOverlay extends Actor {
 	private Rectangle bounds = new Rectangle();
 	
 	ShapeRenderer renderer;
-
+	private float x, y;
+	private float width, height;
 	public WindowOverlay() {
 	       renderer = new ShapeRenderer();
-			
+	       x = 0;
+	       y = 0;
+	       width = 800;
+	       height = 480;
+	}
+
+	public float getX() {
+		return x;
+	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public void setY(float y) {
+		this.y = y;
+	}
+
+	public float getWidth() {
+		return width;
+	}
+
+	public void setWidth(float width) {
+		this.width = width;
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
 	}
 
 	@Override
@@ -33,7 +69,7 @@ public class WindowOverlay extends Actor {
 		Gdx.gl.glEnable(GL20.GL_BLEND);
         renderer.begin(ShapeType.FilledRectangle);
         renderer.setColor(0, 0, 0, 0.5f);
-        renderer.filledRect(0, 0, 800, 480);
+        renderer.filledRect(x, y, width, height);
         renderer.end();
         batch.begin();
 	}
@@ -41,10 +77,6 @@ public class WindowOverlay extends Actor {
 	public void playerHit(boolean front, boolean above) {
 
 		addAction(Actions.repeat(10,Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))));
-	}
-
-	private void updateBounds() {
-		bounds.set(getX(), getY(), getWidth(), getHeight());
 	}
 
 	public Rectangle getBounds() {
