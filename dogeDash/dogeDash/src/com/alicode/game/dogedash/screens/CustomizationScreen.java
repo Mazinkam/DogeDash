@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
-import com.alicode.game.dogedash.models.MenuNinePatch;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.sql.Costume;
@@ -20,6 +19,7 @@ import com.alicode.game.dogedash.utils.GameInput;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -60,6 +60,7 @@ public class CustomizationScreen implements Screen {
 	private Array<Image> image_shopCurrentItem;
 	private Array<Image> image_shopCurrentItemBox;
 	private Array<Image> image_shopCurrentItemLock;
+	private Array<GameText> shopCurrentItemPriceTag;
 	Array<TextureRegion> currentList;
 	ArrayList<Integer> currentItemOwnedList;
 	ArrayList<Integer> currentItemPriceList;
@@ -82,8 +83,10 @@ public class CustomizationScreen implements Screen {
 	private Actor noseButton, eyesButton, headButton, backButton;
 
 	private DogeDashCore game;
+	
+	private Image image_shop_after, image_shop_not_enough, image_shop_price, image_shopDogeBuyCoin;
 
-	private GameText dogeCoins, itemPrice, leftOverCoins, selectedItem;
+	private GameText dogeCoins, leftOverCoins, selectedItem;
 	private String tableName;
 
 	private Drawable tempDrawable;
@@ -124,6 +127,7 @@ public class CustomizationScreen implements Screen {
 		image_shopCurrentItem = new Array<Image>();
 		image_shopCurrentItemLock = new Array<Image>();
 		image_shopCurrentItemBox = new Array<Image>();
+		shopCurrentItemPriceTag = new Array<GameText>();
 
 		noseShopItemsPreview = new Array<TextureRegion>();
 		headShopItemsPreview = new Array<TextureRegion>();
@@ -323,9 +327,11 @@ public class CustomizationScreen implements Screen {
 			image_shopCurrentItem.get(i).remove();
 			image_shopCurrentItemBox.get(i).remove();
 			image_shopCurrentItemLock.get(i).remove();
+			shopCurrentItemPriceTag.get(i).remove();
+
 		}
 		if (image_shopCurrentItem.size > 1) {
-
+			shopCurrentItemPriceTag.clear();
 			image_shopCurrentItem.clear();
 			image_shopCurrentItemBox.clear();
 			image_shopCurrentItemLock.clear();
@@ -370,11 +376,15 @@ public class CustomizationScreen implements Screen {
 			if (currentItemOwnedList.get(i) == 0) {
 				tempDrawable = new TextureRegionDrawable(Assets.itemLock);
 				image_shopCurrentItemLock.add(new Image(tempDrawable));
-				image_shopCurrentItemLock.get(i).setX(285 + 65 * i);
-				image_shopCurrentItemLock.get(i).setY(240);
+				image_shopCurrentItemLock.get(i).setX(287 + 65 * i);
+				image_shopCurrentItemLock.get(i).setY(282);
 			}
+			shopCurrentItemPriceTag.add(new GameText(315 + 65 * i, 260, "" + currentItemPriceList.get(i)));
+			shopCurrentItemPriceTag.get(i).setSize(0.7f);
+			shopCurrentItemPriceTag.get(i).setAlpha(0.5f);
 
 			stage.addActor(image_shopCurrentItem.get(i));
+			stage.addActor(shopCurrentItemPriceTag.get(i));
 			stage.addActor(image_shopCurrentItemLock.get(i));
 			stage.addActor(image_shopCurrentItemBox.get(i));
 
@@ -400,7 +410,7 @@ public class CustomizationScreen implements Screen {
 		}
 
 		Gdx.app.log(DogeDashCore.LOG, "Cur state: " + state + " Curr table: " + tableName + " image_shopCurrentItem " + image_shopCurrentItem.size
-				+ " currentList " + currentList.size);
+				+ " currentList " + currentList.size + " shopCurrentItemPriceTag: " + shopCurrentItemPriceTag.size);
 
 	}
 
@@ -409,10 +419,34 @@ public class CustomizationScreen implements Screen {
 			WindowOverlay winO = new WindowOverlay();
 			winO.setX(200);
 			winO.setY(100);
-			winO.setWidth(stage.getWidth()/2);
-			winO.setHeight(stage.getHeight()/2);
+			winO.setWidth(stage.getWidth() / 2);
+			winO.setHeight(stage.getHeight() / 2);
+
+			
+			tempDrawable = new TextureRegionDrawable(Assets.shop_price);
+			image_shop_price = new Image(tempDrawable);
+			image_shop_price.setX(220);
+			image_shop_price.setY(300);
+			
+			tempDrawable = new TextureRegionDrawable(Assets.shop_after);
+			image_shop_after = new Image(tempDrawable);
+			image_shop_after.setX(220);
+			image_shop_after.setY(250);
+			
+			
+			tempDrawable = new TextureRegionDrawable(Assets.chowcoin);
+			image_shopDogeBuyCoin = new Image(tempDrawable);
+			image_shopDogeBuyCoin.setX(270);
+			image_shopDogeBuyCoin.setY(100);
+//			
+			
+
+			
 			stage.addActor(winO);
-			//add touch handler for items and clicking on bg
+			stage.addActor(image_shop_after);
+			stage.addActor(image_shopDogeBuyCoin);
+			stage.addActor(image_shop_price);
+			
 		}
 	}
 

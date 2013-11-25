@@ -219,7 +219,6 @@ public class Assets {
 		shop_after = atlas.findRegion("menu/txt/shop_after");
 		shop_not_enough = atlas.findRegion("menu/txt/shop_not_enough");
 		shop_price = atlas.findRegion("menu/txt/shop_price");
-
 		// titles/title txt
 		puppydash = atlas.findRegion("menu/txt/puppydash");
 

@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.utils.txt;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -34,7 +35,21 @@ public class GameText extends Actor {
 		font.draw(batch, text, x, y);
 
 	}
-
+	
+	public void setSize(float x) {
+		font.setScale(x);
+	}
+	
+	public void setColor(Color c)
+	{
+		font.setColor(c);
+	}
+	
+	public void setAlpha(float a)
+	{
+		font.setColor(0, 0, 0, a);
+	}
+	
 	public void setX(int x) {
 		this.x = x;
 	}
