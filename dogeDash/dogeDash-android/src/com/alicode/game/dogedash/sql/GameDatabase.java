@@ -84,20 +84,7 @@ public class GameDatabase implements GameDatabaseInterface{
 			+ CREATE_COSTUME_EYES_TABLE + CREATE_COSTUME_HEAD_TABLE + CREATE_COSTUME_NOSE_TABLE + CREATE_SETTINGS_TABLE + CREATE_MISC_TABLE;
 
 	public GameDatabase() {
-		Gdx.app.log(DogeDashCore.LOG, "DB initalizing");
-		dbHandler = DatabaseFactory.getNewDatabase(DATABASE_NAME, DATABASE_VERSION, DATABASE_CREATE, null);
-
-		dbHandler.setupDatabase();
-		try {
-			dbHandler.openOrCreateDatabase();
-			dropTheBase();
-			dbHandler.execSQL(DATABASE_CREATE);
-		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
-		}
-		initDb();
-		Gdx.app.log(DogeDashCore.LOG, "DB initalized");
-
+	
 	}
 
 	private void initDb() {
@@ -238,6 +225,23 @@ public class GameDatabase implements GameDatabaseInterface{
 			}
 		}
 
+	}
+	@Override
+	public void create() {
+		Gdx.app.log(DogeDashCore.LOG, "DB initalizing");
+		dbHandler = DatabaseFactory.getNewDatabase(DATABASE_NAME, DATABASE_VERSION, DATABASE_CREATE, null);
+
+		dbHandler.setupDatabase();
+		try {
+			dbHandler.openOrCreateDatabase();
+			//dropTheBase();
+			dbHandler.execSQL(DATABASE_CREATE);
+		} catch (SQLiteGdxException e) {
+			e.printStackTrace();
+		}
+		initDb();
+		Gdx.app.log(DogeDashCore.LOG, "DB initalized");
+		
 	}
 
 	public void dropTheBase() throws SQLiteGdxException {
@@ -593,21 +597,5 @@ public class GameDatabase implements GameDatabaseInterface{
 		Gdx.app.log(DogeDashCore.LOG, "dispose DB");
 	}
 
-	@Override
-	public void create() {
-		Gdx.app.log(DogeDashCore.LOG, "DB initalizing");
-		dbHandler = DatabaseFactory.getNewDatabase(DATABASE_NAME, DATABASE_VERSION, DATABASE_CREATE, null);
 
-		dbHandler.setupDatabase();
-		try {
-			dbHandler.openOrCreateDatabase();
-			dropTheBase();
-			dbHandler.execSQL(DATABASE_CREATE);
-		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
-		}
-		initDb();
-		Gdx.app.log(DogeDashCore.LOG, "DB initalized");
-		
-	}
 }

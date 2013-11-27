@@ -1,10 +1,8 @@
 package com.alicode.game.dogedash.sql;
 
-import com.alicode.game.dogedash.Assets;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Costume extends TextureRegion{
+public class Costume extends Actor{
 
 	int id;
 	int isOwned;

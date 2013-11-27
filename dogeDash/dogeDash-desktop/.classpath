@@ -10,7 +10,8 @@
 	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-sources.jar"/>
 	<classpathentry kind="lib" path="/dogeDash/libs/gdx-sources.jar"/>
 	<classpathentry kind="lib" path="/dogeDash/libs/gdx.jar" sourcepath="/dogeDash/libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Bahamut/Documents/GitHub/DogeDash/dogeDash/dogeDash-desktop/libs/sqlite-jdbc-3.7.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Bahamut/Documents/GitHub/DogeDash/dogeDash/dogeDash-desktop/libs/gdx-sqlite-desktop.jar"/>
+	<classpathentry kind="lib" path="/dogeDash/libs/gdx-sqlite.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-sqlite-desktop.jar"/>
+	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

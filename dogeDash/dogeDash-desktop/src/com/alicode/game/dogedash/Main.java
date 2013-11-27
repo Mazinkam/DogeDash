@@ -1,5 +1,7 @@
 package com.alicode.game.dogedash;
 
+import com.alicode.game.dogedash.sql.GameDatabase;
+import com.alicode.game.dogedash.sql.GameDatabaseInterface;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -10,7 +12,8 @@ public class Main {
 		cfg.useGL20 = true;
 		cfg.width = 800;
 		cfg.height = 480;
+		GameDatabaseInterface db = new GameDatabase();
 		
-		new LwjglApplication(new DogeDashCore(), cfg);
+		new LwjglApplication(new DogeDashCore(db), cfg);
 	}
 }

@@ -119,6 +119,7 @@ public class Assets {
 		shop_no = atlas.findRegion("menu/buttons/shop_no");
 		shop_yes = atlas.findRegion("menu/buttons/shop_yes");
 
+
 		// pause
 		pause_menu = atlas.findRegion("menu/buttons/pause_menu");
 		pause_resume = atlas.findRegion("menu/buttons/pause_resume");
@@ -195,7 +196,7 @@ public class Assets {
 		difficulty = atlas.findRegion("menu/txt/difficulty");
 		hard = atlas.findRegion("menu/txt/hard");
 		easy = atlas.findRegion("menu/txt/easy");
-		normal = atlas.findRegion("menu/txt/normal");
+		normal = atlas.findRegion("menu/txt/normal");		
 
 		hardSmall = atlas.findRegion("menu/txt/hard2");
 		easySmall = atlas.findRegion("menu/txt/easy2");
@@ -219,6 +220,9 @@ public class Assets {
 		shop_after = atlas.findRegion("menu/txt/shop_after");
 		shop_not_enough = atlas.findRegion("menu/txt/shop_not_enough");
 		shop_price = atlas.findRegion("menu/txt/shop_price");
+		shop_currentcoins = atlas.findRegion("menu/txt/shop_currentcoins");
+		shop_buyitem = atlas.findRegion("menu/txt/shop_buyitem");
+		
 		// titles/title txt
 		puppydash = atlas.findRegion("menu/txt/puppydash");
 

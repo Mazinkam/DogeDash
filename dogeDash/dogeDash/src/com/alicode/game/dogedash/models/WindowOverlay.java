@@ -17,13 +17,14 @@ public class WindowOverlay extends Actor {
 	
 	ShapeRenderer renderer;
 	private float x, y;
-	private float width, height;
+	private float width, height, alpha;
 	public WindowOverlay() {
 	       renderer = new ShapeRenderer();
 	       x = 0;
 	       y = 0;
 	       width = 800;
 	       height = 480;
+	       alpha=0.6f;
 	}
 
 	public float getX() {
@@ -68,10 +69,14 @@ public class WindowOverlay extends Actor {
 		batch.end();
 		Gdx.gl.glEnable(GL20.GL_BLEND);
         renderer.begin(ShapeType.FilledRectangle);
-        renderer.setColor(0, 0, 0, 0.5f);
+        renderer.setColor(0, 0, 0, alpha);
         renderer.filledRect(x, y, width, height);
         renderer.end();
         batch.begin();
+	}
+	public void setAlpha( float a)
+	{
+		alpha = a;
 	}
 
 	public void playerHit(boolean front, boolean above) {
