@@ -12,6 +12,7 @@ public class Bush extends Actor {
 
 	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
+	private float x;
 
 	public Bush(float x, float y) {
 		setWidth(Assets.gameBush.getRegionWidth());
@@ -19,9 +20,7 @@ public class Bush extends Actor {
 		setPosition(x, y - getHeight() / 2);
 
 		chosenType = Assets.gameBush;
-
-		addAction(Actions.moveTo(-getWidth(), getY(), 3.9f));
-//		addAction(Actions.repeat(10, Actions.sequence(Actions.sizeBy(5f, 5f, 1f),Actions.sizeBy(-5f, -5f, 1f))));
+		this.x = x;
 
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
@@ -30,8 +29,14 @@ public class Bush extends Actor {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		// updateRotation();
+		updateMovement();
 		updateBounds();
+	}
+
+	private void updateMovement() {
+		x -= Statics.backgroundSpeed;
+		addAction(Actions.moveTo(x, getY()));
+
 	}
 
 	@Override
@@ -44,7 +49,7 @@ public class Bush extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 
-		addAction(Actions.repeat(10,Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))));
+		addAction(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))));
 	}
 
 	private void updateBounds() {

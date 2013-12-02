@@ -14,6 +14,7 @@ public class Flower extends Actor {
 
 	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
+	private float x;
 
 	public Flower(float x, float y) {
 		int randomNum = 1 + (int) (Math.random() * 4);
@@ -29,8 +30,9 @@ public class Flower extends Actor {
 			chosenType = Assets.flower3;
 		if (randomNum == 4)
 			chosenType = Assets.flower4;
+		
+		this.x = x;
 
-		addAction(Actions.moveTo(-getWidth(), getY(), 3.5f));
 		addAction(Actions.repeat(10,Actions.sequence( Actions.rotateBy(10f, 1f), Actions.rotateBy(-10f, 1f))));
 	
 		if (Statics.gameLevel == 2)
@@ -40,10 +42,16 @@ public class Flower extends Actor {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-//		updateRotation();
+		updateMovement();
 		updateBounds();
 	}
 	
+	private void updateMovement() {
+		x -= Statics.backgroundSpeed;
+		addAction(Actions.moveTo(x, getY()));
+		
+	}
+
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);

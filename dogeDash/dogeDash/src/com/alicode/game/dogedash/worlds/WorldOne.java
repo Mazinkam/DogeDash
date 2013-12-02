@@ -128,6 +128,7 @@ public class WorldOne extends Table {
 				removeActor(enemyBee);
 			}
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds())) {
+				Statics.playerHitByBee = true;
 				beeIter.remove();
 				if (enemyBee.getX() > motherDoge.getX()) {
 					if (enemyBee.getY() > motherDoge.getY())

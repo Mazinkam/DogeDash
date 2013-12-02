@@ -11,18 +11,17 @@ import java.util.List;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.sql.Costume;
 import com.alicode.game.dogedash.sql.Misc;
 import com.alicode.game.dogedash.utils.GameAudio;
-import com.alicode.game.dogedash.utils.GameInput;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -54,6 +53,9 @@ public class CustomizationScreen implements Screen {
 			image_shopYes, image_currentCoins, image_notEnough, image_curBuyingItem, image_curBuyingBox;
 
 	private Image backImagePreview, noseImagePreview, eyesImagePreview, headImagePreview;
+
+	private Image backImageEquip, noseImageEquip, eyesImageEquip, headImageEquip;
+	private Array<Image> itemEquipBox;
 
 	private WindowOverlay winOverlay;
 
@@ -102,7 +104,6 @@ public class CustomizationScreen implements Screen {
 	MenuState menuState = MenuState.Ready;
 
 	public CustomizationScreen(DogeDashCore game) {
-		DogeDashCore.db.updateMisc(new Misc(1, 300));
 		this.game = game;
 		stage = new Stage();
 		motherDoge = new MotherDoge();
@@ -127,6 +128,15 @@ public class CustomizationScreen implements Screen {
 		headImagePreview = new Image(Assets.acc_horns);
 		headImagePreview.setPosition(-100, -100);
 
+		backImageEquip = new Image(Assets.acc_horns);
+		backImageEquip.setPosition(-100, -100);
+		noseImageEquip = new Image(Assets.acc_horns);
+		noseImageEquip.setPosition(-100, -100);
+		eyesImageEquip = new Image(Assets.acc_horns);
+		eyesImageEquip.setPosition(-100, -100);
+		headImageEquip = new Image(Assets.acc_horns);
+		headImageEquip.setPosition(-100, -100);
+
 		backShopItems = new Array<TextureRegion>();
 		noseShopItems = new Array<TextureRegion>();
 		headShopItems = new Array<TextureRegion>();
@@ -137,6 +147,7 @@ public class CustomizationScreen implements Screen {
 		image_shopCurrentItem = new Array<Image>();
 		image_shopCurrentItemBox = new Array<Image>();
 		image_shopCurrentItemLock = new Array<Image>();
+		itemEquipBox = new Array<Image>();
 		shopCurrentItemPriceTag = new Array<GameText>();
 
 		noseShopItemsPreview = new Array<TextureRegion>();
@@ -272,8 +283,8 @@ public class CustomizationScreen implements Screen {
 
 		tempDrawable = new TextureRegionDrawable(Assets.itemsEquipText);
 		image_currentItemsTxt = new Image(tempDrawable);
-		image_currentItemsTxt.setX(30);
-		image_currentItemsTxt.setY(160);
+		image_currentItemsTxt.setX(40);
+		image_currentItemsTxt.setY(170);
 
 		tempDrawable = new TextureRegionDrawable(Assets.button_next);
 		image_next = new Image(tempDrawable);
@@ -437,31 +448,109 @@ public class CustomizationScreen implements Screen {
 
 		switch (state) {
 		case Back:
+			Statics.backCostume = myId;
 			tempDrawable = new TextureRegionDrawable(backShopItemsPreview.get(myId));
 			backImagePreview.setDrawable(tempDrawable);
 			backImagePreview.setX(60);
 			backImagePreview.setY(240);
 
+			tempDrawable = new TextureRegionDrawable(backShopItems.get(myId));
+			backImageEquip.setDrawable(tempDrawable);
+			backImageEquip.setX(20 + 60 * 0);
+			backImageEquip.setY(100);
+			backImageEquip.setSize(backShopItems.get(myId).getRegionWidth(), backShopItems.get(myId).getRegionHeight());
+
+			backImageEquip.addListener(new InputListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					backImageEquip.setDrawable(null);
+					backImagePreview.setDrawable(null);
+					Statics.backCostume = -1;
+				}
+			});
 			break;
 		case Eyes:
+			Statics.eyeCostume = myId;
+
 			tempDrawable = new TextureRegionDrawable(eyesShopItemsPreview.get(myId));
 			eyesImagePreview.setDrawable(tempDrawable);
 			eyesImagePreview.setX(60);
 			eyesImagePreview.setY(240);
 
+			tempDrawable = new TextureRegionDrawable(eyesShopItems.get(myId));
+			eyesImageEquip.setDrawable(tempDrawable);
+			eyesImageEquip.setX(20 + 60 * 2);
+			eyesImageEquip.setY(100);
+			eyesImageEquip.setSize(eyesShopItems.get(myId).getRegionWidth(), eyesShopItems.get(myId).getRegionHeight());
+
+			eyesImageEquip.addListener(new InputListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					eyesImageEquip.setDrawable(null);
+					eyesImagePreview.setDrawable(null);
+					Statics.eyeCostume = -1;
+				}
+			});
+
 			break;
 		case Head:
+			Statics.headCostume = myId;
+
 			tempDrawable = new TextureRegionDrawable(headShopItemsPreview.get(myId));
 			headImagePreview.setDrawable(tempDrawable);
 			headImagePreview.setX(60);
 			headImagePreview.setY(240);
 
+			tempDrawable = new TextureRegionDrawable(headShopItems.get(myId));
+			headImageEquip.setDrawable(tempDrawable);
+			headImageEquip.setX(20 + 60 * 1);
+			headImageEquip.setY(100);
+			headImageEquip.setSize(headShopItems.get(myId).getRegionWidth(), headShopItems.get(myId).getRegionHeight());
+
+			headImageEquip.addListener(new InputListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					headImageEquip.setDrawable(null);
+					headImagePreview.setDrawable(null);
+					Statics.headCostume = -1;
+				}
+			});
+
 			break;
 		case Nose:
+			Statics.noseCostume = myId;
+
 			tempDrawable = new TextureRegionDrawable(noseShopItemsPreview.get(myId));
 			noseImagePreview.setDrawable(tempDrawable);
 			noseImagePreview.setX(60);
 			noseImagePreview.setY(240);
+
+			tempDrawable = new TextureRegionDrawable(noseShopItems.get(myId));
+			noseImageEquip.setDrawable(tempDrawable);
+			noseImageEquip.setX(20 + 60 * 3);
+			noseImageEquip.setY(100);
+			noseImageEquip.setSize(noseShopItems.get(myId).getRegionWidth(), noseShopItems.get(myId).getRegionHeight());
+
+			noseImageEquip.addListener(new InputListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					noseImageEquip.setDrawable(null);
+					noseImagePreview.setDrawable(null);
+					Statics.noseCostume = -1;
+				}
+			});
 
 			break;
 		}
@@ -645,12 +734,6 @@ public class CustomizationScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						// game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_nose);
@@ -670,12 +753,6 @@ public class CustomizationScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						// game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_eyes);
@@ -693,12 +770,6 @@ public class CustomizationScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						// game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_head);
@@ -716,12 +787,6 @@ public class CustomizationScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						// //game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_back);
@@ -799,6 +864,21 @@ public class CustomizationScreen implements Screen {
 		stage.addActor(eyesImagePreview);
 		stage.addActor(noseImagePreview);
 		stage.addActor(headImagePreview);
+
+		for (int i = 0; i < 4; i++) {
+
+			tempDrawable = new TextureRegionDrawable(Assets.shopItemBox);
+			itemEquipBox.add(new Image(tempDrawable));
+			itemEquipBox.get(i).setX(20 + 60 * i);
+			itemEquipBox.get(i).setY(100);
+			stage.addActor(itemEquipBox.get(i));
+
+		}
+
+		stage.addActor(backImageEquip);
+		stage.addActor(eyesImageEquip);
+		stage.addActor(noseImageEquip);
+		stage.addActor(headImageEquip);
 
 	}
 

@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash;
 
 import com.alicode.game.dogedash.screens.CustomizationScreen;
+import com.alicode.game.dogedash.screens.WorldSelection;
 import com.alicode.game.dogedash.sql.GameDatabaseInterface;
 import com.badlogic.gdx.Game;
 
@@ -19,12 +20,17 @@ public class DogeDashCore extends Game {
 		this.db = db;
 	}
 	
+	public DogeDashCore() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void create() {
 		//db = new GameDatabase();
 		db.create();
 		Assets.load();
-		setScreen(new CustomizationScreen(this));
+		setScreen(new WorldSelection(this));
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class Background extends Actor {
 	}
 
 	private void updateBgMovement() {
-		x -= 4;
+		x -= Statics.backgroundSpeed;
 		if (getX() >= -Assets.bg_big_day.getWidth()) {
 			// position.x += 4794;
 			addAction(Actions.moveTo(x, getY()));
@@ -45,7 +45,6 @@ public class Background extends Actor {
 		} else {
 			x += Assets.bg_big_day.getWidth() * 2;
 			addAction(Actions.moveTo(x, getY()));
-			Gdx.app.log(DogeDashCore.LOG, "currentX:: " + x + "getX()" + getX());
 		}
 	}
 }

@@ -94,7 +94,7 @@ public class GameDatabase implements GameDatabaseInterface{
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			dropTheBase();
+			//dropTheBase();
 			dbHandler.execSQL(DATABASE_CREATE);
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
