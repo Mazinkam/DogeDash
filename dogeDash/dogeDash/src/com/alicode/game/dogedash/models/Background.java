@@ -32,8 +32,10 @@ public class Background extends Actor {
 
 	@Override
 	public void act(float delta) {
-		super.act(delta);
-		updateBgMovement();
+		if (Statics.gameRunning) {
+			super.act(delta);
+			updateBgMovement();
+		}
 	}
 
 	private void updateBgMovement() {

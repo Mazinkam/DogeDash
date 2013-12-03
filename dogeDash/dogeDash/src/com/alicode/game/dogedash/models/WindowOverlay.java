@@ -79,11 +79,6 @@ public class WindowOverlay extends Actor {
 		alpha = a;
 	}
 
-	public void playerHit(boolean front, boolean above) {
-
-		addAction(Actions.repeat(10,Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))));
-	}
-
 	public Rectangle getBounds() {
 		return bounds;
 	}

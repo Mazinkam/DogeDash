@@ -30,26 +30,28 @@ public class Flower extends Actor {
 			chosenType = Assets.flower3;
 		if (randomNum == 4)
 			chosenType = Assets.flower4;
-		
+
 		this.x = x;
 
-		addAction(Actions.repeat(10,Actions.sequence( Actions.rotateBy(10f, 1f), Actions.rotateBy(-10f, 1f))));
-	
+		addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(10f, 1f), Actions.rotateBy(-10f, 1f))));
+
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
 	public void act(float delta) {
-		super.act(delta);
-		updateMovement();
-		updateBounds();
+		if (Statics.gameRunning) {
+			super.act(delta);
+			updateMovement();
+			updateBounds();
+		}
 	}
-	
+
 	private void updateMovement() {
 		x -= Statics.backgroundSpeed;
 		addAction(Actions.moveTo(x, getY()));
-		
+
 	}
 
 	@Override

@@ -28,9 +28,11 @@ public class Bush extends Actor {
 
 	@Override
 	public void act(float delta) {
-		super.act(delta);
-		updateMovement();
-		updateBounds();
+		if (Statics.gameRunning) {
+			super.act(delta);
+			updateMovement();
+			updateBounds();
+		}
 	}
 
 	private void updateMovement() {
@@ -49,6 +51,7 @@ public class Bush extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 
+		Statics.cleanseEnemies = true;
 		addAction(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))));
 	}
 
