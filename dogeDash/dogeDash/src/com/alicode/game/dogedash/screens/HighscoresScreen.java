@@ -47,7 +47,7 @@ public class HighscoresScreen implements Screen {
 	private int levelNum, difficultyNum;
 	private String tableName;
 	private Stage stage;
-private WindowOverlay winOverlay;
+	private WindowOverlay winOverlay;
 	private InputMultiplexer inputMuiltiplex;
 
 	public HighscoresScreen(DogeDashCore game) {

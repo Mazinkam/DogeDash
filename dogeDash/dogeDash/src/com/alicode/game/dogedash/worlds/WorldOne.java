@@ -1,9 +1,5 @@
 package com.alicode.game.dogedash.worlds;
 
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.delay;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
-
 import java.util.Iterator;
 
 import com.alicode.game.dogedash.Assets;
@@ -17,27 +13,21 @@ import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.Puppy;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.models.enemies.EnemyBee;
-import com.alicode.game.dogedash.screens.MenuScreen;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.txt.FPSLogger;
 import com.alicode.game.dogedash.utils.txt.GameScore;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class WorldOne extends Table {
-	enum GameState {
-		Ready, Running, Paused, GameOver
-	}
-
-	GameState state = GameState.Ready;
 
 	private Background background, background2;
 	private MotherDoge motherDoge;
@@ -47,8 +37,6 @@ public class WorldOne extends Table {
 	private Group backgroundGroup;
 	private Group onGroundGroup;
 	private Group floatingGroup;
-
-	private WindowOverlay winO;
 
 	private Array<EnemyBee> enemyBees;
 	private Array<Puppy> puppies;
@@ -73,7 +61,6 @@ public class WorldOne extends Table {
 		puppies = new Array<Puppy>();
 		flowers = new Array<Flower>();
 		bushes = new Array<Bush>();
-		winO = new WindowOverlay();
 
 		backgroundGroup = new Group();
 		onGroundGroup = new Group();
@@ -91,7 +78,7 @@ public class WorldOne extends Table {
 		backgroundGroup.addActor(background);
 		backgroundGroup.addActor(background2);
 
-		onGroundGroup.addActor(motherDoge);
+		floatingGroup.addActor(motherDoge);
 
 		puppyRespawnCooldown = 2000000000f;
 		enemyRespawnCooldown = 2000000000f;
@@ -104,58 +91,15 @@ public class WorldOne extends Table {
 	public void act(float delta) {
 		super.act(delta);
 
-		if (state == GameState.Ready)
-			updateReady();
-		if (state == GameState.Running)
-			updateRunning();
-		if (state == GameState.Paused)
-			updatePaused();
-		if (state == GameState.GameOver)
-			updateGameOver();
-
-	}
-
-	private void updateReady() {
-		Statics.gameRunning = false;
-		
-		floatingGroup.addActor(winO);
-		winO.setWidth(800);
-		winO.setHeight(800);
-		winO.addListener(new InputListener() {
-			
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log(DogeDashCore.LOG,"state: " + state);
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log(DogeDashCore.LOG,"state: " + state);
-				GameAudio.dogeBark();
-				floatingGroup.removeActor(winO);
-				state = GameState.Running;
-			}
-		});
-		
-	}
-
-	private void updateRunning() {
-		Statics.gameRunning = true;
-		updateRespawnTimes();
-		updateBees();
-		updateFlowers();
-		updatePups();
-		updateBushes();
-		GamePoints.currentScore++;
-
-	}
-
-	private void updatePaused() {
-		Statics.gameRunning = false;
-
-	}
-
-	private void updateGameOver() {
-		Statics.gameRunning = false;
+		if (Statics.gameRunning) {
+			Statics.gameRunning = true;
+			updateRespawnTimes();
+			updateBees();
+			updateFlowers();
+			updatePups();
+			updateBushes();
+			GamePoints.currentScore++;
+		}
 
 	}
 
@@ -220,7 +164,6 @@ public class WorldOne extends Table {
 			}
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump && !Statics.playerHitByBee) {
 				beeIter.remove();
-				state = GameState.GameOver;
 				if (enemyBee.getX() > motherDoge.getX()) {
 					if (enemyBee.getY() > motherDoge.getY())
 						enemyBee.playerHit(true, true);
@@ -263,7 +206,6 @@ public class WorldOne extends Table {
 				iter.remove();
 				if (puppy.getX() > motherDoge.getX()) {
 					GamePoints.puppyCaughtNum++;
-					state = GameState.Running;
 
 					if (puppy.getY() > motherDoge.getY())
 						puppy.playerHit(true, true);
@@ -337,7 +279,7 @@ public class WorldOne extends Table {
 		float yPos = 0 + (int) (Math.random() * 420);
 		EnemyBee enemyBee = new EnemyBee(getWidth(), yPos);
 		enemyBees.add(enemyBee);
-		floatingGroup.addActor(enemyBee);
+		onGroundGroup.addActor(enemyBee);
 		enemyDelta = TimeUtils.nanoTime();
 	}
 
