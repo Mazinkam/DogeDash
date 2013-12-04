@@ -113,7 +113,7 @@ public class WorldTerminal implements Screen {
 		inputMuiltiplex.addProcessor(stage);
 		Gdx.input.setInputProcessor(inputMuiltiplex);
 
-		winOverlay.addListener(new InputListener() {
+		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}

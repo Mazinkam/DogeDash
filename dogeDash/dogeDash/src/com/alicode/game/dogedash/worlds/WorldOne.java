@@ -164,6 +164,8 @@ public class WorldOne extends Table {
 			}
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump && !Statics.playerHitByBee) {
 				beeIter.remove();
+				floatingGroup.addActor(enemyBee);
+				onGroundGroup.removeActor(enemyBee);
 				if (enemyBee.getX() > motherDoge.getX()) {
 					if (enemyBee.getY() > motherDoge.getY())
 						enemyBee.playerHit(true, true);
