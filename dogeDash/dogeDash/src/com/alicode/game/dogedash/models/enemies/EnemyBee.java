@@ -54,6 +54,7 @@ public class EnemyBee extends Actor {
 
 		Action completeAction = new Action() {
 			public boolean act(float delta) {
+				
 				Statics.cleanseEnemies = false;
 				onDoge = false;
 				Actions.removeActor();
@@ -77,8 +78,7 @@ public class EnemyBee extends Actor {
 
 		if (Statics.cleanseEnemies && onDoge) {
 			Statics.beesOnPlayer = 0;
-			this.addAction(Actions.fadeOut(1f));
-			addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), completeAction)));
+			this.addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), completeAction)));
 		}
 
 	}
@@ -114,7 +114,7 @@ public class EnemyBee extends Actor {
 				completeAction));
 
 		if (Statics.isSuperD) {
-			this.addAction(Actions.fadeOut(1f));
+			//this.addAction(Actions.fadeOut(1f));
 			if (front && above)
 				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), completeAction,
 						Actions.removeActor()));
