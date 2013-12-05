@@ -69,7 +69,14 @@ public class MotherDoge extends Actor {
 			super.act(delta);
 			updateBounds();
 			jumpUpdate();
+			updatePlayerStatus();
 		}
+	}
+
+	private void updatePlayerStatus() {
+	
+			
+		
 	}
 
 	@Override

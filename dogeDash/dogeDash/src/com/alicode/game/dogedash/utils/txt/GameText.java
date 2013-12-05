@@ -10,7 +10,7 @@ public class GameText extends Actor {
 
 	private BitmapFont font;
 	private String text;
-	private int x, y;
+	private float x, y;
 
 	public GameText() {
 		font = new BitmapFont(Gdx.files.internal("skin/everything_else.fnt"), false);
@@ -35,6 +35,16 @@ public class GameText extends Actor {
 		font.draw(batch, text, x, y);
 
 	}
+	public float getLineHeight()
+	{
+		return font.getLineHeight();
+	}
+	public float getLineWidth()
+	{
+		return text.length() * (font.getSpaceWidth() * 2)  * 0.9f;
+	}
+	
+	
 	
 	public void setSize(float x) {
 		font.setScale(x);
@@ -64,6 +74,14 @@ public class GameText extends Actor {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
 	}
 
 }
