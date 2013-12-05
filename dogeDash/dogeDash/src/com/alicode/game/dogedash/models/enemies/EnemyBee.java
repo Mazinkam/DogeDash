@@ -4,13 +4,10 @@ import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
-import com.alicode.game.dogedash.screens.MenuScreen;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -22,7 +19,7 @@ public class EnemyBee extends Actor {
 	private final Animation beeFlyingAnim;
 	private float beeFlyingAnimState;
 	private Array<TextureRegion> beeFlying;
-	private boolean hitPlayer = false, onDoge = false;
+	private boolean hitPlayer = false;
 	private float enemyX;
 	private Rectangle bounds = new Rectangle();
 
@@ -52,35 +49,55 @@ public class EnemyBee extends Actor {
 
 	private void updateMovement() {
 
-		Action completeAction = new Action() {
-			public boolean act(float delta) {
-				
-				Statics.cleanseEnemies = false;
-				onDoge = false;
-				Actions.removeActor();
-				return true;
-			}
-		};
+		normalMovement();
+		stickOnPlayer();
+		clearTheAir();
 
+	}
+
+	private void normalMovement() {
 		if (!hitPlayer) {
 			enemyX -= Statics.enemySpeed;
 			addAction(Actions.moveTo(enemyX, getY()));
 		}
-		if (hitPlayer) {
+
+	}
+
+	private void stickOnPlayer() {
+		if (hitPlayer && !Statics.cleanseEnemies) {
 			if (!Statics.isSuperD) {
 				float randomX = (MotherDoge.playerX - 100) + (int) (Math.random() * (MotherDoge.playerX + 100));
 				float randomY = (MotherDoge.playerY - 165) + (int) (Math.random() * (MotherDoge.playerY + 160));
 
 				addAction(Actions.sequence(Actions.parallel(Actions.rotateTo(-180, 10.1f), Actions.moveTo(randomX, randomY, .9f))));
 			}
+		}
+	}
+
+	private void clearTheAir() {
+
+		Action completeAction = new Action() {
+			public boolean act(float delta) {
+
+				Statics.cleanseEnemies = false;
+				hitPlayer = false;
+				Statics.playerHitByBee = false;
+				Statics.beesOnPlayer--;
+				if (Statics.beesOnPlayer < 0) {
+					Statics.beesOnPlayer = 0;
+				}
+				this.actor.remove();
+				Gdx.app.log(DogeDashCore.LOG, "hitPlayer " + hitPlayer + " Statics.cleanseEnemies " + Statics.cleanseEnemies);
+				return true;
+			}
+		};
+
+		if (Statics.cleanseEnemies && hitPlayer && Statics.beesOnPlayer > 0) {
+
+			this.addAction(Actions.sequence(Actions.rotateBy(360f, 1f), completeAction));
 
 		}
-
-		if (Statics.cleanseEnemies && onDoge) {
-			Statics.beesOnPlayer = 0;
-			this.addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), completeAction)));
-		}
-
+		Gdx.app.log(DogeDashCore.LOG, "beesOnPlayer " + Statics.beesOnPlayer);
 	}
 
 	@Override
@@ -99,14 +116,13 @@ public class EnemyBee extends Actor {
 	public void playerHit(boolean front, boolean above) {
 		clearActions();
 		hitPlayer = true;
-		onDoge = true;
 		Statics.playerHitByBee = true;
 		Statics.beesOnPlayer++;
-
+		//
 		Action completeAction = new Action() {
 			public boolean act(float delta) {
 				Statics.playerHitByBee = false;
-				Gdx.app.log(DogeDashCore.LOG, "Statics.playerHitByBee " + Statics.playerHitByBee);
+
 				return true;
 			}
 		};
@@ -114,7 +130,7 @@ public class EnemyBee extends Actor {
 				completeAction));
 
 		if (Statics.isSuperD) {
-			//this.addAction(Actions.fadeOut(1f));
+			// this.addAction(Actions.fadeOut(1f));
 			if (front && above)
 				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), completeAction,
 						Actions.removeActor()));

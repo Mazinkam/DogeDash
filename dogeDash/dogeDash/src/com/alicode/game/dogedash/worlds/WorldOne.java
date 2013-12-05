@@ -83,7 +83,7 @@ public class WorldOne extends Table {
 		puppyRespawnCooldown = 2000000000f;
 		enemyRespawnCooldown = 2000000000f;
 		flowerRespawnCooldown = 900000000f;
-		bushRespawnCooldown = 90000000000f;
+		bushRespawnCooldown = 9000000000f;
 
 	}
 
@@ -136,9 +136,6 @@ public class WorldOne extends Table {
 
 		if (enemyRespawnTime > enemyRespawnCooldown) {
 			spawnBee();
-			enemyRespawnCooldown -= 10000000;
-			Gdx.app.log(DogeDashCore.LOG, "enemyRespawnCooldown: " + enemyRespawnCooldown);
-
 		}
 
 		if (puppyRespawnTime > puppyRespawnCooldown) {
@@ -160,7 +157,9 @@ public class WorldOne extends Table {
 			EnemyBee enemyBee = beeIter.next();
 			if (enemyBee.getBounds().x + enemyBee.getWidth() < 0) {
 				beeIter.remove();
+				Gdx.app.log(DogeDashCore.LOG, "Removed bee" + enemyBee);
 				removeActor(enemyBee);
+
 			}
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump && !Statics.playerHitByBee) {
 				beeIter.remove();
