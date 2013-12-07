@@ -40,10 +40,14 @@ public class EnemyBee extends Actor {
 
 	@Override
 	public void act(float delta) {
-		if (Statics.gameRunning) {
+		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateMovement();
 			updateBounds();
+		}
+		
+		if (!Statics.enemiesAlive) {
+			this.remove();
 		}
 	}
 
@@ -87,7 +91,8 @@ public class EnemyBee extends Actor {
 					Statics.beesOnPlayer = 0;
 				}
 				this.actor.remove();
-				Gdx.app.log(DogeDashCore.LOG, "hitPlayer " + hitPlayer + " Statics.cleanseEnemies " + Statics.cleanseEnemies);
+				// Gdx.app.log(DogeDashCore.LOG, "hitPlayer " + hitPlayer +
+				// " Statics.cleanseEnemies " + Statics.cleanseEnemies);
 				return true;
 			}
 		};
@@ -97,7 +102,7 @@ public class EnemyBee extends Actor {
 			this.addAction(Actions.sequence(Actions.rotateBy(360f, 1f), completeAction));
 
 		}
-		Gdx.app.log(DogeDashCore.LOG, "beesOnPlayer " + Statics.beesOnPlayer);
+//		Gdx.app.log(DogeDashCore.LOG, "beesOnPlayer " + Statics.beesOnPlayer);
 	}
 
 	@Override

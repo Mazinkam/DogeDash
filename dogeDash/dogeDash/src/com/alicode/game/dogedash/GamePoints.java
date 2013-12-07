@@ -3,7 +3,7 @@ package com.alicode.game.dogedash;
 public class GamePoints {
 	public static int currentScore;
 
-	public static int bonusPointstatic;
+	public static int bonusPointStatic;
 
 	public static int finalScore;
 
@@ -11,7 +11,7 @@ public class GamePoints {
 	public static int puppyMissedNum;
 
 	public static int finalScore() {
-		finalScore = (currentScore + bonusPointstatic + puppyPoints());
+		finalScore = (currentScore + bonusPointStatic + puppyPoints());
 		return finalScore;
 	}
 
@@ -27,5 +27,13 @@ public class GamePoints {
 
 	public static int puppyPoints() {
 		return caughtPuppies() - missedPuppies();
+	}
+
+	public static void clearTheNumbers() {
+		currentScore = 0;
+		finalScore = 0;
+		bonusPointStatic = 0;
+		puppyCaughtNum = 0;
+		puppyMissedNum = 0;
 	}
 }

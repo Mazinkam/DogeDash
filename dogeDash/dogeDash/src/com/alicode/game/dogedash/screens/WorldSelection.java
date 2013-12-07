@@ -33,20 +33,26 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class WorldSelection implements Screen {
 
-	private Image image_menu, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2, image_menu_creampup_body,
-			image_menu_creampup_paw, image_menu_creampup_paw2, image_menu_bluepup;
-	private Image image_lvlselect, image_lvlselect_txt, image_hard, image_easy, image_normal, image_lvl1, image_lvl2, image_tutorial_levelselect,
-			image_back;
+	enum MenuState {
+		Ready, Chosing
+	}
+
+	private MenuState menuState = MenuState.Ready;
+	private Image imageMenuBg, imageMenuMomNosePaw, imageMenuMomBody, imageMenuBlackPup, imageMenuBlackPup2, imageMenuCreamPupBody,
+			imageMenuCreamPupPaw, imageMenuCreamPupPaw2, imageMenuBluePup;
+
+	private Image imageLevelSelect, imageLevelSelectText, imageHard, imageEasy, imageNormal, imageSelectDifficulty, imageLevel1, imageLevel2,
+			imageTutorialLevelSelect, imageBackButton;
 
 	private DogeDashCore game;
 	private Stage stage;
 	private Drawable tempDrawable;
-	private WindowOverlay winOverlay;
-
+	private WindowOverlay winOverlay, winOverlay2;
 
 	public WorldSelection(DogeDashCore game) {
 		this.game = game;
 		winOverlay = new WindowOverlay();
+		winOverlay2 = new WindowOverlay();
 		stage = new Stage();
 	}
 
@@ -57,96 +63,114 @@ public class WorldSelection implements Screen {
 		initForeground();
 		initInput();
 		initActors();
-		
+
 	}
 
 	private void initBackground() {
 		// background shit
 		tempDrawable = new TextureRegionDrawable(Assets.menu);
-		image_menu = new Image(tempDrawable, Scaling.stretch);
-		image_menu.setFillParent(true);
+		imageMenuBg = new Image(tempDrawable, Scaling.stretch);
+		imageMenuBg.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
-		image_menu_mom_nose_paw = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mom_nose_paw.setFillParent(true);
+		imageMenuMomNosePaw = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomNosePaw.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
-		image_menu_bluepup = new Image(tempDrawable);
-		image_menu_bluepup.setX(460);
-		image_menu_bluepup.setY(45);
+		imageMenuBluePup = new Image(tempDrawable);
+		imageMenuBluePup.setX(460);
+		imageMenuBluePup.setY(45);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
-		image_menu_creampup_body = new Image(tempDrawable);
-		image_menu_creampup_body.setX(200);
-		image_menu_creampup_body.setY(-10);
+		imageMenuCreamPupBody = new Image(tempDrawable);
+		imageMenuCreamPupBody.setX(200);
+		imageMenuCreamPupBody.setY(-10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
-		image_menu_creampup_paw = new Image(tempDrawable);
-		image_menu_creampup_paw.setX(200);
-		image_menu_creampup_paw.setY(10);
+		imageMenuCreamPupPaw = new Image(tempDrawable);
+		imageMenuCreamPupPaw.setX(200);
+		imageMenuCreamPupPaw.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
-		image_menu_creampup_paw2 = new Image(tempDrawable);
-		image_menu_creampup_paw2.setX(290);
-		image_menu_creampup_paw2.setY(10);
+		imageMenuCreamPupPaw2 = new Image(tempDrawable);
+		imageMenuCreamPupPaw2.setX(290);
+		imageMenuCreamPupPaw2.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
-		image_menu_blackpup = new Image(tempDrawable);
-		image_menu_blackpup.setX(10);
-		image_menu_blackpup.setY(40);
+		imageMenuBlackPup = new Image(tempDrawable);
+		imageMenuBlackPup.setX(10);
+		imageMenuBlackPup.setY(40);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup2);
-		image_menu_blackpup2 = new Image(tempDrawable);
-		image_menu_blackpup2.setX(260);
-		image_menu_blackpup2.setY(250);
-		
+		imageMenuBlackPup2 = new Image(tempDrawable);
+		imageMenuBlackPup2.setX(260);
+		imageMenuBlackPup2.setY(250);
+
 		tempDrawable = new TextureRegionDrawable(Assets.back);
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
-		
+		imageBackButton = new Image(tempDrawable);
+		imageBackButton.setX(660);
+		imageBackButton.setY(20);
+
 	}
 
 	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.lvlselect);
-		image_lvlselect = new Image(tempDrawable);
-		image_lvlselect.setX(50);
-		image_lvlselect.setY(360);
+		imageLevelSelect = new Image(tempDrawable);
+		imageLevelSelect.setX(50);
+		imageLevelSelect.setY(360);
 
 		tempDrawable = new TextureRegionDrawable(Assets.lvlselect_txt);
-		image_lvlselect_txt = new Image(tempDrawable);
-		image_lvlselect_txt.setX(30);
-		image_lvlselect_txt.setY(340);
+		imageLevelSelectText = new Image(tempDrawable);
+		imageLevelSelectText.setX(30);
+		imageLevelSelectText.setY(340);
 
 		tempDrawable = new TextureRegionDrawable(Assets.lvl1);
-		image_lvl1 = new Image(tempDrawable);
-		image_lvl1.setX(30);
-		image_lvl1.setY(160);
+		imageLevel1 = new Image(tempDrawable);
+		imageLevel1.setX(30);
+		imageLevel1.setY(160);
 
 		tempDrawable = new TextureRegionDrawable(Assets.lvl2);
-		image_lvl2 = new Image(tempDrawable);
-		image_lvl2.setX(30 + image_lvl1.getWidth() + 30);
-		image_lvl2.setY(160);
+		imageLevel2 = new Image(tempDrawable);
+		imageLevel2.setX(30 + imageLevel1.getWidth() + 30);
+		imageLevel2.setY(160);
 
 		tempDrawable = new TextureRegionDrawable(Assets.tutorial_select);
+		imageTutorialLevelSelect = new Image(tempDrawable);
+		imageTutorialLevelSelect.setX(30);
+		imageTutorialLevelSelect.setY(10);
 
-		image_tutorial_levelselect = new Image(tempDrawable);
-		image_tutorial_levelselect.setX(30);
-		image_tutorial_levelselect.setY(10);
+		tempDrawable = new TextureRegionDrawable(Assets.difficulty);
+		imageSelectDifficulty = new Image(tempDrawable);
+		imageSelectDifficulty.setX(300);
+		imageSelectDifficulty.setY(400);
 
-		
+		tempDrawable = new TextureRegionDrawable(Assets.hard);
+		imageHard = new Image(tempDrawable);
+		imageHard.setX(300);
+		imageHard.setY(300);
+
+		tempDrawable = new TextureRegionDrawable(Assets.normal);
+		imageNormal = new Image(tempDrawable);
+		imageNormal.setX(300);
+		imageNormal.setY(200);
+
+		tempDrawable = new TextureRegionDrawable(Assets.easy);
+		imageEasy = new Image(tempDrawable);
+		imageEasy.setX(300);
+		imageEasy.setY(100);
+
 	}
 
 	private void initInput() {
-		image_lvl1.addListener(new InputListener() {
+		imageLevel1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -154,20 +178,22 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
+						// game.setScreen(new WorldTerminal(game,
+						// Gdx.graphics.getDeltaTime()));
+						Statics.gameLevel = 1;
+						menuState = MenuState.Chosing;
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
-				Statics.gameLevel = 1;
-				image_lvl1.setOrigin(image_lvl1.getWidth() / 4, image_lvl1.getHeight() / 2);
-				image_lvl1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_lvl1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageLevel1.setOrigin(imageLevel1.getWidth() / 4, imageLevel1.getHeight() / 2);
+				imageLevel1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageLevel1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 			}
 		});
 
-		image_lvl2.addListener(new InputListener() {
+		imageLevel2.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -175,20 +201,23 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new WorldTerminal(Gdx.graphics.getDeltaTime()));
+						// game.setScreen(new WorldTerminal(game,
+						// Gdx.graphics.getDeltaTime()));
+						Statics.gameLevel = 2;
+						menuState = MenuState.Chosing;
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
-				Statics.gameLevel = 2;
-				image_lvl2.setOrigin(image_lvl2.getWidth() / 4, image_lvl2.getHeight() / 2);
-				image_lvl2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_lvl2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+
+				imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);
+				imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageLevel2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 			}
 		});
 
-		image_tutorial_levelselect.addListener(new InputListener() {
+		imageTutorialLevelSelect.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -197,20 +226,21 @@ public class WorldSelection implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 						// game.setScreen(new SplashScreen(game));
+
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
-				image_tutorial_levelselect.setOrigin(image_tutorial_levelselect.getWidth() / 4, image_tutorial_levelselect.getHeight() / 2);
-				image_tutorial_levelselect.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_tutorial_levelselect.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
+				imageTutorialLevelSelect.setOrigin(imageTutorialLevelSelect.getWidth() / 4, imageTutorialLevelSelect.getHeight() / 2);
+				imageTutorialLevelSelect.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageTutorialLevelSelect.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
 						rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 
 			}
 
 		});
 
-		image_back.addListener(new InputListener() {
+		imageBackButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -218,55 +248,135 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new MenuScreen(game));
+						if (menuState == MenuState.Ready) {
+							game.setScreen(new MenuScreen(game));
+						} else {
+							menuState = MenuState.Ready;
+						}
+
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
-				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
+				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 			}
 		});
 		
+		imageHard.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						Statics.gameLevelDifficulty = 1;
+						game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
+						return true;
+					}
+				};
+				GameAudio.dogeBark();
+				imageHard.setOrigin(imageHard.getWidth() / 4, imageHard.getHeight() / 2);
+				imageHard.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageHard.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
+			}
+		});
+		imageNormal.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						if (menuState == MenuState.Ready) {
+							game.setScreen(new MenuScreen(game));
+						} else {
+							menuState = MenuState.Ready;
+						}
+
+						return true;
+					}
+				};
+				GameAudio.dogeBark();
+				imageNormal.setOrigin(imageNormal.getWidth() / 4, imageNormal.getHeight() / 2);
+				imageNormal.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageNormal.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
+			}
+		});
+		imageEasy.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Action completeAction = new Action() {
+					public boolean act(float delta) {
+						if (menuState == MenuState.Ready) {
+							game.setScreen(new MenuScreen(game));
+						} else {
+							menuState = MenuState.Ready;
+						}
+
+						return true;
+					}
+				};
+				GameAudio.dogeBark();
+				imageEasy.setOrigin(imageEasy.getWidth() / 4, imageEasy.getHeight() / 2);
+				imageEasy.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageEasy.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+						completeAction)));
+			}
+		});
+
 	}
 
 	private void initActors() {
-		stage.addActor(image_menu);
+		stage.addActor(imageMenuBg);
 
-		stage.addActor(image_menu_blackpup);
-		stage.addActor(image_menu_blackpup2);
+		stage.addActor(imageMenuBlackPup);
+		stage.addActor(imageMenuBlackPup2);
 
-		stage.addActor(image_menu_mombody);
-		image_menu_bluepup.setOrigin((image_menu_bluepup.getWidth() / 2), image_menu_bluepup.getHeight());
+		stage.addActor(imageMenuMomBody);
+		imageMenuBluePup.setOrigin((imageMenuBluePup.getWidth() / 2), imageMenuBluePup.getHeight());
 
-		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
-		stage.addActor(image_menu_bluepup);
-		stage.addActor(image_menu_mom_nose_paw);
+		imageMenuBluePup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
+		stage.addActor(imageMenuBluePup);
+		stage.addActor(imageMenuMomNosePaw);
 
-		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth() / 2, image_menu_creampup_body.getHeight() / 2);
-		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		stage.addActor(image_menu_creampup_body);
-		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
-		stage.addActor(image_menu_creampup_paw);
-		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
-		stage.addActor(image_menu_creampup_paw2);
+		imageMenuCreamPupBody.setOrigin(imageMenuCreamPupBody.getWidth() / 2, imageMenuCreamPupBody.getHeight() / 2);
+		imageMenuCreamPupBody.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		stage.addActor(imageMenuCreamPupBody);
+		imageMenuCreamPupPaw.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw);
+		imageMenuCreamPupPaw2.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw2);
 		stage.addActor(winOverlay);
 
-		stage.addActor(image_lvlselect);
-		stage.addActor(image_lvlselect_txt);
+		stage.addActor(imageLevelSelect);
+		stage.addActor(imageLevelSelectText);
 
-		stage.addActor(image_lvl1);
-		stage.addActor(image_lvl2);
-		stage.addActor(image_tutorial_levelselect);
-		stage.addActor(image_back);
+		stage.addActor(imageLevel1);
+		stage.addActor(imageLevel2);
+		stage.addActor(imageTutorialLevelSelect);
 	
-		
+
+		stage.addActor(winOverlay2);
+		stage.addActor(imageBackButton);
+		stage.addActor(imageNormal);
+		stage.addActor(imageSelectDifficulty);
+		stage.addActor(imageHard);
+		stage.addActor(imageEasy);
+
 	}
 
 	@Override
@@ -275,6 +385,25 @@ public class WorldSelection implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(delta);
 		stage.draw();
+		drawLevelDifficulty();
+
+	}
+
+	private void drawLevelDifficulty() {
+		if (menuState == MenuState.Chosing) {
+			imageSelectDifficulty.setVisible(true);
+			imageHard.setVisible(true);
+			imageNormal.setVisible(true);
+			imageEasy.setVisible(true);
+			winOverlay2.setVisible(true);
+		}
+		else{
+			imageSelectDifficulty.setVisible(false);
+			imageHard.setVisible(false);
+			imageNormal.setVisible(false);
+			imageEasy.setVisible(false);
+			winOverlay2.setVisible(false);
+		}
 
 	}
 

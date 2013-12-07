@@ -106,6 +106,7 @@ public class Assets {
 		customization = atlas.findRegion("menu/buttons/customization");
 
 		back = atlas.findRegion("menu/buttons/back");
+		retry = atlas.findRegion("menu/buttons/retry");
 		button_next = atlas.findRegion("menu/buttons/button_next");
 		button_previous = atlas.findRegion("menu/buttons/button_previous");
 		credit = atlas.findRegion("menu/buttons/credit");
@@ -118,7 +119,6 @@ public class Assets {
 		// shop
 		shop_no = atlas.findRegion("menu/buttons/shop_no");
 		shop_yes = atlas.findRegion("menu/buttons/shop_yes");
-
 
 		// pause
 		pause_menu = atlas.findRegion("menu/buttons/pause_menu");
@@ -208,8 +208,9 @@ public class Assets {
 		puppiescaught = atlas.findRegion("menu/txt/puppiescaught");
 		pup_points = atlas.findRegion("menu/txt/pup_points");
 		stylepoints = atlas.findRegion("menu/txt/stylepoints");
+		dogecoins_text = atlas.findRegion("menu/txt/dogecoins_text");
 		time = atlas.findRegion("menu/txt/time");
-		totalscore = atlas.findRegion("menu/txt/totalsocre");
+		totalscore = atlas.findRegion("menu/txt/totalscore");
 		tutorial_1 = atlas.findRegion("menu/txt/tutorial_1");
 		tutorial_2 = atlas.findRegion("menu/txt/tutorial_2");
 		tutorial_3 = atlas.findRegion("menu/txt/tutorial_3");
@@ -234,6 +235,8 @@ public class Assets {
 
 		custom_title = atlas.findRegion("menu/txt/custom_title");
 		itemsEquipText = atlas.findRegion("menu/txt/itemsEquipText");
+		
+		gameovertitle = atlas.findRegion("menu/txt/gameovertitle");
 
 	}
 

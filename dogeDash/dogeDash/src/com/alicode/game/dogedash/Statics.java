@@ -2,8 +2,13 @@ package com.alicode.game.dogedash;
 
 public class Statics {
 
+	public static enum GameState {
+		Ready, Running, Paused, GameOver
+	}
+
+	public static GameState state = GameState.Ready;
+
 	// Game vars
-	public static boolean gameRunning = true;
 	public static int gameLevel;
 	public static int gameLevelDifficulty;
 
@@ -15,9 +20,15 @@ public class Statics {
 	public static float backgroundSpeed = 4;
 	public static float enemySpeed = 6;
 	public static float puppySpeed = 6;
-	
-	
+
 	public static boolean cleanseEnemies = false;
+
+	// objvars
+
+	public static boolean enemiesAlive = true;
+	public static boolean puppiesAlive = true;
+	public static boolean bushesAlive = true;
+	public static boolean flowersAlive = true;
 
 	// player vars
 	public static boolean isSuperD = false;
@@ -25,7 +36,7 @@ public class Statics {
 	public static boolean playerHitByBush = false;
 	public static boolean playerHitByBee = false;
 	public static boolean playerHitByPuppy = false;
-	
+
 	public static int beesOnPlayer = 0;
 
 	// costume vars
@@ -33,5 +44,32 @@ public class Statics {
 	public static int headCostume;
 	public static int noseCostume;
 	public static int backCostume;
+	
+	public static void createLife()
+	{
+		enemiesAlive = true;
+		puppiesAlive = true;
+		bushesAlive = true;
+		flowersAlive = true;
+	}
+
+	public static void cleanSlate() {
+		state = GameState.Ready;
+		
+		cleanseEnemies = false;
+		playerJump = false;
+		
+		playerHitByBush = false;
+		playerHitByBee = false;
+		playerHitByPuppy = false;
+		
+		enemiesAlive = false;
+		puppiesAlive = false;
+		bushesAlive = false;
+		flowersAlive = false;
+
+		GamePoints.clearTheNumbers();
+		beesOnPlayer = 0;
+	}
 
 }

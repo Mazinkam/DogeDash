@@ -14,8 +14,6 @@ import com.alicode.game.dogedash.utils.GameAudio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -29,13 +27,13 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class OptionsScreen implements Screen {
 
-	private Image image_menu, image_options_title, image_options_txt, image_soundon, image_sound, image_musicon, image_music, image_vibrationon,
-			image_vibration, image_back, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2,
-			image_menu_creampup_body, image_menu_creampup_paw, image_menu_creampup_paw2, image_menu_bluepup, bg_overlay;
+	private Image imageMenuBg, imageBackButton, imageMenuMomNosePaw, imageMenuMomBody, imageMenuCreamPupBody, imageMenuCreamPupPaw,
+			imageMenuCreamPupPaw2, imageMenuBluePup;
+
+	private Image imageOptionsTitle, imageOptionsText, imageMusicButton, imageSoundButton, imageVibrationButton;
 
 	private DogeDashCore game;
 	private Drawable tempDrawable;
-	private ShapeRenderer bg_rect;
 	private Stage stage;
 	public static int isSoundOn, isMuiscOn, isVibrationOn;
 	private WindowOverlay winOverlay;
@@ -47,7 +45,7 @@ public class OptionsScreen implements Screen {
 		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
 		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
 		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
-		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMuiscOn: " + isMuiscOn + " isVibrationOn " + isVibrationOn );
+		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMuiscOn: " + isMuiscOn + " isVibrationOn " + isVibrationOn);
 	}
 
 	@Override
@@ -64,88 +62,88 @@ public class OptionsScreen implements Screen {
 
 	private void initBackground() {
 		tempDrawable = new TextureRegionDrawable(Assets.menu);
-		image_menu = new Image(tempDrawable, Scaling.stretch);
-		image_menu.setFillParent(true);
+		imageMenuBg = new Image(tempDrawable, Scaling.stretch);
+		imageMenuBg.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
-		image_menu_mom_nose_paw = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mom_nose_paw.setFillParent(true);
+		imageMenuMomNosePaw = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomNosePaw.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
-		image_menu_bluepup = new Image(tempDrawable);
-		image_menu_bluepup.setX(460);
-		image_menu_bluepup.setY(45);
+		imageMenuBluePup = new Image(tempDrawable);
+		imageMenuBluePup.setX(460);
+		imageMenuBluePup.setY(45);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
-		image_menu_creampup_body = new Image(tempDrawable);
-		image_menu_creampup_body.setX(200);
-		image_menu_creampup_body.setY(-10);
+		imageMenuCreamPupBody = new Image(tempDrawable);
+		imageMenuCreamPupBody.setX(200);
+		imageMenuCreamPupBody.setY(-10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
-		image_menu_creampup_paw = new Image(tempDrawable);
-		image_menu_creampup_paw.setX(200);
-		image_menu_creampup_paw.setY(10);
+		imageMenuCreamPupPaw = new Image(tempDrawable);
+		imageMenuCreamPupPaw.setX(200);
+		imageMenuCreamPupPaw.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
-		image_menu_creampup_paw2 = new Image(tempDrawable);
-		image_menu_creampup_paw2.setX(290);
-		image_menu_creampup_paw2.setY(10);
+		imageMenuCreamPupPaw2 = new Image(tempDrawable);
+		imageMenuCreamPupPaw2.setX(290);
+		imageMenuCreamPupPaw2.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.back);
 
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
+		imageBackButton = new Image(tempDrawable);
+		imageBackButton.setX(660);
+		imageBackButton.setY(20);
 
 	}
 
 	private void initForeground() {
 		tempDrawable = new TextureRegionDrawable(Assets.options_title);
-		image_options_title = new Image(tempDrawable);
-		image_options_title.setX(50);
-		image_options_title.setY(400);
+		imageOptionsTitle = new Image(tempDrawable);
+		imageOptionsTitle.setX(50);
+		imageOptionsTitle.setY(400);
 
 		tempDrawable = new TextureRegionDrawable(Assets.options_txt);
-		image_options_txt = new Image(tempDrawable);
-		image_options_txt.setX(70);
-		image_options_txt.setY(340);
+		imageOptionsText = new Image(tempDrawable);
+		imageOptionsText.setX(70);
+		imageOptionsText.setY(340);
 
 		if (isSoundOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.soundon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.soundoff);
-		image_sound = new Image(tempDrawable);
-		image_sound.setX(30);
-		image_sound.setY(250);
+		imageSoundButton = new Image(tempDrawable);
+		imageSoundButton.setX(30);
+		imageSoundButton.setY(250);
 
 		if (isMuiscOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.musicon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.musicoff);
-		image_music = new Image(tempDrawable);
-		image_music.setX(30);
-		image_music.setY(200);
+		imageMusicButton = new Image(tempDrawable);
+		imageMusicButton.setX(30);
+		imageMusicButton.setY(200);
 
 		if (isVibrationOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.vibrationon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.vibrationoff);
-		image_vibration = new Image(tempDrawable);
-		image_vibration.setX(30);
-		image_vibration.setY(150);
+		imageVibrationButton = new Image(tempDrawable);
+		imageVibrationButton.setX(30);
+		imageVibrationButton.setY(150);
 
 	}
 
 	private void initInput() {
-		image_sound.addListener(new InputListener() {
+		imageSoundButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -158,22 +156,22 @@ public class OptionsScreen implements Screen {
 					}
 				};
 
-				image_sound.setOrigin(image_sound.getWidth() / 4, image_sound.getHeight() / 2);
-				image_sound.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_sound.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageSoundButton.setOrigin(imageSoundButton.getWidth() / 4, imageSoundButton.getHeight() / 2);
+				imageSoundButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageSoundButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 				isSoundOn ^= 1;
 				if (isSoundOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.soundon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.soundoff);
-				image_sound.setDrawable(tempDrawable);
+				imageSoundButton.setDrawable(tempDrawable);
 				GameAudio.dogeBark();
 
 			}
 		});
 
-		image_music.addListener(new InputListener() {
+		imageMusicButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -186,22 +184,22 @@ public class OptionsScreen implements Screen {
 					}
 				};
 
-				image_music.setOrigin(image_music.getWidth() / 4, image_music.getHeight() / 2);
-				image_music.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_music.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageMusicButton.setOrigin(imageMusicButton.getWidth() / 4, imageMusicButton.getHeight() / 2);
+				imageMusicButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageMusicButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 				isMuiscOn ^= 1;
 				if (isMuiscOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.musicon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.musicoff);
-				image_music.setDrawable(tempDrawable);
+				imageMusicButton.setDrawable(tempDrawable);
 				GameAudio.dogeBark();
 
 			}
 		});
 
-		image_vibration.addListener(new InputListener() {
+		imageVibrationButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -214,22 +212,22 @@ public class OptionsScreen implements Screen {
 					}
 				};
 
-				image_vibration.setOrigin(image_vibration.getWidth() / 4, image_vibration.getHeight() / 2);
-				image_vibration.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_vibration.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageVibrationButton.setOrigin(imageVibrationButton.getWidth() / 4, imageVibrationButton.getHeight() / 2);
+				imageVibrationButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageVibrationButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
+						rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 				isVibrationOn ^= 1;
 				if (isVibrationOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.vibrationon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.vibrationoff);
-				image_vibration.setDrawable(tempDrawable);
+				imageVibrationButton.setDrawable(tempDrawable);
 				GameAudio.dogeBark();
 			}
 
 		});
 
-		image_back.addListener(new InputListener() {
+		imageBackButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -243,9 +241,9 @@ public class OptionsScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
-				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
+				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 			}
 		});
@@ -253,34 +251,34 @@ public class OptionsScreen implements Screen {
 	}
 
 	private void initActors() {
-		stage.addActor(image_menu);
+		stage.addActor(imageMenuBg);
 
-		stage.addActor(image_back);
-		stage.addActor(image_menu_mombody);
-		image_menu_bluepup.setOrigin(image_menu_bluepup.getWidth() / 2, image_menu_bluepup.getHeight());
+		stage.addActor(imageBackButton);
+		stage.addActor(imageMenuMomBody);
+		imageMenuBluePup.setOrigin(imageMenuBluePup.getWidth() / 2, imageMenuBluePup.getHeight());
 
-		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
-		stage.addActor(image_menu_bluepup);
-		stage.addActor(image_menu_mom_nose_paw);
+		imageMenuBluePup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
+		stage.addActor(imageMenuBluePup);
+		stage.addActor(imageMenuMomNosePaw);
 
-		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth() / 2, image_menu_creampup_body.getHeight() / 2);
-		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		stage.addActor(image_menu_creampup_body);
-		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
-		stage.addActor(image_menu_creampup_paw);
-		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
-		stage.addActor(image_menu_creampup_paw2);
+		imageMenuCreamPupBody.setOrigin(imageMenuCreamPupBody.getWidth() / 2, imageMenuCreamPupBody.getHeight() / 2);
+		imageMenuCreamPupBody.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		stage.addActor(imageMenuCreamPupBody);
+		imageMenuCreamPupPaw.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw);
+		imageMenuCreamPupPaw2.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw2);
 		stage.addActor(winOverlay);
-		stage.addActor(image_sound);
-		stage.addActor(image_back);
-		stage.addActor(image_music);
-		stage.addActor(image_vibration);
-		stage.addActor(image_options_title);
-		stage.addActor(image_options_txt);
+		stage.addActor(imageSoundButton);
+		stage.addActor(imageBackButton);
+		stage.addActor(imageMusicButton);
+		stage.addActor(imageVibrationButton);
+		stage.addActor(imageOptionsTitle);
+		stage.addActor(imageOptionsText);
 
 	}
 

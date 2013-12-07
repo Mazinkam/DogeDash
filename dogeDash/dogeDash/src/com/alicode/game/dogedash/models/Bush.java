@@ -28,10 +28,14 @@ public class Bush extends Actor {
 
 	@Override
 	public void act(float delta) {
-		if (Statics.gameRunning) {
+		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateMovement();
 			updateBounds();
+		}
+
+		if (!Statics.bushesAlive) {
+			this.remove();
 		}
 	}
 
@@ -51,7 +55,8 @@ public class Bush extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 
-		Statics.cleanseEnemies = true;
+		if (Statics.beesOnPlayer > 0)
+			Statics.cleanseEnemies = true;
 		addAction(Actions.sequence(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))),
 				Actions.removeActor()));
 	}

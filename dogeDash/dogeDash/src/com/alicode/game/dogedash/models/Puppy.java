@@ -66,12 +66,15 @@ public class Puppy extends Actor {
 
 	@Override
 	public void act(float delta) {
-		if (Statics.gameRunning) {
+		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateBounds();
 
 			puppyX -= Statics.enemySpeed;
 			addAction(Actions.moveTo(puppyX, getY()));
+		}
+		if (!Statics.puppiesAlive) {
+			this.remove();
 		}
 	}
 
@@ -83,7 +86,7 @@ public class Puppy extends Actor {
 		TextureRegion frame = pupWalkingAnim.getKeyFrame(pupWalkingAnimState += Gdx.graphics.getDeltaTime(), true);
 
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-		
+
 	}
 
 	private void updateBounds() {

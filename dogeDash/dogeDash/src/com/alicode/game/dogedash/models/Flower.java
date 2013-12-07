@@ -41,7 +41,7 @@ public class Flower extends Actor {
 
 	@Override
 	public void act(float delta) {
-		if (Statics.gameRunning) {
+		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateMovement();
 			updateBounds();

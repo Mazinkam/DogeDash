@@ -46,11 +46,11 @@ public class CustomizationScreen implements Screen {
 		Nose, Eyes, Head, Back
 	}
 
-	private Image image_menu, image_back, image_menu_mom_nose_paw, image_menu_mombody, image_menu_creampup_body, image_menu_creampup_paw,
-			image_menu_creampup_paw2, image_menu_bluepup, image_dogeCoin;
+	private Image imageMenuBg, imageBackButton, imageMenuMomNosePaw, imageMenuMomBody, imageMenuCreamPupBody, imageMenuCreamPupPaw,
+			imageMenuCreamPupPaw2, imageMenuBluePup, imageDogeCoin;
 
-	private Image image_customTitle, image_currentBox, image_currentTab, image_next, image_previous, image_currentItemsTxt, image_shopNo,
-			image_shopYes, image_currentCoins, image_notEnough, image_curBuyingItem, image_curBuyingBox;
+	private Image imageCustomTitle, imageCurrentBox, imageCurrentTab, imageNext, imagePrevious, imageCurrentItemsText, imageShopNo, imageShopYes,
+			imageCurrentCoins, imageNotEnough, imageCurrentBuyingItem, imageCurrentBuyingBox;
 
 	private Image backImagePreview, noseImagePreview, eyesImagePreview, headImagePreview;
 
@@ -84,7 +84,7 @@ public class CustomizationScreen implements Screen {
 
 	private DogeDashCore game;
 
-	private Image image_shop_after, image_shop_price;
+	private Image imageShopAfter, imageShopPrice;
 
 	private GameText dogeCoins, leftOverCoins, selectedItem, currentDogeCoins;
 	private String tableName;
@@ -104,8 +104,10 @@ public class CustomizationScreen implements Screen {
 	MenuState menuState = MenuState.Ready;
 
 	public CustomizationScreen(DogeDashCore game) {
+
 		this.game = game;
 		stage = new Stage();
+		Statics.state = Statics.GameState.Ready;
 		motherDoge = new MotherDoge();
 
 		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
@@ -242,19 +244,19 @@ public class CustomizationScreen implements Screen {
 
 	private void initMenuBody() {
 		tempDrawable = new TextureRegionDrawable(Assets.custom_title);
-		image_customTitle = new Image(tempDrawable);
-		image_customTitle.setX(20);
-		image_customTitle.setY(400);
+		imageCustomTitle = new Image(tempDrawable);
+		imageCustomTitle.setX(20);
+		imageCustomTitle.setY(400);
 
 		tempDrawable = new TextureRegionDrawable(Assets.chowcoin);
-		image_dogeCoin = new Image(tempDrawable);
-		image_dogeCoin.setX(600);
-		image_dogeCoin.setY(400);
+		imageDogeCoin = new Image(tempDrawable);
+		imageDogeCoin.setX(600);
+		imageDogeCoin.setY(400);
 
 		tempDrawable = new TextureRegionDrawable(Assets.currentBox);
-		image_currentBox = new Image(tempDrawable);
-		image_currentBox.setX(20);
-		image_currentBox.setY(224);
+		imageCurrentBox = new Image(tempDrawable);
+		imageCurrentBox.setX(20);
+		imageCurrentBox.setY(224);
 
 		noseButton.setX(280);
 		noseButton.setY(330);
@@ -277,68 +279,68 @@ public class CustomizationScreen implements Screen {
 		backButton.setWidth(100);
 
 		tempDrawable = new TextureRegionDrawable(Assets.tab_nose);
-		image_currentTab = new Image(tempDrawable);
-		image_currentTab.setX(270);
-		image_currentTab.setY(100);
+		imageCurrentTab = new Image(tempDrawable);
+		imageCurrentTab.setX(270);
+		imageCurrentTab.setY(100);
 
 		tempDrawable = new TextureRegionDrawable(Assets.itemsEquipText);
-		image_currentItemsTxt = new Image(tempDrawable);
-		image_currentItemsTxt.setX(40);
-		image_currentItemsTxt.setY(170);
+		imageCurrentItemsText = new Image(tempDrawable);
+		imageCurrentItemsText.setX(40);
+		imageCurrentItemsText.setY(170);
 
 		tempDrawable = new TextureRegionDrawable(Assets.button_next);
-		image_next = new Image(tempDrawable);
-		image_next.setX(700);
-		image_next.setY(110);
+		imageNext = new Image(tempDrawable);
+		imageNext.setX(700);
+		imageNext.setY(110);
 
 		tempDrawable = new TextureRegionDrawable(Assets.button_previous);
-		image_previous = new Image(tempDrawable);
-		image_previous.setX(285);
-		image_previous.setY(110);
+		imagePrevious = new Image(tempDrawable);
+		imagePrevious.setX(285);
+		imagePrevious.setY(110);
 
 	}
 
 	private void initBackground() {
 		tempDrawable = new TextureRegionDrawable(Assets.menu);
-		image_menu = new Image(tempDrawable, Scaling.stretch);
-		image_menu.setFillParent(true);
+		imageMenuBg = new Image(tempDrawable, Scaling.stretch);
+		imageMenuBg.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mom_nose_paw);
-		image_menu_mom_nose_paw = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mom_nose_paw.setFillParent(true);
+		imageMenuMomNosePaw = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomNosePaw.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_mombody);
-		image_menu_mombody = new Image(tempDrawable, Scaling.stretch);
-		image_menu_mombody.setFillParent(true);
+		imageMenuMomBody = new Image(tempDrawable, Scaling.stretch);
+		imageMenuMomBody.setFillParent(true);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_bluepup);
-		image_menu_bluepup = new Image(tempDrawable);
-		image_menu_bluepup.setX(460);
-		image_menu_bluepup.setY(45);
+		imageMenuBluePup = new Image(tempDrawable);
+		imageMenuBluePup.setX(460);
+		imageMenuBluePup.setY(45);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_body);
-		image_menu_creampup_body = new Image(tempDrawable);
-		image_menu_creampup_body.setX(200);
-		image_menu_creampup_body.setY(-10);
+		imageMenuCreamPupBody = new Image(tempDrawable);
+		imageMenuCreamPupBody.setX(200);
+		imageMenuCreamPupBody.setY(-10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw);
-		image_menu_creampup_paw = new Image(tempDrawable);
-		image_menu_creampup_paw.setX(200);
-		image_menu_creampup_paw.setY(10);
+		imageMenuCreamPupPaw = new Image(tempDrawable);
+		imageMenuCreamPupPaw.setX(200);
+		imageMenuCreamPupPaw.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_creampup_paw2);
-		image_menu_creampup_paw2 = new Image(tempDrawable);
-		image_menu_creampup_paw2.setX(290);
-		image_menu_creampup_paw2.setY(10);
+		imageMenuCreamPupPaw2 = new Image(tempDrawable);
+		imageMenuCreamPupPaw2.setX(290);
+		imageMenuCreamPupPaw2.setY(10);
 
 		tempDrawable = new TextureRegionDrawable(Assets.back);
-		image_back = new Image(tempDrawable);
-		image_back.setX(660);
-		image_back.setY(20);
+		imageBackButton = new Image(tempDrawable);
+		imageBackButton.setX(660);
+		imageBackButton.setY(20);
 
 		motherDoge.setX(60);
 		motherDoge.setY(240);
@@ -567,37 +569,37 @@ public class CustomizationScreen implements Screen {
 			winO.setHeight(350);
 
 			tempDrawable = new TextureRegionDrawable(Assets.shop_price);
-			image_shop_price = new Image(tempDrawable);
-			image_shop_price.setX(210);
-			image_shop_price.setY(250);
+			imageShopPrice = new Image(tempDrawable);
+			imageShopPrice.setX(210);
+			imageShopPrice.setY(250);
 
 			tempDrawable = new TextureRegionDrawable(Assets.shop_currentcoins);
-			image_currentCoins = new Image(tempDrawable);
-			image_currentCoins.setX(210);
-			image_currentCoins.setY(200);
+			imageCurrentCoins = new Image(tempDrawable);
+			imageCurrentCoins.setX(210);
+			imageCurrentCoins.setY(200);
 
 			tempDrawable = new TextureRegionDrawable(Assets.shop_after);
-			image_shop_after = new Image(tempDrawable);
-			image_shop_after.setX(210);
-			image_shop_after.setY(150);
+			imageShopAfter = new Image(tempDrawable);
+			imageShopAfter.setX(210);
+			imageShopAfter.setY(150);
 
 			tempDrawable = new TextureRegionDrawable(Assets.shop_no);
-			image_shopNo = new Image(tempDrawable);
-			image_shopNo.setX(495);
-			image_shopNo.setY(50);
+			imageShopNo = new Image(tempDrawable);
+			imageShopNo.setX(495);
+			imageShopNo.setY(50);
 
 			tempDrawable = new TextureRegionDrawable(Assets.shop_yes);
-			image_shopYes = new Image(tempDrawable);
-			image_shopYes.setX(210);
-			image_shopYes.setY(50);
+			imageShopYes = new Image(tempDrawable);
+			imageShopYes.setX(210);
+			imageShopYes.setY(50);
 
-			image_curBuyingItem = image_shopCurrentItem.get(itemId);
-			image_curBuyingItem.setX(370);
-			image_curBuyingItem.setY(300);
+			imageCurrentBuyingItem = image_shopCurrentItem.get(itemId);
+			imageCurrentBuyingItem.setX(370);
+			imageCurrentBuyingItem.setY(300);
 
-			image_curBuyingBox = image_shopCurrentItemBox.get(itemId);
-			image_curBuyingBox.setX(370);
-			image_curBuyingBox.setY(300);
+			imageCurrentBuyingBox = image_shopCurrentItemBox.get(itemId);
+			imageCurrentBuyingBox.setX(370);
+			imageCurrentBuyingBox.setY(300);
 
 			leftOverInt = DogeDashCore.db.getMisc(1).getDogeCoins() - currentItemList.get(itemId).getItemPrice();
 			selectedItem = new GameText(500, 275, "" + currentItemList.get(itemId).getItemPrice());
@@ -609,13 +611,13 @@ public class CustomizationScreen implements Screen {
 				leftOverCoins.setColor(Color.RED);
 
 			stage.addActor(winO);
-			stage.addActor(image_shop_after);
-			stage.addActor(image_shop_price);
-			stage.addActor(image_shopNo);
-			stage.addActor(image_shopYes);
-			stage.addActor(image_currentCoins);
-			stage.addActor(image_curBuyingBox);
-			stage.addActor(image_curBuyingItem);
+			stage.addActor(imageShopAfter);
+			stage.addActor(imageShopPrice);
+			stage.addActor(imageShopNo);
+			stage.addActor(imageShopYes);
+			stage.addActor(imageCurrentCoins);
+			stage.addActor(imageCurrentBuyingBox);
+			stage.addActor(imageCurrentBuyingItem);
 
 			stage.addActor(leftOverCoins);
 			stage.addActor(currentDogeCoins);
@@ -623,7 +625,7 @@ public class CustomizationScreen implements Screen {
 			stage.addActor(shopItemNameText);
 
 			helpInt = itemId;
-			image_shopYes.addListener(new InputListener() {
+			imageShopYes.addListener(new InputListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
@@ -633,16 +635,16 @@ public class CustomizationScreen implements Screen {
 						GameAudio.dogeBark();
 						buyItem(helpInt);
 					} else {
-						if (image_notEnough != null)
-							image_notEnough.remove();
+						if (imageNotEnough != null)
+							imageNotEnough.remove();
 
 						tempDrawable = new TextureRegionDrawable(Assets.shop_not_enough);
-						image_notEnough = new Image(tempDrawable);
-						image_notEnough.setX(255);
-						image_notEnough.setY(330);
-						stage.addActor(image_notEnough);
-						image_notEnough.setOrigin(image_notEnough.getWidth() / 2, image_notEnough.getHeight() / 2);
-						image_notEnough.addAction(Actions.repeat(3,
+						imageNotEnough = new Image(tempDrawable);
+						imageNotEnough.setX(255);
+						imageNotEnough.setY(330);
+						stage.addActor(imageNotEnough);
+						imageNotEnough.setOrigin(imageNotEnough.getWidth() / 2, imageNotEnough.getHeight() / 2);
+						imageNotEnough.addAction(Actions.repeat(3,
 								Actions.sequence(Actions.scaleBy(0.2f, 0.2f, 0.5f), Actions.scaleBy(-0.2f, -0.2f, 0.5f))));
 
 					}
@@ -651,7 +653,7 @@ public class CustomizationScreen implements Screen {
 
 			});
 
-			image_shopNo.addListener(new InputListener() {
+			imageShopNo.addListener(new InputListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
@@ -707,21 +709,21 @@ public class CustomizationScreen implements Screen {
 	private void removeActors() {
 		updateDatabaseItems();
 		winO.remove();
-		image_shop_after.remove();
-		image_shop_price.remove();
-		image_shopNo.remove();
-		image_shopYes.remove();
-		image_currentCoins.remove();
-		image_curBuyingItem.remove();
-		image_curBuyingBox.remove();
+		imageShopAfter.remove();
+		imageShopPrice.remove();
+		imageShopNo.remove();
+		imageShopYes.remove();
+		imageCurrentCoins.remove();
+		imageCurrentBuyingItem.remove();
+		imageCurrentBuyingBox.remove();
 		leftOverCoins.remove();
 		currentDogeCoins.remove();
 		selectedItem.remove();
 		menuState = MenuState.Ready;
 		shopItemNameText.remove();
 
-		if (image_notEnough != null)
-			image_notEnough.remove();
+		if (imageNotEnough != null)
+			imageNotEnough.remove();
 
 		changeContent();
 	}
@@ -737,7 +739,7 @@ public class CustomizationScreen implements Screen {
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_nose);
-					image_currentTab.setDrawable(tempDrawable);
+					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "noseTable";
 					state = CustomState.Nose;
 					changeContent();
@@ -756,7 +758,7 @@ public class CustomizationScreen implements Screen {
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_eyes);
-					image_currentTab.setDrawable(tempDrawable);
+					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "eyesTable";
 					state = CustomState.Eyes;
 					changeContent();
@@ -773,7 +775,7 @@ public class CustomizationScreen implements Screen {
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_head);
-					image_currentTab.setDrawable(tempDrawable);
+					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "headTable";
 					state = CustomState.Head;
 					changeContent();
@@ -790,7 +792,7 @@ public class CustomizationScreen implements Screen {
 				if (menuState == MenuState.Ready) {
 					GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_back);
-					image_currentTab.setDrawable(tempDrawable);
+					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "backTable";
 					state = CustomState.Back;
 					changeContent();
@@ -798,7 +800,7 @@ public class CustomizationScreen implements Screen {
 			}
 		});
 
-		image_back.addListener(new InputListener() {
+		imageBackButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -811,9 +813,9 @@ public class CustomizationScreen implements Screen {
 					}
 				};
 				GameAudio.dogeBark();
-				image_back.setOrigin(image_back.getWidth() / 4, image_back.getHeight() / 2);
-				image_back.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_back.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
+				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
 			}
 		});
@@ -821,38 +823,39 @@ public class CustomizationScreen implements Screen {
 	}
 
 	private void initActors() {
-		stage.addActor(image_menu);
+		stage.addActor(imageMenuBg);
 
-		stage.addActor(image_back);
-		stage.addActor(image_menu_mombody);
-		image_menu_bluepup.setOrigin(image_menu_bluepup.getWidth() / 2, image_menu_bluepup.getHeight());
+		stage.addActor(imageBackButton);
+		stage.addActor(imageMenuMomBody);
+		imageMenuBluePup.setOrigin(imageMenuBluePup.getWidth() / 2, imageMenuBluePup.getHeight());
 
-		image_menu_bluepup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
-		stage.addActor(image_menu_bluepup);
-		stage.addActor(image_menu_mom_nose_paw);
+		imageMenuBluePup.addAction(forever(sequence(rotateBy(5, 2), delay(0.5f), sequence(rotateBy(-5, 2)))));
+		stage.addActor(imageMenuBluePup);
+		stage.addActor(imageMenuMomNosePaw);
 
-		image_menu_creampup_body.setOrigin(image_menu_creampup_body.getWidth() / 2, image_menu_creampup_body.getHeight() / 2);
-		image_menu_creampup_body.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		stage.addActor(image_menu_creampup_body);
-		image_menu_creampup_paw.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
-		stage.addActor(image_menu_creampup_paw);
-		image_menu_creampup_paw2.setOrigin(image_menu_creampup_paw.getWidth() / 2, image_menu_creampup_paw.getHeight() / 2);
-		image_menu_creampup_paw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
-		image_menu_creampup_paw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
-		stage.addActor(image_menu_creampup_paw2);
+		imageMenuCreamPupBody.setOrigin(imageMenuCreamPupBody.getWidth() / 2, imageMenuCreamPupBody.getHeight() / 2);
+		imageMenuCreamPupBody.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		stage.addActor(imageMenuCreamPupBody);
+		imageMenuCreamPupPaw.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw.addAction(forever(sequence(rotateBy(20, 1), delay(0.5f), sequence(rotateBy(-20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw);
+		imageMenuCreamPupPaw2.setOrigin(imageMenuCreamPupPaw.getWidth() / 2, imageMenuCreamPupPaw.getHeight() / 2);
+		imageMenuCreamPupPaw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
+		imageMenuCreamPupPaw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
+		stage.addActor(imageMenuCreamPupPaw2);
 		stage.addActor(winOverlay);
-		stage.addActor(image_back);
+		stage.addActor(imageBackButton);
 
-		stage.addActor(image_customTitle);
-		stage.addActor(image_dogeCoin);
-		stage.addActor(image_currentBox);
-		stage.addActor(image_currentTab);
+		stage.addActor(imageCustomTitle);
+		stage.addActor(imageDogeCoin);
+		stage.addActor(imageCurrentBox);
+		stage.addActor(imageCurrentTab);
 
-		stage.addActor(image_next);
-		stage.addActor(image_previous);
-		stage.addActor(image_currentItemsTxt);
+		stage.addActor(imageCurrentTab);
+		stage.addActor(imagePrevious);
+		stage.addActor(imageNext);
+		stage.addActor(imageCurrentItemsText);
 		stage.addActor(motherDoge);
 		stage.addActor(noseButton);
 		stage.addActor(eyesButton);

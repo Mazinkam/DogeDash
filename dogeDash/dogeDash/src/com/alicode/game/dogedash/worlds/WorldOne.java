@@ -49,6 +49,8 @@ public class WorldOne extends Table {
 	private float flowerRespawnTime, flowerRespawnCooldown;
 	private float bushRespawnTime, bushRespawnCooldown;
 
+	private Iterator<EnemyBee> beeIter;
+
 	public WorldOne() {
 		setBounds(0, 0, 800, 480);
 		setClip(true);
@@ -91,15 +93,14 @@ public class WorldOne extends Table {
 	public void act(float delta) {
 		super.act(delta);
 
-		if (Statics.gameRunning) {
-			Statics.gameRunning = true;
+		if (Statics.state == Statics.GameState.Running) {
 			updateRespawnTimes();
-			updateBees();
-			updateFlowers();
-			updatePups();
-			updateBushes();
 			GamePoints.currentScore++;
 		}
+		updateBees();
+		updateFlowers();
+		updatePups();
+		updateBushes();
 
 	}
 
@@ -152,14 +153,13 @@ public class WorldOne extends Table {
 	}
 
 	private void updateBees() {
-		Iterator<EnemyBee> beeIter = enemyBees.iterator();
+		beeIter = enemyBees.iterator();
+		// Gdx.app.log(DogeDashCore.LOG, "enemyBees " + enemyBees.size);
 		while (beeIter.hasNext()) {
 			EnemyBee enemyBee = beeIter.next();
 			if (enemyBee.getBounds().x + enemyBee.getWidth() < 0) {
 				beeIter.remove();
-				Gdx.app.log(DogeDashCore.LOG, "Removed bee" + enemyBee);
 				removeActor(enemyBee);
-
 			}
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump && !Statics.playerHitByBee) {
 				beeIter.remove();
@@ -282,6 +282,40 @@ public class WorldOne extends Table {
 		enemyBees.add(enemyBee);
 		onGroundGroup.addActor(enemyBee);
 		enemyDelta = TimeUtils.nanoTime();
+	}
+
+	public void cleanTheField() {
+		wipeFlowers();
+		wipeEnemies();
+		wipePuppies();
+		wipeBushes();
+	}
+
+	private static void wipeBushes() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void wipePuppies() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void wipeEnemies() {
+		// beeIter = enemyBees.iterator();
+		// //Gdx.app.log(DogeDashCore.LOG, "enemyBees " + enemyBees.size);
+		// while (beeIter.hasNext()) {
+		// EnemyBee enemyBee = beeIter.next();
+		// beeIter.remove();
+		// // Gdx.app.log(DogeDashCore.LOG, "Removed bee" + enemyBee);
+		// removeActor(enemyBee);
+		//
+		// }
+	}
+
+	private static void wipeFlowers() {
+		// TODO Auto-generated method stub
+
 	}
 
 	public Array<EnemyBee> getEnemyBees() {

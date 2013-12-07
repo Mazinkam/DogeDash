@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.models;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.Statics.GameState;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -65,7 +66,7 @@ public class MotherDoge extends Actor {
 
 	@Override
 	public void act(float delta) {
-		if (Statics.gameRunning) {
+		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateBounds();
 			jumpUpdate();
@@ -74,9 +75,7 @@ public class MotherDoge extends Actor {
 	}
 
 	private void updatePlayerStatus() {
-	
-			
-		
+
 	}
 
 	@Override
@@ -92,11 +91,15 @@ public class MotherDoge extends Actor {
 			addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(0.2f), Actions.fadeIn(0.2f))));
 			frame = dogeGotHit.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
 		}
-		if (Statics.playerJump) {
+		if (Statics.playerJump && Statics.state == GameState.Running) {
 			frame = Assets.characterJump;
 		}
 		if (Statics.isSuperD) {
 			frame = dogeSuperD.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
+		}
+
+		if (Statics.state == GameState.GameOver) {
+			frame = Assets.characterDie;
 		}
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(),
 				1, 1, getRotation());

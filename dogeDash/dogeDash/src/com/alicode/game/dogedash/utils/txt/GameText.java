@@ -31,7 +31,6 @@ public class GameText extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
-
 		font.draw(batch, text, x, y);
 
 	}
