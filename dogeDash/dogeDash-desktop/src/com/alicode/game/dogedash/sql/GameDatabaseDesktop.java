@@ -10,7 +10,7 @@ import com.badlogic.gdx.sql.DatabaseCursor;
 import com.badlogic.gdx.sql.DatabaseFactory;
 import com.badlogic.gdx.sql.SQLiteGdxException;
 
-public class GameDatabase implements GameDatabaseInterface{
+public class GameDatabaseDesktop implements GameDatabaseInterface{
 
 	private Database dbHandler;
 
@@ -83,23 +83,26 @@ public class GameDatabase implements GameDatabaseInterface{
 	private static final String DATABASE_CREATE = CREATE_LEVELONE_TABLE + CREATE_LEVELTWO_TABLE + CREATE_COSTUME_BACK_TABLE
 			+ CREATE_COSTUME_EYES_TABLE + CREATE_COSTUME_HEAD_TABLE + CREATE_COSTUME_NOSE_TABLE + CREATE_SETTINGS_TABLE + CREATE_MISC_TABLE;
 
-	public GameDatabase() {
+	public GameDatabaseDesktop() {
+	
+	}
+	@Override
+	public void create() {
 		Gdx.app.log(DogeDashCore.LOG, "DB initalizing");
 		dbHandler = DatabaseFactory.getNewDatabase(DATABASE_NAME, DATABASE_VERSION, DATABASE_CREATE, null);
 
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			dropTheBase();
+			//dropTheBase();
 			dbHandler.execSQL(DATABASE_CREATE);
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
 		initDb();
 		Gdx.app.log(DogeDashCore.LOG, "DB initalized");
-
+		
 	}
-
 	private void initDb() {
 
 		Gdx.app.log(DogeDashCore.LOG, "DAY LEVEL LIST---------------------------------------");
@@ -213,7 +216,7 @@ public class GameDatabase implements GameDatabaseInterface{
 		}
 		Gdx.app.log(DogeDashCore.LOG, "SETTINGS LIST---------------------------------------");
 		if (settingsList.isEmpty()) {
-			addSettings(new Settings(1, 1, 1, 1));
+			addSettings(new Settings(1, 0, 1, 1));
 		} else {
 			for (Settings obj : settingsList) {
 
@@ -239,6 +242,7 @@ public class GameDatabase implements GameDatabaseInterface{
 		}
 
 	}
+
 
 	public void dropTheBase() throws SQLiteGdxException {
 		// "DROP TABLE IF EXISTS " + TABLE_LVL1 + ";" +
@@ -593,21 +597,5 @@ public class GameDatabase implements GameDatabaseInterface{
 		Gdx.app.log(DogeDashCore.LOG, "dispose DB");
 	}
 
-	@Override
-	public void create() {
-		Gdx.app.log(DogeDashCore.LOG, "DB initalizing");
-		dbHandler = DatabaseFactory.getNewDatabase(DATABASE_NAME, DATABASE_VERSION, DATABASE_CREATE, null);
 
-		dbHandler.setupDatabase();
-		try {
-			dbHandler.openOrCreateDatabase();
-			dropTheBase();
-			dbHandler.execSQL(DATABASE_CREATE);
-		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
-		}
-		initDb();
-		Gdx.app.log(DogeDashCore.LOG, "DB initalized");
-		
-	}
 }

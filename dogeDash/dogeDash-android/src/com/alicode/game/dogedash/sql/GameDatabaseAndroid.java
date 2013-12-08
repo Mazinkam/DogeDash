@@ -10,7 +10,7 @@ import com.badlogic.gdx.sql.DatabaseCursor;
 import com.badlogic.gdx.sql.DatabaseFactory;
 import com.badlogic.gdx.sql.SQLiteGdxException;
 
-public class GameDatabase implements GameDatabaseInterface{
+public class GameDatabaseAndroid implements GameDatabaseInterface{
 
 	private Database dbHandler;
 
@@ -83,8 +83,8 @@ public class GameDatabase implements GameDatabaseInterface{
 	private static final String DATABASE_CREATE = CREATE_LEVELONE_TABLE + CREATE_LEVELTWO_TABLE + CREATE_COSTUME_BACK_TABLE
 			+ CREATE_COSTUME_EYES_TABLE + CREATE_COSTUME_HEAD_TABLE + CREATE_COSTUME_NOSE_TABLE + CREATE_SETTINGS_TABLE + CREATE_MISC_TABLE;
 
-	public GameDatabase() {
-	
+	public GameDatabaseAndroid() {
+		initDb();
 	}
 
 	private void initDb() {
@@ -234,7 +234,7 @@ public class GameDatabase implements GameDatabaseInterface{
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			//dropTheBase();
+			dropTheBase();
 			dbHandler.execSQL(DATABASE_CREATE);
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
