@@ -509,88 +509,18 @@ core7.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-menu/buttons/pause_resume
-  rotate: false
-  xy: 1, 452
-  size: 345, 59
-  orig: 345, 59
-  offset: 0, 0
-  index: -1
 menu/buttons/customization
   rotate: false
-  xy: 1, 409
+  xy: 1, 468
   size: 349, 41
   orig: 349, 41
   offset: 0, 0
   index: 2
-menu/buttons/vibrationoff
+menu/buttons/pause1
   rotate: false
-  xy: 1, 370
-  size: 293, 37
-  orig: 293, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/tutorial_levelselect
-  rotate: false
-  xy: 1, 328
-  size: 287, 40
-  orig: 287, 40
-  offset: 0, 0
-  index: -1
-menu/buttons/pause_menu
-  rotate: false
-  xy: 1, 263
-  size: 250, 63
-  orig: 250, 63
-  offset: 0, 0
-  index: -1
-menu/buttons/soundoff
-  rotate: false
-  xy: 1, 216
-  size: 256, 45
-  orig: 256, 45
-  offset: 0, 0
-  index: -1
-menu/buttons/tutorial_mainmenu
-  rotate: false
-  xy: 1, 174
-  size: 255, 40
-  orig: 255, 40
-  offset: 0, 0
-  index: -1
-menu/buttons/highscores
-  rotate: false
-  xy: 1, 135
-  size: 260, 37
-  orig: 260, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/vibrationon
-  rotate: false
-  xy: 1, 96
-  size: 274, 37
-  orig: 274, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/mainmenu
-  rotate: false
-  xy: 1, 56
-  size: 254, 38
-  orig: 254, 38
-  offset: 0, 0
-  index: -1
-menu/buttons/highscores
-  rotate: false
-  xy: 1, 18
-  size: 248, 36
-  orig: 248, 36
-  offset: 0, 0
-  index: 2
-menu/buttons/credit
-  rotate: false
-  xy: 348, 471
-  size: 160, 40
-  orig: 160, 40
+  xy: 352, 471
+  size: 143, 38
+  orig: 143, 38
   offset: 0, 0
   index: -1
 menu/buttons/retry
@@ -600,102 +530,186 @@ menu/buttons/retry
   orig: 143, 38
   offset: 0, 0
   index: -1
-menu/buttons/shop_yes
+menu/buttons/pause_resume
   rotate: false
-  xy: 352, 381
-  size: 124, 48
-  orig: 124, 48
+  xy: 1, 407
+  size: 345, 59
+  orig: 345, 59
+  offset: 0, 0
+  index: -1
+menu/buttons/credit
+  rotate: false
+  xy: 348, 389
+  size: 160, 40
+  orig: 160, 40
+  offset: 0, 0
+  index: -1
+menu/buttons/vibrationoff
+  rotate: false
+  xy: 1, 368
+  size: 293, 37
+  orig: 293, 37
   offset: 0, 0
   index: -1
 menu/buttons/musicoff
   rotate: false
-  xy: 296, 343
+  xy: 296, 351
   size: 209, 36
   orig: 209, 36
   offset: 0, 0
   index: -1
+menu/buttons/tutorial_levelselect
+  rotate: false
+  xy: 1, 326
+  size: 287, 40
+  orig: 287, 40
+  offset: 0, 0
+  index: -1
 menu/buttons/musicon
   rotate: false
-  xy: 290, 305
+  xy: 290, 313
   size: 190, 36
   orig: 190, 36
   offset: 0, 0
   index: -1
+menu/buttons/vibrationon
+  rotate: false
+  xy: 1, 287
+  size: 274, 37
+  orig: 274, 37
+  offset: 0, 0
+  index: -1
 menu/buttons/soundon
   rotate: false
-  xy: 277, 258
+  xy: 277, 266
   size: 234, 45
   orig: 234, 45
   offset: 0, 0
   index: -1
+menu/buttons/highscores
+  rotate: false
+  xy: 1, 248
+  size: 260, 37
+  orig: 260, 37
+  offset: 0, 0
+  index: -1
+menu/buttons/highscores
+  rotate: false
+  xy: 263, 228
+  size: 248, 36
+  orig: 248, 36
+  offset: 0, 0
+  index: 2
+menu/buttons/soundoff
+  rotate: false
+  xy: 1, 201
+  size: 256, 45
+  orig: 256, 45
+  offset: 0, 0
+  index: -1
+menu/buttons/pause_menu
+  rotate: false
+  xy: 259, 163
+  size: 250, 63
+  orig: 250, 63
+  offset: 0, 0
+  index: -1
+menu/buttons/tutorial_mainmenu
+  rotate: false
+  xy: 1, 159
+  size: 255, 40
+  orig: 255, 40
+  offset: 0, 0
+  index: -1
 menu/buttons/customization
   rotate: false
-  xy: 259, 215
+  xy: 258, 120
   size: 242, 41
   orig: 242, 41
   offset: 0, 0
   index: -1
-menu/buttons/options
+menu/buttons/mainmenu
   rotate: false
-  xy: 258, 176
-  size: 170, 37
-  orig: 170, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/back
-  rotate: false
-  xy: 263, 135
-  size: 119, 39
-  orig: 119, 39
-  offset: 0, 0
-  index: -1
-menu/buttons/play
-  rotate: false
-  xy: 277, 93
-  size: 114, 40
-  orig: 114, 40
-  offset: 0, 0
-  index: -1
-menu/buttons/tutorial_resume
-  rotate: false
-  xy: 257, 51
-  size: 181, 40
-  orig: 181, 40
-  offset: 0, 0
-  index: -1
-menu/buttons/shop_no
-  rotate: false
-  xy: 251, 1
-  size: 92, 48
-  orig: 92, 48
-  offset: 0, 0
-  index: -1
-menu/buttons/button_previous
-  rotate: false
-  xy: 345, 25
-  size: 116, 24
-  orig: 116, 24
+  xy: 1, 119
+  size: 254, 38
+  orig: 254, 38
   offset: 0, 0
   index: -1
 menu/buttons/arrow_right
   rotate: false
-  xy: 430, 156
+  xy: 1, 60
   size: 61, 57
   orig: 61, 57
   offset: 0, 0
   index: -1
 menu/buttons/arrow_left
   rotate: false
-  xy: 393, 97
+  xy: 1, 1
   size: 60, 57
   orig: 60, 57
   offset: 0, 0
   index: -1
+menu/buttons/shop_yes
+  rotate: false
+  xy: 63, 10
+  size: 124, 48
+  orig: 124, 48
+  offset: 0, 0
+  index: -1
+menu/buttons/shop_no
+  rotate: false
+  xy: 64, 69
+  size: 92, 48
+  orig: 92, 48
+  offset: 0, 0
+  index: -1
+menu/buttons/tutorial_resume
+  rotate: false
+  xy: 158, 77
+  size: 181, 40
+  orig: 181, 40
+  offset: 0, 0
+  index: -1
+menu/buttons/options
+  rotate: false
+  xy: 341, 81
+  size: 170, 37
+  orig: 170, 37
+  offset: 0, 0
+  index: -1
+menu/buttons/play
+  rotate: false
+  xy: 189, 35
+  size: 114, 40
+  orig: 114, 40
+  offset: 0, 0
+  index: -1
+menu/buttons/button_previous
+  rotate: false
+  xy: 189, 9
+  size: 116, 24
+  orig: 116, 24
+  offset: 0, 0
+  index: -1
+menu/buttons/back
+  rotate: false
+  xy: 305, 36
+  size: 119, 39
+  orig: 119, 39
+  offset: 0, 0
+  index: -1
 menu/buttons/button_next
   rotate: false
-  xy: 440, 71
+  xy: 307, 10
   size: 63, 24
   orig: 63, 24
+  offset: 0, 0
+  index: -1
+menu/buttons/pause2
+  rotate: false
+  xy: 426, 41
+  size: 34, 38
+  orig: 34, 38
   offset: 0, 0
   index: -1
 
@@ -1214,9 +1228,16 @@ menu/txt/hard2
   orig: 118, 29
   offset: 0, 0
   index: -1
-menu/txt/player_score
+menu/txt/enemies
   rotate: false
   xy: 466, 441
+  size: 121, 25
+  orig: 121, 25
+  offset: 0, 0
+  index: -1
+menu/txt/player_score
+  rotate: false
+  xy: 466, 414
   size: 97, 25
   orig: 97, 25
   offset: 0, 0

@@ -21,7 +21,7 @@ public class DogeDashCore extends Game {
 	}
 	
 	public DogeDashCore() {
-		super();
+		//super();
 		// TODO Auto-generated constructor stub
 	}
 

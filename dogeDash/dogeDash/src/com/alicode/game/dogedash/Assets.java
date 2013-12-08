@@ -59,7 +59,7 @@ public class Assets {
 
 	public static TextureRegion tab_back, tab_eyes, tab_nose, tab_head, button_next, button_previous, itemsEquipText, tutorials;
 
-	public static TextureRegion pup_missed, pup_points, pause_menu, pause_resume, dogecoins_text;
+	public static TextureRegion pup_missed, pup_points, pause_menu, pause_resume, dogecoins_text, pause_button, enemies_on_player;
 
 	public static TextureRegion shop_after, shop_buyitem, shop_currentcoins, shop_no, shop_price, shop_yes, chowcoin_2, shop_not_enough;
 
@@ -122,6 +122,7 @@ public class Assets {
 
 		// pause
 		pause_menu = atlas.findRegion("menu/buttons/pause_menu");
+		pause_button = atlas.findRegion("menu/buttons/pause2");
 		pause_resume = atlas.findRegion("menu/buttons/pause_resume");
 		tutorial_resume = atlas.findRegion("menu/buttons/tutorial_resume");
 		tutorial_levelselect = atlas.findRegion("menu/buttons/tutorial_levelselect");
@@ -204,6 +205,7 @@ public class Assets {
 
 		// gameover stuff
 		player_score = atlas.findRegion("menu/txt/player_score");
+		enemies_on_player = atlas.findRegion("menu/txt/enemies");
 		pup_missed = atlas.findRegion("menu/txt/pup_missed");
 		puppiescaught = atlas.findRegion("menu/txt/puppiescaught");
 		pup_points = atlas.findRegion("menu/txt/pup_points");

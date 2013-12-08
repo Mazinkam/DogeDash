@@ -47,10 +47,10 @@ public class WorldTerminal implements Screen {
 	private MotherDoge m;
 	private Drawable tempDrawable;
 
-	private WindowOverlay winOverlay;
+	private WindowOverlay winOverlay, winOverlay2;
 	private DogeDashCore game;
 	private Image imageGameOver, imageTime, imageStylePoints, imagePuppyCaught, imagePuppyMissed, imagePuppyPoints, imageDogeCoins, imageTotalScore,
-			imageRetry, imageBack;
+			imageRetry, imageBack, imageEnemiesOnPlayer, imagePauseButton;
 
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
@@ -60,9 +60,11 @@ public class WorldTerminal implements Screen {
 		this.game = game;
 		stage = new Stage();
 		winOverlay = new WindowOverlay();
+		winOverlay2 = new WindowOverlay();
 		inputMuiltiplex = new InputMultiplexer();
 
 		Statics.state = Statics.GameState.Ready;
+		Statics.cleanSlate();
 
 		gameGroup = new Group();
 		readyGroup = new Group();
@@ -91,12 +93,11 @@ public class WorldTerminal implements Screen {
 			tableName = "levelNight";
 			break;
 		}
-		defineGameOver();// rmove this
 		gameInput = new GameInput(m, this);
 	}
 
 	private void defineReady() {
-		readyGroup.addActor(winOverlay);
+		readyGroup.addActor(winOverlay2);
 		readyGroup.addActor(textInto);
 
 	}
@@ -274,10 +275,6 @@ public class WorldTerminal implements Screen {
 
 	}
 
-	private void updateGameStatus() {
-
-	}
-
 	private void updateRunning() {
 		Statics.createLife();
 
@@ -288,7 +285,7 @@ public class WorldTerminal implements Screen {
 	}
 
 	private void updateGameOver() {
-
+		updateGameoverScore();
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -336,18 +333,27 @@ public class WorldTerminal implements Screen {
 									Statics.cleanSlate();
 									cleanChosenField();
 									gameoverGroup.remove();
-									Gdx.app.log(DogeDashCore.LOG, "State: " +Statics.state );
+									Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
 									return true;
 								}
 							})));
-					
-					
+
 					stage.removeListener(this);
 				}
 
 			}
 		});
 
+	}
+
+	private void updateGameoverScore() {
+		textTime.setText(GamePoints.currentScore + "");
+		textStylePoints.setText(GamePoints.bonusPointStatic + "");
+		textPuppyCaught.setText(GamePoints.puppyCaughtNum + "");
+		textPuppyMissed.setText(GamePoints.puppyMissedNum + "");
+		textPuppyPoints.setText(GamePoints.puppyPoints() + "");
+		textTotalScore.setText(GamePoints.finalScore + "");
+		textDogeCoins.setText("0");
 	}
 
 	private void updateHighscore() {
