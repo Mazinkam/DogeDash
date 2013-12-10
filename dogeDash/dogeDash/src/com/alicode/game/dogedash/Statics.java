@@ -36,6 +36,11 @@ public class Statics {
 	public static boolean playerHitByBush = false;
 	public static boolean playerHitByBee = false;
 	public static boolean playerHitByPuppy = false;
+	public static boolean playerHitByMud = false;
+	public static boolean playerHitByPuddle = false;
+	public static boolean playerHitByLog = false;
+	public static boolean playerHitAnimation = false;
+	public static float playerX, playerY, playerZ;
 
 	public static int beesOnPlayer = 0;
 
@@ -44,25 +49,27 @@ public class Statics {
 	public static int headCostume;
 	public static int noseCostume;
 	public static int backCostume;
-	
-	public static void createLife()
-	{
+
+	public static void createLife() {
 		enemiesAlive = true;
 		puppiesAlive = true;
 		bushesAlive = true;
 		flowersAlive = true;
+		playerX = 110;
+		playerY = 220;
+		playerZ = 0;
 	}
 
 	public static void cleanSlate() {
 		state = GameState.Ready;
-		
+
 		cleanseEnemies = false;
 		playerJump = false;
-		
+
 		playerHitByBush = false;
 		playerHitByBee = false;
 		playerHitByPuppy = false;
-		
+
 		enemiesAlive = false;
 		puppiesAlive = false;
 		bushesAlive = false;

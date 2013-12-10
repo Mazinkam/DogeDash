@@ -24,7 +24,8 @@ public class MotherDoge extends Actor {
 	private final Animation dogeGotHit;
 	private final Animation dogeSuperD;
 	private float dogeWalkAnimationState;
-	private Array<TextureRegion> dogeWalk, dogeWalkHit, dogeHit, dogeSuper;
+	private TextureRegion waterDrops, mudDrops;
+	private Array<TextureRegion> dogeWalk, dogeWalkHit, dogeHit, dogeSuper, dogeSuperEffect;
 	private Rectangle bounds = new Rectangle();
 	private TextureRegion frame;
 	public static float playerX, playerY, playerZ;
@@ -87,7 +88,7 @@ public class MotherDoge extends Actor {
 		if (Statics.beesOnPlayer > 2)
 			frame = dogeWalkHitAnimation.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
 
-		if (Statics.playerHitByBee) {
+		if (Statics.playerHitByBee || Statics.playerHitAnimation) {
 			addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(0.2f), Actions.fadeIn(0.2f))));
 			frame = dogeGotHit.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
 		}
@@ -133,16 +134,41 @@ public class MotherDoge extends Actor {
 
 	}
 
-	public void normalDogeMovement(float x, float y) {
-		if (y >= 390)
-			y = 390;
-		if (y <= 0)
-			y = 0;
+	public void normalDogeMovement(float playerX, float playerY) {
 
-		playerX = x;
-		playerY = y;
+		if (!Statics.playerHitByMud) {
+			if (playerY >= 390)
+				playerY = 390;
+			if (playerY <= 0)
+				playerY = 0;
 
-		addAction(Actions.moveTo(x, y, 0.5f));
+			if (playerX > 110)
+				playerX--;
+
+			if (playerX <= 110)
+				playerX++;
+
+			MotherDoge.playerX = playerX;
+			MotherDoge.playerY = playerY;
+		}
+		if (Statics.playerHitByMud) {
+
+			if (playerY <= 390)
+				MotherDoge.playerY -= 5.1f;
+			if (playerY > 0)
+				MotherDoge.playerY += 5.1f;
+
+			if (playerX > 110)
+				playerX--;
+
+			if (playerX <= 110)
+				playerX++;
+
+			MotherDoge.playerX = playerX;
+
+		}
+
+		addAction(Actions.moveTo(playerX, MotherDoge.playerY, 0.5f));
 
 	}
 

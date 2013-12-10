@@ -1,7 +1,6 @@
 package com.alicode.game.dogedash.models.enemies;
 
 import com.alicode.game.dogedash.Assets;
-import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.badlogic.gdx.Gdx;

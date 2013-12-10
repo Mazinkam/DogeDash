@@ -331,7 +331,6 @@ public class WorldTerminal implements Screen {
 							new Action() {
 								public boolean act(float delta) {
 									Statics.cleanSlate();
-									cleanChosenField();
 									gameoverGroup.remove();
 									Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
 									return true;
@@ -359,19 +358,6 @@ public class WorldTerminal implements Screen {
 	private void updateHighscore() {
 		int currentHighScore = DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore();
 
-	}
-
-	private void cleanChosenField() {
-		switch (Statics.gameLevel) {
-		case 1:
-			worldOne.cleanTheField();
-			// Gdx.app.log(DogeDashCore.LOG, "cleaned worldone " +
-			// Statics.state);
-			break;
-		case 2:
-
-			break;
-		}
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Puppy extends Actor {
 
-	private final Animation pupWalkingAnim;
+	private Animation pupWalkingAnim;
 	private float pupWalkingAnimState;
 	private Array<TextureRegion> pupWalkingRed, pupWalkingBlack, pupWalkingCream, pupWalkingBlue;
 	private Array<? extends TextureRegion> pupWalkingFrames;
@@ -46,20 +46,19 @@ public class Puppy extends Actor {
 		pupWalkingFrames = new Array<TextureRegion>();
 
 		if (randomNum == 1)
-			pupWalkingFrames.addAll(pupWalkingRed);
+
+			this.pupWalkingAnim = new Animation(0.15f, pupWalkingRed);
 		if (randomNum == 2)
-			pupWalkingFrames.addAll(pupWalkingBlack);
+			this.pupWalkingAnim = new Animation(0.15f, pupWalkingBlack);
+
 		if (randomNum == 3)
-			pupWalkingFrames.addAll(pupWalkingCream);
+			this.pupWalkingAnim = new Animation(0.15f, pupWalkingCream);
+
 		if (randomNum == 4)
-			pupWalkingFrames.addAll(pupWalkingBlue);
+			this.pupWalkingAnim = new Animation(0.15f, pupWalkingBlue);
 
 		puppyX = x;
 
-		this.pupWalkingAnim = new Animation(0.15f, pupWalkingFrames);
-		//
-		// addAction(Actions.moveTo(-getWidth(), getY(), MathUtils.random( 2.5f,
-		// 3.5f)));
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}

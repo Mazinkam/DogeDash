@@ -6,17 +6,12 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
-import java.util.logging.Level;
-
-import javax.sound.midi.Sequence;
-
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
-import com.alicode.game.dogedash.worlds.WorldTwo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -264,7 +259,7 @@ public class WorldSelection implements Screen {
 						completeAction)));
 			}
 		});
-		
+
 		imageHard.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -273,7 +268,7 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						Statics.gameLevelDifficulty = 1;
+						Statics.gameLevelDifficulty = 3;
 						game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
 						return true;
 					}
@@ -293,11 +288,8 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						if (menuState == MenuState.Ready) {
-							game.setScreen(new MenuScreen(game));
-						} else {
-							menuState = MenuState.Ready;
-						}
+						Statics.gameLevelDifficulty = 2;
+						game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
 
 						return true;
 					}
@@ -317,11 +309,8 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						if (menuState == MenuState.Ready) {
-							game.setScreen(new MenuScreen(game));
-						} else {
-							menuState = MenuState.Ready;
-						}
+						Statics.gameLevelDifficulty = 1;
+						game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
 
 						return true;
 					}
@@ -368,7 +357,6 @@ public class WorldSelection implements Screen {
 		stage.addActor(imageLevel1);
 		stage.addActor(imageLevel2);
 		stage.addActor(imageTutorialLevelSelect);
-	
 
 		stage.addActor(winOverlay2);
 		stage.addActor(imageBackButton);
@@ -396,8 +384,7 @@ public class WorldSelection implements Screen {
 			imageNormal.setVisible(true);
 			imageEasy.setVisible(true);
 			winOverlay2.setVisible(true);
-		}
-		else{
+		} else {
 			imageSelectDifficulty.setVisible(false);
 			imageHard.setVisible(false);
 			imageNormal.setVisible(false);
