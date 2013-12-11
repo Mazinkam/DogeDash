@@ -2,8 +2,7 @@ package com.alicode.game.dogedash;
 
 import android.os.Bundle;
 
-import com.alicode.game.dogedash.sql.GameDatabaseAndroid;
-import com.alicode.game.dogedash.sql.GameDatabaseInterface;
+import com.alicode.game.dogedash.DogeDashCore;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
@@ -13,9 +12,8 @@ public class MainActivity extends AndroidApplication {
         super.onCreate(savedInstanceState);
         
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
-        GameDatabaseInterface db = new GameDatabaseAndroid();
         cfg.useGL20 = true;
         
-        initialize(new DogeDashCore(db), cfg);
+        initialize(new DogeDashCore(), cfg);
     }
 }

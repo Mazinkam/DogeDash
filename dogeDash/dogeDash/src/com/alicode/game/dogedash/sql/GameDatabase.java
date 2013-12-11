@@ -91,7 +91,16 @@ public class GameDatabase {
 		try {
 			dbHandler.openOrCreateDatabase();
 			dropTheBase();
-			dbHandler.execSQL(DATABASE_CREATE);
+			//dbHandler.execSQL(DATABASE_CREATE);
+			dbHandler.execSQL(CREATE_LEVELONE_TABLE);
+			dbHandler.execSQL(CREATE_LEVELTWO_TABLE);
+			dbHandler.execSQL(CREATE_COSTUME_BACK_TABLE);
+			dbHandler.execSQL(CREATE_COSTUME_EYES_TABLE);
+			dbHandler.execSQL(CREATE_COSTUME_NOSE_TABLE);
+			dbHandler.execSQL(CREATE_COSTUME_HEAD_TABLE);
+			dbHandler.execSQL(CREATE_SETTINGS_TABLE);
+			dbHandler.execSQL(CREATE_MISC_TABLE);
+		
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
@@ -257,27 +266,32 @@ public class GameDatabase {
 			dbHandler.execSQL("INSERT INTO " + tableName + "  VALUES (" + level.getId() + "," + level.getHighScore() + "," + level.getStylePoints()
 					+ "," + level.getTimeAlive() + "," + level.getCaughtPuppyNum() + "," + level.getMissedPuppyNum() + "," + level.getPuppyPoints()
 					+ ")");
+			Gdx.app.log(DogeDashCore.LOG, "wrote into " + tableName);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed wrote into " + tableName);
 		}
-		Gdx.app.log(DogeDashCore.LOG, "wrote into " + tableName);
+		
 	}
 
 	public Level getLevelHighscore(int id, String tableName) {
 		DatabaseCursor cursor = null;
-
+		Level level = null;
 		try {
 			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_SCORE + "," + KEY_STYLE + "," + KEY_TIME + "," + KEY_CAUGHTPUPPIES + ","
 					+ KEY_MISSEDPUPPIES + "," + KEY_PUPPYPOINTS + " FROM " + tableName + " WHERE " + KEY_ID + "=" + "'" + id + "'");
-
+			Gdx.app.log(DogeDashCore.LOG, "get from " + tableName);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed to get from" + tableName);
 		}
-		cursor.next();
+		if (cursor != null) {
+			cursor.next();
 
-		Level level = new Level(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
-				Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
-				Integer.parseInt(cursor.getString(6)));
+			level = new Level(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
+					Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
+					Integer.parseInt(cursor.getString(6)));
+		}
 
 		return level;
 	}
@@ -288,24 +302,25 @@ public class GameDatabase {
 
 		try {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
-
+			Gdx.app.log(DogeDashCore.LOG, "getting list from " + tableName);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed to get list from" + tableName);
 		}
+		if (cursor != null) {
+			while (cursor.next()) {
+				Level level = new Level();
+				level.setID(Integer.parseInt(cursor.getString(0)));
+				level.setHighScore(Integer.parseInt(cursor.getString(1)));
+				level.setStylePoints(Integer.parseInt(cursor.getString(2)));
+				level.setTimeAlive(Integer.parseInt(cursor.getString(3)));
+				level.setCaughtPuppyNum(Integer.parseInt(cursor.getString(4)));
+				level.setMissedPuppyNum(Integer.parseInt(cursor.getString(5)));
+				level.setPuppyPoints(Integer.parseInt(cursor.getString(6)));
 
-		while (cursor.next()) {
-			Level level = new Level();
-			level.setID(Integer.parseInt(cursor.getString(0)));
-			level.setHighScore(Integer.parseInt(cursor.getString(1)));
-			level.setStylePoints(Integer.parseInt(cursor.getString(2)));
-			level.setTimeAlive(Integer.parseInt(cursor.getString(3)));
-			level.setCaughtPuppyNum(Integer.parseInt(cursor.getString(4)));
-			level.setMissedPuppyNum(Integer.parseInt(cursor.getString(5)));
-			level.setPuppyPoints(Integer.parseInt(cursor.getString(6)));
-
-			levelList.add(level);
+				levelList.add(level);
+			}
 		}
-
 		return levelList;
 	}
 
@@ -347,26 +362,30 @@ public class GameDatabase {
 		try {
 			dbHandler.execSQL("INSERT INTO " + tableName + "  VALUES (" + costume.getId() + "," + "'" + costume.getItemName() + "'" + ","
 					+ costume.getIsOwned() + "," + costume.getItemPrice() + ")");
+			Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed to created " + tableName);
 		}
-		Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
+		//Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
 	}
 
 	public Costume getCostume(int id, String tableName) {
 		DatabaseCursor cursor = null;
-
+		Costume costume = null;
 		try {
 			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_ITEM_NAME + "," + KEY_ITEM_OWNED + "," + KEY_ITEM_PRICE + " FROM " + tableName
 					+ " WHERE " + KEY_ID + "=" + "'" + id + "'");
-
+		
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
-		cursor.next();
+		if (cursor != null) {
+			cursor.next();
 
-		Costume costume = new Costume(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)),
-				Integer.parseInt(cursor.getString(3)));
+			costume = new Costume(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)),
+					Integer.parseInt(cursor.getString(3)));
+		}
 
 		return costume;
 	}
@@ -377,20 +396,21 @@ public class GameDatabase {
 
 		try {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
-
+			Gdx.app.log(DogeDashCore.LOG, "getting list from " + tableName);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed to get list from " + tableName);
 		}
+		if (cursor != null)
+			while (cursor.next()) {
+				Costume costume = new Costume();
+				costume.setId(Integer.parseInt(cursor.getString(0)));
+				costume.setItemName(cursor.getString(1));
+				costume.setIsOwned(Integer.parseInt(cursor.getString(2)));
+				costume.setItemPrice(Integer.parseInt(cursor.getString(3)));
 
-		while (cursor.next()) {
-			Costume costume = new Costume();
-			costume.setId(Integer.parseInt(cursor.getString(0)));
-			costume.setItemName(cursor.getString(1));
-			costume.setIsOwned(Integer.parseInt(cursor.getString(2)));
-			costume.setItemPrice(Integer.parseInt(cursor.getString(3)));
-
-			costumeList.add(costume);
-		}
+				costumeList.add(costume);
+			}
 
 		return costumeList;
 	}
@@ -430,26 +450,32 @@ public class GameDatabase {
 		try {
 			dbHandler.execSQL("INSERT INTO " + TABLE_SETTINGS + "  VALUES (" + settings.getId() + "," + settings.getSoundSettings() + ","
 					+ settings.getMusicSettings() + "," + settings.getVibrationSettings() + ")");
+			Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed to write " + TABLE_SETTINGS);
 		}
-		Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
+		//Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
 	}
 
 	public Settings getSettings(int id) {
 		DatabaseCursor cursor = null;
-
+		Settings settings = null;
 		try {
 			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_SETTINGS_SOUND + "," + KEY_SETTINGS_MUISC + "," + KEY_SETTINGS_VIBRATION
 					+ " FROM " + TABLE_SETTINGS + " WHERE " + KEY_ID + "=" + "'" + id + "'");
-
+			Gdx.app.log(DogeDashCore.LOG, "getting from  " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+		
+			//	e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed getting from  " + TABLE_SETTINGS);
 		}
-		cursor.next();
+		if (cursor != null) {
+			cursor.next();
 
-		Settings settings = new Settings(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
-				.getString(2)), Integer.parseInt(cursor.getString(3)));
+			settings = new Settings(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
+					.getString(2)), Integer.parseInt(cursor.getString(3)));
+		}
 
 		return settings;
 	}
@@ -460,20 +486,21 @@ public class GameDatabase {
 
 		try {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + TABLE_SETTINGS);
-
+			Gdx.app.log(DogeDashCore.LOG, "getting list  " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed getting list " + TABLE_SETTINGS);
 		}
+		if (cursor != null)
+			while (cursor.next()) {
+				Settings settings = new Settings();
+				settings.setId(Integer.parseInt(cursor.getString(0)));
+				settings.setSoundSettings(Integer.parseInt(cursor.getString(1)));
+				settings.setMusicSettings(Integer.parseInt(cursor.getString(2)));
+				settings.setVibrationSettings(Integer.parseInt(cursor.getString(2)));
 
-		while (cursor.next()) {
-			Settings settings = new Settings();
-			settings.setId(Integer.parseInt(cursor.getString(0)));
-			settings.setSoundSettings(Integer.parseInt(cursor.getString(1)));
-			settings.setMusicSettings(Integer.parseInt(cursor.getString(2)));
-			settings.setVibrationSettings(Integer.parseInt(cursor.getString(2)));
-
-			settingsList.add(settings);
-		}
+				settingsList.add(settings);
+			}
 
 		return settingsList;
 	}
@@ -511,14 +538,18 @@ public class GameDatabase {
 	public void addMisc(Misc misc) {
 		try {
 			dbHandler.execSQL("INSERT INTO " + TABLE_MISC + "  VALUES (" + misc.getId() + "," + misc.getDogeCoins() + ")");
+			Gdx.app.log(DogeDashCore.LOG, "write into " + TABLE_MISC);
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed wrote into " + TABLE_MISC);
+			
 		}
-		Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_MISC);
+	//	Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_MISC);
 	}
 
 	public Misc getMisc(int id) {
 		DatabaseCursor cursor = null;
+		Misc misc = null;
 
 		try {
 			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_CURRENCY + " FROM " + TABLE_MISC + " WHERE " + KEY_ID + "=" + "'" + id + "'");
@@ -526,9 +557,11 @@ public class GameDatabase {
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
-		cursor.next();
+		if (cursor != null) {
+			cursor.next();
 
-		Misc misc = new Misc(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)));
+			misc = new Misc(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)));
+		}
 
 		return misc;
 	}
@@ -539,18 +572,20 @@ public class GameDatabase {
 
 		try {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + TABLE_MISC);
+			Gdx.app.log(DogeDashCore.LOG, "wrote list " + TABLE_MISC);
 
 		} catch (SQLiteGdxException e) {
-			e.printStackTrace();
+		//	e.printStackTrace();
+			Gdx.app.log(DogeDashCore.LOG, "failed write list" + TABLE_MISC);
 		}
+		if (cursor != null)
+			while (cursor.next()) {
+				Misc misc = new Misc();
+				misc.setId(Integer.parseInt(cursor.getString(0)));
+				misc.setDogeCoins(Integer.parseInt(cursor.getString(1)));
 
-		while (cursor.next()) {
-			Misc misc = new Misc();
-			misc.setId(Integer.parseInt(cursor.getString(0)));
-			misc.setDogeCoins(Integer.parseInt(cursor.getString(1)));
-
-			miscList.add(misc);
-		}
+				miscList.add(misc);
+			}
 
 		return miscList;
 	}
