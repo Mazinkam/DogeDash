@@ -16,14 +16,16 @@ import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.sql.Costume;
 import com.alicode.game.dogedash.sql.Misc;
-import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -65,8 +67,6 @@ public class CustomizationScreen implements Screen {
 
 	private Array<GameText> shopCurrentItemPriceTag;
 
-	GameText shopItemNameText;
-
 	private Array<TextureRegion> currentTextureList;
 	private Array<TextureRegion> noseShopItems;
 	private Array<TextureRegion> headShopItems;
@@ -86,7 +86,7 @@ public class CustomizationScreen implements Screen {
 
 	private Image imageShopAfter, imageShopPrice;
 
-	private GameText dogeCoins, leftOverCoins, selectedItem, currentDogeCoins;
+	private GameText dogeCoins, leftOverCoins, selectedItem, currentDogeCoins, shopItemNameText;
 	private String tableName;
 	private static int buyingId, leftOverInt, helpInt;
 
@@ -100,6 +100,8 @@ public class CustomizationScreen implements Screen {
 	private List<Costume> headCostumeList;
 	private List<Costume> eyesCostumeList;
 
+	private InputMultiplexer inputMultiplexer;
+
 	CustomState state = CustomState.Nose;
 	MenuState menuState = MenuState.Ready;
 
@@ -109,6 +111,7 @@ public class CustomizationScreen implements Screen {
 		stage = new Stage();
 		Statics.state = Statics.GameState.Ready;
 		motherDoge = new MotherDoge();
+		inputMultiplexer = new InputMultiplexer(stage);
 
 		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
 		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
@@ -233,8 +236,6 @@ public class CustomizationScreen implements Screen {
 	@Override
 	public void show() {
 
-		Gdx.input.setInputProcessor(stage);
-		// background shit
 		initBackground();
 		initMenuBody();
 		initInput();
@@ -428,17 +429,17 @@ public class CustomizationScreen implements Screen {
 				int myId = buyingId;
 
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					return true;
-				}
-
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					if (menuState == MenuState.Ready && currentItemList.get(myId).getIsOwned() == 0) {
-						GameAudio.dogeBark();
+						// GameAudio.dogeBark();
 						menuState = MenuState.Buying;
 						processItem(myId);
 					} else {
 						putDogeClothesOn(myId);
 					}
+					return true;
+				}
+
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
 				}
 
@@ -595,11 +596,11 @@ public class CustomizationScreen implements Screen {
 
 			imageCurrentBuyingItem = image_shopCurrentItem.get(itemId);
 			imageCurrentBuyingItem.setX(370);
-			imageCurrentBuyingItem.setY(300);
+			imageCurrentBuyingItem.setY(290);
 
 			imageCurrentBuyingBox = image_shopCurrentItemBox.get(itemId);
 			imageCurrentBuyingBox.setX(370);
-			imageCurrentBuyingBox.setY(300);
+			imageCurrentBuyingBox.setY(290);
 
 			leftOverInt = DogeDashCore.db.getMisc(1).getDogeCoins() - currentItemList.get(itemId).getItemPrice();
 			selectedItem = new GameText(500, 275, "" + currentItemList.get(itemId).getItemPrice());
@@ -632,7 +633,7 @@ public class CustomizationScreen implements Screen {
 
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					if (menuState == MenuState.Buying && leftOverInt >= 0) {
-						GameAudio.dogeBark();
+						// GameAudio.dogeBark();
 						buyItem(helpInt);
 					} else {
 						if (imageNotEnough != null)
@@ -659,11 +660,8 @@ public class CustomizationScreen implements Screen {
 				}
 
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					if (menuState == MenuState.Buying) {
-						GameAudio.dogeBark();
-						removeActors();
-					}
 
+					removeActorsOnDemand();
 				}
 
 			});
@@ -672,6 +670,13 @@ public class CustomizationScreen implements Screen {
 					+ image_shopCurrentItem.size + " currentTextureList " + currentTextureList.size + " shopCurrentItemPriceTag: "
 					+ shopCurrentItemPriceTag.size);
 
+		}
+	}
+
+	private void removeActorsOnDemand() {
+		if (menuState == MenuState.Buying) {
+			// GameAudio.dogeBark();
+			removeActors();
 		}
 	}
 
@@ -730,14 +735,31 @@ public class CustomizationScreen implements Screen {
 
 	private void initInput() {
 
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
+					if (menuState == MenuState.Ready)
+						game.setScreen(new MenuScreen(game));
+					if (menuState == MenuState.Buying){
+						removeActorsOnDemand();
+						menuState = MenuState.Ready;
+						
+					}
+				}
+
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+		Gdx.input.setInputProcessor(inputMultiplexer);
+
 		noseButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (menuState == MenuState.Ready) {
-					GameAudio.dogeBark();
+					// GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_nose);
 					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "noseTable";
@@ -745,58 +767,66 @@ public class CustomizationScreen implements Screen {
 					changeContent();
 				}
 
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
 			}
 
 		});
 
 		eyesButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (menuState == MenuState.Ready) {
-					GameAudio.dogeBark();
+					// GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_eyes);
 					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "eyesTable";
 					state = CustomState.Eyes;
 					changeContent();
 				}
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
 			}
 		});
 
 		headButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (menuState == MenuState.Ready) {
-					GameAudio.dogeBark();
+					// GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_head);
 					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "headTable";
 					state = CustomState.Head;
 					changeContent();
 				}
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
 			}
 		});
 
 		backButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (menuState == MenuState.Ready) {
-					GameAudio.dogeBark();
+					// GameAudio.dogeBark();
 					tempDrawable = new TextureRegionDrawable(Assets.tab_back);
 					imageCurrentTab.setDrawable(tempDrawable);
 					tableName = "backTable";
 					state = CustomState.Back;
 					changeContent();
 				}
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
 			}
 		});
 
@@ -812,11 +842,16 @@ public class CustomizationScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
-				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
-				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				// //GameAudio.dogeBark();
+				// imageBackButton.setOrigin(imageBackButton.getWidth() / 4,
+				// imageBackButton.getHeight() / 2);
+				// imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f,
+				// 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+				// imageBackButton.addAction((sequence(rotateBy(5, 0.3f,
+				// Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f,
+				// Interpolation.swing),
+				// completeAction)));
+				game.setScreen(new MenuScreen(game));
 			}
 		});
 

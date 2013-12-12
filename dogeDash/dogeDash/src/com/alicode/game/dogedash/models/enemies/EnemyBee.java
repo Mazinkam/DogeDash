@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.models.enemies;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -122,7 +123,8 @@ public class EnemyBee extends Actor {
 		hitPlayer = true;
 		Statics.playerHitByBee = true;
 		Statics.beesOnPlayer++;
-		//
+		GameVibrate.vibrate(500);
+		
 		Action completeAction = new Action() {
 			public boolean act(float delta) {
 				Statics.playerHitByBee = false;

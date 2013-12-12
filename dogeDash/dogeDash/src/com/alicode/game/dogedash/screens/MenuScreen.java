@@ -13,7 +13,11 @@ import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -34,16 +38,17 @@ public class MenuScreen implements Screen {
 	private DogeDashCore game;
 	private Stage stage;
 	private Drawable tempDrawable;
+	private InputMultiplexer inputMultiplexer;
 
 	public MenuScreen(DogeDashCore game) {
 		this.game = game;
 		stage = new Stage();
+		inputMultiplexer = new InputMultiplexer(stage);
 	}
 
 	@Override
 	public void show() {
 
-		Gdx.input.setInputProcessor(stage);
 		initBackground();
 		initForeground();
 		initInput();
@@ -133,6 +138,20 @@ public class MenuScreen implements Screen {
 	}
 
 	private void initInput() {
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK))
+
+					Gdx.app.exit();
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+		Gdx.input.setInputProcessor(inputMultiplexer);
+
 		image_play.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -287,7 +306,7 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		inputMultiplexer.clear();
 
 	}
 

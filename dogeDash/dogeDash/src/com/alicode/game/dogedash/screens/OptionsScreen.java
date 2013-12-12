@@ -11,7 +11,12 @@ import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.sql.Settings;
 import com.alicode.game.dogedash.utils.GameAudio;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
@@ -37,11 +42,13 @@ public class OptionsScreen implements Screen {
 	private Stage stage;
 	public static int isSoundOn, isMuiscOn, isVibrationOn;
 	private WindowOverlay winOverlay;
+	private InputMultiplexer inputMultiplexer;
 
 	public OptionsScreen(DogeDashCore game) {
 		this.game = game;
 		winOverlay = new WindowOverlay();
 		stage = new Stage();
+		inputMultiplexer = new InputMultiplexer(stage);
 		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
 		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
 		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
@@ -50,13 +57,11 @@ public class OptionsScreen implements Screen {
 
 	@Override
 	public void show() {
-
-		Gdx.input.setInputProcessor(stage);
+		initInput();
 		initBackground();
 		initForeground();
-		initInput();
+
 		initActors();
-		// background shit
 
 	}
 
@@ -143,6 +148,21 @@ public class OptionsScreen implements Screen {
 	}
 
 	private void initInput() {
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK))
+
+					game.setScreen(new MenuScreen(game));
+				// Gdx.app.exit();
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+		Gdx.input.setInputProcessor(inputMultiplexer);
+
 		imageSoundButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -223,6 +243,7 @@ public class OptionsScreen implements Screen {
 					tempDrawable = new TextureRegionDrawable(Assets.vibrationoff);
 				imageVibrationButton.setDrawable(tempDrawable);
 				GameAudio.dogeBark();
+				GameVibrate.vibrate(500);
 			}
 
 		});

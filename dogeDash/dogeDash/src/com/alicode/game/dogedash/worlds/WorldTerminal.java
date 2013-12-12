@@ -11,16 +11,17 @@ import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.Statics.GameState;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
-import com.alicode.game.dogedash.screens.SplashScreen;
+import com.alicode.game.dogedash.screens.MenuScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
-import com.alicode.game.dogedash.sql.Level;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameInput;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -28,7 +29,6 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -54,14 +54,14 @@ public class WorldTerminal implements Screen {
 
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
-	private InputMultiplexer inputMuiltiplex;
+	private InputMultiplexer inputMultiplexer;
 
 	public WorldTerminal(DogeDashCore game, float delta) {
 		this.game = game;
 		stage = new Stage();
 		winOverlay = new WindowOverlay();
 		winOverlay2 = new WindowOverlay();
-		inputMuiltiplex = new InputMultiplexer();
+		inputMultiplexer = new InputMultiplexer();
 
 		Statics.state = Statics.GameState.Ready;
 		Statics.cleanSlate();
@@ -363,9 +363,30 @@ public class WorldTerminal implements Screen {
 	@Override
 	public void show() {
 
-		inputMuiltiplex.addProcessor(gameInput);
-		inputMuiltiplex.addProcessor(stage);
-		Gdx.input.setInputProcessor(inputMuiltiplex);
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
+
+//					if (Statics.state == Statics.GameState.Running) {
+//						Statics.state = Statics.GameState.GameOver;
+//					}
+////					if (Statics.state == Statics.GameState.GameOver) {
+						game.setScreen(new MenuScreen(game));
+					// }
+
+				}
+
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(gameInput);
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+
+
+		Gdx.input.setInputProcessor(inputMultiplexer);
 
 	}
 
@@ -388,7 +409,7 @@ public class WorldTerminal implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		Gdx.input.setInputProcessor(null);
 
 	}
 

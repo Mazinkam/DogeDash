@@ -13,7 +13,11 @@ import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -43,17 +47,20 @@ public class WorldSelection implements Screen {
 	private Stage stage;
 	private Drawable tempDrawable;
 	private WindowOverlay winOverlay, winOverlay2;
+	private InputMultiplexer inputMultiplexer;
 
 	public WorldSelection(DogeDashCore game) {
 		this.game = game;
 		winOverlay = new WindowOverlay();
 		winOverlay2 = new WindowOverlay();
+
 		stage = new Stage();
+		inputMultiplexer = new InputMultiplexer(stage);
 	}
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(stage);
+
 		initBackground();
 		initForeground();
 		initInput();
@@ -165,6 +172,27 @@ public class WorldSelection implements Screen {
 	}
 
 	private void initInput() {
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
+					if (menuState == MenuState.Ready) {
+						game.setScreen(new MenuScreen(game));
+					}
+					if (menuState == MenuState.Chosing) {
+						menuState = MenuState.Ready;
+					}
+
+				}
+
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+		Gdx.input.setInputProcessor(inputMultiplexer);
+
 		imageLevel1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -173,18 +201,18 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						// game.setScreen(new WorldTerminal(game,
-						// Gdx.graphics.getDeltaTime()));
 						Statics.gameLevel = 1;
 						menuState = MenuState.Chosing;
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
-				imageLevel1.setOrigin(imageLevel1.getWidth() / 4, imageLevel1.getHeight() / 2);
-				imageLevel1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageLevel1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				if (menuState == MenuState.Ready) {
+					GameAudio.dogeBark();
+					imageLevel1.setOrigin(imageLevel1.getWidth() / 4, imageLevel1.getHeight() / 2);
+					imageLevel1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+					imageLevel1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+							completeAction)));
+				}
 			}
 		});
 
@@ -203,12 +231,14 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				if (menuState == MenuState.Ready) {
+					GameAudio.dogeBark();
 
-				imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);
-				imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageLevel2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+					imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);
+					imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+					imageLevel2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+							completeAction)));
+				}
 			}
 		});
 
@@ -225,6 +255,7 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
+
 				GameAudio.dogeBark();
 				imageTutorialLevelSelect.setOrigin(imageTutorialLevelSelect.getWidth() / 4, imageTutorialLevelSelect.getHeight() / 2);
 				imageTutorialLevelSelect.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -241,22 +272,13 @@ public class WorldSelection implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						if (menuState == MenuState.Ready) {
-							game.setScreen(new MenuScreen(game));
-						} else {
-							menuState = MenuState.Ready;
-						}
 
-						return true;
-					}
-				};
-				GameAudio.dogeBark();
-				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
-				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				if (menuState == MenuState.Ready) {
+					game.setScreen(new MenuScreen(game));
+				} else {
+					menuState = MenuState.Ready;
+				}
+
 			}
 		});
 
@@ -273,11 +295,13 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
-				imageHard.setOrigin(imageHard.getWidth() / 4, imageHard.getHeight() / 2);
-				imageHard.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageHard.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				if (menuState == MenuState.Chosing) {
+					GameAudio.dogeBark();
+					imageHard.setOrigin(imageHard.getWidth() / 4, imageHard.getHeight() / 2);
+					imageHard.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+					imageHard.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+							completeAction)));
+				}
 			}
 		});
 		imageNormal.addListener(new InputListener() {
@@ -294,11 +318,13 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
-				imageNormal.setOrigin(imageNormal.getWidth() / 4, imageNormal.getHeight() / 2);
-				imageNormal.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageNormal.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				if (menuState == MenuState.Chosing) {
+					GameAudio.dogeBark();
+					imageNormal.setOrigin(imageNormal.getWidth() / 4, imageNormal.getHeight() / 2);
+					imageNormal.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+					imageNormal.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+							completeAction)));
+				}
 			}
 		});
 		imageEasy.addListener(new InputListener() {
@@ -315,11 +341,13 @@ public class WorldSelection implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
-				imageEasy.setOrigin(imageEasy.getWidth() / 4, imageEasy.getHeight() / 2);
-				imageEasy.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageEasy.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				if (menuState == MenuState.Chosing) {
+					GameAudio.dogeBark();
+					imageEasy.setOrigin(imageEasy.getWidth() / 4, imageEasy.getHeight() / 2);
+					imageEasy.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
+					imageEasy.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
+							completeAction)));
+				}
 			}
 		});
 

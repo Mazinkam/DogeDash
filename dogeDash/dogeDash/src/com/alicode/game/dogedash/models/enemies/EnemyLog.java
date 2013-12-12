@@ -2,6 +2,7 @@ package com.alicode.game.dogedash.models.enemies;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -71,6 +72,7 @@ public class EnemyLog extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 		Statics.playerHitByLog = true;
+		GameVibrate.vibrate(500);
 
 	}
 

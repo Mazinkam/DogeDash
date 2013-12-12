@@ -90,7 +90,7 @@ public class GameDatabase {
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			dropTheBase();
+			//dropTheBase();
 			//dbHandler.execSQL(DATABASE_CREATE);
 			dbHandler.execSQL(CREATE_LEVELONE_TABLE);
 			dbHandler.execSQL(CREATE_LEVELTWO_TABLE);

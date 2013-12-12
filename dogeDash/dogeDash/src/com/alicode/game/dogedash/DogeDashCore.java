@@ -5,6 +5,7 @@ import com.alicode.game.dogedash.screens.SplashScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
 import com.alicode.game.dogedash.sql.GameDatabase;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 public class DogeDashCore extends Game {
         
@@ -19,6 +20,7 @@ public class DogeDashCore extends Game {
         public void create() {
                 db = new GameDatabase();
                 Assets.load();
+                Gdx.input.setCatchBackKey(true);
                 setScreen(new SplashScreen(this));
         }
 

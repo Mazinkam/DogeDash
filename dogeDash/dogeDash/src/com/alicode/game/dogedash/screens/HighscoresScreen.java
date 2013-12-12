@@ -9,6 +9,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.models.WindowOverlay;
+import com.alicode.game.dogedash.screens.CustomizationScreen.MenuState;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameGesture;
 import com.alicode.game.dogedash.utils.GameGesture.DirectionListener;
@@ -16,8 +17,11 @@ import com.alicode.game.dogedash.utils.txt.GameCustomTextImage;
 import com.alicode.game.dogedash.utils.txt.GameImage;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Interpolation;
@@ -49,11 +53,11 @@ public class HighscoresScreen implements Screen {
 	private String tableName;
 	private Stage stage;
 	private WindowOverlay winOverlay;
-	private InputMultiplexer inputMuiltiplex;
+	private InputMultiplexer inputMultiplexer;
 
 	public HighscoresScreen(DogeDashCore game) {
 		this.game = game;
-		inputMuiltiplex = new InputMultiplexer();
+
 		easyHighscore = new GameText();
 		normalHighscore = new GameText();
 		hardHighscore = new GameText();
@@ -66,39 +70,15 @@ public class HighscoresScreen implements Screen {
 		chosenStyle = new GameText();
 
 		stage = new Stage();
+		inputMultiplexer = new InputMultiplexer(stage);
 	}
 
 	@Override
 	public void show() {
-		// Gdx.input.setInputProcessor(stage);
-		inputMuiltiplex.addProcessor(stage);
-		// inputMuiltiplex.addProcessor(new GameGesture(new DirectionListener()
-		// {
-		// @Override
-		// public void onUp() {
-		// GameAudio.dogeBark();
-		// }
-		//
-		// @Override
-		// public void onRight() {
-		// GameAudio.dogeBark();
-		// }
-		//
-		// @Override
-		// public void onLeft() {
-		// GameAudio.dogeBark();
-		// }
-		//
-		// @Override
-		// public void onDown() {
-		// GameAudio.dogeBark();
-		// }
-		// }));
-		Gdx.input.setInputProcessor(inputMuiltiplex);
-
+		initInput();
 		initBackground();
 		initForeground();
-		initInput();
+
 		initActors();
 
 	}
@@ -236,6 +216,24 @@ public class HighscoresScreen implements Screen {
 	}
 
 	private void initInput() {
+
+		InputProcessor backProcessor = new InputAdapter() {
+			@Override
+			public boolean keyDown(int keycode) {
+
+				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
+
+					game.setScreen(new MenuScreen(game));
+
+				}
+
+				return false;
+			}
+		};
+		inputMultiplexer.addProcessor(backProcessor);
+		inputMultiplexer.addProcessor(stage);
+		Gdx.input.setInputProcessor(inputMultiplexer);
+
 		imageLevel1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -250,7 +248,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				tableName = "levelDay";
 				levelNum = 1;
 				imageLevel1.setOrigin(imageLevel1.getWidth() / 4, imageLevel1.getHeight() / 2);
@@ -281,7 +279,7 @@ public class HighscoresScreen implements Screen {
 				};
 				tableName = "levelNight";
 				levelNum = 2;
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);
 				imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageLevel2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -308,7 +306,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				levelNum = 3;
 				imageLevel3.setOrigin(imageLevel3.getWidth() / 4, imageLevel3.getHeight() / 2);
 				imageLevel3.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
@@ -343,7 +341,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				imageEasyHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				imageEasyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageEasyHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -373,7 +371,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				imageNormalHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				imageNormalHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageNormalHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
@@ -403,7 +401,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				imageHardHighscore.setOrigin(imageHardHighscore.getWidth() / 4, imageHardHighscore.getHeight() / 2);
 				imageHardHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageHardHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -430,7 +428,7 @@ public class HighscoresScreen implements Screen {
 						return true;
 					}
 				};
-				GameAudio.dogeBark();
+				// GameAudio.dogeBark();
 				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
 				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
@@ -529,7 +527,7 @@ public class HighscoresScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		inputMultiplexer.clear();
 
 	}
 

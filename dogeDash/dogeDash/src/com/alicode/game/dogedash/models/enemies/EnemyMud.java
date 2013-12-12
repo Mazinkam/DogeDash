@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.models.enemies;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -67,9 +68,9 @@ public class EnemyMud extends Actor {
 	}
 
 	public void playerHit(boolean front, boolean above) {
-		Statics.playerHitByMud = true;
+	//	Statics.playerHitByMud = true;
 		Statics.playerHitAnimation = true;
-		
+		GameVibrate.vibrate(500);
 		Action completeAction = new Action() {
 			public boolean act(float delta) {
 				Statics.playerHitAnimation = false;

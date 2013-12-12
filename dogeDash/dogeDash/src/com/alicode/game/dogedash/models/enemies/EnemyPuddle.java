@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.models.enemies;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -80,7 +81,7 @@ public class EnemyPuddle extends Actor {
 	public void playerHit(boolean front, boolean above) {
 		Statics.playerHitByMud = false;
 		Statics.playerHitByPuddle = true;
-
+		GameVibrate.vibrate(500);
 		Gdx.app.log(DogeDashCore.LOG, "playerHitByMud " + Statics.playerHitByMud);
 		Gdx.app.log(DogeDashCore.LOG, "playerHitByPuddle " + Statics.playerHitByPuddle);
 	}
