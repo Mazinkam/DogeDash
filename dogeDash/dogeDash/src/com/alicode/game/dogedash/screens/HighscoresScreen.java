@@ -37,6 +37,10 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class HighscoresScreen implements Screen {
 
+	enum MenuState {
+		ShowLevel, ShowDifficulty
+	}
+
 	private Image imageMenuBg, imageBackButton, imageMenuMomNosePaw, imageMenuMomBody, imageMenuCreamPupBody, imageMenuCreamPupPaw,
 			imageMenuCreamPupPaw2, imageMenuBluePup;
 
@@ -75,10 +79,10 @@ public class HighscoresScreen implements Screen {
 
 	@Override
 	public void show() {
-		initInput();
+
 		initBackground();
 		initForeground();
-
+		initInput();
 		initActors();
 
 	}
@@ -244,6 +248,10 @@ public class HighscoresScreen implements Screen {
 					public boolean act(float delta) {
 						imageLevel2.clearActions();
 						imageLevel3.clearActions();
+						imageEasyHighscore.clearActions();
+						imageNormalHighscore.clearActions();
+						imageHardHighscore.clearActions();
+						imageEasyHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
 						imageLevel1.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
 						return true;
 					}
@@ -251,15 +259,20 @@ public class HighscoresScreen implements Screen {
 				// GameAudio.dogeBark();
 				tableName = "levelDay";
 				levelNum = 1;
+				difficultyNum = 1;
 				imageLevel1.setOrigin(imageLevel1.getWidth() / 4, imageLevel1.getHeight() / 2);
 				imageLevel1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageLevel1.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageLevel1.addAction(completeAction);
 
 				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
 				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
 				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
 
+				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 			}
 		});
 
@@ -273,21 +286,31 @@ public class HighscoresScreen implements Screen {
 					public boolean act(float delta) {
 						imageLevel1.clearActions();
 						imageLevel3.clearActions();
+						imageEasyHighscore.clearActions();
+						imageNormalHighscore.clearActions();
+						imageHardHighscore.clearActions();
+						imageEasyHighscore.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
 						imageLevel2.addAction(Actions.forever(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f))));
 						return true;
 					}
 				};
 				tableName = "levelNight";
 				levelNum = 2;
+				difficultyNum = 1;
 				// GameAudio.dogeBark();
 				imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);
 				imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageLevel2.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageLevel2.addAction(completeAction);
 
 				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(1, "levelNight").getHighScore());
 				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(2, "levelNight").getHighScore());
 				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(3, "levelNight").getHighScore());
+
+				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 
 			}
 		});
@@ -310,8 +333,7 @@ public class HighscoresScreen implements Screen {
 				levelNum = 3;
 				imageLevel3.setOrigin(imageLevel3.getWidth() / 4, imageLevel3.getHeight() / 2);
 				imageLevel3.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageLevel3.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageLevel3.addAction(completeAction);
 
 				easyHighscore.setText("missingNo");
 				normalHighscore.setText("missingNo");
@@ -342,16 +364,16 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				// GameAudio.dogeBark();
+				difficultyNum = 1;
 				imageEasyHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				imageEasyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageEasyHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageEasyHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});
@@ -372,16 +394,16 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				// GameAudio.dogeBark();
+				difficultyNum = 2;
 				imageNormalHighscore.setOrigin(easyHighscore.getWidth() / 4, easyHighscore.getHeight() / 2);
 				imageNormalHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageNormalHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f),
-						rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
+				imageNormalHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});
@@ -402,16 +424,16 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				// GameAudio.dogeBark();
+				difficultyNum = 3;
 				imageHardHighscore.setOrigin(imageHardHighscore.getWidth() / 4, imageHardHighscore.getHeight() / 2);
 				imageHardHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageHardHighscore.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				imageHardHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getTimeAlive());
-					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getStylePoints());
-					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getCaughtPuppyNum());
-					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getMissedPuppyNum());
-					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});
@@ -422,17 +444,8 @@ public class HighscoresScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
-				// GameAudio.dogeBark();
-				imageBackButton.setOrigin(imageBackButton.getWidth() / 4, imageBackButton.getHeight() / 2);
-				imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				imageBackButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+
+				game.setScreen(new MenuScreen(game));
 			}
 		});
 

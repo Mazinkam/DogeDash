@@ -122,9 +122,9 @@ public class GameDatabase {
 		List<Misc> miscList = getMiscList();
 
 		if (dayLevelList.isEmpty()) {
-			addLevelHighscore(new Level(1, 0, 0, 0, 0, 0, 0), "levelDay");
-			addLevelHighscore(new Level(2, 0, 0, 0, 0, 0, 0), "levelDay");
-			addLevelHighscore(new Level(3, 0, 0, 0, 0, 0, 0), "levelDay");
+			addLevelHighscore(new Level(1, 1, 1, 1, 1, 1, 1), "levelDay");
+			addLevelHighscore(new Level(2, 2, 2, 2, 2, 2, 2), "levelDay");
+			addLevelHighscore(new Level(3, 3, 3, 3, 3, 3, 3), "levelDay");
 		} else {
 			for (Level obj : dayLevelList) {
 
@@ -140,9 +140,9 @@ public class GameDatabase {
 		Gdx.app.log(DogeDashCore.LOG, "NIGHT LEVEL LIST---------------------------------------");
 
 		if (nightLevelList.isEmpty()) {
-			addLevelHighscore(new Level(1, 0, 0, 0, 0, 0, 0), "levelNight");
-			addLevelHighscore(new Level(2, 0, 0, 0, 0, 0, 0), "levelNight");
-			addLevelHighscore(new Level(3, 0, 0, 0, 0, 0, 0), "levelNight");
+			addLevelHighscore(new Level(1, 21, 21, 21, 21, 21, 21), "levelNight");
+			addLevelHighscore(new Level(2, 22, 22, 22, 22, 22, 22), "levelNight");
+			addLevelHighscore(new Level(3, 23, 23, 23, 23, 23, 23), "levelNight");
 		} else {
 			for (Level obj : nightLevelList) {
 

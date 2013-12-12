@@ -57,10 +57,10 @@ public class OptionsScreen implements Screen {
 
 	@Override
 	public void show() {
-		initInput();
+		
 		initBackground();
 		initForeground();
-
+		initInput();
 		initActors();
 
 	}
@@ -160,7 +160,7 @@ public class OptionsScreen implements Screen {
 			}
 		};
 		inputMultiplexer.addProcessor(backProcessor);
-		inputMultiplexer.addProcessor(stage);
+		//inputMultiplexer.addProcessor(stage);
 		Gdx.input.setInputProcessor(inputMultiplexer);
 
 		imageSoundButton.addListener(new InputListener() {
