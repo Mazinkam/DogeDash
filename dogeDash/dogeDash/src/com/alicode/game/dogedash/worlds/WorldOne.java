@@ -34,6 +34,7 @@ public class WorldOne extends Table {
 
 	private Group backgroundGroup;
 	private Group onGroundGroup;
+	private Group inBetweenGroup;
 	private Group floatingGroup;
 
 	private Array<Puppy> puppies;
@@ -46,6 +47,7 @@ public class WorldOne extends Table {
 	private Array<EnemyMud> enemyMuds;
 	private Array<EnemyPuddle> enemyPuddles;
 	private Array<EnemyLog> enemyLogs;
+	
 
 	private long enemyDelta, flowerDelta, puppyDelta, bushDelta, enemyLogDelta, enemyPuddleDelta, enemyMudDelta, dogeCoinDelta, dogeBiscuitDelta;
 	private float puppyRespawnTime, puppyRespawnCooldown;
@@ -80,6 +82,7 @@ public class WorldOne extends Table {
 
 		backgroundGroup = new Group();
 		onGroundGroup = new Group();
+		inBetweenGroup = new Group();
 		floatingGroup = new Group();
 
 		fpsLog = new FPSLogger();
@@ -87,6 +90,7 @@ public class WorldOne extends Table {
 
 		addActor(backgroundGroup);
 		addActor(onGroundGroup);
+		addActor(inBetweenGroup);
 		addActor(floatingGroup);
 		addActor(fpsLog);
 		addActor(gamePoints);
@@ -248,6 +252,7 @@ public class WorldOne extends Table {
 			if (enemyPuddle.getBounds().x + enemyPuddle.getWidth() < 0) {
 				logIter.remove();
 				removeActor(enemyPuddle);
+				GamePoints.puppyMissedNum++;
 			}
 			if (enemyPuddle.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump) {
 				if (enemyPuddle.getX() > motherDoge.getX()) {
@@ -339,7 +344,7 @@ public class WorldOne extends Table {
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump && !Statics.playerHitByBee) {
 				beeIter.remove();
 				floatingGroup.addActor(enemyBee);
-				onGroundGroup.removeActor(enemyBee);
+				inBetweenGroup.removeActor(enemyBee);
 				if (enemyBee.getX() > motherDoge.getX()) {
 					if (enemyBee.getY() > motherDoge.getY())
 						enemyBee.playerHit(true, true);
@@ -420,7 +425,7 @@ public class WorldOne extends Table {
 		float yPos = 0 + (int) (Math.random() * 460);
 		DogeBiscuit dogeBiscuit = new DogeBiscuit(getWidth() + yPos, yPos);
 		dogeBiscuits.add(dogeBiscuit);
-		floatingGroup.addActor(dogeBiscuit);
+		inBetweenGroup.addActor(dogeBiscuit);
 		dogeBiscuitDelta = TimeUtils.nanoTime();
 
 	}
@@ -429,7 +434,7 @@ public class WorldOne extends Table {
 		float yPos = 0 + (int) (Math.random() * 460);
 		DogeCoin dogeCoin = new DogeCoin(getWidth() + yPos, yPos);
 		dogeCoins.add(dogeCoin);
-		floatingGroup.addActor(dogeCoin);
+		inBetweenGroup.addActor(dogeCoin);
 		dogeCoinDelta = TimeUtils.nanoTime();
 
 	}
@@ -456,7 +461,7 @@ public class WorldOne extends Table {
 		float yPos = 10 + (int) (Math.random() * 460);
 		Puppy puppy = new Puppy(getWidth() + yPos, yPos);
 		puppies.add(puppy);
-		onGroundGroup.addActor(puppy);
+		inBetweenGroup.addActor(puppy);
 		puppyDelta = TimeUtils.nanoTime();
 
 	}
@@ -465,7 +470,7 @@ public class WorldOne extends Table {
 		float yPos = 0 + (int) (Math.random() * 460);
 		EnemyBee enemyBee = new EnemyBee(getWidth() + yPos, yPos);
 		enemyBees.add(enemyBee);
-		onGroundGroup.addActor(enemyBee);
+		inBetweenGroup.addActor(enemyBee);
 		enemyDelta = TimeUtils.nanoTime();
 	}
 
@@ -491,7 +496,7 @@ public class WorldOne extends Table {
 		float yPos = 0 + (int) (Math.random() * 460);
 		EnemyLog enemyLog = new EnemyLog(getWidth() + yPos, yPos);
 		enemyLogs.add(enemyLog);
-		onGroundGroup.addActor(enemyLog);
+		inBetweenGroup.addActor(enemyLog);
 		enemyLogDelta = TimeUtils.nanoTime();
 
 	}

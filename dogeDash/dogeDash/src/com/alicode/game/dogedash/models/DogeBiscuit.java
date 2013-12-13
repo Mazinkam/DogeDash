@@ -100,10 +100,10 @@ public class DogeBiscuit extends Actor {
 
 		dogeBiscuitTrail.setPosition(getX() + Assets.chowcoin.getRegionWidth(), getY());
 
-		for (int i = 0; i < dogeBiscuitTrail.getEmitters().size; i++) {
-			dogeBiscuitTrail.getEmitters().get(i).getAngle().setLow(100);
-			dogeBiscuitTrail.getEmitters().get(i).getAngle().setHigh(190);
-		}
+//		for (int i = 0; i < dogeBiscuitTrail.getEmitters().size; i++) {
+//			dogeBiscuitTrail.getEmitters().get(i).getAngle().setLow(160);
+//			dogeBiscuitTrail.getEmitters().get(i).getAngle().setHigh(-10);
+//		}
 
 		dogeBiscuitTrail.draw(batch);
 		dogeBiscuitTrail.update(Gdx.graphics.getDeltaTime());

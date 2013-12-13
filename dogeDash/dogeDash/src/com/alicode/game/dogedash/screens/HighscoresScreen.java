@@ -265,8 +265,8 @@ public class HighscoresScreen implements Screen {
 				imageLevel1.addAction(completeAction);
 
 				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
-				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
-				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
+				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
+				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
 
 				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
 				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
@@ -295,7 +295,7 @@ public class HighscoresScreen implements Screen {
 					}
 				};
 				tableName = "levelNight";
-				levelNum = 2;
+				levelNum = 1;
 				difficultyNum = 1;
 				// GameAudio.dogeBark();
 				imageLevel2.setOrigin(imageLevel2.getWidth() / 4, imageLevel2.getHeight() / 2);

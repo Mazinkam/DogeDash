@@ -31,8 +31,8 @@ public class Statics {
 	public static boolean flowersAlive = true;
 	public static boolean objectsAlive = true;
 
-	public static int puddleTimer = 200;
-	public static int logTimer = 200;
+	public static int puddleTimer = 400;
+	public static int logTimer = 600;
 
 	// player vars
 	public static boolean isSuperD = false;

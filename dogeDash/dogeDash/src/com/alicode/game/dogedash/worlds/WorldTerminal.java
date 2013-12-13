@@ -50,7 +50,7 @@ public class WorldTerminal implements Screen {
 	private WindowOverlay winOverlay, winOverlay2;
 	private DogeDashCore game;
 	private Image imageGameOver, imageTime, imageStylePoints, imagePuppyCaught, imagePuppyMissed, imagePuppyPoints, imageDogeCoins, imageTotalScore,
-			imageRetry, imageBack, imageEnemiesOnPlayer, imagePauseButton;
+			imageRetry, imageBack, imagePauseButton;
 
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
@@ -286,6 +286,7 @@ public class WorldTerminal implements Screen {
 
 	private void updateGameOver() {
 		updateGameoverScore();
+		updateHighscore();
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -306,7 +307,7 @@ public class WorldTerminal implements Screen {
 					imageBack.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 							new Action() {
 								public boolean act(float delta) {
-									updateHighscore();
+
 									game.setScreen(new WorldSelection(game));
 
 									return true;
@@ -356,7 +357,13 @@ public class WorldTerminal implements Screen {
 	}
 
 	private void updateHighscore() {
-		int currentHighScore = DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore();
+
+		if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore() < GamePoints.finalScore())) {
+			DogeDashCore.db.updateLevelHighscore(
+					new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty, GamePoints.finalScore(), GamePoints.bonusPointStatic,
+							GamePoints.currentScore, GamePoints.puppyCaughtNum, GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
+			Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
+		}
 
 	}
 
