@@ -66,7 +66,7 @@ public class Assets {
 	public static TextureRegion arrow_left, arrow_right, tutorial_1, tutorial_2, tutorial_3, tutorial_4, tutorial_5, tutorial_resume,
 			tutorial_mainmenu, tutorial_levelselect, tutorial_select;
 
-	public static Texture bg_big_day,bg_big_night;
+	public static Texture bg_big_day, bg_big_night;
 
 	public static TextureRegion night_light_1, night_light_2, night_light_3;
 
@@ -197,7 +197,7 @@ public class Assets {
 		difficulty = atlas.findRegion("menu/txt/difficulty");
 		hard = atlas.findRegion("menu/txt/hard");
 		easy = atlas.findRegion("menu/txt/easy");
-		normal = atlas.findRegion("menu/txt/normal");		
+		normal = atlas.findRegion("menu/txt/normal");
 
 		hardSmall = atlas.findRegion("menu/txt/hard2");
 		easySmall = atlas.findRegion("menu/txt/easy2");
@@ -225,7 +225,7 @@ public class Assets {
 		shop_price = atlas.findRegion("menu/txt/shop_price");
 		shop_currentcoins = atlas.findRegion("menu/txt/shop_currentcoins");
 		shop_buyitem = atlas.findRegion("menu/txt/shop_buyitem");
-		
+
 		// titles/title txt
 		puppydash = atlas.findRegion("menu/txt/puppydash");
 
@@ -237,7 +237,7 @@ public class Assets {
 
 		custom_title = atlas.findRegion("menu/txt/custom_title");
 		itemsEquipText = atlas.findRegion("menu/txt/itemsEquipText");
-		
+
 		gameovertitle = atlas.findRegion("menu/txt/gameovertitle");
 
 	}
@@ -327,6 +327,9 @@ public class Assets {
 		flower3 = atlas.findRegion("game/objects/flower3");
 		flower4 = atlas.findRegion("game/objects/flower4");
 		flower5 = atlas.findRegion("game/objects/flower5");
+		
+		treat1 = atlas.findRegion("game/objects/treat1");
+		treat2 = atlas.findRegion("game/objects/treat2");
 
 	}
 

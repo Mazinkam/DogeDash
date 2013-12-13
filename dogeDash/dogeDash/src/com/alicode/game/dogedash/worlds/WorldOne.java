@@ -8,6 +8,8 @@ import com.alicode.game.dogedash.GamePoints;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.Background;
 import com.alicode.game.dogedash.models.Bush;
+import com.alicode.game.dogedash.models.DogeBiscuit;
+import com.alicode.game.dogedash.models.DogeCoin;
 import com.alicode.game.dogedash.models.Flower;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.Puppy;
@@ -37,13 +39,15 @@ public class WorldOne extends Table {
 	private Array<Puppy> puppies;
 	private Array<Flower> flowers;
 	private Array<Bush> bushes;
+	private Array<DogeCoin> dogeCoins;
+	private Array<DogeBiscuit> dogeBiscuits;
 
 	private Array<EnemyBee> enemyBees;
 	private Array<EnemyMud> enemyMuds;
 	private Array<EnemyPuddle> enemyPuddles;
 	private Array<EnemyLog> enemyLogs;
 
-	private long enemyDelta, flowerDelta, puppyDelta, bushDelta, enemyLogDelta, enemyPuddleDelta, enemyMudDelta;
+	private long enemyDelta, flowerDelta, puppyDelta, bushDelta, enemyLogDelta, enemyPuddleDelta, enemyMudDelta, dogeCoinDelta, dogeBiscuitDelta;
 	private float puppyRespawnTime, puppyRespawnCooldown;
 	private float enemyRespawnTime, enemyRespawnCooldown;
 	private float flowerRespawnTime, flowerRespawnCooldown;
@@ -51,6 +55,8 @@ public class WorldOne extends Table {
 	private float enemyMudRespawnTime, enemyMudRespawnCooldown;
 	private float enemyPuddleRespawnTime, enemyPuddleRespawnCooldown;
 	private float enemyLogRespawnTime, enemyLogRespawnCooldown;
+	private float dogeCoinRespawnTime, dogeCoinRespawnCooldown;
+	private float dogeBiscuitRespawnTime, dogeBiscuitRespawnCooldown;
 
 	public WorldOne() {
 		setBounds(0, 0, 800, 480);
@@ -63,6 +69,9 @@ public class WorldOne extends Table {
 		puppies = new Array<Puppy>();
 		flowers = new Array<Flower>();
 		bushes = new Array<Bush>();
+
+		dogeCoins = new Array<DogeCoin>();
+		dogeBiscuits = new Array<DogeBiscuit>();
 
 		enemyBees = new Array<EnemyBee>();
 		enemyLogs = new Array<EnemyLog>();
@@ -91,6 +100,8 @@ public class WorldOne extends Table {
 		enemyRespawnCooldown = 2000000000f;
 		flowerRespawnCooldown = 900000000f;
 		bushRespawnCooldown = 9000000000f;
+		dogeCoinRespawnCooldown = 10000000000f;
+		dogeBiscuitRespawnCooldown = 10000000000f;
 
 		enemyLogRespawnCooldown = 4000000000f;
 		enemyMudRespawnCooldown = 3000000000f;
@@ -113,6 +124,8 @@ public class WorldOne extends Table {
 		updateEnemyLogs();
 		updateEnemyMuds();
 		updateEnemyPuddles();
+		updateDogeCoins();
+		updateDogeBiscuits();
 
 	}
 
@@ -149,6 +162,8 @@ public class WorldOne extends Table {
 		enemyLogRespawnTime = TimeUtils.nanoTime() - enemyLogDelta;
 		enemyPuddleRespawnTime = TimeUtils.nanoTime() - enemyPuddleDelta;
 		enemyMudRespawnTime = TimeUtils.nanoTime() - enemyMudDelta;
+		dogeCoinRespawnTime = TimeUtils.nanoTime() - dogeCoinDelta;
+		dogeBiscuitRespawnTime = TimeUtils.nanoTime() - dogeBiscuitDelta;
 
 		if (enemyRespawnTime > enemyRespawnCooldown) {
 			spawnBee();
@@ -177,6 +192,52 @@ public class WorldOne extends Table {
 			spawnPuddle();
 		}
 
+		if (dogeCoinRespawnTime > dogeCoinRespawnCooldown) {
+			spawnDogeCoin();
+		}
+		if (dogeBiscuitRespawnTime > dogeBiscuitRespawnCooldown) {
+			spawnDogeBiscuit();
+		}
+
+	}
+
+	private void updateDogeBiscuits() {
+		Iterator<DogeBiscuit> dCoinIter = dogeBiscuits.iterator();
+
+		while (dCoinIter.hasNext()) {
+			DogeBiscuit dogeBiscuit = dCoinIter.next();
+			if (dogeBiscuit.getBounds().x + dogeBiscuit.getWidth() < 0) {
+				dogeBiscuit.disposeTrail();
+				dCoinIter.remove();
+				removeActor(dogeBiscuit);
+
+			}
+			if (dogeBiscuit.getBounds().overlaps(motherDoge.getBounds())) {
+				dCoinIter.remove();
+				dogeBiscuit.playerHit();
+
+			}
+		}
+
+	}
+
+	private void updateDogeCoins() {
+		Iterator<DogeCoin> dCoinIter = dogeCoins.iterator();
+
+		while (dCoinIter.hasNext()) {
+			DogeCoin dogeCoin = dCoinIter.next();
+			if (dogeCoin.getBounds().x + dogeCoin.getWidth() < 0) {
+				dogeCoin.disposeTrail();
+				dCoinIter.remove();
+				removeActor(dogeCoin);
+
+			}
+			if (dogeCoin.getBounds().overlaps(motherDoge.getBounds())) {
+				dCoinIter.remove();
+				dogeCoin.playerHit();
+
+			}
+		}
 	}
 
 	private void updateEnemyPuddles() {
@@ -187,7 +248,6 @@ public class WorldOne extends Table {
 			if (enemyPuddle.getBounds().x + enemyPuddle.getWidth() < 0) {
 				logIter.remove();
 				removeActor(enemyPuddle);
-//				Gdx.app.log(DogeDashCore.LOG, "enemyPuddles " + enemyPuddles.size);
 			}
 			if (enemyPuddle.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump) {
 				if (enemyPuddle.getX() > motherDoge.getX()) {
@@ -201,6 +261,8 @@ public class WorldOne extends Table {
 					else
 						enemyPuddle.playerHit(false, false);
 				}
+				if (Statics.isSuperD)
+					logIter.remove();
 			}
 		}
 
@@ -214,7 +276,6 @@ public class WorldOne extends Table {
 			if (enemyMud.getBounds().x + enemyMud.getWidth() < 0) {
 				logIter.remove();
 				removeActor(enemyMud);
-//				Gdx.app.log(DogeDashCore.LOG, "enemyMuds " + enemyMuds.size);
 			}
 			if (enemyMud.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump) {
 				if (enemyMud.getX() > motherDoge.getX()) {
@@ -228,6 +289,8 @@ public class WorldOne extends Table {
 					else
 						enemyMud.playerHit(false, false);
 				}
+				if (Statics.isSuperD)
+					logIter.remove();
 			}
 		}
 
@@ -241,20 +304,24 @@ public class WorldOne extends Table {
 			if (enemyLog.getBounds().x + enemyLog.getWidth() < 0) {
 				logIter.remove();
 				removeActor(enemyLog);
-//				Gdx.app.log(DogeDashCore.LOG, "enemyLogs " + enemyLogs.size);
+				// Gdx.app.log(DogeDashCore.LOG, "enemyLogs " + enemyLogs.size);
 			}
-			if (enemyLog.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump) {
-				if (enemyLog.getX() > motherDoge.getX()) {
-					if (enemyLog.getY() > motherDoge.getY())
-						enemyLog.playerHit(true, true);
-					else
-						enemyLog.playerHit(true, false);
-				} else {
-					if (enemyLog.getY() > motherDoge.getY())
-						enemyLog.playerHit(false, true);
-					else
-						enemyLog.playerHit(false, false);
+			if (enemyLog.getBounds().overlaps(motherDoge.getBounds())) {
+				if (!Statics.playerJump) {
+					if (enemyLog.getX() > motherDoge.getX()) {
+						if (enemyLog.getY() > motherDoge.getY())
+							enemyLog.playerHit(true, true);
+						else
+							enemyLog.playerHit(true, false);
+					} else {
+						if (enemyLog.getY() > motherDoge.getY())
+							enemyLog.playerHit(false, true);
+						else
+							enemyLog.playerHit(false, false);
+					}
 				}
+				if (Statics.isSuperD)
+					logIter.remove();
 			}
 		}
 
@@ -313,19 +380,10 @@ public class WorldOne extends Table {
 			}
 			if (puppy.getBounds().overlaps(motherDoge.getBounds()) && !Statics.playerJump) {
 				iter.remove();
-				if (puppy.getX() > motherDoge.getX()) {
-					GamePoints.puppyCaughtNum++;
 
-					if (puppy.getY() > motherDoge.getY())
-						puppy.playerHit(true, true);
-					else
-						puppy.playerHit(true, false);
-				} else {
-					if (puppy.getY() > motherDoge.getY())
-						puppy.playerHit(false, true);
-					else
-						puppy.playerHit(false, false);
-				}
+				GamePoints.puppyCaughtNum++;
+				puppy.playerHit();
+
 			}
 		}
 
@@ -340,26 +398,45 @@ public class WorldOne extends Table {
 				removeActor(bush);
 			}
 			if (bush.getBounds().overlaps(motherDoge.getBounds())) {
-				iter.remove();
-				if (bush.getX() > motherDoge.getX()) {
-					if (bush.getY() > motherDoge.getY())
-						bush.playerHit(true, true);
-					else
-						bush.playerHit(true, false);
-				} else {
-					if (bush.getY() > motherDoge.getY())
-						bush.playerHit(false, true);
-					else
-						bush.playerHit(false, false);
+				if (!Statics.playerJump) {
+					if (bush.getX() > motherDoge.getX()) {
+						if (bush.getY() > motherDoge.getY())
+							bush.playerHit(true, true);
+						else
+							bush.playerHit(true, false);
+					} else {
+						if (bush.getY() > motherDoge.getY())
+							bush.playerHit(false, true);
+						else
+							bush.playerHit(false, false);
+					}
 				}
 			}
 		}
 
 	}
 
+	private void spawnDogeBiscuit() {
+		float yPos = 0 + (int) (Math.random() * 460);
+		DogeBiscuit dogeBiscuit = new DogeBiscuit(getWidth() + yPos, yPos);
+		dogeBiscuits.add(dogeBiscuit);
+		floatingGroup.addActor(dogeBiscuit);
+		dogeBiscuitDelta = TimeUtils.nanoTime();
+
+	}
+
+	private void spawnDogeCoin() {
+		float yPos = 0 + (int) (Math.random() * 460);
+		DogeCoin dogeCoin = new DogeCoin(getWidth() + yPos, yPos);
+		dogeCoins.add(dogeCoin);
+		floatingGroup.addActor(dogeCoin);
+		dogeCoinDelta = TimeUtils.nanoTime();
+
+	}
+
 	private void spawnFlower() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		Flower flower = new Flower(getWidth(), yPos);
+		Flower flower = new Flower(getWidth() + yPos, yPos);
 		flowers.add(flower);
 		backgroundGroup.addActor(flower);
 		flowerDelta = TimeUtils.nanoTime();
@@ -368,7 +445,7 @@ public class WorldOne extends Table {
 
 	private void spawnBush() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		Bush bush = new Bush(getWidth(), yPos);
+		Bush bush = new Bush(getWidth() + yPos, yPos);
 		bushes.add(bush);
 		floatingGroup.addActor(bush);
 		bushDelta = TimeUtils.nanoTime();
@@ -377,7 +454,7 @@ public class WorldOne extends Table {
 
 	private void spawnPup() {
 		float yPos = 10 + (int) (Math.random() * 460);
-		Puppy puppy = new Puppy(getWidth(), yPos);
+		Puppy puppy = new Puppy(getWidth() + yPos, yPos);
 		puppies.add(puppy);
 		onGroundGroup.addActor(puppy);
 		puppyDelta = TimeUtils.nanoTime();
@@ -386,7 +463,7 @@ public class WorldOne extends Table {
 
 	private void spawnBee() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyBee enemyBee = new EnemyBee(getWidth(), yPos);
+		EnemyBee enemyBee = new EnemyBee(getWidth() + yPos, yPos);
 		enemyBees.add(enemyBee);
 		onGroundGroup.addActor(enemyBee);
 		enemyDelta = TimeUtils.nanoTime();
@@ -394,7 +471,7 @@ public class WorldOne extends Table {
 
 	private void spawnPuddle() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyPuddle enemyPuddle = new EnemyPuddle(getWidth(), yPos);
+		EnemyPuddle enemyPuddle = new EnemyPuddle(getWidth() + yPos, yPos);
 		enemyPuddles.add(enemyPuddle);
 		onGroundGroup.addActor(enemyPuddle);
 		enemyPuddleDelta = TimeUtils.nanoTime();
@@ -403,7 +480,7 @@ public class WorldOne extends Table {
 
 	private void spawnMud() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyMud enemyMud = new EnemyMud(getWidth(), yPos);
+		EnemyMud enemyMud = new EnemyMud((getWidth() + yPos), yPos);
 		enemyMuds.add(enemyMud);
 		onGroundGroup.addActor(enemyMud);
 		enemyMudDelta = TimeUtils.nanoTime();
@@ -412,7 +489,7 @@ public class WorldOne extends Table {
 
 	private void spawnLog() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyLog enemyLog = new EnemyLog(getWidth(), yPos);
+		EnemyLog enemyLog = new EnemyLog(getWidth() + yPos, yPos);
 		enemyLogs.add(enemyLog);
 		onGroundGroup.addActor(enemyLog);
 		enemyLogDelta = TimeUtils.nanoTime();

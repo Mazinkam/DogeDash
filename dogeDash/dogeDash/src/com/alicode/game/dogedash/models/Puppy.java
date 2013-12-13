@@ -17,9 +17,9 @@ public class Puppy extends Actor {
 	private Animation pupWalkingAnim;
 	private float pupWalkingAnimState;
 	private Array<TextureRegion> pupWalkingRed, pupWalkingBlack, pupWalkingCream, pupWalkingBlue;
-	private Array<? extends TextureRegion> pupWalkingFrames;
+
 	private Rectangle bounds = new Rectangle();
-	private float puppyX;
+	private float puppyX, puppyY;
 
 	public Puppy(float x, float y) {
 		int randomNum = 1 + (int) (Math.random() * 4);
@@ -43,11 +43,9 @@ public class Puppy extends Actor {
 		pupWalkingBlue.add(Assets.bluePup);
 		pupWalkingBlue.add(Assets.bluePup2);
 
-		pupWalkingFrames = new Array<TextureRegion>();
-
 		if (randomNum == 1)
-
 			this.pupWalkingAnim = new Animation(0.15f, pupWalkingRed);
+		
 		if (randomNum == 2)
 			this.pupWalkingAnim = new Animation(0.15f, pupWalkingBlack);
 
@@ -58,6 +56,7 @@ public class Puppy extends Actor {
 			this.pupWalkingAnim = new Animation(0.15f, pupWalkingBlue);
 
 		puppyX = x;
+		puppyY = y;
 
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
@@ -68,13 +67,27 @@ public class Puppy extends Actor {
 		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
 			updateBounds();
+			updateMovement();
 
-			puppyX -= Statics.enemySpeed;
-			addAction(Actions.moveTo(puppyX, getY()));
 		}
 		if (!Statics.puppiesAlive) {
 			this.remove();
 		}
+	}
+
+	private void updateMovement() {
+		if (Statics.playerHitByMud) {
+			if (MotherDoge.playerY > getY()) {
+				puppyY--;
+			} else {
+				puppyY++;
+			}
+		} else {
+			puppyY = getY();
+		}
+		puppyX -= Statics.enemySpeed;
+		addAction(Actions.moveTo(puppyX, puppyY));
+
 	}
 
 	@Override
@@ -92,19 +105,9 @@ public class Puppy extends Actor {
 		bounds.set(getX(), getY(), getWidth(), getHeight());
 	}
 
-	public void playerHit(boolean front, boolean above) {
+	public void playerHit() {
 		clearActions();
 		addAction(Actions.fadeOut(1f));
-		// if (front && above)
-		// addAction(Actions.sequence(Actions.parallel(Actions.moveBy(200, 0,
-		// 1.5f)), Actions.removeActor()));
-		// if (front && !above)
-		// addAction(Actions.sequence(Actions.parallel(Actions.moveBy(200, 0,
-		// 1.5f)), Actions.removeActor()));
-		// if (!front && above)
-		// addAction(Actions.sequence(Actions.parallel(Actions.moveBy(-200, 0,
-		// 1.5f)), Actions.removeActor()));
-		// if (!front && !above)
 		addAction(Actions.sequence(Actions.parallel(Actions.moveBy(-200, 0, 1.5f)), Actions.removeActor()));
 	}
 

@@ -41,7 +41,7 @@ public class WorldTwo extends Table {
 	public void act(float delta) {
 		super.act(delta);
 
-		if (TimeUtils.nanoTime() - dogeDelta > 100000000f){
+		if (TimeUtils.nanoTime() - dogeDelta > 100000000f) {
 			spawnBee();
 			spawnPup();
 		}
@@ -78,25 +78,16 @@ public class WorldTwo extends Table {
 			}
 			if (puppy.getBounds().overlaps(motherDoge.getBounds())) {
 				iter.remove();
-				if (puppy.getX() > motherDoge.getX()) {
-					if (puppy.getY() > motherDoge.getY())
-						puppy.playerHit(true, true);
-					else
-						puppy.playerHit(true, false);
-				} else {
-					if (puppy.getY() > motherDoge.getY())
-						puppy.playerHit(false, true);
-					else
-						puppy.playerHit(false, false);
-				}
+				puppy.playerHit();
+
 			}
 		}
 	}
 
 	private void spawnPup() {
-		float yPos = 0 + (int)(Math.random()*460);
+		float yPos = 0 + (int) (Math.random() * 460);
 		// Gdx.app.log(DogeDashCore.LOG, "yPos:: " + yPos + "x" + x);
-		Puppy puppy = new Puppy(getWidth(), yPos );
+		Puppy puppy = new Puppy(getWidth(), yPos);
 		puppies.add(puppy);
 		addActor(puppy);
 		dogeDelta = TimeUtils.nanoTime();
@@ -109,7 +100,7 @@ public class WorldTwo extends Table {
 	private void spawnBee() {
 		// float yPos = 0 + (int)(Math.random()*460);
 		x += .075f;
-		yPos = (float) Math.sin(x)/2;
+		yPos = (float) Math.sin(x) / 2;
 		// Gdx.app.log(DogeDashCore.LOG, "yPos:: " + yPos + "x" + x);
 		EnemyMoth enemyMoth = new EnemyMoth(getWidth(), yPos * 800);
 		enemyMoths.add(enemyMoth);

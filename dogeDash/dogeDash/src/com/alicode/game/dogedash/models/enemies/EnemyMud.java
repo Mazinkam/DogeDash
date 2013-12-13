@@ -17,12 +17,12 @@ public class EnemyMud extends Actor {
 	private Rectangle bounds = new Rectangle();
 	private TextureRegion chosenType;
 	private float x;
+	private boolean hitByTheD = false;
 
 	public EnemyMud(float x, float y) {
 		int randomNum = 1 + (int) (Math.random() * 2);
 		setWidth(Assets.gameMud.getRegionWidth());
 		setHeight(Assets.gameMud.getRegionHeight());
-
 
 		if (randomNum == 1)
 			chosenType = Assets.gameMud;
@@ -30,8 +30,6 @@ public class EnemyMud extends Actor {
 			chosenType = Assets.gameMud2;
 
 		this.x = x;
-
-	//	addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(10f, 1f), Actions.rotateBy(-10f, 1f))));
 
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
@@ -44,12 +42,16 @@ public class EnemyMud extends Actor {
 			updateMovement();
 			updateBounds();
 		}
+		if (!Statics.objectsAlive) {
+			this.remove();
+		}
 	}
 
 	private void updateMovement() {
-		x -= Statics.backgroundSpeed;
-		addAction(Actions.moveTo(x, getY()));
-
+		if (!hitByTheD) {
+			x -= Statics.backgroundSpeed;
+			addAction(Actions.moveTo(x, getY()));
+		}
 	}
 
 	@Override
@@ -57,8 +59,7 @@ public class EnemyMud extends Actor {
 
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
-
-		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
+		batch.draw(chosenType, x, getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
 				getRotation());
 
 	}
@@ -68,20 +69,31 @@ public class EnemyMud extends Actor {
 	}
 
 	public void playerHit(boolean front, boolean above) {
-	//	Statics.playerHitByMud = true;
-		Statics.playerHitAnimation = true;
-		GameVibrate.vibrate(500);
-		Action completeAction = new Action() {
-			public boolean act(float delta) {
-				Statics.playerHitAnimation = false;
 
-				return true;
-			}
-		};
-		addAction(Actions.sequence(Actions.parallel(Actions.scaleBy(0.2f, 0.2f), Actions.delay(.5f),Actions.scaleTo(1, 1),
-				completeAction)));
-		
-		Gdx.app.log(DogeDashCore.LOG, "playerHitByMud " + Statics.playerHitByMud);
+		if (!Statics.isSuperD) {
+			Statics.playerHitByMud = true;
+			Statics.playerHitAnimation = true;
+			GameVibrate.vibrate(500);
+			Action completeAction = new Action() {
+				public boolean act(float delta) {
+					Statics.playerHitAnimation = false;
+					return true;
+				}
+			};
+			addAction(Actions.sequence(Actions.parallel(Actions.scaleBy(0.2f, 0.2f), Actions.delay(.5f), Actions.scaleTo(1, 1), completeAction)));
+		}
+		if (Statics.isSuperD) {
+			clearActions();
+			hitByTheD = true;
+			if (front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
+			if (front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
+			if (!front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
+			if (!front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
+		}
 	}
 
 	public Rectangle getBounds() {

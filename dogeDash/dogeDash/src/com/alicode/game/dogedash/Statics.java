@@ -29,6 +29,10 @@ public class Statics {
 	public static boolean puppiesAlive = true;
 	public static boolean bushesAlive = true;
 	public static boolean flowersAlive = true;
+	public static boolean objectsAlive = true;
+
+	public static int puddleTimer = 200;
+	public static int logTimer = 200;
 
 	// player vars
 	public static boolean isSuperD = false;
@@ -41,6 +45,7 @@ public class Statics {
 	public static boolean playerHitByLog = false;
 	public static boolean playerHitAnimation = false;
 	public static float playerX, playerY, playerZ;
+	public static int superDogeTimer = 200;
 
 	public static int beesOnPlayer = 0;
 
@@ -55,6 +60,7 @@ public class Statics {
 		puppiesAlive = true;
 		bushesAlive = true;
 		flowersAlive = true;
+		objectsAlive = true;
 		playerX = 110;
 		playerY = 220;
 		playerZ = 0;
@@ -66,17 +72,36 @@ public class Statics {
 		cleanseEnemies = false;
 		playerJump = false;
 
+		isSuperD = false;
+		playerJump = false;
 		playerHitByBush = false;
 		playerHitByBee = false;
 		playerHitByPuppy = false;
+		playerHitByMud = false;
+		playerHitByPuddle = false;
+		playerHitByLog = false;
+		playerHitAnimation = false;
 
 		enemiesAlive = false;
 		puppiesAlive = false;
 		bushesAlive = false;
 		flowersAlive = false;
+		objectsAlive = false;
 
 		GamePoints.clearTheNumbers();
 		beesOnPlayer = 0;
+	}
+
+	public static void SuperDogeMode() {
+		backgroundSpeed = 8;
+		enemySpeed = 12;
+		puppySpeed = 12;
+	}
+
+	public static void normalMode() {
+		backgroundSpeed = 4;
+		enemySpeed = 6;
+		puppySpeed = 6;
 	}
 
 }

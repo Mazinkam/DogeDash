@@ -1,5 +1,6 @@
 package com.alicode.game.dogedash.utils;
 
+import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.InputProcessor;
@@ -17,6 +18,7 @@ public class GameInput implements InputProcessor {
 		this.motherDoge = chosenWorldMother;
 		this.worldTerminal = worldTerminal;
 	}
+
 	@Override
 	public boolean keyDown(int keycode) {
 
@@ -43,27 +45,30 @@ public class GameInput implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		motherDoge.addAction(Actions.rotateTo(0f,0.5f));
+		motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
 		motherDoge.startJump();
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		 touch.set(screenX, screenY, 0);
-		
-		 worldTerminal.getStage().getCamera().unproject(touch);
-		
-		 vec2Touch.set(touch.x, touch.y);
+		touch.set(screenX, screenY, 0);
 
-		if (motherDoge.getY() > touch.y +40) {
-			motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
+		worldTerminal.getStage().getCamera().unproject(touch);
+
+		vec2Touch.set(touch.x, touch.y);
+
+		if (motherDoge.getY() > touch.y + 40) {
+			if (!Statics.playerHitByLog)
+				motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
 			motherDoge.normalDogeMovement(110, touch.y);
-		} else if (motherDoge.getY()  < touch.y -40) {
-			motherDoge.addAction(Actions.sequence(Actions.rotateTo(10,0.5f),Actions.delay(0.5f), Actions.rotateTo(0f,1.0f)));
+		} else if (motherDoge.getY() < touch.y - 40) {
+			if (!Statics.playerHitByLog)
+				motherDoge.addAction(Actions.sequence(Actions.rotateTo(10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
 			motherDoge.normalDogeMovement(110, touch.y);
 		} else {
-			motherDoge.addAction(Actions.rotateTo(0f,0.5f));
+			if (!Statics.playerHitByLog)
+				motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
 		}
 
 		return false;

@@ -129,7 +129,7 @@ public class WorldTerminal implements Screen {
 		imagePuppyMissed.setX(330);
 		imagePuppyMissed.setY(230);
 
-		tempDrawable = new TextureRegionDrawable(Assets.pup_missed);
+		tempDrawable = new TextureRegionDrawable(Assets.pup_points);
 		imagePuppyPoints = new Image(tempDrawable);
 		imagePuppyPoints.setX(330);
 		imagePuppyPoints.setY(200);
@@ -182,7 +182,7 @@ public class WorldTerminal implements Screen {
 		textDogeCoins = new GameText();
 		textDogeCoins.setX(580);
 		textDogeCoins.setY(200);
-		textDogeCoins.setText("0");
+		textDogeCoins.setText(GamePoints.dogeCoins + "");
 
 		textTotalScore = new GameText();
 		textTotalScore.setX(580);
@@ -352,7 +352,7 @@ public class WorldTerminal implements Screen {
 		textPuppyMissed.setText(GamePoints.puppyMissedNum + "");
 		textPuppyPoints.setText(GamePoints.puppyPoints() + "");
 		textTotalScore.setText(GamePoints.finalScore + "");
-		textDogeCoins.setText("0");
+		textDogeCoins.setText(GamePoints.dogeCoins + "");
 	}
 
 	private void updateHighscore() {
@@ -369,11 +369,11 @@ public class WorldTerminal implements Screen {
 
 				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
 
-//					if (Statics.state == Statics.GameState.Running) {
-//						Statics.state = Statics.GameState.GameOver;
-//					}
-////					if (Statics.state == Statics.GameState.GameOver) {
-						game.setScreen(new MenuScreen(game));
+					// if (Statics.state == Statics.GameState.Running) {
+					// Statics.state = Statics.GameState.GameOver;
+					// }
+					// // if (Statics.state == Statics.GameState.GameOver) {
+					game.setScreen(new MenuScreen(game));
 					// }
 
 				}
@@ -384,7 +384,6 @@ public class WorldTerminal implements Screen {
 		inputMultiplexer.addProcessor(gameInput);
 		inputMultiplexer.addProcessor(backProcessor);
 		inputMultiplexer.addProcessor(stage);
-
 
 		Gdx.input.setInputProcessor(inputMultiplexer);
 

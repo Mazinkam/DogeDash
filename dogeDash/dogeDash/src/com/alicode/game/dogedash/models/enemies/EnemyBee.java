@@ -22,6 +22,7 @@ public class EnemyBee extends Actor {
 	private boolean hitPlayer = false;
 	private float enemyX;
 	private Rectangle bounds = new Rectangle();
+	private boolean hitByTheD = false;
 
 	public EnemyBee(float x, float y) {
 		setWidth(Assets.enemyBee.getRegionWidth());
@@ -45,7 +46,7 @@ public class EnemyBee extends Actor {
 			updateMovement();
 			updateBounds();
 		}
-		
+
 		if (!Statics.enemiesAlive) {
 			this.remove();
 		}
@@ -60,7 +61,7 @@ public class EnemyBee extends Actor {
 	}
 
 	private void normalMovement() {
-		if (!hitPlayer) {
+		if (!hitPlayer && !hitByTheD) {
 			enemyX -= Statics.enemySpeed;
 			addAction(Actions.moveTo(enemyX, getY()));
 		}
@@ -91,8 +92,6 @@ public class EnemyBee extends Actor {
 					Statics.beesOnPlayer = 0;
 				}
 				this.actor.remove();
-				// Gdx.app.log(DogeDashCore.LOG, "hitPlayer " + hitPlayer +
-				// " Statics.cleanseEnemies " + Statics.cleanseEnemies);
 				return true;
 			}
 		};
@@ -102,7 +101,6 @@ public class EnemyBee extends Actor {
 			this.addAction(Actions.sequence(Actions.rotateBy(360f, 1f), completeAction));
 
 		}
-//		Gdx.app.log(DogeDashCore.LOG, "beesOnPlayer " + Statics.beesOnPlayer);
 	}
 
 	@Override
@@ -120,35 +118,34 @@ public class EnemyBee extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 		clearActions();
-		hitPlayer = true;
-		Statics.playerHitByBee = true;
-		Statics.beesOnPlayer++;
-		GameVibrate.vibrate(500);
-		
-		Action completeAction = new Action() {
-			public boolean act(float delta) {
-				Statics.playerHitByBee = false;
+		if (!Statics.isSuperD) {
+			hitPlayer = true;
+			Statics.playerHitByBee = true;
+			Statics.beesOnPlayer++;
+			GameVibrate.vibrate(500);
 
-				return true;
-			}
-		};
-		addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)),
-				completeAction));
+			Action completeAction = new Action() {
+				public boolean act(float delta) {
+					Statics.playerHitByBee = false;
+
+					return true;
+				}
+			};
+			addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)),
+					completeAction));
+		}
 
 		if (Statics.isSuperD) {
-			// this.addAction(Actions.fadeOut(1f));
+			clearActions();
+			hitByTheD = true;
 			if (front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
 			if (front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
 			if (!front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
 			if (!front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
 		}
 
 	}

@@ -16,7 +16,7 @@ public class EnemyPuddle extends Actor {
 	private Rectangle bounds = new Rectangle();
 	private TextureRegion chosenType;
 	private float x;
-	private int puddleTimer = 500;
+	private boolean hitByTheD = false;
 
 	public EnemyPuddle(float x, float y) {
 		int randomNum = 1 + (int) (Math.random() * 2);
@@ -31,9 +31,6 @@ public class EnemyPuddle extends Actor {
 
 		this.x = x;
 
-		// addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(10f,
-		// 1f), Actions.rotateBy(-10f, 1f))));
-
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
@@ -46,21 +43,31 @@ public class EnemyPuddle extends Actor {
 			updateBounds();
 			updatePuddleTimer();
 		}
+		if (!Statics.objectsAlive) {
+			this.remove();
+		}
 	}
 
 	private void updatePuddleTimer() {
 		if (Statics.playerHitByPuddle) {
-			puddleTimer--;
-			if (puddleTimer <= 0)
+			Statics.puddleTimer--;
+			if (Statics.puddleTimer <= 0) {
 				Statics.playerHitByPuddle = false;
-			Gdx.app.log(DogeDashCore.LOG, "playerHitByPuddle " + Statics.playerHitByPuddle);
+				Statics.puddleTimer = 200;
+			}
+			Gdx.app.log(DogeDashCore.LOG, "puddleTimer " + Statics.puddleTimer);
+		}
+		if (!Statics.objectsAlive) {
+			this.remove();
 		}
 
 	}
 
 	private void updateMovement() {
-		x -= Statics.backgroundSpeed;
-		addAction(Actions.moveTo(x, getY()));
+		if (!hitByTheD) {
+			x -= Statics.backgroundSpeed;
+			addAction(Actions.moveTo(x, getY()));
+		}
 
 	}
 
@@ -79,11 +86,26 @@ public class EnemyPuddle extends Actor {
 	}
 
 	public void playerHit(boolean front, boolean above) {
-		Statics.playerHitByMud = false;
-		Statics.playerHitByPuddle = true;
-		GameVibrate.vibrate(500);
-		Gdx.app.log(DogeDashCore.LOG, "playerHitByMud " + Statics.playerHitByMud);
-		Gdx.app.log(DogeDashCore.LOG, "playerHitByPuddle " + Statics.playerHitByPuddle);
+
+		if (!Statics.isSuperD) {
+			Statics.playerHitByMud = false;
+			Statics.playerHitByPuddle = true;
+			GameVibrate.vibrate(500);
+		}
+
+		if (Statics.isSuperD) {
+			clearActions();
+			hitByTheD = true;
+
+			if (front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
+			if (front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
+			if (!front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
+			if (!front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
+		}
 	}
 
 	public Rectangle getBounds() {

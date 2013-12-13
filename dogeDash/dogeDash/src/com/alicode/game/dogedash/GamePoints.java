@@ -9,6 +9,8 @@ public class GamePoints {
 
 	public static int puppyCaughtNum;
 	public static int puppyMissedNum;
+	
+	public static int dogeCoins;
 
 	public static int finalScore() {
 		finalScore = (currentScore + bonusPointStatic + puppyPoints());
@@ -35,5 +37,6 @@ public class GamePoints {
 		bonusPointStatic = 0;
 		puppyCaughtNum = 0;
 		puppyMissedNum = 0;
+		dogeCoins = 0;
 	}
 }

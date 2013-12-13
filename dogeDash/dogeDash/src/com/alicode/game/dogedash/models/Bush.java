@@ -13,6 +13,7 @@ public class Bush extends Actor {
 	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
 	private float x;
+	private boolean hitByTheD = false;
 
 	public Bush(float x, float y) {
 		setWidth(Assets.gameBush.getRegionWidth());
@@ -40,8 +41,10 @@ public class Bush extends Actor {
 	}
 
 	private void updateMovement() {
-		x -= Statics.backgroundSpeed;
-		addAction(Actions.moveTo(x, getY()));
+		if (!hitByTheD) {
+			x -= Statics.backgroundSpeed;
+			addAction(Actions.moveTo(x, getY()));
+		}
 
 	}
 
@@ -54,11 +57,29 @@ public class Bush extends Actor {
 	}
 
 	public void playerHit(boolean front, boolean above) {
+		if (!Statics.isSuperD) {
 
-		if (Statics.beesOnPlayer > 0)
-			Statics.cleanseEnemies = true;
-		addAction(Actions.sequence(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))),
-				Actions.removeActor()));
+			if (Statics.beesOnPlayer > 0)
+				Statics.cleanseEnemies = true;
+
+			addAction(Actions.sequence(
+					Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))),
+					Actions.removeActor()));
+		}
+
+		if (Statics.isSuperD) {
+			clearActions();
+			hitByTheD = true;
+
+			if (front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
+			if (front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
+			if (!front && above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
+			if (!front && !above)
+				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
+		}
 	}
 
 	private void updateBounds() {

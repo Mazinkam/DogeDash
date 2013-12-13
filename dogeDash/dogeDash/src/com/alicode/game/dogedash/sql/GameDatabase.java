@@ -90,8 +90,7 @@ public class GameDatabase {
 		dbHandler.setupDatabase();
 		try {
 			dbHandler.openOrCreateDatabase();
-			//dropTheBase();
-			//dbHandler.execSQL(DATABASE_CREATE);
+			// dropTheBase();
 			dbHandler.execSQL(CREATE_LEVELONE_TABLE);
 			dbHandler.execSQL(CREATE_LEVELTWO_TABLE);
 			dbHandler.execSQL(CREATE_COSTUME_BACK_TABLE);
@@ -100,7 +99,7 @@ public class GameDatabase {
 			dbHandler.execSQL(CREATE_COSTUME_HEAD_TABLE);
 			dbHandler.execSQL(CREATE_SETTINGS_TABLE);
 			dbHandler.execSQL(CREATE_MISC_TABLE);
-		
+
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
@@ -268,10 +267,10 @@ public class GameDatabase {
 					+ ")");
 			Gdx.app.log(DogeDashCore.LOG, "wrote into " + tableName);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed wrote into " + tableName);
 		}
-		
+
 	}
 
 	public Level getLevelHighscore(int id, String tableName) {
@@ -282,7 +281,7 @@ public class GameDatabase {
 					+ KEY_MISSEDPUPPIES + "," + KEY_PUPPYPOINTS + " FROM " + tableName + " WHERE " + KEY_ID + "=" + "'" + id + "'");
 			Gdx.app.log(DogeDashCore.LOG, "get from " + tableName);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed to get from" + tableName);
 		}
 		if (cursor != null) {
@@ -304,7 +303,7 @@ public class GameDatabase {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
 			Gdx.app.log(DogeDashCore.LOG, "getting list from " + tableName);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed to get list from" + tableName);
 		}
 		if (cursor != null) {
@@ -364,10 +363,10 @@ public class GameDatabase {
 					+ costume.getIsOwned() + "," + costume.getItemPrice() + ")");
 			Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed to created " + tableName);
 		}
-		//Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
+		// Gdx.app.log(DogeDashCore.LOG, "created " + tableName);
 	}
 
 	public Costume getCostume(int id, String tableName) {
@@ -376,7 +375,7 @@ public class GameDatabase {
 		try {
 			cursor = dbHandler.rawQuery("SELECT " + KEY_ID + "," + KEY_ITEM_NAME + "," + KEY_ITEM_OWNED + "," + KEY_ITEM_PRICE + " FROM " + tableName
 					+ " WHERE " + KEY_ID + "=" + "'" + id + "'");
-		
+
 		} catch (SQLiteGdxException e) {
 			e.printStackTrace();
 		}
@@ -398,7 +397,7 @@ public class GameDatabase {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + tableName);
 			Gdx.app.log(DogeDashCore.LOG, "getting list from " + tableName);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed to get list from " + tableName);
 		}
 		if (cursor != null)
@@ -452,10 +451,10 @@ public class GameDatabase {
 					+ settings.getMusicSettings() + "," + settings.getVibrationSettings() + ")");
 			Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed to write " + TABLE_SETTINGS);
 		}
-		//Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
+		// Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_SETTINGS);
 	}
 
 	public Settings getSettings(int id) {
@@ -466,8 +465,8 @@ public class GameDatabase {
 					+ " FROM " + TABLE_SETTINGS + " WHERE " + KEY_ID + "=" + "'" + id + "'");
 			Gdx.app.log(DogeDashCore.LOG, "getting from  " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-		
-			//	e.printStackTrace();
+
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed getting from  " + TABLE_SETTINGS);
 		}
 		if (cursor != null) {
@@ -488,7 +487,7 @@ public class GameDatabase {
 			cursor = dbHandler.rawQuery("SELECT  * FROM " + TABLE_SETTINGS);
 			Gdx.app.log(DogeDashCore.LOG, "getting list  " + TABLE_SETTINGS);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed getting list " + TABLE_SETTINGS);
 		}
 		if (cursor != null)
@@ -540,11 +539,11 @@ public class GameDatabase {
 			dbHandler.execSQL("INSERT INTO " + TABLE_MISC + "  VALUES (" + misc.getId() + "," + misc.getDogeCoins() + ")");
 			Gdx.app.log(DogeDashCore.LOG, "write into " + TABLE_MISC);
 		} catch (SQLiteGdxException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed wrote into " + TABLE_MISC);
-			
+
 		}
-	//	Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_MISC);
+		// Gdx.app.log(DogeDashCore.LOG, "wrote into " + TABLE_MISC);
 	}
 
 	public Misc getMisc(int id) {
@@ -575,7 +574,7 @@ public class GameDatabase {
 			Gdx.app.log(DogeDashCore.LOG, "wrote list " + TABLE_MISC);
 
 		} catch (SQLiteGdxException e) {
-		//	e.printStackTrace();
+			// e.printStackTrace();
 			Gdx.app.log(DogeDashCore.LOG, "failed write list" + TABLE_MISC);
 		}
 		if (cursor != null)
