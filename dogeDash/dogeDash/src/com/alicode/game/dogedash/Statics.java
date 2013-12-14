@@ -81,6 +81,12 @@ public class Statics {
 		playerHitByPuddle = false;
 		playerHitByLog = false;
 		playerHitAnimation = false;
+		backgroundSpeed = 4;
+		enemySpeed = 6;
+		puppySpeed = 6;
+		puddleTimer = 0;
+		logTimer = 0;
+		superDogeTimer = 0;
 
 		enemiesAlive = false;
 		puppiesAlive = false;
@@ -96,6 +102,8 @@ public class Statics {
 		backgroundSpeed = 8;
 		enemySpeed = 12;
 		puppySpeed = 12;
+		puddleTimer = 0;
+		logTimer = 0;
 	}
 
 	public static void normalMode() {

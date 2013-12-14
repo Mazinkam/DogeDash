@@ -53,7 +53,6 @@ public class EnemyLog extends Actor {
 				Statics.playerHitByLog = false;
 				Statics.logTimer = 250;
 			}
-			Gdx.app.log(DogeDashCore.LOG, "logTimer " + Statics.logTimer);
 		}
 
 	}

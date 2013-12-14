@@ -109,7 +109,7 @@ public class CustomizationScreen implements Screen {
 
 		this.game = game;
 		stage = new Stage();
-		Statics.state = Statics.GameState.Ready;
+		Statics.cleanSlate();
 		motherDoge = new MotherDoge();
 		inputMultiplexer = new InputMultiplexer(stage);
 

@@ -55,7 +55,6 @@ public class EnemyPuddle extends Actor {
 				Statics.playerHitByPuddle = false;
 				Statics.puddleTimer = 200;
 			}
-			Gdx.app.log(DogeDashCore.LOG, "puddleTimer " + Statics.puddleTimer);
 		}
 		if (!Statics.objectsAlive) {
 			this.remove();

@@ -12,9 +12,12 @@ import com.alicode.game.dogedash.Statics.GameState;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.screens.MenuScreen;
+import com.alicode.game.dogedash.screens.OptionsScreen;
 import com.alicode.game.dogedash.screens.WorldSelection;
+import com.alicode.game.dogedash.sql.Settings;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameInput;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -29,6 +32,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -47,20 +51,22 @@ public class WorldTerminal implements Screen {
 	private MotherDoge m;
 	private Drawable tempDrawable;
 
-	private WindowOverlay winOverlay, winOverlay2;
+	private WindowOverlay readyOverlay, gameoverOverlay, pauseOverlay;
 	private DogeDashCore game;
 	private Image imageGameOver, imageTime, imageStylePoints, imagePuppyCaught, imagePuppyMissed, imagePuppyPoints, imageDogeCoins, imageTotalScore,
-			imageRetry, imageBack, imagePauseButton;
+			imageRetry, imageBack, imagePauseButton, imagePauseResume, imagePauseMenu, imagePauseMusic, imagePauseSound, imagePauseVibration;
 
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
 	private InputMultiplexer inputMultiplexer;
+	private int failSafe = 0;
 
 	public WorldTerminal(DogeDashCore game, float delta) {
 		this.game = game;
 		stage = new Stage();
-		winOverlay = new WindowOverlay();
-		winOverlay2 = new WindowOverlay();
+		readyOverlay = new WindowOverlay();
+		gameoverOverlay = new WindowOverlay();
+		pauseOverlay = new WindowOverlay();
 		inputMultiplexer = new InputMultiplexer();
 
 		Statics.state = Statics.GameState.Ready;
@@ -75,9 +81,6 @@ public class WorldTerminal implements Screen {
 
 		stage.addActor(gameGroup);
 		stage.addActor(readyGroup);
-
-		defineReady();
-		defineGameOver();
 
 		switch (Statics.gameLevel) {
 		case 1:
@@ -94,11 +97,197 @@ public class WorldTerminal implements Screen {
 			break;
 		}
 		gameInput = new GameInput(m, this);
+
+		defineReady();
+		defineRunning();
+		defineGameOver();
+		definePaused();
+	}
+
+	private void definePaused() {
+		tempDrawable = new TextureRegionDrawable(Assets.pause_resume);
+		imagePauseResume = new Image(tempDrawable);
+		imagePauseResume.setX(235);
+		imagePauseResume.setY(280);
+
+		tempDrawable = new TextureRegionDrawable(Assets.pause_menu);
+		imagePauseMenu = new Image(tempDrawable);
+		imagePauseMenu.setX(280);
+		imagePauseMenu.setY(140);
+
+		if (OptionsScreen.isSoundOn == 1)
+			tempDrawable = new TextureRegionDrawable(Assets.pauseSoundOn);
+		else
+			tempDrawable = new TextureRegionDrawable(Assets.pauseSoundOff);
+		imagePauseSound = new Image(tempDrawable);
+		imagePauseSound.setX(600);
+		imagePauseSound.setY(420);
+
+		if (OptionsScreen.isMusicOn == 1)
+			tempDrawable = new TextureRegionDrawable(Assets.pauseMusicOn);
+		else
+			tempDrawable = new TextureRegionDrawable(Assets.pauseMusicOff);
+		imagePauseMusic = new Image(tempDrawable);
+		imagePauseMusic.setX(650);
+		imagePauseMusic.setY(420);
+
+		if (OptionsScreen.isVibrationOn == 1)
+			tempDrawable = new TextureRegionDrawable(Assets.pauseVibrationOn);
+		else
+			tempDrawable = new TextureRegionDrawable(Assets.pauseVibrationOff);
+		imagePauseVibration = new Image(tempDrawable);
+		imagePauseVibration.setX(700);
+		imagePauseVibration.setY(420);
+
+		pauseGroup.addActor(pauseOverlay);
+		pauseGroup.addActor(imagePauseResume);
+		pauseGroup.addActor(imagePauseMenu);
+		pauseGroup.addActor(imagePauseVibration);
+		pauseGroup.addActor(imagePauseMusic);
+		pauseGroup.addActor(imagePauseSound);
+		pausedInput();
+
+	}
+
+	private void pausedInput() {
+		stage.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				if (Statics.state == Statics.GameState.Paused) {
+					float desiredX = imagePauseResume.getX();
+					float desiredY = imagePauseResume.getY();
+
+					float desiredWidth = imagePauseResume.getX() + imagePauseResume.getImageWidth();
+					float desiredHeight = imagePauseResume.getY() + imagePauseResume.getImageHeight();
+
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
+							&& event.getStageY() <= desiredHeight) {
+						Statics.state = GameState.Running;
+						pauseGroup.remove();
+						DogeDashCore.db
+								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+
+					}
+
+					desiredX = imagePauseSound.getX();
+					desiredY = imagePauseSound.getY();
+
+					desiredWidth = imagePauseSound.getX() + imagePauseSound.getImageWidth();
+					desiredHeight = imagePauseSound.getY() + imagePauseSound.getImageHeight();
+
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
+							&& event.getStageY() <= desiredHeight) {
+						OptionsScreen.isSoundOn ^= 1;
+						if (OptionsScreen.isSoundOn == 1) {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseSoundOn);
+						} else {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseSoundOff);
+						}
+						GameAudio.dogeBark();
+						imagePauseSound.setDrawable(tempDrawable);
+					}
+
+					desiredX = imagePauseMusic.getX();
+					desiredY = imagePauseMusic.getY();
+
+					desiredWidth = imagePauseMusic.getX() + imagePauseMusic.getImageWidth();
+					desiredHeight = imagePauseMusic.getY() + imagePauseMusic.getImageHeight();
+
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
+							&& event.getStageY() <= desiredHeight) {
+						OptionsScreen.isMusicOn ^= 1;
+						if (OptionsScreen.isMusicOn == 1) {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseMusicOn);
+
+						} else {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseMusicOff);
+
+						}
+
+						imagePauseMusic.setDrawable(tempDrawable);
+
+					}
+
+					desiredX = imagePauseVibration.getX();
+					desiredY = imagePauseVibration.getY();
+
+					desiredWidth = imagePauseVibration.getX() + imagePauseVibration.getImageWidth();
+					desiredHeight = imagePauseVibration.getY() + imagePauseVibration.getImageHeight();
+
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
+							&& event.getStageY() <= desiredHeight) {
+						OptionsScreen.isVibrationOn ^= 1;
+						if (OptionsScreen.isVibrationOn == 1) {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseVibrationOn);
+						} else {
+							tempDrawable = new TextureRegionDrawable(Assets.pauseVibrationOff);
+						}
+						GameVibrate.vibrate(100);
+						imagePauseVibration.setDrawable(tempDrawable);
+
+					}
+
+					desiredX = imagePauseMenu.getX();
+					desiredY = imagePauseMenu.getY();
+
+					desiredWidth = imagePauseMenu.getX() + imagePauseMenu.getImageWidth();
+					desiredHeight = imagePauseMenu.getY() + imagePauseMenu.getImageHeight();
+
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
+							&& event.getStageY() <= desiredHeight) {
+						stage.removeListener(this);
+						DogeDashCore.db
+								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+						game.setScreen(new MenuScreen(game));
+
+					}
+				}
+			}
+
+		});
+
 	}
 
 	private void defineReady() {
-		readyGroup.addActor(winOverlay2);
+		readyGroup.addActor(gameoverOverlay);
 		readyGroup.addActor(textInto);
+		readyInput();
+
+	}
+
+	private void defineRunning() {
+
+		tempDrawable = new TextureRegionDrawable(Assets.pause_button);
+		imagePauseButton = new Image(tempDrawable);
+		imagePauseButton.setX(660);
+		imagePauseButton.setY(20);
+
+		stage.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				float desiredX = imagePauseButton.getX();
+				float desiredY = imagePauseButton.getY();
+
+				float desiredWidth = imagePauseButton.getX() + imagePauseButton.getImageWidth();
+				float desiredHeight = imagePauseButton.getY() + imagePauseButton.getImageHeight();
+
+				if ((event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight)
+						&& Statics.state == Statics.GameState.Running) {
+					Statics.state = GameState.Paused;
+					stage.addActor(pauseGroup);
+
+				}
+
+			}
+		});
+
+		gameGroup.addActor(imagePauseButton);
 
 	}
 
@@ -189,7 +378,7 @@ public class WorldTerminal implements Screen {
 		textTotalScore.setY(140);
 		textTotalScore.setText(GamePoints.finalScore + "");
 
-		gameoverGroup.addActor(winOverlay);
+		gameoverGroup.addActor(readyOverlay);
 
 		gameoverGroup.addActor(imageGameOver);
 		gameoverGroup.addActor(imageTime);
@@ -223,15 +412,6 @@ public class WorldTerminal implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		if (Statics.state == GameState.Ready)
-			updateReady();
-		if (Statics.state == GameState.Running)
-			updateRunning();
-		if (Statics.state == GameState.Paused)
-			updatePaused();
-		if (Statics.state == GameState.GameOver)
-			updateGameOver();
-
 		updatePlayerHealth();
 		stage.act(delta);
 		stage.draw();
@@ -241,11 +421,14 @@ public class WorldTerminal implements Screen {
 		if (Statics.beesOnPlayer >= 4 && Statics.state == GameState.Running) {
 			Statics.state = GameState.GameOver;
 			stage.addActor(gameoverGroup);
+			updateGameoverScore();
+			updateHighscore();
+			gameoverInput();
 		}
 
 	}
 
-	private void updateReady() {
+	private void readyInput() {
 		textInto.setText("Dodge bee's and catch as many pups as possible, woof!");
 		textInto.setX(20);
 		textInto.setY(200);
@@ -266,27 +449,16 @@ public class WorldTerminal implements Screen {
 				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
 						&& event.getStageY() <= desiredHeight) {
 					Statics.state = GameState.Running;
+					Statics.createLife();
 					readyGroup.remove();
 					stage.removeListener(this);
 				}
 
 			}
 		});
-
 	}
 
-	private void updateRunning() {
-		Statics.createLife();
-
-	}
-
-	private void updatePaused() {
-
-	}
-
-	private void updateGameOver() {
-		updateGameoverScore();
-		updateHighscore();
+	private void gameoverInput() {
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -333,6 +505,7 @@ public class WorldTerminal implements Screen {
 								public boolean act(float delta) {
 									Statics.cleanSlate();
 									gameoverGroup.remove();
+									defineReady();
 									Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
 									return true;
 								}
@@ -376,18 +549,21 @@ public class WorldTerminal implements Screen {
 
 				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
 
-					// if (Statics.state == Statics.GameState.Running) {
-					// Statics.state = Statics.GameState.GameOver;
-					// }
-					// // if (Statics.state == Statics.GameState.GameOver) {
-					game.setScreen(new MenuScreen(game));
-					// }
+					if (Statics.state == Statics.GameState.Running) {
+						Statics.state = Statics.GameState.Paused;
+						definePaused();
+					}
+					if (Statics.state == Statics.GameState.GameOver || Statics.state == Statics.GameState.Ready) {
+						game.setScreen(new MenuScreen(game));
+					}
 
 				}
 
 				return false;
 			}
+
 		};
+
 		inputMultiplexer.addProcessor(gameInput);
 		inputMultiplexer.addProcessor(backProcessor);
 		inputMultiplexer.addProcessor(stage);

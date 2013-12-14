@@ -68,7 +68,8 @@ public class Assets {
 
 	public static Texture bg_big_day, bg_big_night;
 
-	public static TextureRegion night_light_1, night_light_2, night_light_3;
+	public static TextureRegion night_light_1, night_light_2, night_light_3, pauseMusicOn, pauseMusicOff, pauseVibrationOn, pauseVibrationOff,
+			pauseSoundOn, pauseSoundOff;
 
 	public static void load() {
 		atlas = new TextureAtlas(Gdx.files.internal("core/core.pack"));
@@ -94,7 +95,7 @@ public class Assets {
 
 	private static void initSound() {
 		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		OptionsScreen.isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
 		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 	}
 
@@ -124,6 +125,7 @@ public class Assets {
 		pause_menu = atlas.findRegion("menu/buttons/pause_menu");
 		pause_button = atlas.findRegion("menu/buttons/pause2");
 		pause_resume = atlas.findRegion("menu/buttons/pause_resume");
+
 		tutorial_resume = atlas.findRegion("menu/buttons/tutorial_resume");
 		tutorial_levelselect = atlas.findRegion("menu/buttons/tutorial_levelselect");
 		tutorial_mainmenu = atlas.findRegion("menu/buttons/tutorial_mainmenu");
@@ -135,6 +137,13 @@ public class Assets {
 		musicoff = atlas.findRegion("menu/buttons/musicoff");
 		vibrationon = atlas.findRegion("menu/buttons/vibrationon");
 		vibrationoff = atlas.findRegion("menu/buttons/vibrationoff");
+
+		pauseMusicOn = atlas.findRegion("menu/buttons/pauseMusicOn");
+		pauseMusicOff = atlas.findRegion("menu/buttons/pauseMusicOff");
+		pauseVibrationOn = atlas.findRegion("menu/buttons/pauseVibrationOn");
+		pauseVibrationOff = atlas.findRegion("menu/buttons/pauseVibrationOff");
+		pauseSoundOn = atlas.findRegion("menu/buttons/pauseSoundOn");
+		pauseSoundOff = atlas.findRegion("menu/buttons/pauseSoundOff");
 
 	}
 
@@ -327,7 +336,7 @@ public class Assets {
 		flower3 = atlas.findRegion("game/objects/flower3");
 		flower4 = atlas.findRegion("game/objects/flower4");
 		flower5 = atlas.findRegion("game/objects/flower5");
-		
+
 		treat1 = atlas.findRegion("game/objects/treat1");
 		treat2 = atlas.findRegion("game/objects/treat2");
 

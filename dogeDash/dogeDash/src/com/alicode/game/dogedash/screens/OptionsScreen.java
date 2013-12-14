@@ -40,7 +40,7 @@ public class OptionsScreen implements Screen {
 	private DogeDashCore game;
 	private Drawable tempDrawable;
 	private Stage stage;
-	public static int isSoundOn, isMuiscOn, isVibrationOn;
+	public static int isSoundOn, isMusicOn, isVibrationOn;
 	private WindowOverlay winOverlay;
 	private InputMultiplexer inputMultiplexer;
 
@@ -50,9 +50,9 @@ public class OptionsScreen implements Screen {
 		stage = new Stage();
 		inputMultiplexer = new InputMultiplexer(stage);
 		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		isMuiscOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
 		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
-		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMuiscOn: " + isMuiscOn + " isVibrationOn " + isVibrationOn);
+		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMusicOn: " + isMusicOn + " isVibrationOn " + isVibrationOn);
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public class OptionsScreen implements Screen {
 		imageSoundButton.setX(30);
 		imageSoundButton.setY(250);
 
-		if (isMuiscOn == 1)
+		if (isMusicOn == 1)
 			tempDrawable = new TextureRegionDrawable(Assets.musicon);
 		else
 			tempDrawable = new TextureRegionDrawable(Assets.musicoff);
@@ -208,8 +208,8 @@ public class OptionsScreen implements Screen {
 				imageMusicButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageMusicButton.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
 						completeAction)));
-				isMuiscOn ^= 1;
-				if (isMuiscOn == 1)
+				isMusicOn ^= 1;
+				if (isMusicOn == 1)
 					tempDrawable = new TextureRegionDrawable(Assets.musicon);
 				else
 					tempDrawable = new TextureRegionDrawable(Assets.musicoff);
@@ -256,7 +256,7 @@ public class OptionsScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMuiscOn, isVibrationOn));
+						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}

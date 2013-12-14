@@ -16,7 +16,7 @@ public class EnemyMud extends Actor {
 
 	private Rectangle bounds = new Rectangle();
 	private TextureRegion chosenType;
-	private float x;
+	private float x, y;
 	private boolean hitByTheD = false;
 
 	public EnemyMud(float x, float y) {
@@ -30,6 +30,7 @@ public class EnemyMud extends Actor {
 			chosenType = Assets.gameMud2;
 
 		this.x = x;
+		this.y = y;
 
 		if (Statics.gameLevel == 2)
 			setColor(0.15f, 0.15f, 0.4f, 1.0f);
@@ -50,7 +51,7 @@ public class EnemyMud extends Actor {
 	private void updateMovement() {
 		if (!hitByTheD) {
 			x -= Statics.backgroundSpeed;
-			addAction(Actions.moveTo(x, getY()));
+			addAction(Actions.moveTo(x, y));
 		}
 	}
 

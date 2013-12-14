@@ -509,207 +509,249 @@ core7.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-menu/buttons/customization
-  rotate: false
-  xy: 1, 468
-  size: 349, 41
-  orig: 349, 41
-  offset: 0, 0
-  index: 2
-menu/buttons/pause1
-  rotate: false
-  xy: 352, 471
-  size: 143, 38
-  orig: 143, 38
-  offset: 0, 0
-  index: -1
-menu/buttons/retry
-  rotate: false
-  xy: 352, 431
-  size: 143, 38
-  orig: 143, 38
-  offset: 0, 0
-  index: -1
 menu/buttons/pause_resume
   rotate: false
-  xy: 1, 407
+  xy: 1, 452
   size: 345, 59
   orig: 345, 59
   offset: 0, 0
   index: -1
-menu/buttons/credit
+menu/buttons/customization
   rotate: false
-  xy: 348, 389
-  size: 160, 40
-  orig: 160, 40
+  xy: 348, 470
+  size: 349, 41
+  orig: 349, 41
   offset: 0, 0
-  index: -1
+  index: 2
 menu/buttons/vibrationoff
   rotate: false
-  xy: 1, 368
+  xy: 1, 413
   size: 293, 37
   orig: 293, 37
   offset: 0, 0
   index: -1
-menu/buttons/musicoff
-  rotate: false
-  xy: 296, 351
-  size: 209, 36
-  orig: 209, 36
-  offset: 0, 0
-  index: -1
 menu/buttons/tutorial_levelselect
   rotate: false
-  xy: 1, 326
+  xy: 699, 471
   size: 287, 40
   orig: 287, 40
   offset: 0, 0
   index: -1
-menu/buttons/musicon
-  rotate: false
-  xy: 290, 313
-  size: 190, 36
-  orig: 190, 36
-  offset: 0, 0
-  index: -1
-menu/buttons/vibrationon
-  rotate: false
-  xy: 1, 287
-  size: 274, 37
-  orig: 274, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/soundon
-  rotate: false
-  xy: 277, 266
-  size: 234, 45
-  orig: 234, 45
-  offset: 0, 0
-  index: -1
-menu/buttons/highscores
-  rotate: false
-  xy: 1, 248
-  size: 260, 37
-  orig: 260, 37
-  offset: 0, 0
-  index: -1
-menu/buttons/highscores
-  rotate: false
-  xy: 263, 228
-  size: 248, 36
-  orig: 248, 36
-  offset: 0, 0
-  index: 2
-menu/buttons/soundoff
-  rotate: false
-  xy: 1, 201
-  size: 256, 45
-  orig: 256, 45
-  offset: 0, 0
-  index: -1
 menu/buttons/pause_menu
   rotate: false
-  xy: 259, 163
+  xy: 1, 348
   size: 250, 63
   orig: 250, 63
   offset: 0, 0
   index: -1
+menu/buttons/soundoff
+  rotate: false
+  xy: 1, 301
+  size: 256, 45
+  orig: 256, 45
+  offset: 0, 0
+  index: -1
 menu/buttons/tutorial_mainmenu
   rotate: false
-  xy: 1, 159
+  xy: 1, 259
   size: 255, 40
   orig: 255, 40
   offset: 0, 0
   index: -1
-menu/buttons/customization
+menu/buttons/highscores
   rotate: false
-  xy: 258, 120
-  size: 242, 41
-  orig: 242, 41
+  xy: 1, 220
+  size: 260, 37
+  orig: 260, 37
+  offset: 0, 0
+  index: -1
+menu/buttons/vibrationon
+  rotate: false
+  xy: 1, 181
+  size: 274, 37
+  orig: 274, 37
   offset: 0, 0
   index: -1
 menu/buttons/mainmenu
   rotate: false
-  xy: 1, 119
+  xy: 1, 141
   size: 254, 38
   orig: 254, 38
   offset: 0, 0
   index: -1
-menu/buttons/arrow_right
+menu/buttons/highscores
+  rotate: false
+  xy: 1, 103
+  size: 248, 36
+  orig: 248, 36
+  offset: 0, 0
+  index: 2
+menu/buttons/customization
   rotate: false
   xy: 1, 60
-  size: 61, 57
-  orig: 61, 57
+  size: 242, 41
+  orig: 242, 41
   offset: 0, 0
   index: -1
-menu/buttons/arrow_left
+menu/buttons/soundon
   rotate: false
-  xy: 1, 1
-  size: 60, 57
-  orig: 60, 57
+  xy: 1, 13
+  size: 234, 45
+  orig: 234, 45
+  offset: 0, 0
+  index: -1
+menu/buttons/musicoff
+  rotate: false
+  xy: 348, 432
+  size: 209, 36
+  orig: 209, 36
+  offset: 0, 0
+  index: -1
+menu/buttons/musicon
+  rotate: false
+  xy: 699, 433
+  size: 190, 36
+  orig: 190, 36
   offset: 0, 0
   index: -1
 menu/buttons/shop_yes
   rotate: false
-  xy: 63, 10
+  xy: 559, 420
   size: 124, 48
   orig: 124, 48
   offset: 0, 0
   index: -1
-menu/buttons/shop_no
-  rotate: false
-  xy: 64, 69
-  size: 92, 48
-  orig: 92, 48
-  offset: 0, 0
-  index: -1
 menu/buttons/tutorial_resume
   rotate: false
-  xy: 158, 77
+  xy: 685, 391
   size: 181, 40
   orig: 181, 40
   offset: 0, 0
   index: -1
 menu/buttons/options
   rotate: false
-  xy: 341, 81
+  xy: 296, 393
   size: 170, 37
   orig: 170, 37
   offset: 0, 0
   index: -1
-menu/buttons/play
+menu/buttons/credit
   rotate: false
-  xy: 189, 35
-  size: 114, 40
-  orig: 114, 40
+  xy: 253, 351
+  size: 160, 40
+  orig: 160, 40
   offset: 0, 0
   index: -1
-menu/buttons/button_previous
+menu/buttons/pause1
   rotate: false
-  xy: 189, 9
-  size: 116, 24
-  orig: 116, 24
+  xy: 259, 311
+  size: 143, 38
+  orig: 143, 38
+  offset: 0, 0
+  index: -1
+menu/buttons/retry
+  rotate: false
+  xy: 259, 271
+  size: 143, 38
+  orig: 143, 38
   offset: 0, 0
   index: -1
 menu/buttons/back
   rotate: false
-  xy: 305, 36
+  xy: 263, 230
   size: 119, 39
   orig: 119, 39
   offset: 0, 0
   index: -1
+menu/buttons/play
+  rotate: false
+  xy: 277, 188
+  size: 114, 40
+  orig: 114, 40
+  offset: 0, 0
+  index: -1
+menu/buttons/shop_no
+  rotate: false
+  xy: 891, 421
+  size: 92, 48
+  orig: 92, 48
+  offset: 0, 0
+  index: -1
+menu/buttons/button_previous
+  rotate: false
+  xy: 277, 162
+  size: 116, 24
+  orig: 116, 24
+  offset: 0, 0
+  index: -1
+menu/buttons/arrow_right
+  rotate: false
+  xy: 237, 1
+  size: 61, 57
+  orig: 61, 57
+  offset: 0, 0
+  index: -1
+menu/buttons/arrow_left
+  rotate: false
+  xy: 468, 373
+  size: 60, 57
+  orig: 60, 57
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseMusicOff
+  rotate: false
+  xy: 415, 341
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseMusicOn
+  rotate: false
+  xy: 404, 289
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
 menu/buttons/button_next
   rotate: false
-  xy: 307, 10
+  xy: 467, 347
   size: 63, 24
   orig: 63, 24
   offset: 0, 0
   index: -1
 menu/buttons/pause2
   rotate: false
-  xy: 426, 41
+  xy: 988, 473
   size: 34, 38
   orig: 34, 38
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseSoundOff
+  rotate: false
+  xy: 404, 237
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseSoundOn
+  rotate: false
+  xy: 456, 289
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseVibrationOff
+  rotate: false
+  xy: 456, 237
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseVibrationOn
+  rotate: false
+  xy: 508, 295
+  size: 50, 50
+  orig: 50, 50
   offset: 0, 0
   index: -1
 
