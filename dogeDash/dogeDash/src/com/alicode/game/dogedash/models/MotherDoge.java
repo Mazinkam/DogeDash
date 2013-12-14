@@ -238,11 +238,7 @@ public class MotherDoge extends Actor {
 						return true;
 					}
 				};
-				addAction(Actions.parallel(Actions.sequence(Actions.rotateTo(-200, 1), completeAction)));
-			}
-			if (reverseControls && Statics.playerHitByLog) {
-				addAction(Actions.sequence(Actions.rotateTo(-200, 10)));
-
+				addAction(Actions.parallel(Actions.sequence(Actions.rotateTo(-180, 1), completeAction)));
 			}
 			if (reverseControls && !Statics.playerHitByLog) {
 				reverseControls = false;

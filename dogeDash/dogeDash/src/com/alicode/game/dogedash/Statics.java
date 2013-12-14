@@ -87,8 +87,10 @@ public class Statics {
 		puppySpeed = 6;
 		puddleTimer = 0;
 		logTimer = 0;
-		superDogeTimer = 0;
+		if (Statics.isSuperD)
+			superDogeTimer = 0;
 
+		
 		enemiesAlive = false;
 		puppiesAlive = false;
 		bushesAlive = false;

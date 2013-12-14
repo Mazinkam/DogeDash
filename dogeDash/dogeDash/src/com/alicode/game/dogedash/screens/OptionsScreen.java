@@ -49,15 +49,21 @@ public class OptionsScreen implements Screen {
 		winOverlay = new WindowOverlay();
 		stage = new Stage();
 		inputMultiplexer = new InputMultiplexer(stage);
-		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		if (Gdx.app.getType() != Gdx.app.getType().WebGL) {
+//			isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+//			isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+//			isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		} else {
+			isSoundOn = 1;
+			isMusicOn = 1;
+			isVibrationOn = 1;
+		}
 		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMusicOn: " + isMusicOn + " isVibrationOn " + isVibrationOn);
 	}
 
 	@Override
 	public void show() {
-		
+
 		initBackground();
 		initForeground();
 		initInput();
@@ -160,7 +166,7 @@ public class OptionsScreen implements Screen {
 			}
 		};
 		inputMultiplexer.addProcessor(backProcessor);
-		//inputMultiplexer.addProcessor(stage);
+		// inputMultiplexer.addProcessor(stage);
 		Gdx.input.setInputProcessor(inputMultiplexer);
 
 		imageSoundButton.addListener(new InputListener() {
@@ -256,7 +262,8 @@ public class OptionsScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
+//						if (Gdx.app.getType() != Gdx.app.getType().WebGL)
+//							DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}
@@ -339,6 +346,8 @@ public class OptionsScreen implements Screen {
 
 	@Override
 	public void dispose() {
+	
+		this.dispose();
 	}
 
 }

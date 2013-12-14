@@ -59,7 +59,6 @@ public class WorldTerminal implements Screen {
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
 	private InputMultiplexer inputMultiplexer;
-	private int failSafe = 0;
 
 	public WorldTerminal(DogeDashCore game, float delta) {
 		this.game = game;
@@ -167,8 +166,10 @@ public class WorldTerminal implements Screen {
 							&& event.getStageY() <= desiredHeight) {
 						Statics.state = GameState.Running;
 						pauseGroup.remove();
-						DogeDashCore.db
-								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+						// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
+						// DogeDashCore.db.updateSettings(new Settings(1,
+						// OptionsScreen.isSoundOn, OptionsScreen.isMusicOn,
+						// OptionsScreen.isVibrationOn));
 
 					}
 
@@ -239,8 +240,10 @@ public class WorldTerminal implements Screen {
 					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
 							&& event.getStageY() <= desiredHeight) {
 						stage.removeListener(this);
-						DogeDashCore.db
-								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+						// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
+						// DogeDashCore.db.updateSettings(new Settings(1,
+						// OptionsScreen.isSoundOn, OptionsScreen.isMusicOn,
+						// OptionsScreen.isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 
 					}
@@ -530,13 +533,16 @@ public class WorldTerminal implements Screen {
 	}
 
 	private void updateHighscore() {
-
-		if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore() < GamePoints.finalScore())) {
-			DogeDashCore.db.updateLevelHighscore(
-					new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty, GamePoints.finalScore(), GamePoints.bonusPointStatic,
-							GamePoints.currentScore, GamePoints.puppyCaughtNum, GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
-			Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
-		}
+		// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
+		// if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty,
+		// tableName).getHighScore() < GamePoints.finalScore())) {
+		// DogeDashCore.db.updateLevelHighscore(
+		// new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty,
+		// GamePoints.finalScore(), GamePoints.bonusPointStatic,
+		// GamePoints.currentScore, GamePoints.puppyCaughtNum,
+		// GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
+		// Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
+		// }
 
 	}
 
@@ -552,6 +558,7 @@ public class WorldTerminal implements Screen {
 					if (Statics.state == Statics.GameState.Running) {
 						Statics.state = Statics.GameState.Paused;
 						definePaused();
+						stage.addActor(pauseGroup);
 					}
 					if (Statics.state == Statics.GameState.GameOver || Statics.state == Statics.GameState.Ready) {
 						game.setScreen(new MenuScreen(game));
@@ -592,6 +599,7 @@ public class WorldTerminal implements Screen {
 	@Override
 	public void dispose() {
 		Gdx.input.setInputProcessor(null);
+		this.dispose();
 
 	}
 

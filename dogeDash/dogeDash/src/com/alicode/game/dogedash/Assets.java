@@ -94,9 +94,11 @@ public class Assets {
 	}
 
 	private static void initSound() {
-		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		if (Gdx.app.getType() != Gdx.app.getType().WebGL) {
+//			OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+//			OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+//			OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		}
 	}
 
 	private static void loadButtons() {

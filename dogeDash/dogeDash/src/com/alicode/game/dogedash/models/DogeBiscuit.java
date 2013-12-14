@@ -65,7 +65,7 @@ public class DogeBiscuit extends Actor {
 			if (Statics.superDogeTimer <= 0) {
 				Statics.isSuperD = false;
 				Statics.superDogeTimer = 200;
-			Statics.normalMode();
+				Statics.normalMode();
 			}
 			Gdx.app.log(DogeDashCore.LOG, "superDogeTimer " + Statics.superDogeTimer);
 		}
@@ -99,11 +99,6 @@ public class DogeBiscuit extends Actor {
 		dogeBiscuitTrail.start();
 
 		dogeBiscuitTrail.setPosition(getX() + Assets.chowcoin.getRegionWidth(), getY());
-
-//		for (int i = 0; i < dogeBiscuitTrail.getEmitters().size; i++) {
-//			dogeBiscuitTrail.getEmitters().get(i).getAngle().setLow(160);
-//			dogeBiscuitTrail.getEmitters().get(i).getAngle().setHigh(-10);
-//		}
 
 		dogeBiscuitTrail.draw(batch);
 		dogeBiscuitTrail.update(Gdx.graphics.getDeltaTime());

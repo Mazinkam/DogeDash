@@ -1,4 +1,4 @@
-d:
+d:war/
 d:core
 i:core/background_big.png
 i:core/background_big2.png

@@ -272,7 +272,7 @@ public class WorldOne extends Table {
 
 				}
 				if (Statics.playerJump) {
-					spawnDogeSwag();
+					//spawnDogeSwag();
 				}
 				if (Statics.isSuperD) {
 					logIter.remove();
@@ -307,7 +307,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					spawnDogeSwag();
+					//spawnDogeSwag();
 				}
 				if (Statics.isSuperD)
 					logIter.remove();
@@ -341,7 +341,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					spawnDogeSwag();
+					//spawnDogeSwag();
 				}
 				if (Statics.isSuperD)
 					logIter.remove();
@@ -377,7 +377,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					spawnDogeSwag();
+					//spawnDogeSwag();
 				}
 			}
 
@@ -445,19 +445,19 @@ public class WorldOne extends Table {
 
 	}
 
-	private void spawnDogeSwag() {
-		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
-		dogeOnHitEffects.add(dogeOnHitEffect);
-		dogeOnHitEffect.playerGotSwag();
-		floatingGroup.addActor(dogeOnHitEffect);
-	}
-
-	private void spawnDogePow() {
-		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
-		dogeOnHitEffects.add(dogeOnHitEffect);
-		dogeOnHitEffect.playerGotHit();
-		floatingGroup.addActor(dogeOnHitEffect);
-	}
+//	private void spawnDogeSwag() {
+//		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
+//		dogeOnHitEffects.add(dogeOnHitEffect);
+//		dogeOnHitEffect.playerGotSwag();
+//		floatingGroup.addActor(dogeOnHitEffect);
+//	}
+//
+//	private void spawnDogePow() {
+//		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
+//		dogeOnHitEffects.add(dogeOnHitEffect);
+//		dogeOnHitEffect.playerGotHit();
+//		floatingGroup.addActor(dogeOnHitEffect);
+//	}
 
 	private void spawnDogeBiscuit() {
 		float yPos = 0 + (int) (Math.random() * 460);

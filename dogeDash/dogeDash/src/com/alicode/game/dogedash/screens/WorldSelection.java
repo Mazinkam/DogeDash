@@ -226,8 +226,10 @@ public class WorldSelection implements Screen {
 					public boolean act(float delta) {
 						// game.setScreen(new WorldTerminal(game,
 						// Gdx.graphics.getDeltaTime()));
-						Statics.gameLevel = 2;
-						menuState = MenuState.Chosing;
+						if (Gdx.app.getType() != Gdx.app.getType().WebGL) {
+							Statics.gameLevel = 2;
+							menuState = MenuState.Chosing;
+						}
 						return true;
 					}
 				};
@@ -449,7 +451,7 @@ public class WorldSelection implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		this.dispose();
 
 	}
 
