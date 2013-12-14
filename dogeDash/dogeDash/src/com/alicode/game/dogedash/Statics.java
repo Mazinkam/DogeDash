@@ -46,6 +46,7 @@ public class Statics {
 	public static boolean playerHitAnimation = false;
 	public static float playerX, playerY, playerZ;
 	public static int superDogeTimer = 200;
+	public static int playerJumpCooldown = 100;
 
 	public static int beesOnPlayer = 0;
 

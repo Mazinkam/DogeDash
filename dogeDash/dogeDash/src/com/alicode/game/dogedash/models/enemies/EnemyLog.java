@@ -51,7 +51,7 @@ public class EnemyLog extends Actor {
 			Statics.logTimer--;
 			if (Statics.logTimer <= 0) {
 				Statics.playerHitByLog = false;
-				Statics.logTimer = 250;
+				Statics.logTimer = 600;
 			}
 		}
 

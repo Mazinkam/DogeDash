@@ -19,21 +19,24 @@ import com.badlogic.gdx.utils.Array;
 
 public class MotherDoge extends Actor {
 
-	enum ActorStage {
-		Normal, Hit, Dead;
-	}
+	public static float playerX, playerY, playerZ;
 
 	private final Animation dogeWalkAnimation;
 	private final Animation dogeWalkHitAnimation;
 	private final Animation dogeGotHit;
 	private final Animation dogeSuperD;
 	private final Animation dogeSuperDEffect;
+
 	private float dogeWalkAnimationState;
+
 	private Array<TextureRegion> dogeWalk, dogeWalkHit, dogeHit, dogeSuper, dogeSuperEffect;
+
 	private Rectangle bounds = new Rectangle();
+
 	private TextureRegion frame;
-	public static float playerX, playerY, playerZ;
+
 	private ParticleEffect waterDrops, mudDrops;
+
 	private boolean reverseControls = false;
 
 	public MotherDoge() {
@@ -170,7 +173,7 @@ public class MotherDoge extends Actor {
 	}
 
 	public void startJump() {
-		if (!Statics.isSuperD && !Statics.playerJump) {
+		if (!Statics.isSuperD && !Statics.playerJump && Statics.playerJumpCooldown < 0) {
 			playerZ = 50;
 			Statics.playerJump = true;
 		}
@@ -181,9 +184,11 @@ public class MotherDoge extends Actor {
 		if (playerZ >= 0) {
 			Statics.playerJump = true;
 			playerZ--;
+			Statics.playerJumpCooldown = 100;
 
 		} else {
 			Statics.playerJump = false;
+			Statics.playerJumpCooldown--;
 		}
 
 	}
@@ -233,10 +238,10 @@ public class MotherDoge extends Actor {
 						return true;
 					}
 				};
-				addAction(Actions.parallel(Actions.sequence(Actions.rotateTo(-600, 1), completeAction)));
+				addAction(Actions.parallel(Actions.sequence(Actions.rotateTo(-200, 1), completeAction)));
 			}
 			if (reverseControls && Statics.playerHitByLog) {
-				addAction(Actions.sequence(Actions.rotateTo(-600, 10)));
+				addAction(Actions.sequence(Actions.rotateTo(-200, 10)));
 
 			}
 			if (reverseControls && !Statics.playerHitByLog) {

@@ -53,7 +53,7 @@ public class EnemyPuddle extends Actor {
 			Statics.puddleTimer--;
 			if (Statics.puddleTimer <= 0) {
 				Statics.playerHitByPuddle = false;
-				Statics.puddleTimer = 200;
+				Statics.puddleTimer = 400;
 			}
 		}
 		if (!Statics.objectsAlive) {
