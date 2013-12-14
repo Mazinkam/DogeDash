@@ -511,177 +511,247 @@ filter: Nearest,Nearest
 repeat: none
 menu/buttons/pause_resume
   rotate: false
-  xy: 1, 196
+  xy: 1, 452
   size: 345, 59
   orig: 345, 59
   offset: 0, 0
   index: -1
 menu/buttons/customization
   rotate: false
-  xy: 348, 214
+  xy: 348, 470
   size: 349, 41
   orig: 349, 41
   offset: 0, 0
-  index: -1
+  index: 2
 menu/buttons/vibrationoff
   rotate: false
-  xy: 1, 157
+  xy: 1, 413
   size: 293, 37
   orig: 293, 37
   offset: 0, 0
   index: -1
 menu/buttons/tutorial_levelselect
   rotate: false
-  xy: 699, 215
+  xy: 699, 471
   size: 287, 40
   orig: 287, 40
   offset: 0, 0
   index: -1
 menu/buttons/pause_menu
   rotate: false
-  xy: 1, 92
+  xy: 1, 348
   size: 250, 63
   orig: 250, 63
   offset: 0, 0
   index: -1
 menu/buttons/soundoff
   rotate: false
-  xy: 1, 45
+  xy: 1, 301
   size: 256, 45
   orig: 256, 45
   offset: 0, 0
   index: -1
 menu/buttons/tutorial_mainmenu
   rotate: false
-  xy: 1, 3
+  xy: 1, 259
   size: 255, 40
   orig: 255, 40
   offset: 0, 0
   index: -1
+menu/buttons/highscores
+  rotate: false
+  xy: 1, 220
+  size: 260, 37
+  orig: 260, 37
+  offset: 0, 0
+  index: -1
 menu/buttons/vibrationon
   rotate: false
-  xy: 348, 175
+  xy: 1, 181
   size: 274, 37
   orig: 274, 37
   offset: 0, 0
   index: -1
 menu/buttons/mainmenu
   rotate: false
-  xy: 699, 175
+  xy: 1, 141
   size: 254, 38
   orig: 254, 38
   offset: 0, 0
   index: -1
 menu/buttons/highscores
   rotate: false
-  xy: 296, 137
+  xy: 1, 103
   size: 248, 36
   orig: 248, 36
   offset: 0, 0
-  index: -1
-menu/buttons/musicoff
+  index: 2
+menu/buttons/customization
   rotate: false
-  xy: 253, 99
-  size: 209, 36
-  orig: 209, 36
+  xy: 1, 60
+  size: 242, 41
+  orig: 242, 41
   offset: 0, 0
   index: -1
 menu/buttons/soundon
   rotate: false
-  xy: 259, 52
+  xy: 1, 13
   size: 234, 45
   orig: 234, 45
   offset: 0, 0
   index: -1
+menu/buttons/musicoff
+  rotate: false
+  xy: 348, 432
+  size: 209, 36
+  orig: 209, 36
+  offset: 0, 0
+  index: -1
 menu/buttons/musicon
   rotate: false
-  xy: 259, 14
+  xy: 699, 433
   size: 190, 36
   orig: 190, 36
   offset: 0, 0
   index: -1
+menu/buttons/shop_yes
+  rotate: false
+  xy: 559, 420
+  size: 124, 48
+  orig: 124, 48
+  offset: 0, 0
+  index: -1
 menu/buttons/tutorial_resume
   rotate: false
-  xy: 546, 133
+  xy: 685, 391
   size: 181, 40
   orig: 181, 40
   offset: 0, 0
   index: -1
 menu/buttons/options
   rotate: false
-  xy: 729, 136
+  xy: 296, 393
   size: 170, 37
   orig: 170, 37
   offset: 0, 0
   index: -1
 menu/buttons/credit
   rotate: false
-  xy: 729, 94
+  xy: 253, 351
   size: 160, 40
   orig: 160, 40
   offset: 0, 0
   index: -1
-menu/buttons/retry
+menu/buttons/pause1
   rotate: false
-  xy: 495, 93
+  xy: 259, 311
   size: 143, 38
   orig: 143, 38
   offset: 0, 0
   index: -1
-menu/buttons/shop_yes
+menu/buttons/retry
   rotate: false
-  xy: 495, 43
-  size: 124, 48
-  orig: 124, 48
-  offset: 0, 0
-  index: -1
-menu/buttons/play
-  rotate: false
-  xy: 451, 1
-  size: 114, 40
-  orig: 114, 40
-  offset: 0, 0
-  index: -1
-menu/buttons/arrow_right
-  rotate: false
-  xy: 640, 74
-  size: 61, 57
-  orig: 61, 57
+  xy: 259, 271
+  size: 143, 38
+  orig: 143, 38
   offset: 0, 0
   index: -1
 menu/buttons/back
   rotate: false
-  xy: 703, 53
+  xy: 263, 230
   size: 119, 39
   orig: 119, 39
   offset: 0, 0
   index: -1
+menu/buttons/play
+  rotate: false
+  xy: 277, 188
+  size: 114, 40
+  orig: 114, 40
+  offset: 0, 0
+  index: -1
 menu/buttons/shop_no
   rotate: false
-  xy: 824, 44
+  xy: 891, 421
   size: 92, 48
   orig: 92, 48
   offset: 0, 0
   index: -1
+menu/buttons/button_previous
+  rotate: false
+  xy: 277, 162
+  size: 116, 24
+  orig: 116, 24
+  offset: 0, 0
+  index: -1
+menu/buttons/arrow_right
+  rotate: false
+  xy: 237, 1
+  size: 61, 57
+  orig: 61, 57
+  offset: 0, 0
+  index: -1
 menu/buttons/arrow_left
   rotate: false
-  xy: 901, 116
+  xy: 468, 373
   size: 60, 57
   orig: 60, 57
   offset: 0, 0
   index: -1
+menu/buttons/pauseMusicOff
+  rotate: false
+  xy: 415, 341
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseMusicOn
+  rotate: false
+  xy: 404, 289
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
 menu/buttons/button_next
   rotate: false
-  xy: 624, 188
+  xy: 467, 347
   size: 63, 24
   orig: 63, 24
   offset: 0, 0
   index: -1
-menu/buttons/button_previous
+menu/buttons/pause2
   rotate: false
-  xy: 567, 17
-  size: 116, 24
-  orig: 116, 24
+  xy: 988, 473
+  size: 34, 38
+  orig: 34, 38
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseSoundOff
+  rotate: false
+  xy: 404, 237
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseSoundOn
+  rotate: false
+  xy: 456, 289
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseVibrationOff
+  rotate: false
+  xy: 456, 237
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+menu/buttons/pauseVibrationOn
+  rotate: false
+  xy: 508, 295
+  size: 50, 50
+  orig: 50, 50
   offset: 0, 0
   index: -1
 
@@ -715,14 +785,14 @@ core9.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-menu/main/menu_background
+menu/main/menu_bg
   rotate: false
   xy: 1, 539
   size: 800, 480
   orig: 800, 480
   offset: 0, 0
   index: -1
-menu/main/menu_bg
+menu/main/menu_mombody
   rotate: false
   xy: 1, 57
   size: 800, 480
@@ -783,25 +853,13 @@ core10.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-menu/main/menu_mombody
+menu/main/menu_mom_nose_paw
   rotate: false
   xy: 1, 483
   size: 800, 480
   orig: 800, 480
   offset: 0, 0
   index: -1
-menu/main/menu_mom_nose_paw
-  rotate: false
-  xy: 1, 1
-  size: 800, 480
-  orig: 800, 480
-  offset: 0, 0
-  index: -1
-
-core11.png
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
 menu/main/splash2
   rotate: false
   xy: 1, 1
@@ -810,7 +868,7 @@ menu/main/splash2
   offset: 0, 0
   index: -1
 
-core12.png
+core11.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -927,13 +985,6 @@ menu/shop/shop_pumpkin
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_santa
-  rotate: false
-  xy: 367, 343
-  size: 58, 62
-  orig: 58, 62
-  offset: 0, 0
-  index: -1
 menu/shop/shop_santahat
   rotate: false
   xy: 367, 343
@@ -970,216 +1021,279 @@ menu/shop/itemLock
   offset: 0, 0
   index: -1
 
-core13.png
+core12.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 menu/txt/custom_title
   rotate: false
-  xy: 1, 427
+  xy: 1, 930
   size: 481, 73
   orig: 481, 73
   offset: 0, 0
   index: -1
+menu/txt/gameovertitle
+  rotate: false
+  xy: 484, 944
+  size: 492, 59
+  orig: 492, 59
+  offset: 0, 0
+  index: -1
 menu/txt/tutorial
   rotate: false
-  xy: 1, 359
+  xy: 1, 862
   size: 481, 66
   orig: 481, 66
   offset: 0, 0
   index: 4
 menu/txt/tutorial
   rotate: false
-  xy: 484, 469
+  xy: 484, 911
   size: 494, 31
   orig: 494, 31
   offset: 0, 0
   index: 5
 menu/txt/tutorial
   rotate: false
-  xy: 1, 292
+  xy: 1, 795
   size: 452, 65
   orig: 452, 65
   offset: 0, 0
   index: 3
 menu/txt/tutorial
   rotate: false
-  xy: 484, 436
+  xy: 484, 878
   size: 431, 31
   orig: 431, 31
   offset: 0, 0
   index: 2
 menu/txt/custom_txt
   rotate: false
-  xy: 1, 271
+  xy: 1, 774
   size: 438, 19
   orig: 438, 19
   offset: 0, 0
   index: -1
 menu/txt/tutorial
   rotate: false
-  xy: 484, 404
+  xy: 1, 742
   size: 410, 30
   orig: 410, 30
   offset: 0, 0
   index: 1
 menu/txt/normal
   rotate: false
-  xy: 1, 208
+  xy: 1, 679
   size: 362, 61
   orig: 362, 61
   offset: 0, 0
   index: -1
 menu/txt/lvlselect
   rotate: false
-  xy: 1, 97
+  xy: 1, 568
   size: 313, 109
   orig: 313, 109
   offset: 0, 0
   index: -1
 menu/txt/options_title
   rotate: false
-  xy: 484, 338
+  xy: 1, 502
   size: 352, 64
   orig: 352, 64
   offset: 0, 0
   index: -1
 menu/txt/puppydash
   rotate: false
-  xy: 1, 1
+  xy: 1, 406
   size: 278, 94
   orig: 278, 94
+  offset: 0, 0
+  index: 2
+menu/txt/puppydash
+  rotate: false
+  xy: 1, 275
+  size: 227, 129
+  orig: 227, 129
   offset: 0, 0
   index: -1
 menu/txt/lvlselect_text
   rotate: false
-  xy: 455, 314
+  xy: 484, 854
   size: 336, 22
   orig: 336, 22
   offset: 0, 0
   index: -1
 menu/txt/options_text
   rotate: false
-  xy: 455, 252
+  xy: 455, 792
   size: 309, 60
   orig: 309, 60
   offset: 0, 0
   index: -1
+menu/txt/puppydash
+  rotate: false
+  xy: 1, 164
+  size: 226, 109
+  orig: 226, 109
+  offset: 0, 0
+  index: 3
 menu/txt/shop_not_enough
   rotate: false
-  xy: 365, 222
+  xy: 441, 762
   size: 288, 28
   orig: 288, 28
   offset: 0, 0
   index: -1
-menu/txt/tutorials
+menu/txt/easy
   rotate: false
-  xy: 365, 181
-  size: 238, 39
-  orig: 238, 39
+  xy: 1, 102
+  size: 224, 60
+  orig: 224, 60
   offset: 0, 0
   index: -1
 menu/txt/hard
   rotate: false
-  xy: 316, 121
+  xy: 1, 42
   size: 236, 58
   orig: 236, 58
   offset: 0, 0
   index: -1
+menu/txt/tutorials
+  rotate: false
+  xy: 1, 1
+  size: 238, 39
+  orig: 238, 39
+  offset: 0, 0
+  index: -1
+menu/txt/shop_currentcoins
+  rotate: false
+  xy: 413, 733
+  size: 251, 27
+  orig: 251, 27
+  offset: 0, 0
+  index: -1
 menu/txt/puppiescaught
   rotate: false
-  xy: 316, 93
+  xy: 365, 705
   size: 225, 26
   orig: 225, 26
   offset: 0, 0
   index: -1
 menu/txt/pup_missed
   rotate: false
-  xy: 281, 65
+  xy: 365, 677
   size: 225, 26
   orig: 225, 26
   offset: 0, 0
   index: -1
+menu/txt/shop_buyitem
+  rotate: false
+  xy: 355, 640
+  size: 214, 35
+  orig: 214, 35
+  offset: 0, 0
+  index: -1
 menu/txt/itemsEquipText
   rotate: false
-  xy: 281, 39
+  xy: 355, 614
   size: 199, 24
   orig: 199, 24
   offset: 0, 0
   index: -1
+menu/txt/pup_points
+  rotate: false
+  xy: 355, 587
+  size: 194, 25
+  orig: 194, 25
+  offset: 0, 0
+  index: -1
 menu/txt/shop_after
   rotate: false
-  xy: 281, 9
+  xy: 355, 557
   size: 193, 28
   orig: 193, 28
   offset: 0, 0
   index: -1
 menu/txt/difficulty
   rotate: false
-  xy: 655, 222
+  xy: 355, 527
   size: 190, 28
   orig: 190, 28
   offset: 0, 0
   index: -1
-menu/txt/pup_points
-  rotate: false
-  xy: 605, 195
-  size: 194, 25
-  orig: 194, 25
-  offset: 0, 0
-  index: -1
 menu/txt/stylepoints
   rotate: false
-  xy: 605, 167
+  xy: 355, 499
   size: 188, 26
   orig: 188, 26
   offset: 0, 0
   index: -1
 menu/txt/normal2
   rotate: false
-  xy: 554, 134
+  xy: 281, 466
   size: 181, 31
   orig: 181, 31
   offset: 0, 0
   index: -1
 menu/txt/totalscore
   rotate: false
-  xy: 554, 106
+  xy: 281, 438
   size: 183, 26
   orig: 183, 26
   offset: 0, 0
   index: -1
+menu/txt/dogecoins_text
+  rotate: false
+  xy: 281, 410
+  size: 169, 26
+  orig: 169, 26
+  offset: 0, 0
+  index: -1
 menu/txt/shop_price
   rotate: false
-  xy: 543, 75
+  xy: 281, 379
   size: 128, 29
   orig: 128, 29
   offset: 0, 0
   index: -1
+menu/txt/easy2
+  rotate: false
+  xy: 822, 846
+  size: 112, 30
+  orig: 112, 30
+  offset: 0, 0
+  index: -1
 menu/txt/hard2
   rotate: false
-  xy: 673, 75
+  xy: 464, 468
   size: 118, 29
   orig: 118, 29
   offset: 0, 0
   index: -1
+menu/txt/enemies
+  rotate: false
+  xy: 466, 441
+  size: 121, 25
+  orig: 121, 25
+  offset: 0, 0
+  index: -1
 menu/txt/player_score
   rotate: false
-  xy: 917, 442
+  xy: 466, 414
   size: 97, 25
   orig: 97, 25
   offset: 0, 0
   index: -1
 menu/txt/time
   rotate: false
-  xy: 838, 377
+  xy: 592, 706
   size: 73, 25
   orig: 73, 25
   offset: 0, 0
   index: -1
 menu/txt/credits
   rotate: false
-  xy: 838, 351
+  xy: 592, 680
   size: 73, 24
   orig: 73, 24
   offset: 0, 0

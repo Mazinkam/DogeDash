@@ -1,0 +1,151 @@
+package com.alicode.game.dogedash.server;
+
+import java.util.List;
+
+import com.alicode.game.dogedash.sql.Costume;
+import com.alicode.game.dogedash.sql.GameDatabaseInterface;
+import com.alicode.game.dogedash.sql.Level;
+import com.alicode.game.dogedash.sql.Misc;
+import com.alicode.game.dogedash.sql.Settings;
+
+public class GameDatabase  implements GameDatabaseInterface {
+	
+	@Override
+	public void create() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dropTheBase() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addLevelHighscore(Level level, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Level getLevelHighscore(int id, String tableName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Level> getLevelList(String tableName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateLevelHighscore(Level level, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteLevelHighscore(Level level, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addCostume(Costume costume, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Costume getCostume(int id, String tableName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Costume> getCostumeList(String tableName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateCostume(Costume costume, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteCostume(Costume costume, String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addSettings(Settings settings) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Settings getSettings(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Settings> getSettingsList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateSettings(Settings settings) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteSettings(Settings settings) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addMisc(Misc misc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Misc getMisc(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Misc> getMiscList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateMisc(Misc misc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteMisc(Misc misc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

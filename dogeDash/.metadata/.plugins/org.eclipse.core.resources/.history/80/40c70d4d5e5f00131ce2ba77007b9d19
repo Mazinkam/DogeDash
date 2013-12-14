@@ -1,0 +1,24 @@
+package com.alicode.game.dogedash.server;
+
+import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Cache;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
+@Cache
+public class LevelOneTable {
+	@Id public long id;
+	public int highscore;
+	public int stylePoints;
+	public int timeAlive;
+	public int caughtPuppyNum;
+	public int missedPuppyNum;
+	public int puppyPoints;
+	
+	public static Key<LevelOneTable> key(long id) {
+        return Key.create(LevelOneTable.class, id);
+	}
+	
+	
+}

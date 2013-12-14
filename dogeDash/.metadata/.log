@@ -253,3 +253,2628 @@ java.lang.RuntimeException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+!SESSION 2013-12-14 15:56:44.356 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fi_FI
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-12-14 15:57:18.324
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui.navigator 2 0 2013-12-14 15:57:33.498
+!MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
+
+!ENTRY org.eclipse.jdt.core 4 0 2013-12-14 15:57:43.040
+!MESSAGE Invalid ZIP archive: libs/ios/libgdx.a [in dogeDash-robovm]
+
+!ENTRY com.google.gdt.eclipse.core 4 0 2013-12-14 15:57:43.676
+!MESSAGE Could not parse the XML file /tmp/site4590855750835450052xml
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 122; Content is not allowed in trailing section.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:198)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1388)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$TrailingMiscDriver.next(XMLDocumentScannerImpl.java:1418)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:607)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:489)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:835)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:764)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:123)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:237)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:300)
+	at com.google.gdt.eclipse.suite.ext.update.CompositeArtifactsDowloadJobChangeListener.getRootElement(CompositeArtifactsDowloadJobChangeListener.java:218)
+	at com.google.gdt.eclipse.suite.ext.update.CompositeArtifactsDowloadJobChangeListener.access$3(CompositeArtifactsDowloadJobChangeListener.java:212)
+	at com.google.gdt.eclipse.suite.ext.update.CompositeArtifactsDowloadJobChangeListener$2.done(CompositeArtifactsDowloadJobChangeListener.java:248)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:39)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:112)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:152)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:647)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:71)
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-12-14 16:33:37.551
+!MESSAGE No valid Android XML Editor Delegate found for file /dogeDash-html/war/WEB-INF/web.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-12-14 16:33:47.114
+!MESSAGE No valid Android XML Editor Delegate found for file /dogeDash-html/war/WEB-INF/appengine-web.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-12-14 16:35:33.336
+!MESSAGE Failed to load properties file for project 'dogeDash-html'
+
+!ENTRY org.eclipse.wst.sse.ui 4 4 2013-12-14 16:35:33.338
+!MESSAGE null
+!STACK 0
+java.lang.NullPointerException
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getDescriptor(AndroidContentAssist.java:867)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getElementChoicesForTextNode(AndroidContentAssist.java:530)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeTextValues(AndroidContentAssist.java:498)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeCompletionProposals(AndroidContentAssist.java:171)
+	at org.eclipse.wst.sse.ui.internal.contentassist.CompoundContentAssistProcessor.computeCompletionProposals(CompoundContentAssistProcessor.java:127)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1839)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:566)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:563)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:498)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:492)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:378)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-12-14 16:35:40.006
+!MESSAGE Failed to load properties file for project 'dogeDash-html'
+
+!ENTRY org.eclipse.wst.sse.ui 4 4 2013-12-14 16:35:40.007
+!MESSAGE null
+!STACK 0
+java.lang.NullPointerException
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getDescriptor(AndroidContentAssist.java:867)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getElementChoicesForTextNode(AndroidContentAssist.java:530)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeTextValues(AndroidContentAssist.java:498)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeCompletionProposals(AndroidContentAssist.java:171)
+	at org.eclipse.wst.sse.ui.internal.contentassist.CompoundContentAssistProcessor.computeCompletionProposals(CompoundContentAssistProcessor.java:127)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1839)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:566)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:563)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:498)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:492)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:378)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-12-14 16:35:49.945
+!MESSAGE Failed to load properties file for project 'dogeDash-html'
+
+!ENTRY org.eclipse.wst.sse.ui 4 4 2013-12-14 16:35:49.946
+!MESSAGE null
+!STACK 0
+java.lang.NullPointerException
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getDescriptor(AndroidContentAssist.java:867)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getElementChoicesForTextNode(AndroidContentAssist.java:530)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeTextValues(AndroidContentAssist.java:498)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeCompletionProposals(AndroidContentAssist.java:171)
+	at org.eclipse.wst.sse.ui.internal.contentassist.CompoundContentAssistProcessor.computeCompletionProposals(CompoundContentAssistProcessor.java:127)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1839)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:566)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:563)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:498)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:492)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:378)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-12-14 16:36:50.885
+!MESSAGE Failed to load properties file for project 'dogeDash-html'
+
+!ENTRY org.eclipse.wst.sse.ui 4 4 2013-12-14 16:36:50.886
+!MESSAGE null
+!STACK 0
+java.lang.NullPointerException
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getDescriptor(AndroidContentAssist.java:867)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.getElementChoicesForTextNode(AndroidContentAssist.java:530)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeTextValues(AndroidContentAssist.java:498)
+	at com.android.ide.eclipse.adt.internal.editors.AndroidContentAssist.computeCompletionProposals(AndroidContentAssist.java:171)
+	at org.eclipse.wst.sse.ui.internal.contentassist.CompoundContentAssistProcessor.computeCompletionProposals(CompoundContentAssistProcessor.java:127)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1839)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:566)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:563)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:498)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:492)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:378)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3537)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3189)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-12-14 16:37:07.518
+!MESSAGE No projects found for [/home/marko/Games/Android/DogeDash/dogeDash/dogeDash-html/war/WEB-INF/web.xml]
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.177
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.180
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.181
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.184
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...)::com.alicode.game.dogedash [in src [in dogeDash]]
+  Assets.java
+    package com.alicode.game.dogedash
+    import java.util.logging.Level
+    import com.alicode.game.dogedash.screens.OptionsScreen
+    import com.badlogic.gdx.Gdx
+    import com.badlogic.gdx.graphics.Texture
+    import com.badlogic.gdx.graphics.g2d.TextureAtlas
+    import com.badlogic.gdx.graphics.g2d.TextureRegion
+    import com.badlogic.gdx.scenes.scene2d.ui.Image
+    import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+    import com.sun.xml.internal.ws.api.pipe.NextAction
+    class Assets
+      TextureAtlas atlas
+      TextureRegion menu_blackpup
+      TextureRegion menu_blackpup2
+      TextureRegion menu_bluepup
+      TextureRegion menu_creampup_body
+      TextureRegion menu_creampup_paw
+      TextureRegion menu_creampup_paw2
+      TextureRegion menu_mom_nose_paw
+      TextureRegion menu_mombody
+      TextureRegion menu
+      TextureRegion splash
+      TextureRegion background
+      TextureRegion background2
+      TextureRegion ninePatchBox
+      TextureRegion character
+      TextureRegion character2
+      TextureRegion characterJump
+      TextureRegion characterHit
+      TextureRegion characterHit2
+      TextureRegion characterDie
+      TextureRegion characterDieCircle
+      TextureRegion dogsuper1
+      TextureRegion dogsuper2
+      TextureRegion energy1
+      TextureRegion energy2
+      TextureRegion energy3
+      TextureRegion night_dogsuper2
+      TextureRegion night_character
+      TextureRegion night_character2
+      TextureRegion night_characterJump
+      TextureRegion night_characterHit
+      TextureRegion night_characterHit2
+      TextureRegion night_characterDie
+      TextureRegion night_characterDieCircle
+      TextureRegion night_dogsuper1
+      TextureRegion night_energy1
+      TextureRegion night_energy2
+      TextureRegion night_energy3
+      TextureRegion blackPup
+      TextureRegion blackPup2
+      TextureRegion creamPup
+      TextureRegion creamPup2
+      TextureRegion bluePup
+      TextureRegion bluePup2
+      TextureRegion redPup
+      TextureRegion redPup2
+      TextureRegion night_blackPup
+      TextureRegion night_blackPup2
+      TextureRegion night_creamPup
+      TextureRegion night_creamPup2
+      TextureRegion night_bluePup
+      TextureRegion night_bluePup2
+      TextureRegion night_redPup
+      TextureRegion night_redPup2
+      TextureRegion gamePuddle
+      TextureRegion gamePuddle2
+      TextureRegion gameMud
+      TextureRegion gameMud2
+      TextureRegion hurdleLog
+      TextureRegion pow
+      TextureRegion style
+      TextureRegion flower1
+      TextureRegion flower2
+      TextureRegion flower3
+      TextureRegion flower4
+      TextureRegion flower5
+      TextureRegion gameBush
+      TextureRegion night_gameMud
+      TextureRegion night_gameMud2
+      TextureRegion night_gamePuddle2
+      TextureRegion night_gamePuddle
+      TextureRegion night_hurdleLog
+      TextureRegion treat1
+      TextureRegion treat2
+      TextureRegion shield_pickup
+      TextureRegion shield
+      TextureRegion night_flower1
+      TextureRegion night_flower2
+      TextureRegion night_flower3
+      TextureRegion night_flower4
+      TextureRegion night_flower5
+      TextureRegion night_gameBush
+      TextureRegion enemyBee
+      TextureRegion enemyBee2
+      TextureRegion enemyBee3
+      TextureRegion enemyMoth
+      TextureRegion enemyMoth2
+      TextureRegion enemyMoth3
+      TextureRegion back
+      TextureRegion customization
+      TextureRegion difficulty
+      TextureRegion credit
+      TextureRegion easy
+      TextureRegion hard
+      TextureRegion highscores
+      TextureRegion lvl1
+      TextureRegion lvl2
+      TextureRegion lvlselect
+      TextureRegion lvlselect_txt
+      TextureRegion musicoff
+      TextureRegion musicon
+      TextureRegion normal
+      TextureRegion options
+      TextureRegion options_txt
+      TextureRegion options_title
+      TextureRegion play
+      TextureRegion puppydash
+      TextureRegion soundoff
+      TextureRegion soundon
+      TextureRegion tutorial
+      TextureRegion vibrationoff
+      TextureRegion vibrationon
+      TextureRegion retry
+      TextureRegion gameovertitle
+      TextureRegion gametokens
+      TextureRegion mainmenu
+      TextureRegion puppiescaught
+      TextureRegion stylepoints
+      TextureRegion time
+      TextureRegion totalscore
+      TextureRegion hardSmall
+      TextureRegion easySmall
+      TextureRegion normalSmall
+      TextureRegion acc_angel
+      TextureRegion acc_angelj
+      TextureRegion acc_monocle
+      TextureRegion acc_tophatj
+      TextureRegion acc_tophat
+      TextureRegion acc_monoclej
+      TextureRegion acc_shades
+      TextureRegion acc_shadesj
+      TextureRegion acc_halo
+      TextureRegion acc_haloj
+      TextureRegion acc_hipster
+      TextureRegion acc_hipsterj
+      TextureRegion acc_horns
+      TextureRegion acc_hornsj
+      TextureRegion acc_moustache
+      TextureRegion acc_moustachej
+      TextureRegion acc_clownnose
+      TextureRegion acc_clownnosej
+      TextureRegion acc_devilwings
+      TextureRegion acc_devilwingsj
+      TextureRegion acc_pumpkin
+      TextureRegion acc_pumpkinj
+      TextureRegion acc_santahat
+      TextureRegion acc_santahatj
+      TextureRegion acc_unibrow
+      TextureRegion acc_unibrowj
+      TextureRegion mudDrop
+      TextureRegion waterDrop
+      TextureRegion shop_shades
+      TextureRegion shop_monocle
+      TextureRegion shop_tophat
+      TextureRegion shop_halo
+      TextureRegion shop_horns
+      TextureRegion shop_hipster
+      TextureRegion shop_moustache
+      TextureRegion shop_angel
+      TextureRegion shop_clownnose
+      TextureRegion shop_devilwings
+      TextureRegion shop_pumpkin
+      TextureRegion shop_unibrow
+      TextureRegion shop_santahat
+      TextureRegion custom_title
+      TextureRegion currentBox
+      TextureRegion chowcoin
+      TextureRegion itemLock
+      TextureRegion shopItemBox
+      TextureRegion num0
+      TextureRegion num1
+      TextureRegion num2
+      TextureRegion num3
+      TextureRegion num4
+      TextureRegion num5
+      TextureRegion num6
+      TextureRegion num7
+      TextureRegion num8
+      TextureRegion num9
+      TextureRegion num0_2
+      TextureRegion num1_2
+      TextureRegion num2_2
+      TextureRegion num3_2
+      TextureRegion num4_2
+      TextureRegion num5_2
+      TextureRegion num6_2
+      TextureRegion num7_2
+      TextureRegion num8_2
+      TextureRegion num9_2
+      TextureRegion numMinus
+      TextureRegion numMinus_2
+      TextureRegion player_score
+      TextureRegion tab_back
+      TextureRegion tab_eyes
+      TextureRegion tab_nose
+      TextureRegion tab_head
+      TextureRegion button_next
+      TextureRegion button_previous
+      TextureRegion itemsEquipText
+      TextureRegion tutorials
+      TextureRegion pup_missed
+      TextureRegion pup_points
+      TextureRegion pause_menu
+      TextureRegion pause_resume
+      TextureRegion dogecoins_text
+      TextureRegion pause_button
+      TextureRegion enemies_on_player
+      TextureRegion shop_after
+      TextureRegion shop_buyitem
+      TextureRegion shop_currentcoins
+      TextureRegion shop_no
+      TextureRegion shop_price
+      TextureRegion shop_yes
+      TextureRegion chowcoin_2
+      TextureRegion shop_not_enough
+      TextureRegion arrow_left
+      TextureRegion arrow_right
+      TextureRegion tutorial_1
+      TextureRegion tutorial_2
+      TextureRegion tutorial_3
+      TextureRegion tutorial_4
+      TextureRegion tutorial_5
+      TextureRegion tutorial_resume
+      TextureRegion tutorial_mainmenu
+      TextureRegion tutorial_levelselect
+      TextureRegion tutorial_select
+      Texture bg_big_day
+      Texture bg_big_night
+      TextureRegion night_light_1
+      TextureRegion night_light_2
+      TextureRegion night_light_3
+      TextureRegion pauseMusicOn
+      TextureRegion pauseMusicOff
+      TextureRegion pauseVibrationOn
+      TextureRegion pauseVibrationOff
+      TextureRegion pauseSoundOn
+      TextureRegion pauseSoundOff
+      static void load()
+      static void initSound()
+      static void loadButtons()
+      static void loadLevelSelection()
+      static void loadMain()
+      static void loadShop()
+      static void loadText()
+      static void loadAccs()
+      static void loadEffects()
+      static void loadEnemies()
+      static void loadObjects()
+      static void loadPlayer()
+      static void loadPuppies()
+      static void dispose()
+  GamePoints.java (not open)
+  [Working copy] DogeDashCore.java
+    package com.alicode.game.dogedash
+    import com.alicode.game.dogedash.screens.HighscoresScreen
+    import com.alicode.game.dogedash.screens.SplashScreen
+    import com.alicode.game.dogedash.screens.WorldSelection
+    import com.alicode.game.dogedash.sql.GameDatabase
+    import com.badlogic.gdx.Game
+    import com.badlogic.gdx.Gdx
+    class DogeDashCore
+      String VERSION
+      String LOG
+      int WIDTH
+      int HEIGHT
+      GameDatabase db
+      boolean DEV_MODE
+      void create()
+      void dispose()
+      void render()
+      void resize(int, int)
+      void pause()
+      void resume()
+  Statics.java (not open):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...)::com.alicode.game.dogedash [in src [in dogeDash]]
+  Assets.java
+    package com.alicode.game.dogedash
+    import java.util.logging.Level
+    import com.alicode.game.dogedash.screens.OptionsScreen
+    import com.badlogic.gdx.Gdx
+    import com.badlogic.gdx.graphics.Texture
+    import com.badlogic.gdx.graphics.g2d.TextureAtlas
+    import com.badlogic.gdx.graphics.g2d.TextureRegion
+    import com.badlogic.gdx.scenes.scene2d.ui.Image
+    import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+    import com.sun.xml.internal.ws.api.pipe.NextAction
+    class Assets
+      TextureAtlas atlas
+      TextureRegion menu_blackpup
+      TextureRegion menu_blackpup2
+      TextureRegion menu_bluepup
+      TextureRegion menu_creampup_body
+      TextureRegion menu_creampup_paw
+      TextureRegion menu_creampup_paw2
+      TextureRegion menu_mom_nose_paw
+      TextureRegion menu_mombody
+      TextureRegion menu
+      TextureRegion splash
+      TextureRegion background
+      TextureRegion background2
+      TextureRegion ninePatchBox
+      TextureRegion character
+      TextureRegion character2
+      TextureRegion characterJump
+      TextureRegion characterHit
+      TextureRegion characterHit2
+      TextureRegion characterDie
+      TextureRegion characterDieCircle
+      TextureRegion dogsuper1
+      TextureRegion dogsuper2
+      TextureRegion energy1
+      TextureRegion energy2
+      TextureRegion energy3
+      TextureRegion night_dogsuper2
+      TextureRegion night_character
+      TextureRegion night_character2
+      TextureRegion night_characterJump
+      TextureRegion night_characterHit
+      TextureRegion night_characterHit2
+      TextureRegion night_characterDie
+      TextureRegion night_characterDieCircle
+      TextureRegion night_dogsuper1
+      TextureRegion night_energy1
+      TextureRegion night_energy2
+      TextureRegion night_energy3
+      TextureRegion blackPup
+      TextureRegion blackPup2
+      TextureRegion creamPup
+      TextureRegion creamPup2
+      TextureRegion bluePup
+      TextureRegion bluePup2
+      TextureRegion redPup
+      TextureRegion redPup2
+      TextureRegion night_blackPup
+      TextureRegion night_blackPup2
+      TextureRegion night_creamPup
+      TextureRegion night_creamPup2
+      TextureRegion night_bluePup
+      TextureRegion night_bluePup2
+      TextureRegion night_redPup
+      TextureRegion night_redPup2
+      TextureRegion gamePuddle
+      TextureRegion gamePuddle2
+      TextureRegion gameMud
+      TextureRegion gameMud2
+      TextureRegion hurdleLog
+      TextureRegion pow
+      TextureRegion style
+      TextureRegion flower1
+      TextureRegion flower2
+      TextureRegion flower3
+      TextureRegion flower4
+      TextureRegion flower5
+      TextureRegion gameBush
+      TextureRegion night_gameMud
+      TextureRegion night_gameMud2
+      TextureRegion night_gamePuddle2
+      TextureRegion night_gamePuddle
+      TextureRegion night_hurdleLog
+      TextureRegion treat1
+      TextureRegion treat2
+      TextureRegion shield_pickup
+      TextureRegion shield
+      TextureRegion night_flower1
+      TextureRegion night_flower2
+      TextureRegion night_flower3
+      TextureRegion night_flower4
+      TextureRegion night_flower5
+      TextureRegion night_gameBush
+      TextureRegion enemyBee
+      TextureRegion enemyBee2
+      TextureRegion enemyBee3
+      TextureRegion enemyMoth
+      TextureRegion enemyMoth2
+      TextureRegion enemyMoth3
+      TextureRegion back
+      TextureRegion customization
+      TextureRegion difficulty
+      TextureRegion credit
+      TextureRegion easy
+      TextureRegion hard
+      TextureRegion highscores
+      TextureRegion lvl1
+      TextureRegion lvl2
+      TextureRegion lvlselect
+      TextureRegion lvlselect_txt
+      TextureRegion musicoff
+      TextureRegion musicon
+      TextureRegion normal
+      TextureRegion options
+      TextureRegion options_txt
+      TextureRegion options_title
+      TextureRegion play
+      TextureRegion puppydash
+      TextureRegion soundoff
+      TextureRegion soundon
+      TextureRegion tutorial
+      TextureRegion vibrationoff
+      TextureRegion vibrationon
+      TextureRegion retry
+      TextureRegion gameovertitle
+      TextureRegion gametokens
+      TextureRegion mainmenu
+      TextureRegion puppiescaught
+      TextureRegion stylepoints
+      TextureRegion time
+      TextureRegion totalscore
+      TextureRegion hardSmall
+      TextureRegion easySmall
+      TextureRegion normalSmall
+      TextureRegion acc_angel
+      TextureRegion acc_angelj
+      TextureRegion acc_monocle
+      TextureRegion acc_tophatj
+      TextureRegion acc_tophat
+      TextureRegion acc_monoclej
+      TextureRegion acc_shades
+      TextureRegion acc_shadesj
+      TextureRegion acc_halo
+      TextureRegion acc_haloj
+      TextureRegion acc_hipster
+      TextureRegion acc_hipsterj
+      TextureRegion acc_horns
+      TextureRegion acc_hornsj
+      TextureRegion acc_moustache
+      TextureRegion acc_moustachej
+      TextureRegion acc_clownnose
+      TextureRegion acc_clownnosej
+      TextureRegion acc_devilwings
+      TextureRegion acc_devilwingsj
+      TextureRegion acc_pumpkin
+      TextureRegion acc_pumpkinj
+      TextureRegion acc_santahat
+      TextureRegion acc_santahatj
+      TextureRegion acc_unibrow
+      TextureRegion acc_unibrowj
+      TextureRegion mudDrop
+      TextureRegion waterDrop
+      TextureRegion shop_shades
+      TextureRegion shop_monocle
+      TextureRegion shop_tophat
+      TextureRegion shop_halo
+      TextureRegion shop_horns
+      TextureRegion shop_hipster
+      TextureRegion shop_moustache
+      TextureRegion shop_angel
+      TextureRegion shop_clownnose
+      TextureRegion shop_devilwings
+      TextureRegion shop_pumpkin
+      TextureRegion shop_unibrow
+      TextureRegion shop_santahat
+      TextureRegion custom_title
+      TextureRegion currentBox
+      TextureRegion chowcoin
+      TextureRegion itemLock
+      TextureRegion shopItemBox
+      TextureRegion num0
+      TextureRegion num1
+      TextureRegion num2
+      TextureRegion num3
+      TextureRegion num4
+      TextureRegion num5
+      TextureRegion num6
+      TextureRegion num7
+      TextureRegion num8
+      TextureRegion num9
+      TextureRegion num0_2
+      TextureRegion num1_2
+      TextureRegion num2_2
+      TextureRegion num3_2
+      TextureRegion num4_2
+      TextureRegion num5_2
+      TextureRegion num6_2
+      TextureRegion num7_2
+      TextureRegion num8_2
+      TextureRegion num9_2
+      TextureRegion numMinus
+      TextureRegion numMinus_2
+      TextureRegion player_score
+      TextureRegion tab_back
+      TextureRegion tab_eyes
+      TextureRegion tab_nose
+      TextureRegion tab_head
+      TextureRegion button_next
+      TextureRegion button_previous
+      TextureRegion itemsEquipText
+      TextureRegion tutorials
+      TextureRegion pup_missed
+      TextureRegion pup_points
+      TextureRegion pause_menu
+      TextureRegion pause_resume
+      TextureRegion dogecoins_text
+      TextureRegion pause_button
+      TextureRegion enemies_on_player
+      TextureRegion shop_after
+      TextureRegion shop_buyitem
+      TextureRegion shop_currentcoins
+      TextureRegion shop_no
+      TextureRegion shop_price
+      TextureRegion shop_yes
+      TextureRegion chowcoin_2
+      TextureRegion shop_not_enough
+      TextureRegion arrow_left
+      TextureRegion arrow_right
+      TextureRegion tutorial_1
+      TextureRegion tutorial_2
+      TextureRegion tutorial_3
+      TextureRegion tutorial_4
+      TextureRegion tutorial_5
+      TextureRegion tutorial_resume
+      TextureRegion tutorial_mainmenu
+      TextureRegion tutorial_levelselect
+      TextureRegion tutorial_select
+      Texture bg_big_day
+      Texture bg_big_night
+      TextureRegion night_light_1
+      TextureRegion night_light_2
+      TextureRegion night_light_3
+      TextureRegion pauseMusicOn
+      TextureRegion pauseMusicOff
+      TextureRegion pauseVibrationOn
+      TextureRegion pauseVibrationOff
+      TextureRegion pauseSoundOn
+      TextureRegion pauseSoundOff
+      static void load()
+      static void initSound()
+      static void loadButtons()
+      static void loadLevelSelection()
+      static void loadMain()
+      static void loadShop()
+      static void loadText()
+      static void loadAccs()
+      static void loadEffects()
+      static void loadEnemies()
+      static void loadObjects()
+      static void loadPlayer()
+      static void loadPuppies()
+      static void dispose()
+  GamePoints.java (not open)
+  [Working copy] DogeDashCore.java
+    package com.alicode.game.dogedash
+    import com.alicode.game.dogedash.screens.HighscoresScreen
+    import com.alicode.game.dogedash.screens.SplashScreen
+    import com.alicode.game.dogedash.screens.WorldSelection
+    import com.alicode.game.dogedash.sql.GameDatabase
+    import com.badlogic.gdx.Game
+    import com.badlogic.gdx.Gdx
+    class DogeDashCore
+      String VERSION
+      String LOG
+      int WIDTH
+      int HEIGHT
+      GameDatabase db
+      boolean DEV_MODE
+      void create()
+      void dispose()
+      void render()
+      void resize(int, int)
+      void pause()
+      void resume()
+  Statics.java (not open):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.186
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.187
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.189
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...)::com.alicode.game.dogedash.sql [in src [in dogeDash]]
+  Settings.java
+    package com.alicode.game.dogedash.sql
+    class Settings
+      int id
+      int soundSettings
+      int musicSettings
+      int vibrationSettings
+      Settings()
+      Settings(int)
+      Settings(int, int, int, int)
+      int getId()
+      void setId(int)
+      int getSoundSettings()
+      void setSoundSettings(int)
+      int getMusicSettings()
+      void setMusicSettings(int)
+      int getVibrationSettings()
+      void setVibrationSettings(int)
+  GameDatabase.java
+    package com.alicode.game.dogedash.sql
+    import java.util.ArrayList
+    import java.util.List
+    import com.alicode.game.dogedash.DogeDashCore
+    import com.badlogic.gdx.Gdx
+    import com.badlogic.gdx.sql.Database
+    import com.badlogic.gdx.sql.DatabaseCursor
+    import com.badlogic.gdx.sql.DatabaseFactory
+    import com.badlogic.gdx.sql.SQLiteGdxException
+    class GameDatabase
+      Database dbHandler
+      String DATABASE_NAME
+      int DATABASE_VERSION
+      String TABLE_LVL1
+      String TABLE_LVL2
+      String TABLE_COSTUME_BACK
+      String TABLE_COSTUME_NOSE
+      String TABLE_COSTUME_HEAD
+      String TABLE_COSTUME_EYES
+      String TABLE_SETTINGS
+      String TABLE_MISC
+      String KEY_ID
+      String KEY_ITEM_NAME
+      String KEY_SCORE
+      String KEY_STYLE
+      String KEY_TIME
+      String KEY_CAUGHTPUPPIES
+      String KEY_MISSEDPUPPIES
+      String KEY_PUPPYPOINTS
+      String KEY_ITEM_OWNED
+      String KEY_ITEM_PRICE
+      String KEY_CURRENCY
+      String KEY_SETTINGS_SOUND
+      String KEY_SETTINGS_MUISC
+      String KEY_SETTINGS_VIBRATION
+      String CREATE_LEVELONE_TABLE
+      String CREATE_LEVELTWO_TABLE
+      String CREATE_COSTUME_BACK_TABLE
+      String CREATE_COSTUME_EYES_TABLE
+      String CREATE_COSTUME_NOSE_TABLE
+      String CREATE_COSTUME_HEAD_TABLE
+      String CREATE_SETTINGS_TABLE
+      String CREATE_MISC_TABLE
+      String DATABASE_CREATE
+      GameDatabase()
+      void initDb()
+      void dropTheBase()
+      void addLevelHighscore(Level, String)
+      Level getLevelHighscore(int, String)
+      List<Level> getLevelList(String)
+      void updateLevelHighscore(Level, String)
+      void deleteLevelHighscore(Level, String)
+      void addCostume(Costume, String)
+      Costume getCostume(int, String)
+      List<Costume> getCostumeList(String)
+      void updateCostume(Costume, String)
+      void deleteCostume(Costume, String)
+      void addSettings(Settings)
+      Settings getSettings(int)
+      List<Settings> getSettingsList()
+      void updateSettings(Settings)
+      void deleteSettings(Settings)
+      void addMisc(Misc)
+      Misc getMisc(int)
+      List<Misc> getMiscList()
+      void updateMisc(Misc)
+      void deleteMisc(Misc)
+      void dispose()
+  Level.java
+    package com.alicode.game.dogedash.sql
+    class Level
+      int id
+      int highScore
+      int stylePoints
+      int timeAlive
+      int caughtPuppyNum
+      int missedPuppyNum
+      int puppyPoints
+      Level()
+      Level(int)
+      Level(int, int, int, int, int, int)
+      Level(int, int, int, int, int, int, int)
+      int getHighScore()
+      void setHighScore(int)
+      int getId()
+      void setID(int)
+      String printScore()
+      int getStylePoints()
+      void setStylePoints(int)
+      int getTimeAlive()
+      void setTimeAlive(int)
+      int getCaughtPuppyNum()
+      void setCaughtPuppyNum(int)
+      int getMissedPuppyNum()
+      void setMissedPuppyNum(int)
+      int getPuppyPoints()
+      void setPuppyPoints(int)
+  Misc.java
+    package com.alicode.game.dogedash.sql
+    class Misc
+      int id
+      int dogeCoins
+      Misc()
+      Misc(int)
+      Misc(int, int)
+      int getId()
+      void setId(int)
+      int getDogeCoins()
+      void setDogeCoins(int)
+  Costume.java
+    package com.alicode.game.dogedash.sql
+    import com.badlogic.gdx.scenes.scene2d.Actor
+    class Costume
+      int id
+      int isOwned
+      int itemPrice
+      String itemName
+      Costume()
+      Costume(int)
+      Costume(int, String, int, int)
+      int getId()
+      void setId(int)
+      int getIsOwned()
+      void setIsOwned(int)
+      int getItemPrice()
+      void setItemPrice(int)
+      String getItemName()
+      void setItemName(String):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...)::com.alicode.game.dogedash.sql [in src [in dogeDash]]
+  Settings.java
+    package com.alicode.game.dogedash.sql
+    class Settings
+      int id
+      int soundSettings
+      int musicSettings
+      int vibrationSettings
+      Settings()
+      Settings(int)
+      Settings(int, int, int, int)
+      int getId()
+      void setId(int)
+      int getSoundSettings()
+      void setSoundSettings(int)
+      int getMusicSettings()
+      void setMusicSettings(int)
+      int getVibrationSettings()
+      void setVibrationSettings(int)
+  GameDatabase.java
+    package com.alicode.game.dogedash.sql
+    import java.util.ArrayList
+    import java.util.List
+    import com.alicode.game.dogedash.DogeDashCore
+    import com.badlogic.gdx.Gdx
+    import com.badlogic.gdx.sql.Database
+    import com.badlogic.gdx.sql.DatabaseCursor
+    import com.badlogic.gdx.sql.DatabaseFactory
+    import com.badlogic.gdx.sql.SQLiteGdxException
+    class GameDatabase
+      Database dbHandler
+      String DATABASE_NAME
+      int DATABASE_VERSION
+      String TABLE_LVL1
+      String TABLE_LVL2
+      String TABLE_COSTUME_BACK
+      String TABLE_COSTUME_NOSE
+      String TABLE_COSTUME_HEAD
+      String TABLE_COSTUME_EYES
+      String TABLE_SETTINGS
+      String TABLE_MISC
+      String KEY_ID
+      String KEY_ITEM_NAME
+      String KEY_SCORE
+      String KEY_STYLE
+      String KEY_TIME
+      String KEY_CAUGHTPUPPIES
+      String KEY_MISSEDPUPPIES
+      String KEY_PUPPYPOINTS
+      String KEY_ITEM_OWNED
+      String KEY_ITEM_PRICE
+      String KEY_CURRENCY
+      String KEY_SETTINGS_SOUND
+      String KEY_SETTINGS_MUISC
+      String KEY_SETTINGS_VIBRATION
+      String CREATE_LEVELONE_TABLE
+      String CREATE_LEVELTWO_TABLE
+      String CREATE_COSTUME_BACK_TABLE
+      String CREATE_COSTUME_EYES_TABLE
+      String CREATE_COSTUME_NOSE_TABLE
+      String CREATE_COSTUME_HEAD_TABLE
+      String CREATE_SETTINGS_TABLE
+      String CREATE_MISC_TABLE
+      String DATABASE_CREATE
+      GameDatabase()
+      void initDb()
+      void dropTheBase()
+      void addLevelHighscore(Level, String)
+      Level getLevelHighscore(int, String)
+      List<Level> getLevelList(String)
+      void updateLevelHighscore(Level, String)
+      void deleteLevelHighscore(Level, String)
+      void addCostume(Costume, String)
+      Costume getCostume(int, String)
+      List<Costume> getCostumeList(String)
+      void updateCostume(Costume, String)
+      void deleteCostume(Costume, String)
+      void addSettings(Settings)
+      Settings getSettings(int)
+      List<Settings> getSettingsList()
+      void updateSettings(Settings)
+      void deleteSettings(Settings)
+      void addMisc(Misc)
+      Misc getMisc(int)
+      List<Misc> getMiscList()
+      void updateMisc(Misc)
+      void deleteMisc(Misc)
+      void dispose()
+  Level.java
+    package com.alicode.game.dogedash.sql
+    class Level
+      int id
+      int highScore
+      int stylePoints
+      int timeAlive
+      int caughtPuppyNum
+      int missedPuppyNum
+      int puppyPoints
+      Level()
+      Level(int)
+      Level(int, int, int, int, int, int)
+      Level(int, int, int, int, int, int, int)
+      int getHighScore()
+      void setHighScore(int)
+      int getId()
+      void setID(int)
+      String printScore()
+      int getStylePoints()
+      void setStylePoints(int)
+      int getTimeAlive()
+      void setTimeAlive(int)
+      int getCaughtPuppyNum()
+      void setCaughtPuppyNum(int)
+      int getMissedPuppyNum()
+      void setMissedPuppyNum(int)
+      int getPuppyPoints()
+      void setPuppyPoints(int)
+  Misc.java
+    package com.alicode.game.dogedash.sql
+    class Misc
+      int id
+      int dogeCoins
+      Misc()
+      Misc(int)
+      Misc(int, int)
+      int getId()
+      void setId(int)
+      int getDogeCoins()
+      void setDogeCoins(int)
+  Costume.java
+    package com.alicode.game.dogedash.sql
+    import com.badlogic.gdx.scenes.scene2d.Actor
+    class Costume
+      int id
+      int isOwned
+      int itemPrice
+      String itemName
+      Costume()
+      Costume(int)
+      Costume(int, String, int, int)
+      int getId()
+      void setId(int)
+      int getIsOwned()
+      void setIsOwned(int)
+      int getItemPrice()
+      void setItemPrice(int)
+      String getItemName()
+      void setItemName(String):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.190
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash::src [in dogeDash]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.models (...)
+  com.alicode.game.dogedash.models.enemies (...)
+  com.alicode.game.dogedash.screens (...)
+  com.alicode.game.dogedash.sql (...)
+  com.alicode.game.dogedash.utils (...)
+  com.alicode.game.dogedash.utils.txt (...)
+  com.alicode.game.dogedash.worlds (...):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.191
+!MESSAGE Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add com.alicode.game.dogedash [in src [in dogeDash-html]] to the list of segments in P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.192
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.193
+!MESSAGE Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.194
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.195
+!MESSAGE Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash.client [in src [in dogeDash-html]]
+  GwtLauncher.java
+    package com.alicode.game.dogedash.client
+    import com.alicode.game.dogedash.DogeDashCore
+    import com.badlogic.gdx.ApplicationListener
+    import com.badlogic.gdx.backends.gwt.GwtApplication
+    import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
+    class GwtLauncher
+      GwtApplicationConfiguration getConfig()
+      ApplicationListener getApplicationListener():: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash.client [in src [in dogeDash-html]]
+  GwtLauncher.java
+    package com.alicode.game.dogedash.client
+    import com.alicode.game.dogedash.DogeDashCore
+    import com.badlogic.gdx.ApplicationListener
+    import com.badlogic.gdx.backends.gwt.GwtApplication
+    import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
+    class GwtLauncher
+      GwtApplicationConfiguration getConfig()
+      ApplicationListener getApplicationListener():: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.196
+!MESSAGE Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...):: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...) to the list of segments in com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...):: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.197
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.198
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.199
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.200
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war::F/dogeDash-html/war/WEB-INF:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war::F/dogeDash-html/war/WEB-INF:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.201
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html::F/dogeDash-html/war:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.ui.navigator 4 0 2013-12-14 16:39:51.203
+!MESSAGE Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+!STACK 0
+org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$CyclicPathException: Cannot add P/dogeDash-html to the list of segments in src [in dogeDash-html]
+  <default> (...)
+  com (...)
+  com.alicode (...)
+  com.alicode.game (...)
+  com.alicode.game.dogedash (...)
+  com.alicode.game.dogedash.client (...)
+  com.alicode.game.dogedash.server (...)::com.alicode.game.dogedash [in src [in dogeDash-html]]::P/dogeDash-html:: as a parent.
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$TreePathCompiler.addParent(NavigatorContentServiceContentProvider.java:524)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:591)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.findPaths(NavigatorContentServiceContentProvider.java:592)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getParents(NavigatorContentServiceContentProvider.java:320)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getParentElement(AbstractTreeViewer.java:1704)
+	at org.eclipse.jface.viewers.TreeViewer.getParentElement(TreeViewer.java:607)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1641)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1643)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setExpandedElements(AbstractTreeViewer.java:2424)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.frameChanged(TreeViewerFrameSource.java:71)
+	at org.eclipse.ui.internal.navigator.CommonNavigatorFrameSource.frameChanged(CommonNavigatorFrameSource.java:50)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource.handlePropertyChange(TreeViewerFrameSource.java:172)
+	at org.eclipse.ui.internal.navigator.framelist.TreeViewerFrameSource$1.propertyChange(TreeViewerFrameSource.java:47)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.firePropertyChange(FrameList.java:90)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.setCurrent(FrameList.java:205)
+	at org.eclipse.ui.internal.navigator.framelist.FrameList.gotoFrame(FrameList.java:162)
+	at org.eclipse.ui.internal.navigator.framelist.GoIntoAction.run(GoIntoAction.java:50)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1276)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3562)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3186)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-12-14 16:45:15.528
+!MESSAGE No projects found for [/home/marko/Games/Android/DogeDash/dogeDash/dogeDash-html/war/WEB-INF/web.xml]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2013-12-14 17:00:27.349
+!MESSAGE No valid Android XML Editor Delegate found for file /dogeDash-html/war/WEB-INF/web.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-12-14 17:00:54.235
+!MESSAGE No projects found for [/home/marko/Games/Android/DogeDash/dogeDash/dogeDash-html/war/WEB-INF/web.xml]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-12-14 17:01:50.044
+!MESSAGE No projects found for [/home/marko/Games/Android/DogeDash/dogeDash/dogeDash-html/war/WEB-INF/web.xml]

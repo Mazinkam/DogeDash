@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<!-- TODO: Add <servlet> tags for each servlet here. -->
 	<!-- TODO: Add <servlet-mapping> tags for each <servlet> here. -->
-	<!-- TODO: Optionally add a <welcome-file-list> tag to display a welcome file. -->
+	<!-- TODO: Optionally add a <welcome-file-list> tag to display a welcome 
+		file. -->
+	<servlet>
+		<servlet-name>TokenServlet</servlet-name>
+		<servlet-class>com.alicode.game.dogedash.TokenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TokenServlet</servlet-name>
+		<url-pattern>/gettoken/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MessageServlet</servlet-name>
+		<servlet-class>com.alicode.game.dogedash.MessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MessageServlet</servlet-name>
+		<url-pattern>/message/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FriendServlet</servlet-name>
+		<servlet-class>com.alicode.game.dogedash.FriendServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FriendServlet</servlet-name>
+		<url-pattern>/getFriendList/*</url-pattern>
+	</servlet-mapping>
 </web-app>

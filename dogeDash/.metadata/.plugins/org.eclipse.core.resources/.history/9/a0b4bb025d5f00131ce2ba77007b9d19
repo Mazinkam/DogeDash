@@ -1,0 +1,8 @@
+package com.alicode.game.dogedash.server;
+
+import com.googlecode.objectify.annotation.*;
+
+@Entity
+public class LevelTable {
+	@Id public int id;
+}
