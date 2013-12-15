@@ -224,12 +224,10 @@ public class WorldSelection implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						// game.setScreen(new WorldTerminal(game,
-						// Gdx.graphics.getDeltaTime()));
-						if (Gdx.app.getType() != Gdx.app.getType().WebGL) {
-							Statics.gameLevel = 2;
-							menuState = MenuState.Chosing;
-						}
+
+						Statics.gameLevel = 2;
+						menuState = MenuState.Chosing;
+
 						return true;
 					}
 				};

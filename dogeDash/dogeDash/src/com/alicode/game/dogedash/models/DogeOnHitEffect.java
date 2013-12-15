@@ -1,13 +1,17 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.GamePoints;
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.screens.MenuScreen;
+import com.alicode.game.dogedash.sql.Settings;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
@@ -28,7 +32,6 @@ public class DogeOnHitEffect extends Actor {
 	public void act(float delta) {
 		if (Statics.state == Statics.GameState.Running) {
 			super.act(delta);
-			updateMovement();
 			updateBounds();
 		}
 		if (!Statics.objectsAlive) {
@@ -36,13 +39,8 @@ public class DogeOnHitEffect extends Actor {
 		}
 	}
 
-	private void updateMovement() {
-		x -= Statics.enemySpeed;
-		addAction(Actions.moveTo(x, getY()));
-
-	}
-
 	public void playerGotSwag() {
+		Statics.playerGotSwag = true;
 		setWidth(Assets.style.getRegionWidth());
 		setHeight(Assets.style.getRegionHeight());
 		setPosition(x, y - getHeight() / 2);
@@ -51,11 +49,21 @@ public class DogeOnHitEffect extends Actor {
 		effectActive = true;
 
 		clearActions();
-		addAction(Actions.parallel(Actions.sequence(Actions.moveBy(0, 100, 1.5f), Actions.fadeOut(1), Actions.removeActor())));
-		GamePoints.bonusPointStatic += 100;
+
+		Action completeAction = new Action() {
+			public boolean act(float delta) {
+				Statics.playerGotSwag = false;
+				GamePoints.bonusPointStatic += 100;
+				return true;
+			}
+		};
+
+		addAction(Actions.sequence(Actions.moveBy(0, 50, 0.5f), Actions.fadeOut(1), completeAction, Actions.removeActor()));
 
 	}
+
 	public void playerGotHit() {
+		Statics.playerGotPow = true;
 		setWidth(Assets.pow.getRegionWidth());
 		setHeight(Assets.pow.getRegionHeight());
 		setPosition(x, y - getHeight() / 2);
@@ -64,8 +72,16 @@ public class DogeOnHitEffect extends Actor {
 		effectActive = true;
 
 		clearActions();
-		addAction(Actions.parallel(Actions.sequence(Actions.moveBy(0, 100, 1.5f), Actions.fadeOut(1), Actions.removeActor())));
-		GamePoints.bonusPointStatic += 100;
+		Action completeAction = new Action() {
+			public boolean act(float delta) {
+				Statics.playerGotPow = false;
+				if (Statics.isSuperD)
+					GamePoints.bonusPointStatic += 100;
+				return true;
+			}
+		};
+
+		addAction(Actions.sequence(Actions.moveBy(0, 50, 0.5f), Actions.fadeOut(1), completeAction, Actions.removeActor()));
 
 	}
 
@@ -76,6 +92,7 @@ public class DogeOnHitEffect extends Actor {
 			batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
 					getRotation());
 	}
+
 	private void updateBounds() {
 		bounds.set(getX(), getY(), getWidth(), getHeight());
 	}

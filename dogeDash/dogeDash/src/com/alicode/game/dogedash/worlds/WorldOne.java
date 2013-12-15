@@ -272,7 +272,7 @@ public class WorldOne extends Table {
 
 				}
 				if (Statics.playerJump) {
-					//spawnDogeSwag();
+					spawnDogeSwag();
 				}
 				if (Statics.isSuperD) {
 					logIter.remove();
@@ -294,6 +294,7 @@ public class WorldOne extends Table {
 			}
 			if (enemyMud.getBounds().overlaps(motherDoge.getBounds())) {
 				if (!Statics.playerJump) {
+					spawnDogePow();
 					if (enemyMud.getX() > motherDoge.getX()) {
 						if (enemyMud.getY() > motherDoge.getY())
 							enemyMud.playerHit(true, true);
@@ -307,7 +308,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					//spawnDogeSwag();
+					spawnDogeSwag();
 				}
 				if (Statics.isSuperD)
 					logIter.remove();
@@ -328,6 +329,7 @@ public class WorldOne extends Table {
 			}
 			if (enemyLog.getBounds().overlaps(motherDoge.getBounds())) {
 				if (!Statics.playerJump) {
+					spawnDogePow();
 					if (enemyLog.getX() > motherDoge.getX()) {
 						if (enemyLog.getY() > motherDoge.getY())
 							enemyLog.playerHit(true, true);
@@ -341,7 +343,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					//spawnDogeSwag();
+					spawnDogeSwag();
 				}
 				if (Statics.isSuperD)
 					logIter.remove();
@@ -362,6 +364,7 @@ public class WorldOne extends Table {
 			if (enemyBee.getBounds().overlaps(motherDoge.getBounds())) {
 				if (!Statics.playerJump && !Statics.playerHitByBee) {
 					beeIter.remove();
+					spawnDogePow();
 					floatingGroup.addActor(enemyBee);
 					inBetweenGroup.removeActor(enemyBee);
 					if (enemyBee.getX() > motherDoge.getX()) {
@@ -377,7 +380,7 @@ public class WorldOne extends Table {
 					}
 				}
 				if (Statics.playerJump) {
-					//spawnDogeSwag();
+					spawnDogeSwag();
 				}
 			}
 
@@ -445,19 +448,24 @@ public class WorldOne extends Table {
 
 	}
 
-//	private void spawnDogeSwag() {
-//		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
-//		dogeOnHitEffects.add(dogeOnHitEffect);
-//		dogeOnHitEffect.playerGotSwag();
-//		floatingGroup.addActor(dogeOnHitEffect);
-//	}
-//
-//	private void spawnDogePow() {
-//		DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX, MotherDoge.playerY);
-//		dogeOnHitEffects.add(dogeOnHitEffect);
-//		dogeOnHitEffect.playerGotHit();
-//		floatingGroup.addActor(dogeOnHitEffect);
-//	}
+	private void spawnDogeSwag() {
+		if (!Statics.playerGotSwag) {
+			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX+ Assets.character.getRegionHeight(), MotherDoge.playerY + Assets.character.getRegionWidth());
+			dogeOnHitEffects.add(dogeOnHitEffect);
+			dogeOnHitEffect.playerGotSwag();
+			floatingGroup.addActor(dogeOnHitEffect);
+		}
+	}
+
+	private void spawnDogePow() {
+		if (!Statics.playerGotPow) {
+			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX + Assets.character.getRegionHeight(), MotherDoge.playerY
+					+ Assets.character.getRegionWidth());
+			dogeOnHitEffects.add(dogeOnHitEffect);
+			dogeOnHitEffect.playerGotHit();
+			floatingGroup.addActor(dogeOnHitEffect);
+		}
+	}
 
 	private void spawnDogeBiscuit() {
 		float yPos = 0 + (int) (Math.random() * 460);

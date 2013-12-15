@@ -49,15 +49,11 @@ public class OptionsScreen implements Screen {
 		winOverlay = new WindowOverlay();
 		stage = new Stage();
 		inputMultiplexer = new InputMultiplexer(stage);
-		if (Gdx.app.getType() != Gdx.app.getType().WebGL) {
-//			isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-//			isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-//			isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
-		} else {
-			isSoundOn = 1;
-			isMusicOn = 1;
-			isVibrationOn = 1;
-		}
+
+		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+		isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+
 		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMusicOn: " + isMusicOn + " isVibrationOn " + isVibrationOn);
 	}
 
@@ -262,8 +258,8 @@ public class OptionsScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-//						if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-//							DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
+
+						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}
@@ -346,7 +342,7 @@ public class OptionsScreen implements Screen {
 
 	@Override
 	public void dispose() {
-	
+		stage.dispose();
 		this.dispose();
 	}
 

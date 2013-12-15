@@ -166,10 +166,9 @@ public class WorldTerminal implements Screen {
 							&& event.getStageY() <= desiredHeight) {
 						Statics.state = GameState.Running;
 						pauseGroup.remove();
-						// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-						// DogeDashCore.db.updateSettings(new Settings(1,
-						// OptionsScreen.isSoundOn, OptionsScreen.isMusicOn,
-						// OptionsScreen.isVibrationOn));
+
+						DogeDashCore.db
+								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
 
 					}
 
@@ -240,10 +239,9 @@ public class WorldTerminal implements Screen {
 					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
 							&& event.getStageY() <= desiredHeight) {
 						stage.removeListener(this);
-						// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-						// DogeDashCore.db.updateSettings(new Settings(1,
-						// OptionsScreen.isSoundOn, OptionsScreen.isMusicOn,
-						// OptionsScreen.isVibrationOn));
+
+						DogeDashCore.db
+								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 
 					}
@@ -533,16 +531,13 @@ public class WorldTerminal implements Screen {
 	}
 
 	private void updateHighscore() {
-		// if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-		// if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty,
-		// tableName).getHighScore() < GamePoints.finalScore())) {
-		// DogeDashCore.db.updateLevelHighscore(
-		// new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty,
-		// GamePoints.finalScore(), GamePoints.bonusPointStatic,
-		// GamePoints.currentScore, GamePoints.puppyCaughtNum,
-		// GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
-		// Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
-		// }
+
+		if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore() < GamePoints.finalScore())) {
+			DogeDashCore.db.updateLevelHighscore(
+					new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty, GamePoints.finalScore(), GamePoints.bonusPointStatic,
+							GamePoints.currentScore, GamePoints.puppyCaughtNum, GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
+			Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
+		}
 
 	}
 

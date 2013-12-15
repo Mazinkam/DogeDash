@@ -264,15 +264,15 @@ public class HighscoresScreen implements Screen {
 				imageLevel1.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageLevel1.addAction(completeAction);
 
-//				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
-//				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
-//				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
-//
-//				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
-//				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
-//				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
-//				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
-//				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
+				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(levelNum, tableName).getHighScore());
+				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
+				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(++levelNum, tableName).getHighScore());
+
+				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 			}
 		});
 
@@ -302,15 +302,15 @@ public class HighscoresScreen implements Screen {
 				imageLevel2.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageLevel2.addAction(completeAction);
 
-//				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(1, "levelNight").getHighScore());
-//				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(2, "levelNight").getHighScore());
-//				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(3, "levelNight").getHighScore());
-//
-//				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
-//				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
-//				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
-//				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
-//				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
+				easyHighscore.setText("" + DogeDashCore.db.getLevelHighscore(1, "levelNight").getHighScore());
+				normalHighscore.setText("" + DogeDashCore.db.getLevelHighscore(2, "levelNight").getHighScore());
+				hardHighscore.setText("" + DogeDashCore.db.getLevelHighscore(3, "levelNight").getHighScore());
+
+				chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+				chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+				chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+				chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+				chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 
 			}
 		});
@@ -369,11 +369,11 @@ public class HighscoresScreen implements Screen {
 				imageEasyHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageEasyHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-//					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
-//					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
-//					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
-//					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
-//					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});
@@ -399,11 +399,11 @@ public class HighscoresScreen implements Screen {
 				imageNormalHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageNormalHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-//					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
-//					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
-//					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
-//					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
-//					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});
@@ -429,11 +429,11 @@ public class HighscoresScreen implements Screen {
 				imageHardHighscore.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
 				imageHardHighscore.addAction(completeAction);
 				if (levelNum > 0) {
-//					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
-//					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
-//					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
-//					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
-//					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
+					chosenTime.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getTimeAlive());
+					chosenStyle.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getStylePoints());
+					chosenCaughtPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getCaughtPuppyNum());
+					chosenMissedPups.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getMissedPuppyNum());
+					chosenPupPoints.setText("" + DogeDashCore.db.getLevelHighscore(difficultyNum, tableName).getPuppyPoints());
 				}
 			}
 		});

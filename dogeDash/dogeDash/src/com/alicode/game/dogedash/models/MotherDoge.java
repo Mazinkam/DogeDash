@@ -174,7 +174,7 @@ public class MotherDoge extends Actor {
 
 	public void startJump() {
 		if (!Statics.isSuperD && !Statics.playerJump && Statics.playerJumpCooldown < 0) {
-			playerZ = 50;
+			playerZ = 80;
 			Statics.playerJump = true;
 		}
 
@@ -214,6 +214,7 @@ public class MotherDoge extends Actor {
 
 			if (MotherDoge.playerY >= 390)
 				MotherDoge.playerY = 390;
+			
 			if (MotherDoge.playerY <= 0)
 				MotherDoge.playerY = 0;
 

@@ -17,9 +17,9 @@ public class Statics {
 	public static boolean gameVibration;
 
 	// game play vars
-	public static float backgroundSpeed = 4;
-	public static float enemySpeed = 6;
-	public static float puppySpeed = 6;
+	public static float backgroundSpeed = 5;
+	public static float enemySpeed = 7;
+	public static float puppySpeed = 7;
 
 	public static boolean cleanseEnemies = false;
 
@@ -30,6 +30,10 @@ public class Statics {
 	public static boolean bushesAlive = true;
 	public static boolean flowersAlive = true;
 	public static boolean objectsAlive = true;
+
+	public static int easyMaxEnemies = 10;
+	public static int normalMaxEnemies = 10;
+	public static int hardMaxEnemies = 10;
 
 	public static int puddleTimer = 400;
 	public static int logTimer = 600;
@@ -44,9 +48,13 @@ public class Statics {
 	public static boolean playerHitByPuddle = false;
 	public static boolean playerHitByLog = false;
 	public static boolean playerHitAnimation = false;
+
+	public static boolean playerGotSwag = false;
+	public static boolean playerGotPow = false;
+
 	public static float playerX, playerY, playerZ;
 	public static int superDogeTimer = 200;
-	public static int playerJumpCooldown = 100;
+	public static int playerJumpCooldown = 60;
 
 	public static int beesOnPlayer = 0;
 
@@ -82,15 +90,18 @@ public class Statics {
 		playerHitByPuddle = false;
 		playerHitByLog = false;
 		playerHitAnimation = false;
-		backgroundSpeed = 4;
-		enemySpeed = 6;
-		puppySpeed = 6;
+
+		playerGotSwag = false;
+		playerGotPow = false;
+
+		backgroundSpeed = 5;
+		enemySpeed = 7;
+		puppySpeed = 7;
 		puddleTimer = 0;
 		logTimer = 0;
 		if (Statics.isSuperD)
 			superDogeTimer = 0;
 
-		
 		enemiesAlive = false;
 		puppiesAlive = false;
 		bushesAlive = false;
@@ -102,9 +113,9 @@ public class Statics {
 	}
 
 	public static void SuperDogeMode() {
-		backgroundSpeed = 8;
-		enemySpeed = 12;
-		puppySpeed = 12;
+		backgroundSpeed = 9;
+		enemySpeed = 13;
+		puppySpeed = 13;
 		puddleTimer = 0;
 		logTimer = 0;
 	}

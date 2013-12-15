@@ -98,7 +98,7 @@ public class DogeBiscuit extends Actor {
 	private void updateTrail(SpriteBatch batch) {
 		dogeBiscuitTrail.start();
 
-		dogeBiscuitTrail.setPosition(getX() + Assets.chowcoin.getRegionWidth(), getY());
+		dogeBiscuitTrail.setPosition(getX() + Assets.chowcoin.getRegionWidth(), getY() + 40);
 
 		dogeBiscuitTrail.draw(batch);
 		dogeBiscuitTrail.update(Gdx.graphics.getDeltaTime());

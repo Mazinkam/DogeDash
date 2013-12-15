@@ -113,10 +113,10 @@ public class CustomizationScreen implements Screen {
 		motherDoge = new MotherDoge();
 		inputMultiplexer = new InputMultiplexer(stage);
 
-//		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
-//		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
-//		headCostumeList = DogeDashCore.db.getCostumeList("headTable");
-//		eyesCostumeList = DogeDashCore.db.getCostumeList("eyesTable");
+		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
+		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
+		headCostumeList = DogeDashCore.db.getCostumeList("headTable");
+		eyesCostumeList = DogeDashCore.db.getCostumeList("eyesTable");
 
 		noseButton = new Actor();
 		eyesButton = new Actor();
@@ -193,10 +193,10 @@ public class CustomizationScreen implements Screen {
 	}
 
 	public void updateDatabaseItems() {
-//		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
-//		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
-//		headCostumeList = DogeDashCore.db.getCostumeList("headTable");
-//		eyesCostumeList = DogeDashCore.db.getCostumeList("eyesTable");
+		backCostumeList = DogeDashCore.db.getCostumeList("backTable");
+		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
+		headCostumeList = DogeDashCore.db.getCostumeList("headTable");
+		eyesCostumeList = DogeDashCore.db.getCostumeList("eyesTable");
 
 		Gdx.app.log(DogeDashCore.LOG, "------------------------------------------------------------------------------------------------");
 		for (Costume obj : backCostumeList) {
@@ -228,8 +228,8 @@ public class CustomizationScreen implements Screen {
 			Gdx.app.log(DogeDashCore.LOG, log);
 		}
 		Gdx.app.log(DogeDashCore.LOG, "------------------------------------------------------------------------------------------------");
-//
-//		dogeCoins.setText("" + DogeDashCore.db.getMisc(1).getDogeCoins());
+		//
+		dogeCoins.setText("" + DogeDashCore.db.getMisc(1).getDogeCoins());
 
 	}
 
@@ -346,7 +346,7 @@ public class CustomizationScreen implements Screen {
 		motherDoge.setX(60);
 		motherDoge.setY(240);
 
-//		dogeCoins = new GameText(640, 428, DogeDashCore.db.getMisc(1).getDogeCoins() + "");
+		dogeCoins = new GameText(640, 428, DogeDashCore.db.getMisc(1).getDogeCoins() + "");
 
 	}
 
@@ -602,11 +602,11 @@ public class CustomizationScreen implements Screen {
 			imageCurrentBuyingBox.setX(370);
 			imageCurrentBuyingBox.setY(290);
 
-//			leftOverInt = DogeDashCore.db.getMisc(1).getDogeCoins() - currentItemList.get(itemId).getItemPrice();
-//			selectedItem = new GameText(500, 275, "" + currentItemList.get(itemId).getItemPrice());
-//			currentDogeCoins = new GameText(500, 225, "" + DogeDashCore.db.getMisc(1).getDogeCoins());
-//			leftOverCoins = new GameText(500, 175, "" + leftOverInt);
-//			shopItemNameText = new GameText(322, 390, "" + currentItemList.get(itemId).getItemName());
+			leftOverInt = DogeDashCore.db.getMisc(1).getDogeCoins() - currentItemList.get(itemId).getItemPrice();
+			selectedItem = new GameText(500, 275, "" + currentItemList.get(itemId).getItemPrice());
+			currentDogeCoins = new GameText(500, 225, "" + DogeDashCore.db.getMisc(1).getDogeCoins());
+			leftOverCoins = new GameText(500, 175, "" + leftOverInt);
+			shopItemNameText = new GameText(322, 390, "" + currentItemList.get(itemId).getItemName());
 
 			if (leftOverInt < 0)
 				leftOverCoins.setColor(Color.RED);
@@ -682,32 +682,32 @@ public class CustomizationScreen implements Screen {
 
 	private void buyItem(int currentItemId) {
 
-//		switch (state) {
-//		case Back:
-//			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-//					.getItemPrice()), "backTable");
-//			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
-//			break;
-//		case Eyes:
-//			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-//					.getItemPrice()), "eyesTable");
-//			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
-//			break;
-//		case Head:
-//			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-//					.getItemPrice()), "headTable");
-//			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
-//			break;
-//		case Nose:
-//			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-//					.getItemPrice()), "noseTable");
-//			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
-//			break;
-//		}
-//
-//		DogeDashCore.db.updateMisc(new Misc(1, leftOverInt));
-//		removeActors();
-//		Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
+		switch (state) {
+		case Back:
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
+					.getItemPrice()), "backTable");
+			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
+			break;
+		case Eyes:
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
+					.getItemPrice()), "eyesTable");
+			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
+			break;
+		case Head:
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
+					.getItemPrice()), "headTable");
+			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
+			break;
+		case Nose:
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
+					.getItemPrice()), "noseTable");
+			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
+			break;
+		}
+
+		DogeDashCore.db.updateMisc(new Misc(1, leftOverInt));
+		removeActors();
+		Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
 
 	}
 
@@ -742,10 +742,10 @@ public class CustomizationScreen implements Screen {
 				if ((keycode == Keys.ESCAPE) || (keycode == Keys.BACK)) {
 					if (menuState == MenuState.Ready)
 						game.setScreen(new MenuScreen(game));
-					if (menuState == MenuState.Buying){
+					if (menuState == MenuState.Buying) {
 						removeActorsOnDemand();
 						menuState = MenuState.Ready;
-						
+
 					}
 				}
 

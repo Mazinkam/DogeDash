@@ -201,8 +201,8 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-							game.setScreen(new HighscoresScreen(game));
+
+						game.setScreen(new HighscoresScreen(game));
 						return true;
 					}
 				};
@@ -224,8 +224,8 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						if (Gdx.app.getType() != Gdx.app.getType().WebGL)
-							game.setScreen(new CustomizationScreen(game));
+
+						game.setScreen(new CustomizationScreen(game));
 						return true;
 					}
 				};
