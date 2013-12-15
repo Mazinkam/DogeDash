@@ -36,7 +36,9 @@ public class Statics {
 	public static int hardMaxEnemies = 10;
 
 	public static int puddleTimer = 400;
-	public static int logTimer = 600;
+	public static int logTimerInit = 3000;
+	public static int logTimer = logTimerInit;
+
 
 	// player vars
 	public static boolean isSuperD = false;

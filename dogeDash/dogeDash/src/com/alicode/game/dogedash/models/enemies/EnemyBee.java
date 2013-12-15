@@ -131,21 +131,20 @@ public class EnemyBee extends Actor {
 					return true;
 				}
 			};
-			addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)),
-					completeAction));
+			addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)), completeAction));
 		}
 
 		if (Statics.isSuperD) {
 			clearActions();
 			hitByTheD = true;
 			if (front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
 			if (front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
 			if (!front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
 			if (!front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
 		}
 
 	}

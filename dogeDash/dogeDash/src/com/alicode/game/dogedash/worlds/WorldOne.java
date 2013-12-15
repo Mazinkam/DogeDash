@@ -61,6 +61,8 @@ public class WorldOne extends Table {
 	private float dogeCoinRespawnTime, dogeCoinRespawnCooldown;
 	private float dogeBiscuitRespawnTime, dogeBiscuitRespawnCooldown;
 
+	private int levelEnemyLimit;
+
 	public WorldOne() {
 		setBounds(0, 0, 800, 480);
 		setClip(true);
@@ -112,6 +114,18 @@ public class WorldOne extends Table {
 		enemyLogRespawnCooldown = 4000000000f;
 		enemyMudRespawnCooldown = 3000000000f;
 		enemyPuddleRespawnCooldown = 10000000000f;
+
+		switch (Statics.gameLevelDifficulty) {
+		case 1:
+			levelEnemyLimit = Statics.easyMaxEnemies;
+			break;
+		case 2:
+			levelEnemyLimit = Statics.normalMaxEnemies;
+			break;
+		case 3:
+			levelEnemyLimit = Statics.hardMaxEnemies;
+			break;
+		}
 
 	}
 
@@ -354,7 +368,6 @@ public class WorldOne extends Table {
 
 	private void updateBees() {
 		Iterator<EnemyBee> beeIter = enemyBees.iterator();
-		// Gdx.app.log(DogeDashCore.LOG, "enemyBees " + enemyBees.size);
 		while (beeIter.hasNext()) {
 			EnemyBee enemyBee = beeIter.next();
 			if (enemyBee.getBounds().x + enemyBee.getWidth() < 0) {
@@ -450,7 +463,7 @@ public class WorldOne extends Table {
 
 	private void spawnDogeSwag() {
 		if (!Statics.playerGotSwag) {
-			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX+ Assets.character.getRegionHeight(), MotherDoge.playerY + Assets.character.getRegionWidth());
+			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX + Assets.character.getRegionHeight(), MotherDoge.playerY + Assets.character.getRegionWidth());
 			dogeOnHitEffects.add(dogeOnHitEffect);
 			dogeOnHitEffect.playerGotSwag();
 			floatingGroup.addActor(dogeOnHitEffect);
@@ -459,8 +472,7 @@ public class WorldOne extends Table {
 
 	private void spawnDogePow() {
 		if (!Statics.playerGotPow) {
-			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX + Assets.character.getRegionHeight(), MotherDoge.playerY
-					+ Assets.character.getRegionWidth());
+			DogeOnHitEffect dogeOnHitEffect = new DogeOnHitEffect(MotherDoge.playerX + Assets.character.getRegionHeight(), MotherDoge.playerY + Assets.character.getRegionWidth());
 			dogeOnHitEffects.add(dogeOnHitEffect);
 			dogeOnHitEffect.playerGotHit();
 			floatingGroup.addActor(dogeOnHitEffect);
@@ -469,7 +481,7 @@ public class WorldOne extends Table {
 
 	private void spawnDogeBiscuit() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		DogeBiscuit dogeBiscuit = new DogeBiscuit(getWidth() + yPos, yPos);
+		DogeBiscuit dogeBiscuit = new DogeBiscuit(getWidth() + yPos*2, yPos);
 		dogeBiscuits.add(dogeBiscuit);
 		inBetweenGroup.addActor(dogeBiscuit);
 		dogeBiscuitDelta = TimeUtils.nanoTime();
@@ -478,7 +490,7 @@ public class WorldOne extends Table {
 
 	private void spawnDogeCoin() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		DogeCoin dogeCoin = new DogeCoin(getWidth() + yPos, yPos);
+		DogeCoin dogeCoin = new DogeCoin(getWidth() + yPos*2, yPos);
 		dogeCoins.add(dogeCoin);
 		inBetweenGroup.addActor(dogeCoin);
 		dogeCoinDelta = TimeUtils.nanoTime();
@@ -487,7 +499,7 @@ public class WorldOne extends Table {
 
 	private void spawnFlower() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		Flower flower = new Flower(getWidth() + yPos, yPos);
+		Flower flower = new Flower(getWidth() + yPos*2, yPos);
 		flowers.add(flower);
 		backgroundGroup.addActor(flower);
 		flowerDelta = TimeUtils.nanoTime();
@@ -496,7 +508,7 @@ public class WorldOne extends Table {
 
 	private void spawnBush() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		Bush bush = new Bush(getWidth() + yPos, yPos);
+		Bush bush = new Bush(getWidth() + yPos*2, yPos);
 		bushes.add(bush);
 		floatingGroup.addActor(bush);
 		bushDelta = TimeUtils.nanoTime();
@@ -505,7 +517,7 @@ public class WorldOne extends Table {
 
 	private void spawnPup() {
 		float yPos = 10 + (int) (Math.random() * 460);
-		Puppy puppy = new Puppy(getWidth() + yPos, yPos);
+		Puppy puppy = new Puppy(getWidth() + yPos*2, yPos);
 		puppies.add(puppy);
 		inBetweenGroup.addActor(puppy);
 		puppyDelta = TimeUtils.nanoTime();
@@ -513,16 +525,19 @@ public class WorldOne extends Table {
 	}
 
 	private void spawnBee() {
-		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyBee enemyBee = new EnemyBee(getWidth() + yPos, yPos);
-		enemyBees.add(enemyBee);
-		inBetweenGroup.addActor(enemyBee);
-		enemyDelta = TimeUtils.nanoTime();
+		if (enemyBees.size <= levelEnemyLimit) {
+			float yPos = 0 + (int) (Math.random() * 460);
+
+			EnemyBee enemyBee = new EnemyBee(getWidth() + yPos*2, yPos);
+			enemyBees.add(enemyBee);
+			inBetweenGroup.addActor(enemyBee);
+			enemyDelta = TimeUtils.nanoTime();
+		}
 	}
 
 	private void spawnPuddle() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyPuddle enemyPuddle = new EnemyPuddle(getWidth() + yPos, yPos);
+		EnemyPuddle enemyPuddle = new EnemyPuddle(getWidth() + yPos*2, yPos);
 		enemyPuddles.add(enemyPuddle);
 		onGroundGroup.addActor(enemyPuddle);
 		enemyPuddleDelta = TimeUtils.nanoTime();
@@ -531,7 +546,7 @@ public class WorldOne extends Table {
 
 	private void spawnMud() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyMud enemyMud = new EnemyMud((getWidth() + yPos), yPos);
+		EnemyMud enemyMud = new EnemyMud(getWidth() + yPos*2, yPos);
 		enemyMuds.add(enemyMud);
 		onGroundGroup.addActor(enemyMud);
 		enemyMudDelta = TimeUtils.nanoTime();
@@ -540,7 +555,7 @@ public class WorldOne extends Table {
 
 	private void spawnLog() {
 		float yPos = 0 + (int) (Math.random() * 460);
-		EnemyLog enemyLog = new EnemyLog(getWidth() + yPos, yPos);
+		EnemyLog enemyLog = new EnemyLog(getWidth() + yPos*2, yPos);
 		enemyLogs.add(enemyLog);
 		inBetweenGroup.addActor(enemyLog);
 		enemyLogDelta = TimeUtils.nanoTime();

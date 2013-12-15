@@ -53,8 +53,8 @@ public class WorldTerminal implements Screen {
 
 	private WindowOverlay readyOverlay, gameoverOverlay, pauseOverlay;
 	private DogeDashCore game;
-	private Image imageGameOver, imageTime, imageStylePoints, imagePuppyCaught, imagePuppyMissed, imagePuppyPoints, imageDogeCoins, imageTotalScore,
-			imageRetry, imageBack, imagePauseButton, imagePauseResume, imagePauseMenu, imagePauseMusic, imagePauseSound, imagePauseVibration;
+	private Image imageGameOver, imageTime, imageStylePoints, imagePuppyCaught, imagePuppyMissed, imagePuppyPoints, imageDogeCoins, imageTotalScore, imageRetry, imageBack, imagePauseButton,
+			imagePauseResume, imagePauseMenu, imagePauseMusic, imagePauseSound, imagePauseVibration;
 
 	private GameText textInto, textTime, textStylePoints, textPuppyCaught, textPuppyMissed, textPuppyPoints, textDogeCoins, textTotalScore;
 
@@ -162,13 +162,11 @@ public class WorldTerminal implements Screen {
 					float desiredWidth = imagePauseResume.getX() + imagePauseResume.getImageWidth();
 					float desiredHeight = imagePauseResume.getY() + imagePauseResume.getImageHeight();
 
-					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-							&& event.getStageY() <= desiredHeight) {
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 						Statics.state = GameState.Running;
 						pauseGroup.remove();
 
-						DogeDashCore.db
-								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+						DogeDashCore.db.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
 
 					}
 
@@ -178,8 +176,7 @@ public class WorldTerminal implements Screen {
 					desiredWidth = imagePauseSound.getX() + imagePauseSound.getImageWidth();
 					desiredHeight = imagePauseSound.getY() + imagePauseSound.getImageHeight();
 
-					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-							&& event.getStageY() <= desiredHeight) {
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 						OptionsScreen.isSoundOn ^= 1;
 						if (OptionsScreen.isSoundOn == 1) {
 							tempDrawable = new TextureRegionDrawable(Assets.pauseSoundOn);
@@ -196,8 +193,7 @@ public class WorldTerminal implements Screen {
 					desiredWidth = imagePauseMusic.getX() + imagePauseMusic.getImageWidth();
 					desiredHeight = imagePauseMusic.getY() + imagePauseMusic.getImageHeight();
 
-					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-							&& event.getStageY() <= desiredHeight) {
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 						OptionsScreen.isMusicOn ^= 1;
 						if (OptionsScreen.isMusicOn == 1) {
 							tempDrawable = new TextureRegionDrawable(Assets.pauseMusicOn);
@@ -217,8 +213,7 @@ public class WorldTerminal implements Screen {
 					desiredWidth = imagePauseVibration.getX() + imagePauseVibration.getImageWidth();
 					desiredHeight = imagePauseVibration.getY() + imagePauseVibration.getImageHeight();
 
-					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-							&& event.getStageY() <= desiredHeight) {
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 						OptionsScreen.isVibrationOn ^= 1;
 						if (OptionsScreen.isVibrationOn == 1) {
 							tempDrawable = new TextureRegionDrawable(Assets.pauseVibrationOn);
@@ -236,12 +231,10 @@ public class WorldTerminal implements Screen {
 					desiredWidth = imagePauseMenu.getX() + imagePauseMenu.getImageWidth();
 					desiredHeight = imagePauseMenu.getY() + imagePauseMenu.getImageHeight();
 
-					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-							&& event.getStageY() <= desiredHeight) {
+					if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 						stage.removeListener(this);
 
-						DogeDashCore.db
-								.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
+						DogeDashCore.db.updateSettings(new Settings(1, OptionsScreen.isSoundOn, OptionsScreen.isMusicOn, OptionsScreen.isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 
 					}
@@ -447,8 +440,7 @@ public class WorldTerminal implements Screen {
 				float desiredWidth = textInto.getX() + 800;
 				float desiredHeight = textInto.getY() + 20;
 
-				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-						&& event.getStageY() <= desiredHeight) {
+				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 					Statics.state = GameState.Running;
 					Statics.createLife();
 					readyGroup.remove();
@@ -472,21 +464,19 @@ public class WorldTerminal implements Screen {
 				float desiredWidth = imageBack.getX() + imageBack.getWidth();
 				float desiredHeight = imageBack.getY() + imageBack.getHeight();
 
-				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-						&& event.getStageY() <= desiredHeight) {
+				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 
 					GameAudio.dogeBark();
 					imageBack.clearActions();
-					imageBack.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-							new Action() {
-								public boolean act(float delta) {
+					imageBack.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), new Action() {
+						public boolean act(float delta) {
 
-									game.setScreen(new WorldSelection(game));
+							game.setScreen(new WorldSelection(game));
 
-									return true;
-								}
+							return true;
+						}
 
-							})));
+					})));
 					stage.removeListener(this);
 				}
 
@@ -496,21 +486,19 @@ public class WorldTerminal implements Screen {
 				desiredWidth = imageRetry.getX() + imageRetry.getWidth();
 				desiredHeight = imageRetry.getY() + imageRetry.getHeight();
 
-				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth
-						&& event.getStageY() <= desiredHeight) {
+				if (event.getStageX() >= desiredX && event.getStageY() >= desiredY && event.getStageX() <= desiredWidth && event.getStageY() <= desiredHeight) {
 
 					GameAudio.dogeBark();
 					imageRetry.clearActions();
-					imageRetry.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-							new Action() {
-								public boolean act(float delta) {
-									Statics.cleanSlate();
-									gameoverGroup.remove();
-									defineReady();
-									Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
-									return true;
-								}
-							})));
+					imageRetry.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), new Action() {
+						public boolean act(float delta) {
+							Statics.cleanSlate();
+							gameoverGroup.remove();
+							defineReady();
+							Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
+							return true;
+						}
+					})));
 
 					stage.removeListener(this);
 				}
@@ -533,9 +521,8 @@ public class WorldTerminal implements Screen {
 	private void updateHighscore() {
 
 		if ((DogeDashCore.db.getLevelHighscore(Statics.gameLevelDifficulty, tableName).getHighScore() < GamePoints.finalScore())) {
-			DogeDashCore.db.updateLevelHighscore(
-					new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty, GamePoints.finalScore(), GamePoints.bonusPointStatic,
-							GamePoints.currentScore, GamePoints.puppyCaughtNum, GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
+			DogeDashCore.db.updateLevelHighscore(new com.alicode.game.dogedash.sql.Level(Statics.gameLevelDifficulty, GamePoints.finalScore(), GamePoints.bonusPointStatic, GamePoints.currentScore,
+					GamePoints.puppyCaughtNum, GamePoints.puppyMissedNum, GamePoints.puppyPoints()), tableName);
 			Gdx.app.log(DogeDashCore.LOG, "Updated Highscore!");
 		}
 
