@@ -82,8 +82,8 @@ public class MotherDoge extends Actor {
 
 		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
+		// if (Statics.gameLevel == 2)
+		// setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class MotherDoge extends Actor {
 		if (!Statics.isSuperD) {
 			frame = dogeWalkAnimation.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
 
-			if (Statics.beesOnPlayer > 2)
+			if (Statics.enemiesOnPlayer > 2)
 				frame = dogeWalkHitAnimation.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
 
 			if (Statics.playerHitByBee || Statics.playerHitAnimation) {
@@ -117,13 +117,13 @@ public class MotherDoge extends Actor {
 			}
 			if (Statics.playerJump && Statics.state == GameState.Running) {
 				frame = Assets.characterJump;
+
 			}
 
 			if (Statics.state == GameState.GameOver) {
 				frame = Assets.characterDie;
 			}
-			batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(),
-					frame.getRegionHeight(), 1, 1, getRotation());
+			batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
 			if (Statics.playerHitByPuddle)
 				updateWaterParticles(batch);
 			if (Statics.playerHitByMud)
@@ -132,12 +132,15 @@ public class MotherDoge extends Actor {
 		if (Statics.isSuperD) {
 			Statics.cleanseEnemies = true;
 			frame = dogeSuperD.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
-			batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(),
-					frame.getRegionHeight(), 1, 1, getRotation());
+			batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
 
 			frame = dogeSuperDEffect.getKeyFrame(dogeWalkAnimationState += Gdx.graphics.getDeltaTime() / 2, true);
-			batch.draw(frame, getX() - 170, getY() - 100, frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(),
-					frame.getRegionHeight(), 1, 1, getRotation());
+			batch.draw(frame, getX() - 170, getY() - 100, frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
+		}
+		if (Statics.gameLevel == 2 && Statics.dogeLampActive) {
+			frame = Assets.shield;
+
+			batch.draw(frame, getX() - 60, getY() - 100, frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
 		}
 
 	}
@@ -184,7 +187,7 @@ public class MotherDoge extends Actor {
 		if (playerZ >= 0) {
 			Statics.playerJump = true;
 			playerZ--;
-			Statics.playerJumpCooldown = 100;
+			Statics.playerJumpCooldown = Statics.playerJumpCooldownInit;
 
 		} else {
 			Statics.playerJump = false;
@@ -214,7 +217,7 @@ public class MotherDoge extends Actor {
 
 			if (MotherDoge.playerY >= 390)
 				MotherDoge.playerY = 390;
-			
+
 			if (MotherDoge.playerY <= 0)
 				MotherDoge.playerY = 0;
 

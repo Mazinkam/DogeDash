@@ -6,6 +6,7 @@ public class Statics {
 		Ready, Running, Paused, GameOver
 	}
 
+
 	public static GameState state = GameState.Ready;
 
 	// Game vars
@@ -35,13 +36,17 @@ public class Statics {
 	public static int normalMaxEnemies = 10;
 	public static int hardMaxEnemies = 10;
 
-	public static int puddleTimer = 400;
 	public static int logTimerInit = 3000;
-	public static int logTimer = logTimerInit;
+	public static int puddleTimerInit = 400;
 
+	public static int puddleTimer = puddleTimerInit;
+
+	public static int logTimer = logTimerInit;
 
 	// player vars
 	public static boolean isSuperD = false;
+	public static boolean dogeLampActive = false;
+	
 	public static boolean playerJump = false;
 	public static boolean playerHitByBush = false;
 	public static boolean playerHitByBee = false;
@@ -51,14 +56,27 @@ public class Statics {
 	public static boolean playerHitByLog = false;
 	public static boolean playerHitAnimation = false;
 
+	
+	public static int visionReduction = 50;
+	
+	public static final int playerVisionRadiusInit = 1000;
+	
+	public static int playerVisionRadius = playerVisionRadiusInit;
+
 	public static boolean playerGotSwag = false;
 	public static boolean playerGotPow = false;
 
 	public static float playerX, playerY, playerZ;
-	public static int superDogeTimer = 200;
-	public static int playerJumpCooldown = 60;
+	
+	public static int superDogeTimerInit = 800;
+	public static int dogeLampTimerInit = 400;
+	public static int playerJumpCooldownInit = 50;
 
-	public static int beesOnPlayer = 0;
+	public static int superDogeTimer = superDogeTimerInit;
+	public static int dogeLampTimer = dogeLampTimerInit;
+	public static int playerJumpCooldown = playerJumpCooldownInit;
+
+	public static int enemiesOnPlayer = 0;
 
 	// costume vars
 	public static int eyeCostume;
@@ -109,9 +127,10 @@ public class Statics {
 		bushesAlive = false;
 		flowersAlive = false;
 		objectsAlive = false;
+		playerVisionRadius = playerVisionRadiusInit;
 
 		GamePoints.clearTheNumbers();
-		beesOnPlayer = 0;
+		enemiesOnPlayer = 0;
 	}
 
 	public static void SuperDogeMode() {
@@ -120,11 +139,25 @@ public class Statics {
 		puppySpeed = 13;
 		puddleTimer = 0;
 		logTimer = 0;
+		playerJump = false;
+		playerHitByBush = false;
+		playerHitByBee = false;
+		playerHitByPuppy = false;
+		playerHitByMud = false;
+		playerHitByPuddle = false;
+		playerHitByLog = false;
+		playerHitAnimation = false;
+		cleanseEnemies = true;
+		puddleTimer = 0;
+		logTimer = 0;
+		enemiesOnPlayer = 0;
+		//playerVisionRadius = 1000;
 	}
 
 	public static void normalMode() {
 		backgroundSpeed = 4;
 		enemySpeed = 6;
+		playerVisionRadius = 600;
 		puppySpeed = 6;
 	}
 

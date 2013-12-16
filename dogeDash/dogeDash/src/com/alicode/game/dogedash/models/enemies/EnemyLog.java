@@ -29,8 +29,6 @@ public class EnemyLog extends Actor {
 
 		this.x = x;
 
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override

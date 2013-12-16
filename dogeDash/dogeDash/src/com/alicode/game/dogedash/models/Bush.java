@@ -23,8 +23,8 @@ public class Bush extends Actor {
 		chosenType = Assets.gameBush;
 		this.x = x;
 
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
+		// if (Statics.gameLevel == 2)
+		// setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
@@ -52,19 +52,18 @@ public class Bush extends Actor {
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
-		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
-				getRotation());
+		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
 	}
 
 	public void playerHit(boolean front, boolean above) {
 		if (!Statics.isSuperD) {
 
-			if (Statics.beesOnPlayer > 0)
+			if (Statics.enemiesOnPlayer > 0) {
 				Statics.cleanseEnemies = true;
+				Statics.playerVisionRadius = 600;
+			}
 
-			addAction(Actions.sequence(
-					Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))),
-					Actions.removeActor()));
+			addAction(Actions.sequence(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))), Actions.removeActor()));
 		}
 
 		if (Statics.isSuperD) {

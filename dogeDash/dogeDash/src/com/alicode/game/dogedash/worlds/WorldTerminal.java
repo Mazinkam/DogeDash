@@ -412,7 +412,7 @@ public class WorldTerminal implements Screen {
 	}
 
 	private void updatePlayerHealth() {
-		if (Statics.beesOnPlayer >= 4 && Statics.state == GameState.Running) {
+		if (Statics.enemiesOnPlayer >= 4 && Statics.state == GameState.Running) {
 			Statics.state = GameState.GameOver;
 			stage.addActor(gameoverGroup);
 			updateGameoverScore();

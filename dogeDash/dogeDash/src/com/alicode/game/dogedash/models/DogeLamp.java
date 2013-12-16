@@ -13,34 +13,26 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
 
-public class DogeBiscuit extends Actor {
+public class DogeLamp extends Actor {
 
 	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
-	private Animation dogeBiscuitAnim;
-	private float dogeBiscuitAnimState;
-	private Array<TextureRegion> dogeBiscuit;
 	private float x;
 	private ParticleEffect dogeBiscuitTrail;
+	private TextureRegion frame;
 
-	public DogeBiscuit(float x, float y) {
+	public DogeLamp(float x, float y) {
 
-		setWidth(Assets.treat1.getRegionWidth());
-		setHeight(Assets.treat1.getRegionHeight());
+		setWidth(Assets.shield_pickup.getRegionWidth());
+		setHeight(Assets.shield_pickup.getRegionHeight());
 		setPosition(x, y - getHeight() / 2);
-
-		dogeBiscuit = new Array<TextureRegion>();
-		dogeBiscuit.add(Assets.treat1);
-		dogeBiscuit.add(Assets.treat2);
-
-		this.dogeBiscuitAnim = new Animation(0.15f, dogeBiscuit);
 
 		this.x = x;
 
 		addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(10f, 1f))));
 
 		dogeBiscuitTrail = new ParticleEffect();
-		dogeBiscuitTrail.load(Gdx.files.internal("particles/dogeBiscuitTrail"), Gdx.files.internal("particles"));
+		dogeBiscuitTrail.load(Gdx.files.internal("particles/dogeShieldTrail"), Gdx.files.internal("particles"));
 
 	}
 
@@ -50,23 +42,21 @@ public class DogeBiscuit extends Actor {
 			super.act(delta);
 			updateMovement();
 			updateBounds();
-
+			updateLamp();
 		}
-		updateSuperD();
 		if (!Statics.objectsAlive) {
 			this.remove();
 		}
 	}
 
-	private void updateSuperD() {
-		if (Statics.isSuperD) {
-			Statics.superDogeTimer--;
-			if (Statics.superDogeTimer <= 0) {
-				Statics.isSuperD = false;
-				Statics.superDogeTimer = Statics.superDogeTimerInit;
-				Statics.normalMode();
+	private void updateLamp() {
+		if (Statics.dogeLampActive) {
+			Statics.dogeLampTimer--;
+			if (Statics.dogeLampTimer <= 0) {
+				Statics.dogeLampActive = false;
+				Statics.playerVisionRadius += 2000;
+				Statics.dogeLampTimer = Statics.dogeLampTimerInit;
 			}
-			Gdx.app.log(DogeDashCore.LOG, "Statics.superDogeTimer: " + Statics.superDogeTimer + " Statics.isSuperD: " + Statics.isSuperD);
 		}
 
 	}
@@ -79,17 +69,16 @@ public class DogeBiscuit extends Actor {
 
 	public void playerHit() {
 		clearActions();
-		Statics.isSuperD = true;
+		Statics.dogeLampActive = true;
 		disposeTrail();
-		Statics.SuperDogeMode();
-		addAction(Actions.sequence(Actions.fadeOut(0.5f), Actions.removeActor()));
+		addAction(Actions.sequence(Actions.removeActor()));
 	}
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
-		TextureRegion frame = dogeBiscuitAnim.getKeyFrame(dogeBiscuitAnimState += Gdx.graphics.getDeltaTime(), true);
+		frame = Assets.shield_pickup;
 		updateTrail(batch);
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
 	}
@@ -97,7 +86,7 @@ public class DogeBiscuit extends Actor {
 	private void updateTrail(SpriteBatch batch) {
 		dogeBiscuitTrail.start();
 
-		dogeBiscuitTrail.setPosition(getX() + Assets.chowcoin.getRegionWidth(), getY() + 40);
+		dogeBiscuitTrail.setPosition(getX() + Assets.shield_pickup.getRegionWidth()/2, getY()+Assets.shield_pickup.getRegionHeight()/2);
 
 		dogeBiscuitTrail.draw(batch);
 		dogeBiscuitTrail.update(Gdx.graphics.getDeltaTime());
@@ -114,6 +103,7 @@ public class DogeBiscuit extends Actor {
 
 	public void disposeTrail() {
 		dogeBiscuitTrail.dispose();
+		
 
 	}
 

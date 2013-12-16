@@ -3,6 +3,7 @@ package com.alicode.game.dogedash.models.enemies;
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
+import com.alicode.game.dogedash.utils.GameVibrate;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +22,7 @@ public class EnemyMoth extends Actor {
 	private boolean hitPlayer = false;
 	private float enemyX;
 	private Rectangle bounds = new Rectangle();
+	private boolean hitByTheD = false;
 
 	public EnemyMoth(float x, float y) {
 		setWidth(Assets.enemyMoth.getRegionWidth());
@@ -44,7 +46,7 @@ public class EnemyMoth extends Actor {
 			updateMovement();
 			updateBounds();
 		}
-		
+
 		if (!Statics.enemiesAlive) {
 			this.remove();
 		}
@@ -59,7 +61,7 @@ public class EnemyMoth extends Actor {
 	}
 
 	private void normalMovement() {
-		if (!hitPlayer) {
+		if (!hitPlayer && !hitByTheD) {
 			enemyX -= Statics.enemySpeed;
 			addAction(Actions.moveTo(enemyX, getY()));
 		}
@@ -69,8 +71,8 @@ public class EnemyMoth extends Actor {
 	private void stickOnPlayer() {
 		if (hitPlayer && !Statics.cleanseEnemies) {
 			if (!Statics.isSuperD) {
-				float randomX = (MotherDoge.playerX - 100) + (int) (Math.random() * (MotherDoge.playerX + 100));
-				float randomY = (MotherDoge.playerY - 165) + (int) (Math.random() * (MotherDoge.playerY + 160));
+				float randomX = (MotherDoge.playerX - 100) + (int) (Math.random() * (MotherDoge.playerX + 200));
+				float randomY = (MotherDoge.playerY - 120) + (int) (Math.random() * (MotherDoge.playerY + 160));
 
 				addAction(Actions.sequence(Actions.parallel(Actions.rotateTo(-180, 10.1f), Actions.moveTo(randomX, randomY, .9f))));
 			}
@@ -85,23 +87,20 @@ public class EnemyMoth extends Actor {
 				Statics.cleanseEnemies = false;
 				hitPlayer = false;
 				Statics.playerHitByBee = false;
-				Statics.beesOnPlayer--;
-				if (Statics.beesOnPlayer < 0) {
-					Statics.beesOnPlayer = 0;
+				Statics.enemiesOnPlayer--;
+				if (Statics.enemiesOnPlayer < 0) {
+					Statics.enemiesOnPlayer = 0;
 				}
 				this.actor.remove();
-				// Gdx.app.log(DogeDashCore.LOG, "hitPlayer " + hitPlayer +
-				// " Statics.cleanseEnemies " + Statics.cleanseEnemies);
 				return true;
 			}
 		};
 
-		if (Statics.cleanseEnemies && hitPlayer && Statics.beesOnPlayer > 0) {
+		if (Statics.cleanseEnemies && hitPlayer && Statics.enemiesOnPlayer > 0) {
 
 			this.addAction(Actions.sequence(Actions.rotateBy(360f, 1f), completeAction));
 
 		}
-//		Gdx.app.log(DogeDashCore.LOG, "beesOnPlayer " + Statics.beesOnPlayer);
 	}
 
 	@Override
@@ -119,34 +118,34 @@ public class EnemyMoth extends Actor {
 
 	public void playerHit(boolean front, boolean above) {
 		clearActions();
-		hitPlayer = true;
-		Statics.playerHitByBee = true;
-		Statics.beesOnPlayer++;
-		//
-		Action completeAction = new Action() {
-			public boolean act(float delta) {
-				Statics.playerHitByBee = false;
+		if (!Statics.isSuperD) {
+			hitPlayer = true;
+			Statics.playerHitByBee = true;
+			Statics.enemiesOnPlayer++;
+			Statics.playerVisionRadius -= Statics.visionReduction;
+			GameVibrate.vibrate(500);
 
-				return true;
-			}
-		};
-		addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)),
-				completeAction));
+			Action completeAction = new Action() {
+				public boolean act(float delta) {
+					Statics.playerHitByBee = false;
+
+					return true;
+				}
+			};
+			addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-30, 1.5f), Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 1.5f)), completeAction));
+		}
 
 		if (Statics.isSuperD) {
-			// this.addAction(Actions.fadeOut(1f));
+			clearActions();
+			hitByTheD = true;
 			if (front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(-360, 1.5f), Actions.moveBy(200, 200, 1.5f)), Actions.removeActor()));
 			if (front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(360, 1.5f), Actions.moveBy(200, -200, 1.5f)), Actions.removeActor()));
 			if (!front && above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(360, 1.5f), Actions.moveBy(-200, 200, 1.5f)), Actions.removeActor()));
 			if (!front && !above)
-				addAction(Actions.sequence(Actions.parallel(Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), completeAction,
-						Actions.removeActor()));
+				addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1), Actions.rotateBy(-360, 1.5f), Actions.moveBy(-200, -200, 1.5f)), Actions.removeActor()));
 		}
 
 	}

@@ -35,8 +35,8 @@ public class Flower extends Actor {
 
 		addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(10f, 1f), Actions.rotateBy(-10f, 1f))));
 
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
+//		if (Statics.gameLevel == 2)
+//			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
@@ -63,6 +63,7 @@ public class Flower extends Actor {
 
 		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
 				getRotation());
+
 	}
 
 	private void updateBounds() {

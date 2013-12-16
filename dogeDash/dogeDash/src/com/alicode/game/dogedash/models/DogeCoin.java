@@ -32,9 +32,9 @@ public class DogeCoin extends Actor {
 		coinTrail.load(Gdx.files.internal("particles/coinTrail"), Gdx.files.internal("particles"));
 
 		addAction(Actions.repeat(10, Actions.sequence(Actions.rotateBy(20f, 1f))));
-
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
+//
+//		if (Statics.gameLevel == 2)
+//			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override

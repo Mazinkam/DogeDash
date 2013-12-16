@@ -71,8 +71,8 @@ public class EnemyBee extends Actor {
 	private void stickOnPlayer() {
 		if (hitPlayer && !Statics.cleanseEnemies) {
 			if (!Statics.isSuperD) {
-				float randomX = (MotherDoge.playerX - 100) + (int) (Math.random() * (MotherDoge.playerX + 100));
-				float randomY = (MotherDoge.playerY - 165) + (int) (Math.random() * (MotherDoge.playerY + 160));
+				float randomX = (MotherDoge.playerX - 100) + (int) (Math.random() * (MotherDoge.playerX + 200));
+				float randomY = (MotherDoge.playerY - 120) + (int) (Math.random() * (MotherDoge.playerY + 160));
 
 				addAction(Actions.sequence(Actions.parallel(Actions.rotateTo(-180, 10.1f), Actions.moveTo(randomX, randomY, .9f))));
 			}
@@ -87,16 +87,16 @@ public class EnemyBee extends Actor {
 				Statics.cleanseEnemies = false;
 				hitPlayer = false;
 				Statics.playerHitByBee = false;
-				Statics.beesOnPlayer--;
-				if (Statics.beesOnPlayer < 0) {
-					Statics.beesOnPlayer = 0;
+				Statics.enemiesOnPlayer--;
+				if (Statics.enemiesOnPlayer < 0) {
+					Statics.enemiesOnPlayer = 0;
 				}
 				this.actor.remove();
 				return true;
 			}
 		};
 
-		if (Statics.cleanseEnemies && hitPlayer && Statics.beesOnPlayer > 0) {
+		if (Statics.cleanseEnemies && hitPlayer && Statics.enemiesOnPlayer > 0) {
 
 			this.addAction(Actions.sequence(Actions.rotateBy(360f, 1f), completeAction));
 
@@ -121,7 +121,7 @@ public class EnemyBee extends Actor {
 		if (!Statics.isSuperD) {
 			hitPlayer = true;
 			Statics.playerHitByBee = true;
-			Statics.beesOnPlayer++;
+			Statics.enemiesOnPlayer++;
 			GameVibrate.vibrate(500);
 
 			Action completeAction = new Action() {

@@ -48,11 +48,10 @@ public class CustomizationScreen implements Screen {
 		Nose, Eyes, Head, Back
 	}
 
-	private Image imageMenuBg, imageBackButton, imageMenuMomNosePaw, imageMenuMomBody, imageMenuCreamPupBody, imageMenuCreamPupPaw,
-			imageMenuCreamPupPaw2, imageMenuBluePup, imageDogeCoin;
+	private Image imageMenuBg, imageBackButton, imageMenuMomNosePaw, imageMenuMomBody, imageMenuCreamPupBody, imageMenuCreamPupPaw, imageMenuCreamPupPaw2, imageMenuBluePup, imageDogeCoin;
 
-	private Image imageCustomTitle, imageCurrentBox, imageCurrentTab, imageNext, imagePrevious, imageCurrentItemsText, imageShopNo, imageShopYes,
-			imageCurrentCoins, imageNotEnough, imageCurrentBuyingItem, imageCurrentBuyingBox;
+	private Image imageCustomTitle, imageCurrentBox, imageCurrentTab, imageNext, imagePrevious, imageCurrentItemsText, imageShopNo, imageShopYes, imageCurrentCoins, imageNotEnough,
+			imageCurrentBuyingItem, imageCurrentBuyingBox;
 
 	private Image backImagePreview, noseImagePreview, eyesImagePreview, headImagePreview;
 
@@ -645,8 +644,7 @@ public class CustomizationScreen implements Screen {
 						imageNotEnough.setY(330);
 						stage.addActor(imageNotEnough);
 						imageNotEnough.setOrigin(imageNotEnough.getWidth() / 2, imageNotEnough.getHeight() / 2);
-						imageNotEnough.addAction(Actions.repeat(3,
-								Actions.sequence(Actions.scaleBy(0.2f, 0.2f, 0.5f), Actions.scaleBy(-0.2f, -0.2f, 0.5f))));
+						imageNotEnough.addAction(Actions.repeat(3, Actions.sequence(Actions.scaleBy(0.2f, 0.2f, 0.5f), Actions.scaleBy(-0.2f, -0.2f, 0.5f))));
 
 					}
 
@@ -666,9 +664,8 @@ public class CustomizationScreen implements Screen {
 
 			});
 
-			Gdx.app.log(DogeDashCore.LOG, "Menu state: " + menuState + " Doge state: " + state + " table: " + tableName + " image_shopCurrentItem "
-					+ image_shopCurrentItem.size + " currentTextureList " + currentTextureList.size + " shopCurrentItemPriceTag: "
-					+ shopCurrentItemPriceTag.size);
+			Gdx.app.log(DogeDashCore.LOG, "Menu state: " + menuState + " Doge state: " + state + " table: " + tableName + " image_shopCurrentItem " + image_shopCurrentItem.size
+					+ " currentTextureList " + currentTextureList.size + " shopCurrentItemPriceTag: " + shopCurrentItemPriceTag.size);
 
 		}
 	}
@@ -684,23 +681,19 @@ public class CustomizationScreen implements Screen {
 
 		switch (state) {
 		case Back:
-			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-					.getItemPrice()), "backTable");
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt).getItemPrice()), "backTable");
 			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
 			break;
 		case Eyes:
-			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-					.getItemPrice()), "eyesTable");
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt).getItemPrice()), "eyesTable");
 			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
 			break;
 		case Head:
-			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-					.getItemPrice()), "headTable");
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt).getItemPrice()), "headTable");
 			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
 			break;
 		case Nose:
-			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt)
-					.getItemPrice()), "noseTable");
+			DogeDashCore.db.updateCostume(new Costume(currentItemId + 1, currentItemList.get(helpInt).getItemName(), 1, currentItemList.get(helpInt).getItemPrice()), "noseTable");
 			Gdx.app.log(DogeDashCore.LOG, " currentItemId " + currentItemId);
 			break;
 		}

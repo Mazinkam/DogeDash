@@ -12,19 +12,19 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class WindowOverlay extends Actor {
 
-	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
-	
+
 	ShapeRenderer renderer;
 	private float x, y;
 	private float width, height, alpha;
+
 	public WindowOverlay() {
-	       renderer = new ShapeRenderer();
-	       x = 0;
-	       y = 0;
-	       width = 800;
-	       height = 480;
-	       alpha=0.6f;
+		renderer = new ShapeRenderer();
+		x = 0;
+		y = 0;
+		width = 800;
+		height = 480;
+		alpha = 0.6f;
 	}
 
 	public float getX() {
@@ -68,14 +68,14 @@ public class WindowOverlay extends Actor {
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.end();
 		Gdx.gl.glEnable(GL20.GL_BLEND);
-        renderer.begin(ShapeType.FilledRectangle);
-        renderer.setColor(0, 0, 0, alpha);
-        renderer.filledRect(x, y, width, height);
-        renderer.end();
-        batch.begin();
+		renderer.begin(ShapeType.FilledRectangle);
+		renderer.setColor(0, 0, 0, alpha);
+		renderer.filledRect(x, y, width, height);
+		renderer.end();
+		batch.begin();
 	}
-	public void setAlpha( float a)
-	{
+
+	public void setAlpha(float a) {
 		alpha = a;
 	}
 

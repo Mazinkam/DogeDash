@@ -58,8 +58,8 @@ public class Puppy extends Actor {
 		puppyX = x;
 		puppyY = y;
 
-		if (Statics.gameLevel == 2)
-			setColor(0.15f, 0.15f, 0.4f, 1.0f);
+//		if (Statics.gameLevel == 2)
+//			setColor(0.15f, 0.15f, 0.4f, 1.0f);
 	}
 
 	@Override
