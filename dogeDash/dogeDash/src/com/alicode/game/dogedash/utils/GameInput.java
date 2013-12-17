@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.utils;
 
 import com.alicode.game.dogedash.Statics;
+import com.alicode.game.dogedash.models.DogeCostumes;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.InputProcessor;
@@ -13,9 +14,11 @@ public class GameInput implements InputProcessor {
 	private Vector3 touch = new Vector3();
 	private Vector2 vec2Touch = new Vector2();
 	private MotherDoge motherDoge;
+	private DogeCostumes dogeCostumes;
 
-	public GameInput(MotherDoge chosenWorldMother, WorldTerminal worldTerminal) {
+	public GameInput(MotherDoge chosenWorldMother, DogeCostumes dogeCostumes, WorldTerminal worldTerminal) {
 		this.motherDoge = chosenWorldMother;
+		this.dogeCostumes = dogeCostumes;
 		this.worldTerminal = worldTerminal;
 	}
 
@@ -45,7 +48,8 @@ public class GameInput implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
+		if (!Statics.playerHitByLog)
+			motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
 		motherDoge.startJump();
 		return false;
 	}
@@ -59,16 +63,22 @@ public class GameInput implements InputProcessor {
 		vec2Touch.set(touch.x, touch.y);
 
 		if (motherDoge.getY() > touch.y + 40) {
-			if (!Statics.playerHitByLog)
-				motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
+			motherDoge.addAction(Actions.sequence(Actions.rotateTo(-10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
 			motherDoge.normalDogeMovement(110, touch.y);
+			dogeCostumes.normalCostumeMovement(110, touch.y);
+			dogeCostumes.addAction(Actions.sequence(Actions.rotateTo(-10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
+
 		} else if (motherDoge.getY() < touch.y - 40) {
-			if (!Statics.playerHitByLog)
-				motherDoge.addAction(Actions.sequence(Actions.rotateTo(10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
+			motherDoge.addAction(Actions.sequence(Actions.rotateTo(10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
 			motherDoge.normalDogeMovement(110, touch.y);
+			dogeCostumes.normalCostumeMovement(110, touch.y);
+			dogeCostumes.addAction(Actions.sequence(Actions.rotateTo(10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
+
 		} else {
-			if (!Statics.playerHitByLog)
+			if (!Statics.playerHitByLog) {
 				motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
+				dogeCostumes.addAction(Actions.rotateTo(0f, 0.5f));
+			}
 		}
 
 		return false;

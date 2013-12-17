@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.worlds.effects;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.badlogic.gdx.Gdx;
@@ -38,10 +39,10 @@ public class WorldTwoLight extends Actor {
 		ShaderProgram.pedantic = false;
 		finalShader = new ShaderProgram(vertexShader, finalPixelShader);
 
-		frameBuff = new FrameBuffer(Format.RGBA8888, 800, 480, false);
+		frameBuff = new FrameBuffer(Format.RGBA8888, Consts.GAMEWIDTH, Consts.GAMEHEIGHT, false);
 
 		finalShader.begin();
-		finalShader.setUniformf("resolution", 800, 480);
+		finalShader.setUniformf("resolution", Consts.GAMEWIDTH, Consts.GAMEHEIGHT);
 		finalShader.end();
 
 		finalShader.begin();
@@ -59,7 +60,7 @@ public class WorldTwoLight extends Actor {
 	}
 
 	private void updatePositon() {
-		if ((MotherDoge.playerX + Assets.character.getRegionWidth() / 2 )- lightSize /2 > x)
+		if ((MotherDoge.playerX + Assets.character.getRegionWidth() / 2) - lightSize / 2 > x)
 			x++;
 		else
 			x--;

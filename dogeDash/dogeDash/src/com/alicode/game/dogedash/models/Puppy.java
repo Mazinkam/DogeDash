@@ -98,7 +98,8 @@ public class Puppy extends Actor {
 		TextureRegion frame = pupWalkingAnim.getKeyFrame(pupWalkingAnimState += Gdx.graphics.getDeltaTime(), true);
 
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-
+		batch.end();
+		batch.begin();
 	}
 
 	private void updateBounds() {

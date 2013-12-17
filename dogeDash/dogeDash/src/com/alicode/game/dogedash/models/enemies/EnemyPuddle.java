@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models.enemies;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.utils.GameVibrate;
@@ -53,7 +54,7 @@ public class EnemyPuddle extends Actor {
 			Statics.puddleTimer--;
 			if (Statics.puddleTimer <= 0) {
 				Statics.playerHitByPuddle = false;
-				Statics.puddleTimer = Statics.puddleTimerInit;
+				Statics.puddleTimer = Consts.PUDDLE_TIMER;
 			}
 		}
 		if (!Statics.objectsAlive) {

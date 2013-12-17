@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models.enemies;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
@@ -49,7 +50,7 @@ public class EnemyLog extends Actor {
 			Statics.logTimer--;
 			if (Statics.logTimer <= 0) {
 				Statics.playerHitByLog = false;
-				Statics.logTimer = Statics.logTimerInit;
+				Statics.logTimer = Consts.LOG_TIMER;
 			}
 		}
 

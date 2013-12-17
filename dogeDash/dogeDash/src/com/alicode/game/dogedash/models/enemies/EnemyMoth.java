@@ -110,6 +110,7 @@ public class EnemyMoth extends Actor {
 		TextureRegion frame = mothFlyingAnim.getKeyFrame(mothFlyingAnimState += Gdx.graphics.getDeltaTime() * 2, true);
 
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
+		
 	}
 
 	private void updateBounds() {

@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.Statics.GameState;
@@ -124,8 +125,10 @@ public class MotherDoge extends Actor {
 				frame = Assets.characterDie;
 			}
 			batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
+			
 			if (Statics.playerHitByPuddle)
 				updateWaterParticles(batch);
+			
 			if (Statics.playerHitByMud)
 				updateMudParticles(batch);
 		}
@@ -187,7 +190,7 @@ public class MotherDoge extends Actor {
 		if (playerZ >= 0) {
 			Statics.playerJump = true;
 			playerZ--;
-			Statics.playerJumpCooldown = Statics.playerJumpCooldownInit;
+			Statics.playerJumpCooldown = Consts.JUMP_CD;
 
 		} else {
 			Statics.playerJump = false;
@@ -228,7 +231,7 @@ public class MotherDoge extends Actor {
 				MotherDoge.playerX++;
 
 		}
-		addAction(Actions.parallel(Actions.moveTo(playerX, MotherDoge.playerY, 0.5f)));
+		addAction(Actions.parallel(Actions.moveTo(MotherDoge.playerX, MotherDoge.playerY, 0.5f)));
 
 	}
 

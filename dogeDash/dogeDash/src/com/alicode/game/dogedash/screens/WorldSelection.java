@@ -448,7 +448,6 @@ public class WorldSelection implements Screen {
 
 	@Override
 	public void dispose() {
-		this.dispose();
 
 	}
 

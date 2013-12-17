@@ -91,6 +91,8 @@ public class DogeOnHitEffect extends Actor {
 		if (effectActive)
 			batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
 					getRotation());
+		batch.end();
+		batch.begin();
 	}
 
 	private void updateBounds() {

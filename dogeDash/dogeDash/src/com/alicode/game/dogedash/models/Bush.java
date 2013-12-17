@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -53,6 +54,8 @@ public class Bush extends Actor {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
 		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
+		batch.end();
+		batch.begin();
 	}
 
 	public void playerHit(boolean front, boolean above) {
@@ -60,7 +63,7 @@ public class Bush extends Actor {
 
 			if (Statics.enemiesOnPlayer > 0) {
 				Statics.cleanseEnemies = true;
-				Statics.playerVisionRadius = 600;
+				Statics.playerVisionRadius = Consts.PLAYER_VISION;
 			}
 
 			addAction(Actions.sequence(Actions.repeat(10, Actions.sequence(Actions.parallel(Actions.rotateTo(-10f, 0.1f)), Actions.rotateTo(10f, 0.1f))), Actions.removeActor()));

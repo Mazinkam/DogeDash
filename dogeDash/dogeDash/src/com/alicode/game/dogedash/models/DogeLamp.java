@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
@@ -55,7 +56,7 @@ public class DogeLamp extends Actor {
 			if (Statics.dogeLampTimer <= 0) {
 				Statics.dogeLampActive = false;
 				Statics.playerVisionRadius += 2000;
-				Statics.dogeLampTimer = Statics.dogeLampTimerInit;
+				Statics.dogeLampTimer = Consts.LAMP_TIMER;
 			}
 		}
 
@@ -79,8 +80,11 @@ public class DogeLamp extends Actor {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
 		frame = Assets.shield_pickup;
+		
 		updateTrail(batch);
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
+		batch.end();
+		batch.begin();
 	}
 
 	private void updateTrail(SpriteBatch batch) {

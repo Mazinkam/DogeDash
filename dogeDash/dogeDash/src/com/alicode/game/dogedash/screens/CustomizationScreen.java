@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
@@ -18,15 +19,14 @@ import com.alicode.game.dogedash.sql.Costume;
 import com.alicode.game.dogedash.sql.Misc;
 import com.alicode.game.dogedash.utils.txt.GameText;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -116,6 +116,8 @@ public class CustomizationScreen implements Screen {
 		noseCostumeList = DogeDashCore.db.getCostumeList("noseTable");
 		headCostumeList = DogeDashCore.db.getCostumeList("headTable");
 		eyesCostumeList = DogeDashCore.db.getCostumeList("eyesTable");
+		
+		Statics.initCostumes();
 
 		noseButton = new Actor();
 		eyesButton = new Actor();
@@ -829,21 +831,7 @@ public class CustomizationScreen implements Screen {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Action completeAction = new Action() {
-					public boolean act(float delta) {
-						game.setScreen(new MenuScreen(game));
-						return true;
-					}
-				};
-				// //GameAudio.dogeBark();
-				// imageBackButton.setOrigin(imageBackButton.getWidth() / 4,
-				// imageBackButton.getHeight() / 2);
-				// imageBackButton.addAction(sequence(Actions.scaleBy(.1f, 0.1f,
-				// 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				// imageBackButton.addAction((sequence(rotateBy(5, 0.3f,
-				// Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f,
-				// Interpolation.swing),
-				// completeAction)));
+				CustomizationScreen.this.dispose();
 				game.setScreen(new MenuScreen(game));
 			}
 		});
@@ -924,7 +912,7 @@ public class CustomizationScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(800, 480, true);
+		stage.setViewport(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, true);
 		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
 
 	}
@@ -949,8 +937,7 @@ public class CustomizationScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		this.dispose();
-
+		Gdx.app.log(DogeDashCore.LOG, "back " + Statics.backCostume + " eyes: " + Statics.eyeCostume + " head: " + Statics.headCostume + " nose: " + Statics.noseCostume);
 	}
 
 }

@@ -10,6 +10,7 @@ import com.alicode.game.dogedash.models.Background;
 import com.alicode.game.dogedash.models.Bush;
 import com.alicode.game.dogedash.models.DogeBiscuit;
 import com.alicode.game.dogedash.models.DogeCoin;
+import com.alicode.game.dogedash.models.DogeCostumes;
 import com.alicode.game.dogedash.models.DogeLamp;
 import com.alicode.game.dogedash.models.DogeOnHitEffect;
 import com.alicode.game.dogedash.models.Flower;
@@ -36,6 +37,7 @@ public class WorldTwo extends Table {
 
 	private Background background, background2;
 	private MotherDoge motherDoge;
+	private DogeCostumes dogeCostumes;
 	private FPSLogger fpsLog;
 	private GameScore gamePoints;
 
@@ -79,6 +81,7 @@ public class WorldTwo extends Table {
 		background = new Background(0, 0);
 		background2 = new Background(Assets.bg_big_day.getWidth(), 0);
 		motherDoge = new MotherDoge();
+		dogeCostumes = new DogeCostumes();
 
 		puppies = new Array<Puppy>();
 		flowers = new Array<Flower>();
@@ -116,6 +119,7 @@ public class WorldTwo extends Table {
 		backgroundGroup.addActor(background2);
 
 		floatingGroup.addActor(motherDoge);
+		floatingGroup.addActor(dogeCostumes);
 
 		puppyRespawnCooldown = 2000000000f;
 		enemyRespawnCooldown = 2000000000f;
@@ -630,6 +634,14 @@ public class WorldTwo extends Table {
 
 	public void setMotherDoge(MotherDoge motherDoge) {
 		this.motherDoge = motherDoge;
+	}
+
+	public DogeCostumes getDogeCostumes() {
+		return dogeCostumes;
+	}
+
+	public void setDogeCostumes(DogeCostumes dogeCostumes) {
+		this.dogeCostumes = dogeCostumes;
 	}
 
 }

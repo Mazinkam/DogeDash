@@ -82,6 +82,8 @@ public class DogeCoin extends Actor {
 
 		coinTrail.draw(batch);
 		coinTrail.update(Gdx.graphics.getDeltaTime());
+		batch.end();
+		batch.begin();
 		
 	}
 	

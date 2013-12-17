@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
@@ -15,7 +16,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class DogeBiscuit extends Actor {
 
-	private TextureRegion chosenType;
 	private Rectangle bounds = new Rectangle();
 	private Animation dogeBiscuitAnim;
 	private float dogeBiscuitAnimState;
@@ -63,10 +63,10 @@ public class DogeBiscuit extends Actor {
 			Statics.superDogeTimer--;
 			if (Statics.superDogeTimer <= 0) {
 				Statics.isSuperD = false;
-				Statics.superDogeTimer = Statics.superDogeTimerInit;
+				Statics.superDogeTimer = Consts.SUPERD_TIMER;
 				Statics.normalMode();
 			}
-			Gdx.app.log(DogeDashCore.LOG, "Statics.superDogeTimer: " + Statics.superDogeTimer + " Statics.isSuperD: " + Statics.isSuperD);
+		//	Gdx.app.log(DogeDashCore.LOG, "Statics.superDogeTimer: " + Statics.superDogeTimer + " Statics.isSuperD: " + Statics.isSuperD);
 		}
 
 	}
@@ -92,6 +92,8 @@ public class DogeBiscuit extends Actor {
 		TextureRegion frame = dogeBiscuitAnim.getKeyFrame(dogeBiscuitAnimState += Gdx.graphics.getDeltaTime(), true);
 		updateTrail(batch);
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
+		batch.end();
+		batch.begin();
 	}
 
 	private void updateTrail(SpriteBatch batch) {

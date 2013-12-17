@@ -9,6 +9,7 @@ import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.GamePoints;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.Statics.GameState;
+import com.alicode.game.dogedash.models.DogeCostumes;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.screens.MenuScreen;
@@ -26,6 +27,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -36,6 +38,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Array;
 
 public class WorldTerminal implements Screen {
 
@@ -45,10 +48,11 @@ public class WorldTerminal implements Screen {
 	private WorldTwo worldTwo;
 
 	private GameInput gameInput;
-	private Group readyGroup, gameoverGroup, pauseGroup, gameGroup;
+	private Group readyGroup, gameoverGroup, costumesGroup, pauseGroup, gameGroup;
 	private String tableName;
 
-	private MotherDoge m;
+	private MotherDoge motherDoge;
+	private DogeCostumes dogeCostumes;
 	private Drawable tempDrawable;
 
 	private WindowOverlay readyOverlay, gameoverOverlay, pauseOverlay;
@@ -67,35 +71,41 @@ public class WorldTerminal implements Screen {
 		gameoverOverlay = new WindowOverlay();
 		pauseOverlay = new WindowOverlay();
 		inputMultiplexer = new InputMultiplexer();
+		
 
 		Statics.state = Statics.GameState.Ready;
-		Statics.cleanSlate();
 
 		gameGroup = new Group();
 		readyGroup = new Group();
 		gameoverGroup = new Group();
 		pauseGroup = new Group();
+		costumesGroup = new Group();
 
 		textInto = new GameText();
 
 		stage.addActor(gameGroup);
 		stage.addActor(readyGroup);
+		stage.addActor(costumesGroup);
+		Statics.cleanSlate();
 
 		switch (Statics.gameLevel) {
 		case 1:
 			worldOne = new WorldOne();
-			m = worldOne.getMotherDoge();
+			motherDoge = worldOne.getMotherDoge();
+			dogeCostumes = worldOne.getDogeCostumes();
 			gameGroup.addActor(worldOne);
 			tableName = "levelDay";
 			break;
 		case 2:
 			worldTwo = new WorldTwo();
-			m = worldTwo.getMotherDoge();
+			motherDoge = worldTwo.getMotherDoge();
+			dogeCostumes = worldTwo.getDogeCostumes();
 			gameGroup.addActor(worldTwo);
 			tableName = "levelNight";
 			break;
 		}
-		gameInput = new GameInput(m, this);
+		
+		gameInput = new GameInput(motherDoge, dogeCostumes, this);
 
 		defineReady();
 		defineRunning();
@@ -407,6 +417,7 @@ public class WorldTerminal implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		updatePlayerHealth();
+		// updatePlayerCostume();
 		stage.act(delta);
 		stage.draw();
 	}
@@ -495,6 +506,7 @@ public class WorldTerminal implements Screen {
 							Statics.cleanSlate();
 							gameoverGroup.remove();
 							defineReady();
+							game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
 							Gdx.app.log(DogeDashCore.LOG, "State: " + Statics.state);
 							return true;
 						}
@@ -581,7 +593,6 @@ public class WorldTerminal implements Screen {
 	@Override
 	public void dispose() {
 		Gdx.input.setInputProcessor(null);
-		this.dispose();
 
 	}
 
@@ -608,5 +619,4 @@ public class WorldTerminal implements Screen {
 	public void setGameInput(GameInput gameInput) {
 		this.gameInput = gameInput;
 	}
-
 }

@@ -21,7 +21,7 @@ public class DogeDashCore extends Game {
 		db = new GameDatabase();
 		Assets.load();
 		Gdx.input.setCatchBackKey(true);
-		setScreen(new WorldSelection(this));
+		setScreen(new SplashScreen(this));
 
 	}
 
