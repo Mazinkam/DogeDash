@@ -202,7 +202,7 @@ public class MenuScreen implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 
-						game.setScreen(new HighscoresScreen(game));
+					//	game.setScreen(new HighscoresScreen(game));
 						return true;
 					}
 				};
@@ -225,7 +225,7 @@ public class MenuScreen implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 
-						game.setScreen(new CustomizationScreen(game));
+					//	game.setScreen(new CustomizationScreen(game));
 						return true;
 					}
 				};

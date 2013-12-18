@@ -1,15 +1,10 @@
 package com.alicode.game.dogedash;
 
-import java.util.logging.Level;
-
 import com.alicode.game.dogedash.screens.OptionsScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.sun.xml.internal.ws.api.pipe.NextAction;
 
 public class Assets {
 	public static TextureAtlas atlas;
@@ -88,9 +83,9 @@ public class Assets {
 
 	private static void initSound() {
 
-		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+//		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+//		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+//		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 
 	}
 

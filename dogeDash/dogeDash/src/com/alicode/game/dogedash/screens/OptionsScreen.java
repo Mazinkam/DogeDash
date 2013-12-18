@@ -50,9 +50,9 @@ public class OptionsScreen implements Screen {
 		stage = new Stage();
 		inputMultiplexer = new InputMultiplexer(stage);
 
-		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-		isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+//		isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+//		isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+//		isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 
 		Gdx.app.log(DogeDashCore.LOG, "isSoundOn: " + isSoundOn + " isMusicOn: " + isMusicOn + " isVibrationOn " + isVibrationOn);
 	}
@@ -259,7 +259,7 @@ public class OptionsScreen implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 
-						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
+//						DogeDashCore.db.updateSettings(new Settings(1, isSoundOn, isMusicOn, isVibrationOn));
 						game.setScreen(new MenuScreen(game));
 						return true;
 					}

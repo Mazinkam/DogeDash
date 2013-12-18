@@ -19,12 +19,17 @@ b:core/Thumbs.db
 d:particles
 b:particles/coinTrail
 b:particles/dogeBiscuitTrail
+b:particles/dogeShieldTrail
 i:particles/mudDrop.png
 b:particles/mudDrops
 i:particles/particle.png
 b:particles/Thumbs.db
 i:particles/waterDrop.png
 b:particles/waterDrops
+d:shaders
+t:shaders/pixelShader.glsl
+b:shaders/Thumbs.db
+t:shaders/vertexShader.glsl
 d:skin
 t:skin/btns.pack
 i:skin/btns.png

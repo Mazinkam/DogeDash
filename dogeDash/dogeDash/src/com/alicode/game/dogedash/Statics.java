@@ -138,7 +138,7 @@ public class Statics {
 
 		puddleTimer = 0;
 		logTimer = 0;
-		enemiesOnPlayer = 0;
+	//	enemiesOnPlayer = 0;
 	}
 
 	public static void normalMode() {

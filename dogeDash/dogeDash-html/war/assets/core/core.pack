@@ -5,182 +5,210 @@ filter: Nearest,Nearest
 repeat: none
 game/accessories/acc_angelj
   rotate: false
-  xy: 1, 361
+  xy: 1, 841
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_clownnosej
   rotate: false
-  xy: 1, 246
+  xy: 1, 726
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_devilwingsj
   rotate: false
-  xy: 174, 361
+  xy: 174, 841
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_haloj
   rotate: false
-  xy: 1, 131
+  xy: 1, 611
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_hipsterj
   rotate: false
-  xy: 174, 246
+  xy: 174, 726
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_hornsj
   rotate: false
-  xy: 347, 361
+  xy: 347, 841
+  size: 171, 113
+  orig: 171, 113
+  offset: 0, 0
+  index: -1
+game/accessories/acc_keepoutj
+  rotate: false
+  xy: 1, 496
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_monoclej
   rotate: false
-  xy: 1, 16
+  xy: 174, 611
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_moustachej
   rotate: false
-  xy: 174, 131
+  xy: 347, 726
+  size: 171, 113
+  orig: 171, 113
+  offset: 0, 0
+  index: -1
+game/accessories/acc_policehatj
+  rotate: false
+  xy: 520, 841
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_pumpkinj
   rotate: false
-  xy: 347, 246
+  xy: 1, 381
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_santahatj
   rotate: false
-  xy: 520, 361
+  xy: 174, 496
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_shadesj
   rotate: false
-  xy: 174, 16
+  xy: 347, 611
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_tophatj
   rotate: false
-  xy: 347, 131
+  xy: 520, 726
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_unibrowj
   rotate: false
-  xy: 520, 246
+  xy: 693, 841
   size: 171, 113
   orig: 171, 113
   offset: 0, 0
   index: -1
 game/accessories/acc_angel
   rotate: false
-  xy: 693, 381
+  xy: 1, 286
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_clownnose
   rotate: false
-  xy: 347, 36
+  xy: 174, 401
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_devilwings
   rotate: false
-  xy: 520, 151
+  xy: 347, 516
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_halo
   rotate: false
-  xy: 693, 286
+  xy: 520, 631
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_hipster
   rotate: false
-  xy: 846, 381
+  xy: 693, 746
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_horns
   rotate: false
-  xy: 846, 286
+  xy: 866, 861
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
+game/accessories/acc_keepout
+  rotate: false
+  xy: 1, 191
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_monocle
   rotate: false
-  xy: 693, 191
+  xy: 1, 96
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_moustache
   rotate: false
-  xy: 846, 191
+  xy: 1, 1
+  size: 151, 93
+  orig: 151, 93
+  offset: 0, 0
+  index: -1
+game/accessories/acc_policehat
+  rotate: false
+  xy: 174, 306
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_pumpkin
   rotate: false
-  xy: 520, 56
+  xy: 154, 211
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_santahat
   rotate: false
-  xy: 673, 96
+  xy: 154, 116
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_shades
   rotate: false
-  xy: 826, 96
+  xy: 154, 21
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_tophat
   rotate: false
-  xy: 673, 1
+  xy: 347, 421
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
   index: -1
 game/accessories/acc_unibrow
   rotate: false
-  xy: 826, 1
+  xy: 327, 326
   size: 151, 93
   orig: 151, 93
   offset: 0, 0
@@ -190,9 +218,16 @@ core2.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-game/effects/energy1
+game/effects/gameLightCone
   rotate: false
   xy: 1, 607
+  size: 369, 369
+  orig: 369, 369
+  offset: 0, 0
+  index: -1
+game/effects/energy1
+  rotate: false
+  xy: 372, 675
   size: 405, 301
   orig: 405, 301
   offset: 0, 0
@@ -206,28 +241,42 @@ game/effects/energy2
   index: -1
 game/effects/energy3
   rotate: false
-  xy: 408, 607
+  xy: 1, 1
   size: 405, 301
   orig: 405, 301
   offset: 0, 0
   index: -1
 game/effects/shield
   rotate: false
-  xy: 1, 1
+  xy: 408, 372
   size: 279, 301
   orig: 279, 301
   offset: 0, 0
   index: -1
+game/effects/gameLight
+  rotate: false
+  xy: 408, 114
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+game/effects/shield_pickup
+  rotate: false
+  xy: 779, 825
+  size: 140, 151
+  orig: 140, 151
+  offset: 0, 0
+  index: -1
 game/effects/pow
   rotate: false
-  xy: 408, 550
+  xy: 689, 618
   size: 55, 55
   orig: 55, 55
   offset: 0, 0
   index: -1
 game/effects/style
   rotate: false
-  xy: 815, 853
+  xy: 408, 57
   size: 55, 55
   orig: 55, 55
   offset: 0, 0
@@ -964,51 +1013,65 @@ menu/shop/shop_horns
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_monocle
+menu/shop/shop_keepout
   rotate: false
   xy: 61, 129
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_moustache
+menu/shop/shop_monocle
   rotate: false
   xy: 121, 193
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_pumpkin
+menu/shop/shop_moustache
   rotate: false
   xy: 307, 279
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_santahat
+menu/shop/shop_policehat
   rotate: false
   xy: 367, 343
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_shades
+menu/shop/shop_pumpkin
   rotate: false
   xy: 1, 1
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_tophat
+menu/shop/shop_santahat
   rotate: false
   xy: 61, 65
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
   index: -1
-menu/shop/shop_unibrow
+menu/shop/shop_shades
   rotate: false
   xy: 121, 129
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/shop/shop_tophat
+  rotate: false
+  xy: 181, 193
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+menu/shop/shop_unibrow
+  rotate: false
+  xy: 367, 279
   size: 58, 62
   orig: 58, 62
   offset: 0, 0
