@@ -91,7 +91,7 @@ public class GameDatabase {
 			dbHandler.setupDatabase();
 			try {
 				dbHandler.openOrCreateDatabase();
-				// dropTheBase();
+				//dropTheBase();
 				dbHandler.execSQL(CREATE_LEVELONE_TABLE);
 				dbHandler.execSQL(CREATE_LEVELTWO_TABLE);
 				dbHandler.execSQL(CREATE_COSTUME_BACK_TABLE);
@@ -162,6 +162,7 @@ public class GameDatabase {
 			addCostume(new Costume(3, "Dogangel Halo", 0, 50), "headTable");
 			addCostume(new Costume(4, "Dogekin Hat", 0, 12), "headTable");
 			addCostume(new Costume(5, "Dogexmas Hat", 0, 10), "headTable");
+			addCostume(new Costume(6, "Dogelice Hat", 0, 30), "headTable");
 
 		} else {
 			for (Costume obj : headCostumeList) {
@@ -207,8 +208,9 @@ public class GameDatabase {
 		}
 		Gdx.app.log(DogeDashCore.LOG, "BACK COMSTUME LIST---------------------------------------");
 		if (backCostumeList.isEmpty()) {
-			addCostume(new Costume(1, "Dogangel Wings", 0, 30), "backTable");
-			addCostume(new Costume(2, "Dogevil Wings", 0, 30), "backTable");
+			addCostume(new Costume(1, "Dogangel Wings", 0, 50), "backTable");
+			addCostume(new Costume(2, "Dogevil Wings", 0, 50), "backTable");
+			addCostume(new Costume(3, "Dogelice Keepout", 0, 50), "backTable");
 
 		} else {
 			for (Costume obj : backCostumeList) {

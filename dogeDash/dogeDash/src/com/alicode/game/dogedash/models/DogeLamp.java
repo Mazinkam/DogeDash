@@ -55,7 +55,7 @@ public class DogeLamp extends Actor {
 			Statics.dogeLampTimer--;
 			if (Statics.dogeLampTimer <= 0) {
 				Statics.dogeLampActive = false;
-				Statics.playerVisionRadius += 2000;
+				Statics.playerVisionRadius += 100;
 				Statics.dogeLampTimer = Consts.LAMP_TIMER;
 			}
 		}

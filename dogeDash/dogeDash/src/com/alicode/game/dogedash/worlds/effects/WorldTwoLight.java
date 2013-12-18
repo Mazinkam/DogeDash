@@ -2,6 +2,7 @@ package com.alicode.game.dogedash.worlds.effects;
 
 import com.alicode.game.dogedash.Assets;
 import com.alicode.game.dogedash.Consts;
+import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.MotherDoge;
 import com.badlogic.gdx.Gdx;
@@ -51,19 +52,22 @@ public class WorldTwoLight extends Actor {
 		finalShader.end();
 
 		gameLight = new TextureRegion(Assets.gameLight);
+		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
 	}
 
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		updatePositon();
+		if (Statics.state == Statics.GameState.Running)
+			updatePositon();
 	}
 
 	private void updatePositon() {
-		if ((MotherDoge.playerX + Assets.character.getRegionWidth() / 2) - lightSize / 2 > x)
-			x++;
-		else
-			x--;
+		// if ((MotherDoge.playerX + Assets.character.getRegionWidth() / 2) -
+		// lightSize / 2 > x)
+		// x++;
+		// else
+		// x--;
 
 		if ((MotherDoge.playerY + Assets.character.getRegionHeight() / 2) - lightSize / 2 > y)
 			y += 3;
@@ -88,7 +92,7 @@ public class WorldTwoLight extends Actor {
 		batch.begin();
 		lightSize = Statics.playerVisionRadius + 0.25f * (float) Math.sin(zAngle) + 0.2f * MathUtils.random();
 
-		batch.draw(gameLight, x, y, lightSize, lightSize);
+		batch.draw(gameLight, x - lightSize / 6, y, lightSize, lightSize);
 
 		batch.end();
 		frameBuff.end();
@@ -103,5 +107,4 @@ public class WorldTwoLight extends Actor {
 		gameLight.getTexture().bind(0);
 
 	}
-
 }

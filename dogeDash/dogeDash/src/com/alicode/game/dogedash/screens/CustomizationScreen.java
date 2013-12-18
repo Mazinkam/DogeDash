@@ -163,8 +163,10 @@ public class CustomizationScreen implements Screen {
 
 		backShopItems.add(Assets.shop_angel);
 		backShopItems.add(Assets.shop_devilwings);
+		backShopItems.add(Assets.shop_keepout);
 		backShopItemsPreview.add(Assets.acc_angel);
 		backShopItemsPreview.add(Assets.acc_devilwings);
+		backShopItemsPreview.add(Assets.acc_keepout);
 
 		noseShopItems.add(Assets.shop_moustache);
 		noseShopItems.add(Assets.shop_clownnose);
@@ -185,11 +187,13 @@ public class CustomizationScreen implements Screen {
 		headShopItems.add(Assets.shop_halo);
 		headShopItems.add(Assets.shop_pumpkin);
 		headShopItems.add(Assets.shop_santahat);
+		headShopItems.add(Assets.shop_policehat);
 		headShopItemsPreview.add(Assets.acc_tophat);
 		headShopItemsPreview.add(Assets.acc_horns);
 		headShopItemsPreview.add(Assets.acc_halo);
 		headShopItemsPreview.add(Assets.acc_pumpkin);
 		headShopItemsPreview.add(Assets.acc_santahat);
+		headShopItemsPreview.add(Assets.acc_policehat);
 
 	}
 

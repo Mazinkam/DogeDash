@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.Statics.GameState;
 import com.badlogic.gdx.Gdx;
@@ -32,7 +33,7 @@ public class DogeCostumes extends Actor {
 
 	public DogeCostumes() {
 		defineCostumes();
-		setPosition(110, MotherDoge.playerY);
+		setPosition(DogeDashCore.WIDTH / 8,  DogeDashCore.HEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
 
 	}
@@ -52,6 +53,7 @@ public class DogeCostumes extends Actor {
 		// jump
 		backCostumeJump.add(Assets.acc_angelj);
 		backCostumeJump.add(Assets.acc_devilwingsj);
+		backCostumeJump.add(Assets.acc_keepoutj);
 
 		noseCostumeJump.add(Assets.acc_moustachej);
 		noseCostumeJump.add(Assets.acc_clownnosej);
@@ -66,10 +68,12 @@ public class DogeCostumes extends Actor {
 		headCostumeJump.add(Assets.acc_haloj);
 		headCostumeJump.add(Assets.acc_pumpkinj);
 		headCostumeJump.add(Assets.acc_santahatj);
+		headCostumeJump.add(Assets.acc_policehatj);
 
 		// normal
 		backCostumeNormal.add(Assets.acc_angel);
 		backCostumeNormal.add(Assets.acc_devilwings);
+		backCostumeNormal.add(Assets.acc_keepout);
 
 		noseCostumeNormal.add(Assets.acc_moustache);
 		noseCostumeNormal.add(Assets.acc_clownnose);
@@ -84,6 +88,7 @@ public class DogeCostumes extends Actor {
 		headCostumeNormal.add(Assets.acc_halo);
 		headCostumeNormal.add(Assets.acc_pumpkin);
 		headCostumeNormal.add(Assets.acc_santahat);
+		headCostumeNormal.add(Assets.acc_policehat);
 
 	}
 

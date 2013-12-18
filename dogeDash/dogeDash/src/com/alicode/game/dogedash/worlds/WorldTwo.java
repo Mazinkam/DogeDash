@@ -38,7 +38,7 @@ public class WorldTwo extends Table {
 	private Background background, background2;
 	private MotherDoge motherDoge;
 	private DogeCostumes dogeCostumes;
-	private FPSLogger fpsLog;
+//	private FPSLogger fpsLog;
 	private GameScore gamePoints;
 
 	private Group backgroundGroup;
@@ -102,7 +102,7 @@ public class WorldTwo extends Table {
 		inBetweenGroup = new Group();
 		floatingGroup = new Group();
 
-		fpsLog = new FPSLogger();
+//		fpsLog = new FPSLogger();
 		gamePoints = new GameScore();
 
 		worldTwoLight = new WorldTwoLight();
@@ -111,7 +111,7 @@ public class WorldTwo extends Table {
 		addActor(onGroundGroup);
 		addActor(inBetweenGroup);
 		addActor(floatingGroup);
-		addActor(fpsLog);
+//		addActor(fpsLog);
 		addActor(gamePoints);
 		backgroundGroup.addActor(worldTwoLight);
 
