@@ -6,20 +6,22 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
-import javax.sound.midi.Sequence;
-
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.utils.GameVibrate;
+import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -32,9 +34,8 @@ import com.badlogic.gdx.utils.Scaling;
 
 public class MenuScreen implements Screen {
 
-	private Image image_menu, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2, image_menu_creampup_body,
-			image_menu_creampup_paw, image_menu_creampup_paw2, image_menu_bluepup, image_puppydash, image_play, image_options, image_highscores,
-			image_customization;
+	private Image image_menu, image_menu_mom_nose_paw, image_menu_mombody, image_menu_blackpup, image_menu_blackpup2, image_menu_creampup_body, image_menu_creampup_paw, image_menu_creampup_paw2,
+			image_menu_bluepup, image_puppydash, image_play, image_options, image_highscores, image_customization;
 	private DogeDashCore game;
 	private Stage stage;
 	private Drawable tempDrawable;
@@ -97,7 +98,7 @@ public class MenuScreen implements Screen {
 		tempDrawable = new TextureRegionDrawable(Assets.puppydash);
 		image_puppydash = new Image(tempDrawable);
 		image_puppydash.setX(70);
-		image_puppydash.setY(380);
+		image_puppydash.setY(350);
 
 		tempDrawable = new TextureRegionDrawable(Assets.menu_blackpup);
 		image_menu_blackpup = new Image(tempDrawable);
@@ -160,7 +161,10 @@ public class MenuScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
-						game.setScreen(new WorldSelection(game));
+//						game.setScreen(new WorldSelection(game));
+						Statics.gameLevel = 1;
+						Statics.gameLevelDifficulty = 3;
+						game.setScreen(new WorldTerminal(game, Gdx.graphics.getDeltaTime()));
 						return true;
 					}
 				};
@@ -168,8 +172,7 @@ public class MenuScreen implements Screen {
 				GameVibrate.vibrate(500);
 				image_play.setOrigin(image_play.getWidth() / 4, image_play.getHeight() / 2);
 				image_play.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				image_play.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 			}
 		});
 
@@ -188,8 +191,7 @@ public class MenuScreen implements Screen {
 				GameAudio.dogeBark();
 				image_options.setOrigin(image_options.getWidth() / 4, image_options.getHeight() / 2);
 				image_options.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				image_options.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 			}
 		});
 
@@ -202,15 +204,14 @@ public class MenuScreen implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 
-					//	game.setScreen(new HighscoresScreen(game));
+						game.setScreen(new HighscoresScreen(game));
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
 				image_highscores.setOrigin(image_highscores.getWidth() / 4, image_highscores.getHeight() / 2);
 				image_highscores.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				image_highscores.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 
 			}
 
@@ -225,15 +226,14 @@ public class MenuScreen implements Screen {
 				Action completeAction = new Action() {
 					public boolean act(float delta) {
 
-					//	game.setScreen(new CustomizationScreen(game));
+						game.setScreen(new CustomizationScreen(game));
 						return true;
 					}
 				};
 				GameAudio.dogeBark();
 				image_customization.setOrigin(image_customization.getWidth() / 4, image_customization.getHeight() / 2);
 				image_customization.addAction(sequence(Actions.scaleBy(.1f, 0.1f, 0.2f), Actions.scaleTo(1, 1, 0.2f), delay(0.5f)));
-				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing),
-						completeAction)));
+				image_customization.addAction((sequence(rotateBy(5, 0.3f, Interpolation.swing), delay(0.2f), rotateBy(-5, 0.3f, Interpolation.swing), completeAction)));
 			}
 		});
 
@@ -283,8 +283,16 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(800, 480, true);
-		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
+		Vector2 size = Scaling.fit.apply(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, width, height);
+		int viewportX = (int) (width - size.x) / 2;
+		int viewportY = (int) (height - size.y) / 2;
+		int viewportWidth = (int) size.x;
+		int viewportHeight = (int) size.y;
+		Gdx.gl.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+		stage.setViewport(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, true);
+
+//		stage.setViewport(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, true);
+//		stage.getCamera().translate(-stage.getGutterWidth() / 2, -stage.getGutterHeight() / 2, 0);
 
 	}
 

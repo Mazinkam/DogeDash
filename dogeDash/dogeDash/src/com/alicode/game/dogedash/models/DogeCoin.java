@@ -50,7 +50,7 @@ public class DogeCoin extends Actor {
 	}
 
 	private void updateMovement() {
-		x -= Statics.enemySpeed;
+		x -= Statics.puppySpeed;
 		addAction(Actions.moveTo(x, getY()));
 
 	}
@@ -82,9 +82,6 @@ public class DogeCoin extends Actor {
 
 		coinTrail.draw(batch);
 		coinTrail.update(Gdx.graphics.getDeltaTime());
-		batch.end();
-		batch.begin();
-		
 	}
 	
 	public void disposeTrail()

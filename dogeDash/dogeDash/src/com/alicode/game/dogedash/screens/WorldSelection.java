@@ -7,19 +7,21 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.rotateBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.alicode.game.dogedash.Statics;
 import com.alicode.game.dogedash.models.WindowOverlay;
 import com.alicode.game.dogedash.utils.GameAudio;
 import com.alicode.game.dogedash.worlds.WorldTerminal;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -376,6 +378,11 @@ public class WorldSelection implements Screen {
 		imageMenuCreamPupPaw2.addAction(forever(sequence(moveBy(0, 10, 1), delay(0.5f), sequence(moveBy(0, -10, 1)))));
 		imageMenuCreamPupPaw2.addAction(forever(sequence(rotateBy(-20, 1), delay(0.5f), sequence(rotateBy(20, 1)))));
 		stage.addActor(imageMenuCreamPupPaw2);
+		//fix for S3 resolution
+		winOverlay.setX(0);
+		winOverlay.setY(0);
+		winOverlay.setWidth(1280);
+		winOverlay.setHeight(720);
 		stage.addActor(winOverlay);
 
 		stage.addActor(imageLevelSelect);
@@ -384,7 +391,11 @@ public class WorldSelection implements Screen {
 		stage.addActor(imageLevel1);
 		stage.addActor(imageLevel2);
 		stage.addActor(imageTutorialLevelSelect);
-
+		//fix for S3 resolution
+		winOverlay2.setX(0);
+		winOverlay2.setY(0);
+		winOverlay2.setWidth(1280);
+		winOverlay2.setHeight(720);
 		stage.addActor(winOverlay2);
 		stage.addActor(imageBackButton);
 		stage.addActor(imageNormal);
@@ -423,9 +434,13 @@ public class WorldSelection implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(800, 480, true);
-		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
-
+		Vector2 size = Scaling.fit.apply(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, width, height);
+		int viewportX = (int) (width - size.x) / 2;
+		int viewportY = (int) (height - size.y) / 2;
+		int viewportWidth = (int) size.x;
+		int viewportHeight = (int) size.y;
+		Gdx.gl.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+		stage.setViewport(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, true);
 	}
 
 	@Override

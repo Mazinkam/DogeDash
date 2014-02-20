@@ -92,8 +92,6 @@ public class DogeBiscuit extends Actor {
 		TextureRegion frame = dogeBiscuitAnim.getKeyFrame(dogeBiscuitAnimState += Gdx.graphics.getDeltaTime(), true);
 		updateTrail(batch);
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-		batch.end();
-		batch.begin();
 	}
 
 	private void updateTrail(SpriteBatch batch) {

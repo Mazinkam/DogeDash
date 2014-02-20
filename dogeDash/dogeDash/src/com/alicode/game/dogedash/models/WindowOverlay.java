@@ -67,7 +67,7 @@ public class WindowOverlay extends Actor {
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.end();
-		Gdx.gl.glEnable(GL20.GL_BLEND);
+		Gdx.gl.glEnable(GL20.GL_BLEND); 
 		renderer.begin(ShapeType.FilledRectangle);
 		renderer.setColor(0, 0, 0, alpha);
 		renderer.filledRect(x, y, width, height);

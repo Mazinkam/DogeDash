@@ -7,8 +7,8 @@ import com.badlogic.gdx.Gdx;
 public class GameVibrate {
 
 	public static void vibrate(int ms) {
-		if (OptionsScreen.isVibrationOn == 1 && !Statics.playerJump)
-			Gdx.input.vibrate(ms);
+//		if (OptionsScreen.isVibrationOn == 1 && !Statics.playerJump)
+//			Gdx.input.vibrate(ms);
 	}
 
 }

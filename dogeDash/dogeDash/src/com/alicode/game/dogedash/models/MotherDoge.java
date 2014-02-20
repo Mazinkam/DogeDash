@@ -81,7 +81,7 @@ public class MotherDoge extends Actor {
 		this.dogeSuperD = new Animation(0.15f, dogeSuper);
 		this.dogeSuperDEffect = new Animation(0.15f, dogeSuperEffect);
 
-		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
+		setPosition(Consts.GAMEWIDTH / 8, Consts.GAMEHEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
 		// if (Statics.gameLevel == 2)
 		// setColor(0.15f, 0.15f, 0.4f, 1.0f);
@@ -145,7 +145,6 @@ public class MotherDoge extends Actor {
 
 			batch.draw(frame, getX() - 60, getY() - 100, frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, frame.getRegionWidth(), frame.getRegionHeight(), 1, 1, getRotation());
 		}
-
 	}
 
 	private void updateMudParticles(SpriteBatch batch) {

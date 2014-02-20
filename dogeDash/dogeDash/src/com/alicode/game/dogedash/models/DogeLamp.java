@@ -83,8 +83,6 @@ public class DogeLamp extends Actor {
 		
 		updateTrail(batch);
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-		batch.end();
-		batch.begin();
 	}
 
 	private void updateTrail(SpriteBatch batch) {

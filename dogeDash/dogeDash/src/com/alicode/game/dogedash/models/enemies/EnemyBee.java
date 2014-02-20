@@ -105,6 +105,7 @@ public class EnemyBee extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
+
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
 		TextureRegion frame = beeFlyingAnim.getKeyFrame(beeFlyingAnimState += Gdx.graphics.getDeltaTime() * 2, true);
@@ -122,6 +123,7 @@ public class EnemyBee extends Actor {
 			hitPlayer = true;
 			Statics.playerHitByBee = true;
 			Statics.enemiesOnPlayer++;
+			
 			GameVibrate.vibrate(500);
 
 			Action completeAction = new Action() {

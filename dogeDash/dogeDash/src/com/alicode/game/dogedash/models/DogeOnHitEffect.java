@@ -87,12 +87,12 @@ public class DogeOnHitEffect extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
+		batch.end();
+		batch.begin();
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 		if (effectActive)
 			batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1,
 					getRotation());
-		batch.end();
-		batch.begin();
 	}
 
 	private void updateBounds() {

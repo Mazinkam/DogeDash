@@ -62,13 +62,20 @@ public class Statics {
 	public static int dogeLampTimer = Consts.LAMP_TIMER;
 	public static int playerJumpCooldown = Consts.JUMP_CD;
 
+	public static int playerMaxHP = 4;
+
 	public static int enemiesOnPlayer = 0;
+
+	public static int playerHpLeft = playerMaxHP - enemiesOnPlayer;
 
 	// costume vars
 	public static int eyeCostume = Consts.COSTUME_INIT;
 	public static int headCostume = Consts.COSTUME_INIT;
 	public static int noseCostume = Consts.COSTUME_INIT;
 	public static int backCostume = Consts.COSTUME_INIT;
+
+	// lvl vars
+	public static boolean darknessOn = false;
 
 	public static void createLife() {
 		enemiesAlive = true;
@@ -138,7 +145,7 @@ public class Statics {
 
 		puddleTimer = 0;
 		logTimer = 0;
-	//	enemiesOnPlayer = 0;
+		// enemiesOnPlayer = 0;
 	}
 
 	public static void normalMode() {

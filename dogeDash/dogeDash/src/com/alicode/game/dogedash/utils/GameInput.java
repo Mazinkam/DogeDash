@@ -48,9 +48,9 @@ public class GameInput implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if (!Statics.playerHitByLog)
-			motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
-		motherDoge.startJump();
+//		if (!Statics.playerHitByLog)
+//			motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
+//		motherDoge.startJump();
 		return false;
 	}
 
@@ -74,12 +74,12 @@ public class GameInput implements InputProcessor {
 			dogeCostumes.normalCostumeMovement(110, touch.y);
 			dogeCostumes.addAction(Actions.sequence(Actions.rotateTo(10, 0.5f), Actions.delay(0.5f), Actions.rotateTo(0f, 1.0f)));
 
-		} else {
-			if (!Statics.playerHitByLog) {
-				motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
-				dogeCostumes.addAction(Actions.rotateTo(0f, 0.5f));
-			}
-		}
+		} //else {
+//			if (!Statics.playerHitByLog) {
+//				motherDoge.addAction(Actions.rotateTo(0f, 0.5f));
+//				dogeCostumes.addAction(Actions.rotateTo(0f, 0.5f));
+//			}
+//		}
 
 		return false;
 	}

@@ -1,6 +1,7 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.GamePoints;
 import com.alicode.game.dogedash.Statics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -85,7 +86,7 @@ public class Puppy extends Actor {
 		} else {
 			puppyY = getY();
 		}
-		puppyX -= Statics.enemySpeed;
+		puppyX -= Statics.puppySpeed;
 		addAction(Actions.moveTo(puppyX, puppyY));
 
 	}
@@ -98,8 +99,8 @@ public class Puppy extends Actor {
 		TextureRegion frame = pupWalkingAnim.getKeyFrame(pupWalkingAnimState += Gdx.graphics.getDeltaTime(), true);
 
 		batch.draw(frame, getX(), getY(), frame.getRegionWidth() / 2, frame.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-		batch.end();
-		batch.begin();
+//		batch.end();
+//		batch.begin();
 	}
 
 	private void updateBounds() {
@@ -108,8 +109,11 @@ public class Puppy extends Actor {
 
 	public void playerHit() {
 		clearActions();
-		addAction(Actions.fadeOut(1f));
-		addAction(Actions.sequence(Actions.parallel(Actions.moveBy(-200, 0, 1.5f)), Actions.removeActor()));
+		if(Statics.enemiesOnPlayer < 1)
+		{
+			GamePoints.bonusPointStatic+=100;
+		}
+		addAction(Actions.sequence(Actions.parallel(Actions.moveBy(-50, 0, 1.5f), Actions.fadeOut(0.4f)), Actions.removeActor()));
 	}
 
 	public Rectangle getBounds() {

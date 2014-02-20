@@ -43,7 +43,9 @@ public class WorldTwoLight extends Actor {
 		frameBuff = new FrameBuffer(Format.RGBA8888, Consts.GAMEWIDTH, Consts.GAMEHEIGHT, false);
 
 		finalShader.begin();
-		finalShader.setUniformf("resolution", Consts.GAMEWIDTH, Consts.GAMEHEIGHT);
+		// finalShader.setUniformf("resolution", Consts.GAMEWIDTH,
+		// Consts.GAMEHEIGHT);
+		finalShader.setUniformf("resolution", 1280, 720);
 		finalShader.end();
 
 		finalShader.begin();
@@ -52,7 +54,7 @@ public class WorldTwoLight extends Actor {
 		finalShader.end();
 
 		gameLight = new TextureRegion(Assets.gameLight);
-		setPosition(DogeDashCore.WIDTH / 8, DogeDashCore.HEIGHT / 2);
+		setPosition(Consts.GAMEWIDTH / 8, Consts.GAMEHEIGHT / 2);
 	}
 
 	@Override
@@ -78,33 +80,36 @@ public class WorldTwoLight extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
+		if (Statics.darknessOn) {
 
-		final float dt = Gdx.graphics.getRawDeltaTime();
-		zAngle += dt * zSpeed;
-		while (zAngle > PI2)
-			zAngle -= PI2;
+			final float dt = Gdx.graphics.getRawDeltaTime();
+			zAngle += dt * zSpeed;
+			while (zAngle > PI2)
+				zAngle -= PI2;
 
-		// draw the light to the FBO
-		frameBuff.begin();
-		batch.setShader(finalShader);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.end();
-		batch.begin();
-		lightSize = Statics.playerVisionRadius + 0.25f * (float) Math.sin(zAngle) + 0.2f * MathUtils.random();
+			// draw the light to the FBO
+			frameBuff.begin();
+			batch.setShader(finalShader);
+			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+			batch.end();
+			batch.begin();
+			lightSize = Statics.playerVisionRadius + 0.25f * (float) Math.sin(zAngle) + 0.2f * MathUtils.random();
 
-		batch.draw(gameLight, x - lightSize / 6, y, lightSize, lightSize);
+			batch.draw(gameLight, x - lightSize / 6, y, lightSize, lightSize);
 
-		batch.end();
-		frameBuff.end();
+			batch.end();
+			frameBuff.end();
 
-		// draw the actual scene
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setShader(finalShader);
-		batch.begin();
-		frameBuff.getColorBufferTexture().bind(1); // this is important! bind
-													// the FBO to the 2nd
-													// texture unit
-		gameLight.getTexture().bind(0);
+			// draw the actual scene
+			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+			batch.setShader(finalShader);
+			batch.begin();
+			frameBuff.getColorBufferTexture().bind(1); // this is important!
+														// bind
+														// the FBO to the 2nd
+														// texture unit
+			gameLight.getTexture().bind(0);
+		}
 
 	}
 }

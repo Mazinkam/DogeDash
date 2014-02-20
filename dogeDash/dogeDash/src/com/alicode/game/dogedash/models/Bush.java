@@ -54,8 +54,6 @@ public class Bush extends Actor {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);
 
 		batch.draw(chosenType, getX(), getY(), chosenType.getRegionWidth() / 2, chosenType.getRegionHeight() / 2, getWidth(), getHeight(), 1, 1, getRotation());
-		batch.end();
-		batch.begin();
 	}
 
 	public void playerHit(boolean front, boolean above) {

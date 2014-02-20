@@ -108,11 +108,11 @@ public class WorldOne extends Table {
 		floatingGroup.addActor(motherDoge);
 		floatingGroup.addActor(dogeCostumes);
 
-		puppyRespawnCooldown = 2000000000f;
+		puppyRespawnCooldown = 5000000000f;
 		enemyRespawnCooldown = 2000000000f;
 		flowerRespawnCooldown = 900000000f;
-		bushRespawnCooldown = 9000000000f;
-		dogeCoinRespawnCooldown = 10000000000f;
+		bushRespawnCooldown = 30000000000f;
+		dogeCoinRespawnCooldown = 20000000000f;
 		dogeBiscuitRespawnCooldown = 10000000000f;
 
 		enemyLogRespawnCooldown = 4000000000f;
@@ -154,27 +154,27 @@ public class WorldOne extends Table {
 	}
 
 	private void updateRespawnTimes() {
-		if (GamePoints.finalScore() > 1000) {
+		if (GamePoints.finalScore() > 500) {
 			enemyRespawnCooldown = 2000000000f / 2;
 			GamePoints.currentScore++;
 		}
-		if (GamePoints.finalScore() > 10000) {
+		if (GamePoints.finalScore() > 5000) {
 			enemyRespawnCooldown = 2000000000f / 3;
 			GamePoints.currentScore++;
 		}
-		if (GamePoints.finalScore() > 100000) {
+		if (GamePoints.finalScore() > 8000) {
 			enemyRespawnCooldown = 2000000000f / 4;
 			GamePoints.currentScore++;
 		}
-		if (GamePoints.finalScore() > 1000000) {
+		if (GamePoints.finalScore() > 10000) {
 			enemyRespawnCooldown = 2000000000f / 5;
 			GamePoints.currentScore++;
 		}
-		if (GamePoints.finalScore() > 10000000) {
+		if (GamePoints.finalScore() > 100000) {
 			enemyRespawnCooldown = 2000000000f / 6;
 			GamePoints.currentScore++;
 		}
-		if (GamePoints.finalScore() > 100000000) {
+		if (GamePoints.finalScore() > 1000000) {
 			enemyRespawnCooldown = 2000000000f / 7;
 			GamePoints.currentScore++;
 		}
@@ -204,9 +204,9 @@ public class WorldOne extends Table {
 			spawnBush();
 		}
 
-		if (enemyLogRespawnTime > enemyLogRespawnCooldown) {
-			spawnLog();
-		}
+//		if (enemyLogRespawnTime > enemyLogRespawnCooldown) {
+//			spawnLog();
+//		}
 
 		if (enemyMudRespawnTime > enemyMudRespawnCooldown) {
 			spawnMud();
@@ -219,9 +219,9 @@ public class WorldOne extends Table {
 		if (dogeCoinRespawnTime > dogeCoinRespawnCooldown) {
 			spawnDogeCoin();
 		}
-		if (dogeBiscuitRespawnTime > dogeBiscuitRespawnCooldown) {
-			spawnDogeBiscuit();
-		}
+//		if (dogeBiscuitRespawnTime > dogeBiscuitRespawnCooldown) {
+//			spawnDogeBiscuit();
+//		}
 
 	}
 
@@ -529,6 +529,7 @@ public class WorldOne extends Table {
 	}
 
 	private void spawnBee() {
+		Statics.enemySpeed+=0.05;
 		if (enemyBees.size <= levelEnemyLimit) {
 			float yPos = 0 + (int) (Math.random() * 460);
 

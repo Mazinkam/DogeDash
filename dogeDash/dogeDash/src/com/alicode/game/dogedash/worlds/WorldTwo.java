@@ -222,9 +222,9 @@ public class WorldTwo extends Table {
 			spawnBush();
 		}
 
-		if (enemyLogRespawnTime > enemyLogRespawnCooldown) {
-			spawnLog();
-		}
+//		if (enemyLogRespawnTime > enemyLogRespawnCooldown) {
+//			spawnLog();
+//		}
 
 		if (enemyMudRespawnTime > enemyMudRespawnCooldown) {
 			spawnMud();
@@ -237,13 +237,13 @@ public class WorldTwo extends Table {
 		if (dogeCoinRespawnTime > dogeCoinRespawnCooldown) {
 			spawnDogeCoin();
 		}
-		if (dogeBiscuitRespawnTime > dogeBiscuitRespawnCooldown) {
-			spawnDogeBiscuit();
-		}
-		
-		if (dogeLampRespawnTime > dogeLampRespawnCooldown) {
-			spawnDogeLamp();
-		}
+//		if (dogeBiscuitRespawnTime > dogeBiscuitRespawnCooldown) {
+//			spawnDogeBiscuit();
+//		}
+//		
+//		if (dogeLampRespawnTime > dogeLampRespawnCooldown) {
+//			spawnDogeLamp();
+//		}
 
 
 	}

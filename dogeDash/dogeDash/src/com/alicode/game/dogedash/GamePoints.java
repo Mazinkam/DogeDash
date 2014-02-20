@@ -18,7 +18,7 @@ public class GamePoints {
 	}
 
 	public static int caughtPuppies() {
-		return puppyCaughtNum * 500;
+		return puppyCaughtNum * 800;
 
 	}
 

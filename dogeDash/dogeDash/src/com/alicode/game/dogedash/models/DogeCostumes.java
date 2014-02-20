@@ -1,9 +1,8 @@
 package com.alicode.game.dogedash.models;
 
 import com.alicode.game.dogedash.Assets;
-import com.alicode.game.dogedash.DogeDashCore;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.Statics;
-import com.alicode.game.dogedash.Statics.GameState;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -33,7 +32,7 @@ public class DogeCostumes extends Actor {
 
 	public DogeCostumes() {
 		defineCostumes();
-		setPosition(DogeDashCore.WIDTH / 8,  DogeDashCore.HEIGHT / 2);
+		setPosition(Consts.GAMEWIDTH / 8,  Consts.GAMEHEIGHT / 2);
 		setOrigin(Assets.character.getRegionWidth() / 2, Assets.character.getRegionHeight() / 2);
 
 	}

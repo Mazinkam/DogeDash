@@ -1,10 +1,12 @@
 package com.alicode.game.dogedash.screens;
 
 import com.alicode.game.dogedash.Assets;
+import com.alicode.game.dogedash.Consts;
 import com.alicode.game.dogedash.DogeDashCore;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -67,9 +69,14 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(800, 480, true);
-		stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
 
+		Vector2 size = Scaling.fit.apply(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, width, height);
+		int viewportX = (int) (width - size.x) / 2;
+		int viewportY = (int) (height - size.y) / 2;
+		int viewportWidth = (int) size.x;
+		int viewportHeight = (int) size.y;
+		Gdx.gl.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+		stage.setViewport(Consts.GAMEWIDTH, Consts.GAMEHEIGHT, true);
 	}
 
 	@Override

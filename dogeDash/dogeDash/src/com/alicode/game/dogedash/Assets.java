@@ -83,9 +83,9 @@ public class Assets {
 
 	private static void initSound() {
 
-//		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
-//		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
-//		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
+		OptionsScreen.isSoundOn = DogeDashCore.db.getSettings(1).getSoundSettings();
+		OptionsScreen.isMusicOn = DogeDashCore.db.getSettings(1).getMusicSettings();
+		OptionsScreen.isVibrationOn = DogeDashCore.db.getSettings(1).getVibrationSettings();
 
 	}
 
@@ -228,7 +228,7 @@ public class Assets {
 		shop_buyitem = atlas.findRegion("menu/txt/shop_buyitem");
 
 		// titles/title txt
-		puppydash = atlas.findRegion("menu/txt/puppydash");
+		puppydash = atlas.findRegion("menu/txt/dogeDash");
 
 		options_title = atlas.findRegion("menu/txt/options_title");
 		options_txt = atlas.findRegion("menu/txt/options_text");
